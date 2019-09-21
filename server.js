@@ -1,20 +1,21 @@
-const express = require('express');
-const cors = require('cors');
-const app = express();
-const PORT = 4000;
+const EXPRESS = require('express'); // server
+const CORS = require('cors');
+
+const APP = EXPRESS();  // our app instance
+const PORT = 4000;  // Port to run the application on
 
 // Enable CORS
-app.use(cors());
+APP.use(CORS());
 
 
 /**Root page */
-app.get('/', (req, res) => {
+APP.get('/', (req, res) => {
 
     // Template for simple get request.
     res.send('Hello World!')
 });
 
 
-app.listen(PORT, () => {
+APP.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });
