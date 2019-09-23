@@ -4,15 +4,20 @@ A React Native + Firebase + Node.js application to satisfy your thirst for trave
 <br/>
 
 # Getting Started
-## Installing React-Native (Front-end)
-1. Go into the 'client' directory (`cd client`) 
-2. Install all dependencies (`npm install`)
+This app uses the NPM package manager as well as Node.js. Follow the instructions below to get setup.
 
 ## Installing Node.js (Back-end)
 1. Visit the Node.js installations page at https://nodejs.org/en/download/
 2. Install the "Current" version
 3. Follow through installation steps normally
-4. Done.
+4. In the root directory, run `npm install` in the terminal
+5. Done.
+
+## Installing React-Native (Front-end)
+1. Go into the 'client' directory (`cd client`) 
+2. Install all dependencies (`npm install`)
+
+
 
 # Running the App
 ## Front-end
@@ -26,7 +31,6 @@ If you're having any issues, follow the [React Native Setup Guide](https://faceb
 Note: The initial compile can be lengthy, however any subsequent changes you make will appear almost immediately
 
 ## Back-end
-1. In the root directory, run `npm install` in the terminal
-2. Run `node server.js` to start the server
+1. Run `node server.js` to start the server
 
 The server be running in development mode at http://localhost:4000/.
