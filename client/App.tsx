@@ -10,17 +10,20 @@ export default function App() {
 
   // Equivalent to componentDidMount()
   useEffect(() => {
-    // Load Fonts used for NativeBase
-    Font.loadAsync({
-      Roboto: require('./resources/Fonts/Roboto.ttf'),
-      Roboto_medium: require('./resources/Fonts/Roboto_medium.ttf'),
-      ...Ionicons.font,
-    });
+    // Load fonts asynchronously
+    async function initFonts(){
+      await Font.loadAsync({
+        Roboto: require('./resources/Fonts/Roboto.ttf'),
+        Roboto_medium: require('./resources/Fonts/Roboto_medium.ttf'),
+        ...Ionicons.font,
+      });
+    }
 
-    // App is ready to initialize
+    // Continue initialiazing the app
     setReady(true);
   });
 
+  // If app is ready to be loaded
   if(isReady){
     return (
       <View style={styles.container}>
@@ -29,16 +32,9 @@ export default function App() {
     );
   } else{
     return (
-      <View style={styles.container}>
-
-      </View>
+      <AppLoading/>
     );
   }
-  // return (
-  //   <View style={styles.container}>
-  //     <Text>Open up App.tsx to start working on your app!</Text>
-  //   </View>
-  // );
 }
 
 const styles = StyleSheet.create({
