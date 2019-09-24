@@ -1,10 +1,20 @@
 ## The OG-Planit Team brings you...
 A React Native + Firebase + Node.js application to satisfy your thirst for travel.
 
+https://github.com/UTSCCSCC01/project-og-planit
 <br/>
 
 # Getting Started
 This app uses the NPM package manager as well as Node.js. Follow the instructions below to get setup.
+
+## Software Used:
+Git
+Google Firebase
+Node.js
+React Native
+
+Useful software:
+Android Emulator (E.G. Bluestacks)
 
 ## Installing Node.js (Back-end)
 1. Visit the Node.js installations page at https://nodejs.org/en/download/
@@ -17,6 +27,12 @@ This app uses the NPM package manager as well as Node.js. Follow the instruction
 1. Go into the 'client' directory (`cd client`) 
 2. Install all dependencies (`npm install`)
 
+## Installing git (repo management)
+1. visit https://git-scm.com/downloads
+2. download the version you need
+3. setup user and email using: git config --global user.name "John Doe", git config --global user.email johndoe@example.com
+
+Notes: run 'git fetch' to get the latest branches and histories for branches
 
 
 # Running the App
@@ -50,3 +66,11 @@ The server be running in development mode at http://localhost:4000/.
    where AAAA is the user story id. this will help us manage feature branches
 2. Once completed create a PR to develop branch. Then have a separate developer review your code before merge with develop
 3. Merge with master only occurs when preparing a submission build
+
+# Resources
+https://git-scm.com/downloads
+https://facebook.github.io/react-native/
+https://nodejs.org/en/
+https://developer.android.com/studio/run/device.html#developer-device-options
+https://developer.android.com/studio/run/oem-usb.html
+https://forums.expo.io/t/running-new-app-with-bluestacks/2630
