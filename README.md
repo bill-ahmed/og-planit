@@ -15,6 +15,7 @@ React Native
 
 Useful software:
 Android Emulator (E.G. Bluestacks)
+Visual Studio Code (preferred IDE of yinlinta)
 
 ## Installing Node.js (Back-end)
 1. Visit the Node.js installations page at https://nodejs.org/en/download/
