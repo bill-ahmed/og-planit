@@ -1,12 +1,45 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import { AppLoading } from 'expo';
+import { Text } from 'native-base';
+import { StyleSheet, View } from 'react-native';
+import * as Font from 'expo-font';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  );
+  // Equivalent to this.state
+  const [isReady, setReady] = useState(false);
+
+  // Equivalent to componentDidMount()
+  useEffect(() => {
+    // Load fonts asynchronously
+    async function initFonts(){
+      await Font.loadAsync({
+        Roboto: require('./resources/Fonts/Roboto.ttf'),
+        Roboto_medium: require('./resources/Fonts/Roboto_medium.ttf'),
+        ...Ionicons.font,
+      });
+
+      // Continue initialiazing the app
+      setReady(true);
+    }
+
+    initFonts();
+  });
+
+  // If app is ready to be loaded
+  if(isReady){
+    return (
+      <View style={styles.container}>
+        <Text>Open up App.tsx to start working on your app!</Text>
+      </View>
+    );
+  } else{
+    return (
+      <View>
+        <AppLoading/>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
