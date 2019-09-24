@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { AppLoading } from 'expo';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text } from 'native-base';
+import { StyleSheet, View } from 'react-native';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -17,10 +18,12 @@ export default function App() {
         Roboto_medium: require('./resources/Fonts/Roboto_medium.ttf'),
         ...Ionicons.font,
       });
+
+      // Continue initialiazing the app
+      setReady(true);
     }
 
-    // Continue initialiazing the app
-    setReady(true);
+    initFonts();
   });
 
   // If app is ready to be loaded
@@ -32,7 +35,9 @@ export default function App() {
     );
   } else{
     return (
-      <AppLoading/>
+      <View>
+        <AppLoading/>
+      </View>
     );
   }
 }
