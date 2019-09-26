@@ -1,4 +1,5 @@
 const admin = require('firebase-admin');
+const bodyParser = require('body-parser');
 
 const EXPRESS = require('express'); // server
 const CORS = require('cors');
@@ -33,12 +34,31 @@ APP.get('/', (req, res) => {
 
 
 /** Create new user **/
-APP.get('/createUser', (req, res) => {
-    res.send("hey whats up");
+APP.post('/createUser', bodyParser.json(), (req, res) => {
+    console.log(req.body);
+    res.header("Content-Type", "application/json");
+    
     // Make a request to firebase to create a user
-    console.log(req);
-
-    // Return the response back
+    admin.auth.createUser({
+        email: req.body.email,
+        password: req.body.password,
+        emailVerified: false,
+        phoneNumber: req.body.phoneNumber,
+        displayName: `${req.body.firstName} ${req.body.middleName} ${req.body.lastName}`,
+        photoURL: req.body.photoURL,
+        disabled: false,
+        age: req.body.age
+    })
+    .then(userRecord => {
+        console.log(`Created new user with ID: ${userRecord.uid}`)
+        res.statusCode = 200;   // 200 = okay
+        res.json(userRecord);   // Return the response back
+    })
+    .catch(error => {
+        console.log(`Error creating user: ${error}`);
+        res.statusCode = 400;   // 400 = user error caused it to fail...probably
+        res.json(error);    // Return the response back
+    });
 });
 
 

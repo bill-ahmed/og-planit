@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import firebase from 'firebase';
+import SignUp from './SignUp';
 import { Container, Text, Button, Content, Form, Item, Input, Icon } from 'native-base';
 
 export default function Login(props){
     const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [signUpModalOpen, setSignUpModalOpen] = useState(false);
 
     /**Sign in a user with given email and password combo. */
     const signIn = () => {
@@ -22,12 +24,6 @@ export default function Login(props){
         setLoading(false);
     }
 
-    /**Handle signing up a user */
-    const signUp = () => {
-        
-        alert("Clicked sign up");
-    }
-
     /**Update username entered by user */
     const handleUsernameChange = (newEmail) => {
         setEmail(newEmail.nativeEvent.text);
@@ -36,6 +32,11 @@ export default function Login(props){
     /**Update password entered by user */
     const handlePasswordChange = (newPass) => {
         setPassword(newPass.nativeEvent.text);
+    }
+
+    /**Open or close the signup modal */
+    const setModalOpen = (val: boolean) => {
+        setSignUpModalOpen(val);
     }
 
     return(
@@ -54,11 +55,13 @@ export default function Login(props){
                         <Text>Login</Text>
                     </Button>
 
-                    <Button disabled={loading} light rounded full style={styles.button} onPress={() => signUp()}>
+                    <Button disabled={loading} light rounded full style={styles.button} onPress={() => setModalOpen(true)}>
                         <Text>Sign Up</Text>
                     </Button>
                 </Form>
             </Content>
+
+            {signUpModalOpen && <SignUp open={signUpModalOpen} setModal={setModalOpen}/>}
         </Container>
     );
 }
