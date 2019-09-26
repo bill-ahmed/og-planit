@@ -21,7 +21,14 @@ admin.initializeApp({
 /****     INITIALIZE SERVER       ****/
 
 // Enable CORS
-APP.use(CORS());
+//APP.use(CORS());
+
+/* Enabls CORS */
+APP.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 
 
 /****     API ROUTES      ****/
@@ -39,7 +46,7 @@ APP.post('/createUser', bodyParser.json(), (req, res) => {
     res.header("Content-Type", "application/json");
     
     // Make a request to firebase to create a user
-    admin.auth.createUser({
+    admin.auth().createUser({
         email: req.body.email,
         password: req.body.password,
         emailVerified: false,

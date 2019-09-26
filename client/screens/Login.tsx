@@ -15,7 +15,12 @@ export default function Login(props){
 
         // Try logging in via Firebase
         firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(res => alert("Logged in!"))
+        .then(res => {
+            console.log(res);
+            props.navigation.navigate('App');
+            alert("Logged in!");
+        
+        })
         .catch(resp => {
             alert("Error trying to login. " + resp.message)
         })
