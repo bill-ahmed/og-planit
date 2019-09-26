@@ -1,4 +1,4 @@
-import * as admin from 'firebase-admin';
+const admin = require('firebase-admin');
 
 const EXPRESS = require('express'); // server
 const CORS = require('cors');
@@ -23,13 +23,22 @@ admin.initializeApp({
 APP.use(CORS());
 
 
-/**     API ROUTES      **/
+/****     API ROUTES      ****/
 
 /**Root page */
 APP.get('/', (req, res) => {
-
     // Template for simple get request.
     res.send('Hello World!')
+});
+
+
+/** Create new user **/
+APP.get('/createUser', (req, res) => {
+    res.send("hey whats up");
+    // Make a request to firebase to create a user
+    console.log(req);
+
+    // Return the response back
 });
 
 
