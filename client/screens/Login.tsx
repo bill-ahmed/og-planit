@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import firebase from 'firebase';
 import SignUp from './SignUp';
+import { AsyncStorage } from 'react-native';
+import { setLocalStorageItem } from '../api/AsyncStorageTools';
 import { Container, Text, Button, Content, Form, Item, Input, Header, Left, Body, Right, Title, Subtitle } from 'native-base';
 import { View } from 'react-native';
 
@@ -17,10 +19,24 @@ export default function Login(props){
         // Try logging in via Firebase
         firebase.auth().signInWithEmailAndPassword(email, password)
         .then(res => {
+
             setLoading(false);
-            console.log(res);
-            props.navigation.navigate('App');
-            alert("Logged in!");
+
+            /**Once user is successfully authenticated, store their access token via AsyncStorage */
+            const setAccessToken = async () => {
+                // Store access token for this user in local storage, for future authentication
+                try {
+                    await AsyncStorage.setItem('accessToken', await res.user.getIdToken());
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+
+            // Put access token in local storage
+            setAccessToken().then(res => {
+                props.navigation.navigate('App');
+                alert("Logged in!");
+            });
         
         })
         .catch(resp => {
