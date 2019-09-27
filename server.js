@@ -70,5 +70,5 @@ APP.post('/createUser', bodyParser.json(), (req, res) => {
 
 
 APP.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`);
+    console.log(`Server listening on port ${PORT} (http://localhost:4000)`);
 });

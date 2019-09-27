@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Text, Button, Content, Form, Item, Input, Icon, Label } from 'native-base';
+import { Container, Text, Button, Content, Form, Item, Input, Icon, Label, Header, Left, Body, Right, Title, Spinner  } from 'native-base';
 import { Modal, View } from 'react-native';
 
 const ENDPOINT = 'http://100.82.203.156:4000';  // MUST BE YOUR IP ADDRESS ON LOCAL NETWORK!!
@@ -68,6 +68,22 @@ export default function SignUp(props){
         <View style={styles.container}>
             <Modal animationType="slide" transparent={false} visible={props.open} presentationStyle="pageSheet" onRequestClose={() => alert("Modal closed")}>
                 <Container>
+                    {/* Header content */}
+                    <Header>
+                        <Left>
+                            {/* Close the pop-up modal */}
+                            <Button disabled={loading} transparent onPress={() => props.setModal(false)}>
+                                <Icon name='arrow-back'/>
+                            </Button>
+                        </Left>
+                        <Body>
+                            <Title>Make an Account</Title>
+                        </Body>
+
+                        <Right/>
+                    </Header>
+
+                    {/* Main body content */}
                     <Content padder>
                         <Text>
                             Fill out below to get started. All fields with a (*) are required!
@@ -108,12 +124,9 @@ export default function SignUp(props){
                                 <Input secureTextEntry={true} value={userInfo.confirmPassword} onChange={(text) => setUserInfo({...userInfo, confirmPassword: text.nativeEvent.text})}/>
                             </Item>
 
-                            <Button disabled={validateUserInfo() || loading} style={styles.button} onPress={() => sendSignUpInfo()}>
+                            <Button iconRight disabled={validateUserInfo() || loading} style={styles.button} onPress={() => sendSignUpInfo()}>
                                 <Text>SignUp</Text>
-                            </Button>
-
-                            <Button disabled={loading} style={styles.button} onPress={() => props.setModal(false)}>
-                                <Text>Cancel</Text>
+                                {loading && <Spinner/>}
                             </Button>
                         </Form>
                     </Content>

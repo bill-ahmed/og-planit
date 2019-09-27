@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Text, Button, Content, Form, Item, Input, Icon, Label } from 'native-base';
+import { Container, Text, Button, Content, Form, Item, Input, Icon, Label, Header, Left, Right, Body, Title } from 'native-base';
 import firebase from 'firebase';
 
 export default function Home(props){
@@ -18,6 +18,15 @@ export default function Home(props){
     }
     return(
         <Container>
+            <Header noLeft>
+                <Left/>
+                <Body>
+                    <Title>
+                        Home Page!
+                    </Title>
+                </Body>
+                <Right/>
+            </Header>
             <Content padder>
                 <Text>Home screen.</Text>
                 <Button onPress={() => logout()}>

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import firebase from 'firebase';
 import SignUp from './SignUp';
-import { Container, Text, Button, Content, Form, Item, Input, Icon } from 'native-base';
+import { Container, Text, Button, Content, Form, Item, Input, Header, Left, Body, Right, Title, Subtitle } from 'native-base';
+import { View } from 'react-native';
 
 export default function Login(props){
     const [loading, setLoading] = useState(false);
@@ -16,17 +17,21 @@ export default function Login(props){
         // Try logging in via Firebase
         firebase.auth().signInWithEmailAndPassword(email, password)
         .then(res => {
+            setLoading(false);
             console.log(res);
             props.navigation.navigate('App');
             alert("Logged in!");
         
         })
         .catch(resp => {
-            alert("Error trying to login. " + resp.message)
+            alert("Error trying to login. " + resp.message);
+            setLoading(false);
         })
-        .catch(res => alert("Error loggin in. No additional info can be provided at the moment."));
-
-        setLoading(false);
+        .catch(res => {
+            alert("Error loggin in. No additional info can be provided at the moment. Check console log for details.");
+            console.log(res);
+            setLoading(false);
+        });
     }
 
     /**Update username entered by user */
@@ -45,29 +50,43 @@ export default function Login(props){
     }
 
     return(
-        <Container style={styles.container}>
-            <Content padder>
-                <Form>
-                    <Item floatingLabel>
-                        <Input value={email} onChange={text => handleUsernameChange(text)} placeholder="Email" />
-                    </Item>
+        <View style={styles.container}>
+            <Container>
+                <Header noLeft>
+                    <Left/>
 
-                    <Item floatingLabel>
-                        <Input value={password} onChange={text => handlePasswordChange(text)} placeholder="Password" />
-                    </Item>
+                    <Body>
+                        <Title>
+                            Login
+                        </Title>
+                        <Subtitle>
+                            Login below to continue, or make a new account.
+                        </Subtitle>
+                    </Body>
+                </Header>
+                <Content padder>
+                    <Form>
+                        <Item floatingLabel>
+                            <Input keyboardType="email-address" value={email} onChange={text => handleUsernameChange(text)} placeholder="Email" />
+                        </Item>
 
-                    <Button disabled={loading} primary rounded full style={styles.button} onPress={() => signIn()}>
-                        <Text>Login</Text>
-                    </Button>
+                        <Item floatingLabel>
+                            <Input secureTextEntry={true} value={password} onChange={text => handlePasswordChange(text)} placeholder="Password" />
+                        </Item>
 
-                    <Button disabled={loading} light rounded full style={styles.button} onPress={() => setModalOpen(true)}>
-                        <Text>Sign Up</Text>
-                    </Button>
-                </Form>
-            </Content>
+                        <Button disabled={loading} primary rounded full style={styles.button} onPress={() => signIn()}>
+                            <Text>Login</Text>
+                        </Button>
 
-            {signUpModalOpen && <SignUp open={signUpModalOpen} setModal={setModalOpen}/>}
-        </Container>
+                        <Button disabled={loading} light rounded full style={styles.button} onPress={() => setModalOpen(true)}>
+                            <Text>Sign Up</Text>
+                        </Button>
+                    </Form>
+                </Content>
+
+                {signUpModalOpen && <SignUp open={signUpModalOpen} setModal={setModalOpen}/>}
+            </Container>
+        </View>
     );
 }
 
@@ -76,11 +95,6 @@ const styles = {
         flex: 1, 
         justifyContent: 'center', 
         flexDirection: 'row',
-        width: '100%',
-        height: '100%',
-    },
-    body: {
-        width: '100%'
     },
     button: {
         width: 100,

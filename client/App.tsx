@@ -46,7 +46,7 @@ function Main(props) {
     return (
       <View style={styles.container}>
         <Text>Open up App.tsx to start working on your app!</Text>
-        <Button title="Login" onPress={() => navigate('Auth')}/>
+        <Button title="Login Page" onPress={() => navigate('Auth')}/>
       </View>
     );
   } else{
@@ -59,19 +59,37 @@ function Main(props) {
 }
 
 const AppStack = createStackNavigator({
-  Home: {screen: Home},
-  AUth: { screen: Login }, });
+  Home: {
+    screen: Home,
+    navigationOptions: {
+      header: null, // Remove all headers
+    }
+  },
+  Auth: { 
+    screen: Login,
+    navigationOptions: {
+      header: null, // Remove all headers
+    }
+   },
+  });
 
-const AuthStack = createStackNavigator({ SignIn: Login });
+const AuthStack = createStackNavigator({ 
+  SignIn: {
+    screen: Login,
+    navigationOptions: {
+      header: null,   // Remove all headers
+    }
+  } 
+});
 
 const App = createAppContainer(createSwitchNavigator({
   AuthLoading: Main,
   App: AppStack,
   Auth: AuthStack,
-},
-{
+  },
+  {
   initialRouteName: 'AuthLoading',
-}));
+  }));
 
 export default App;
 
