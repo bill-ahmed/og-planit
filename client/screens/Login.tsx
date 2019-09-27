@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import firebase from 'firebase';
 import SignUp from './SignUp';
 import { AsyncStorage } from 'react-native';
-import { setLocalStorageItem } from '../api/AsyncStorageTools';
-import { Container, Text, Button, Content, Form, Item, Input, Header, Left, Body, Right, Title, Subtitle } from 'native-base';
-import { View } from 'react-native';
+import { Container, Text, Button, Content, Form, Header, Left, Body, Title, Subtitle } from 'native-base';
+import { StyleSheet, View, TextInput } from 'react-native';
 
 export default function Login(props){
     const [loading, setLoading] = useState(false);
@@ -80,15 +79,25 @@ export default function Login(props){
                         </Subtitle>
                     </Body>
                 </Header>
-                <Content padder>
-                    <Form>
-                        <Item floatingLabel>
-                            <Input keyboardType="email-address" value={email} onChange={text => handleUsernameChange(text)} placeholder="Email" />
-                        </Item>
 
-                        <Item floatingLabel>
-                            <Input secureTextEntry={true} value={password} onChange={text => handlePasswordChange(text)} placeholder="Password" />
-                        </Item>
+                <Content contentContainerStyle={styles.content} padder>
+                    <View style={styles.loginIntro}>
+                        <Text style={{fontSize: 40}}>Welcome to Planit!</Text>
+                    </View>
+
+                    <Form style={{width: '100%', flex: 1, justifyContent: 'center',}}>
+
+                        <TextInput style={styles.textInput} 
+                        keyboardType="email-address" 
+                        value={email} 
+                        onChange={text => handleUsernameChange(text)} 
+                        placeholder="Email" />
+                        
+                        <TextInput style={styles.textInput} 
+                        secureTextEntry={true} 
+                        value={password} 
+                        onChange={text => handlePasswordChange(text)} 
+                        placeholder="Password" />
 
                         <Button disabled={loading} primary rounded full style={styles.button} onPress={() => signIn()}>
                             <Text>Login</Text>
@@ -106,14 +115,32 @@ export default function Login(props){
     );
 }
 
-const styles = {
+const styles = StyleSheet.create({
     container: {
+        flex: 1,
+        flexDirection: 'column',
+    },
+    content: {
         flex: 1, 
-        justifyContent: 'center', 
-        flexDirection: 'row',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignItems: 'center',
     },
     button: {
-        width: 100,
-        marginTop: 20,
+        width: 200,
+        marginTop: 30,
+        alignSelf: 'center',
+    },
+    loginIntro: {
+        marginTop: 100,
+    },
+    textInput: {
+        borderWidth: 1, 
+        borderRadius: 7,
+        borderColor: "#BBC0C4", 
+        padding: 5,
+        margin: 10,
+        marginTop: 10,
+        marginBottom: 5,
     }
-}
+});

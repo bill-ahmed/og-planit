@@ -58,6 +58,7 @@ function Main(props) {
   }
 }
 
+// App stack to go from Auth --> Home
 const AppStack = createStackNavigator({
   Home: {
     screen: Home,
@@ -71,8 +72,9 @@ const AppStack = createStackNavigator({
       header: null, // Remove all headers
     }
    },
-  });
+});
 
+// Auth stack handle authentication flow
 const AuthStack = createStackNavigator({ 
   SignIn: {
     screen: Login,
@@ -82,15 +84,16 @@ const AuthStack = createStackNavigator({
   } 
 });
 
+// Combine landing page with Appstack and Authstack
 const App = createAppContainer(createSwitchNavigator({
   AuthLoading: Main,
   App: AppStack,
   Auth: AuthStack,
-  },
-  {
+  }, {
   initialRouteName: 'AuthLoading',
-  }));
+}));
 
+// Style components
 const styles = StyleSheet.create({
   container: {
     flex: 1,
