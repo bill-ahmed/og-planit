@@ -6,13 +6,23 @@ import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import firebase from 'firebase';
 
+/*React navigation */
 import {createAppContainer, createSwitchNavigator } from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
+/*Screens for each page */
 import Login from './screens/Login';
 import Home from './screens/Home';
 
+/*Redux dependencies */
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import allReducers from './reducers';
+
+/**Firebase config file; allows authentication, querying firestore, etc. */
 const FIREBASE_CONFIG = require('./firebaseConfig.json');
+
+const STORE = createStore(allReducers);
 
 function Main(props) {
   // Equivalent to this.state
@@ -44,10 +54,12 @@ function Main(props) {
   if(isReady){
     
     return (
-      <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-        <Button title="Login Page" onPress={() => navigate('Auth')}/>
-      </View>
+      <Provider store={STORE}>
+        <View style={styles.container}>
+          <Text>Open up App.tsx to start working on your app!</Text>
+          <Button title="Login Page" onPress={() => navigate('Auth')}/>
+        </View>
+      </Provider>
     );
   } else{
     return (

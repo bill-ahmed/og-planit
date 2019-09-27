@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import {useDispatch} from 'react-redux';
+import { setAccessToken } from '../actions';
 import firebase from 'firebase';
 import SignUp from './SignUp';
 import { AsyncStorage } from 'react-native';
@@ -10,6 +12,7 @@ export default function Login(props){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [signUpModalOpen, setSignUpModalOpen] = useState(false);
+    const dispatch = useDispatch(); // Connection to redux store
 
     /**Sign in a user with given email and password combo. */
     const signIn = () => {
@@ -22,20 +25,24 @@ export default function Login(props){
             setLoading(false);
 
             /**Once user is successfully authenticated, store their access token via AsyncStorage */
-            const setAccessToken = async () => {
-                // Store access token for this user in local storage, for future authentication
-                try {
-                    await AsyncStorage.setItem('accessToken', await res.user.getIdToken());
-                } catch (error) {
-                    console.log(error);
-                }
-            }
+            // const setAccessToken = async () => {
+            //     // Store access token for this user in local storage, for future authentication
+            //     try {
+            //         await AsyncStorage.setItem('accessToken', await res.user.getIdToken());
+            //     } catch (error) {
+            //         console.log(error);
+            //     }
+            // }
 
             // Put access token in local storage
-            setAccessToken().then(res => {
-                props.navigation.navigate('App');
-                alert("Logged in!");
-            });
+            dispatch(setAccessToken(res.user.getIdToken()));
+            props.navigation.navigate('App');
+            alert("Logged in!");
+
+            // setAccessToken().then(res => {
+            //     props.navigation.navigate('App');
+            //     alert("Logged in!");
+            // });
         
         })
         .catch(resp => {
