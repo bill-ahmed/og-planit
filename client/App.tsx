@@ -10,7 +10,7 @@ import styles from './AppStyles'
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import Home from './screens/Home';
+import Home from './app/Home';
 import Login from './app/login/component/Login';
 
 const FIREBASE_CONFIG = require('./firebaseConfig.json');

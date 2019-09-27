@@ -50,21 +50,6 @@ export default function Login(props) {
             });
     }
 
-    /**Update username entered by user */
-    const handleUsernameChange = (newEmail) => {
-        setEmail(newEmail.nativeEvent.text);
-    }
-
-    /**Update password entered by user */
-    const handlePasswordChange = (newPass) => {
-        setPassword(newPass.nativeEvent.text);
-    }
-
-    /**Open or close the signup modal */
-    const setModalOpen = (val: boolean) => {
-        setSignUpModalOpen(val);
-    }
-
     return (
         <View style={styles.container}>
             <Container>
@@ -83,24 +68,24 @@ export default function Login(props) {
                 <Content padder>
                     <Form>
                         <Item floatingLabel>
-                            <Input keyboardType="email-address" value={email} onChange={text => handleUsernameChange(text)} placeholder="Email" />
+                            <Input keyboardType="email-address" value={email} onChange={text => setEmail(text.nativeEvent.text)} placeholder="Email" />
                         </Item>
 
                         <Item floatingLabel>
-                            <Input secureTextEntry={true} value={password} onChange={text => handlePasswordChange(text)} placeholder="Password" />
+                            <Input secureTextEntry={true} value={password} onChange={text => setPassword(text.nativeEvent.text)} placeholder="Password" />
                         </Item>
 
                         <Button disabled={loading} primary rounded full style={styles.button} onPress={() => signIn()}>
                             <Text>Login</Text>
                         </Button>
 
-                        <Button disabled={loading} light rounded full style={styles.button} onPress={() => setModalOpen(true)}>
+                        <Button disabled={loading} light rounded full style={styles.button} onPress={() => setSignUpModalOpen(true)}>
                             <Text>Sign Up</Text>
                         </Button>
                     </Form>
                 </Content>
 
-                {signUpModalOpen && <SignUp open={signUpModalOpen} setModal={setModalOpen} />}
+                {signUpModalOpen && <SignUp open={signUpModalOpen} setModal={setSignUpModalOpen} />}
             </Container>
         </View>
     );
