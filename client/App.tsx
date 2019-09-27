@@ -1,16 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppLoading, } from 'expo';
 import { Text } from 'native-base';
 import { StyleSheet, View, Button } from 'react-native';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import firebase from 'firebase';
+import styles from './AppStyles'
 
-import {createAppContainer, createSwitchNavigator } from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
-import Login from './screens/Login';
-import Home from './screens/Home';
+import Home from './app/Home';
+import Login from './app/login/component/Login';
 
 const FIREBASE_CONFIG = require('./firebaseConfig.json');
 
@@ -22,7 +23,7 @@ function Main(props) {
   // Equivalent to componentDidMount()
   useEffect(() => {
     // Load fonts asynchronously
-    async function initFonts(){
+    async function initFonts() {
       await Font.loadAsync({
         Roboto: require('./resources/Fonts/Roboto.ttf'),
         Roboto_medium: require('./resources/Fonts/Roboto_medium.ttf'),
@@ -41,18 +42,17 @@ function Main(props) {
   });
 
   // If app is ready to be loaded
-  if(isReady){
-    
+  if (isReady) {
+
     return (
       <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-        <Button title="Login Page" onPress={() => navigate('Auth')}/>
+        <Button title="Login Page" onPress={() => navigate('Auth')} />
       </View>
     );
-  } else{
+  } else {
     return (
       <View>
-        <AppLoading/>
+        <AppLoading />
       </View>
     );
   }
@@ -65,39 +65,30 @@ const AppStack = createStackNavigator({
       header: null, // Remove all headers
     }
   },
-  Auth: { 
+  Auth: {
     screen: Login,
     navigationOptions: {
       header: null, // Remove all headers
     }
-   },
-  });
+  },
+});
 
-const AuthStack = createStackNavigator({ 
+const AuthStack = createStackNavigator({
   SignIn: {
     screen: Login,
     navigationOptions: {
       header: null,   // Remove all headers
     }
-  } 
+  }
 });
 
 const App = createAppContainer(createSwitchNavigator({
   AuthLoading: Main,
   App: AppStack,
   Auth: AuthStack,
-  },
+},
   {
-  initialRouteName: 'AuthLoading',
+    initialRouteName: 'AuthLoading',
   }));
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default App;
