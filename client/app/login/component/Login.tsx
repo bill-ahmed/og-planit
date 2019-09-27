@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import firebase from 'firebase';
 import SignUp from './SignUp';
 import { AsyncStorage } from 'react-native';
-import { setLocalStorageItem } from '../api/AsyncStorageTools';
-import { Container, Text, Button, Content, Form, Item, Input, Header, Left, Body, Right, Title, Subtitle } from 'native-base';
+import { Container, Text, Button, Content, Form, Item, Input, Header, Left, Body, Title, Subtitle } from 'native-base';
 import { View } from 'react-native';
+import styles from './LoginStyles';
 
-export default function Login(props){
+export default function Login(props) {
     const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -18,36 +18,36 @@ export default function Login(props){
 
         // Try logging in via Firebase
         firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(res => {
+            .then(res => {
 
-            setLoading(false);
+                setLoading(false);
 
-            /**Once user is successfully authenticated, store their access token via AsyncStorage */
-            const setAccessToken = async () => {
-                // Store access token for this user in local storage, for future authentication
-                try {
-                    await AsyncStorage.setItem('accessToken', await res.user.getIdToken());
-                } catch (error) {
-                    console.log(error);
+                /**Once user is successfully authenticated, store their access token via AsyncStorage */
+                const setAccessToken = async () => {
+                    // Store access token for this user in local storage, for future authentication
+                    try {
+                        await AsyncStorage.setItem('accessToken', await res.user.getIdToken());
+                    } catch (error) {
+                        console.log(error);
+                    }
                 }
-            }
 
-            // Put access token in local storage
-            setAccessToken().then(res => {
-                props.navigation.navigate('App');
-                alert("Logged in!");
+                // Put access token in local storage
+                setAccessToken().then(() => {
+                    props.navigation.navigate('App');
+                    alert("Logged in!");
+                });
+
+            })
+            .catch(resp => {
+                alert("Error trying to login. " + resp.message);
+                setLoading(false);
+            })
+            .catch(res => {
+                alert("Error loggin in. No additional info can be provided at the moment. Check console log for details.");
+                console.log(res);
+                setLoading(false);
             });
-        
-        })
-        .catch(resp => {
-            alert("Error trying to login. " + resp.message);
-            setLoading(false);
-        })
-        .catch(res => {
-            alert("Error loggin in. No additional info can be provided at the moment. Check console log for details.");
-            console.log(res);
-            setLoading(false);
-        });
     }
 
     /**Update username entered by user */
@@ -65,11 +65,11 @@ export default function Login(props){
         setSignUpModalOpen(val);
     }
 
-    return(
+    return (
         <View style={styles.container}>
             <Container>
                 <Header noLeft>
-                    <Left/>
+                    <Left />
 
                     <Body>
                         <Title>
@@ -100,20 +100,8 @@ export default function Login(props){
                     </Form>
                 </Content>
 
-                {signUpModalOpen && <SignUp open={signUpModalOpen} setModal={setModalOpen}/>}
+                {signUpModalOpen && <SignUp open={signUpModalOpen} setModal={setModalOpen} />}
             </Container>
         </View>
     );
-}
-
-const styles = {
-    container: {
-        flex: 1, 
-        justifyContent: 'center', 
-        flexDirection: 'row',
-    },
-    button: {
-        width: 100,
-        marginTop: 20,
-    }
 }
