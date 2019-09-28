@@ -14,7 +14,7 @@ export default function Home(props){
         firebase.auth().signOut()
         .then(res => {
             // Navigate to start of application
-            props.navigation.navigate('AuthLoading');
+            props.navigation.navigate('Auth');
         })
         .catch(err => {
             alert("Error logging out. Check console for details");

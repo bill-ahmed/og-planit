@@ -1,4 +1,5 @@
 /*React navigation */
+import { createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 /*Screens for each page */
@@ -12,13 +13,7 @@ export const AppStack = createStackNavigator({
       navigationOptions: {
         header: null, // Remove all headers
       }
-    },
-    Auth: { 
-      screen: Login,
-      navigationOptions: {
-        header: null, // Remove all headers
-      }
-    },
+    }
 });
 
 // Auth stack handle authentication flow
