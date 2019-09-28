@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import {useDispatch} from 'react-redux';
-import { setAccessToken } from '../actions';
+import { setAccessToken } from '../redux/actions';
 import firebase from 'firebase';
 import SignUp from './SignUp';
-import { AsyncStorage } from 'react-native';
-import { Container, Text, Button, Content, Form, Header, Left, Body, Title, Subtitle } from 'native-base';
+import { Container, Text, Button, Content, Form, Header, Left, Body, Title, Subtitle, Spinner } from 'native-base';
 import { StyleSheet, View, TextInput } from 'react-native';
 
 export default function Login(props){
@@ -24,25 +23,15 @@ export default function Login(props){
 
             setLoading(false);
 
-            /**Once user is successfully authenticated, store their access token via AsyncStorage */
-            // const setAccessToken = async () => {
-            //     // Store access token for this user in local storage, for future authentication
-            //     try {
-            //         await AsyncStorage.setItem('accessToken', await res.user.getIdToken());
-            //     } catch (error) {
-            //         console.log(error);
-            //     }
-            // }
+            // Grab the access token before continuing
+            res.user.getIdToken()
+                .then(res => {
+                    // Store access token in redux store
+                    dispatch(setAccessToken(res));
 
-            // Put access token in local storage
-            dispatch(setAccessToken(res.user.getIdToken()));
-            props.navigation.navigate('App');
-            alert("Logged in!");
-
-            // setAccessToken().then(res => {
-            //     props.navigation.navigate('App');
-            //     alert("Logged in!");
-            // });
+                    // Go to main screen
+                    props.navigation.navigate('App');
+                });
         
         })
         .catch(resp => {
@@ -108,6 +97,7 @@ export default function Login(props){
 
                         <Button disabled={loading} primary rounded full style={styles.button} onPress={() => signIn()}>
                             <Text>Login</Text>
+                            {loading && <Spinner color="blue"/>}
                         </Button>
 
                         <Button disabled={loading} light rounded full style={styles.button} onPress={() => setModalOpen(true)}>

@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { Container, Text, Button, Content, Form, Item, Input, Icon, Label, Header, Left, Right, Body, Title } from 'native-base';
+import {useSelector} from 'react-redux';
+import { getAccessToken } from '../redux/actions';
+import { Container, Text, Button, Content, Header, Left, Right, Body, Title } from 'native-base';
 import firebase from 'firebase';
 import { AsyncStorage } from 'react-native';
 
 export default function Home(props){
-    const [accessToken, setToken] = useState(null);
+    const [token, setToken] = useState('');
+    const accessToken = useSelector(state => state.UserInfo.accessToken);
 
     /**Logout the current user, and go to AuthLoading navigator. */
     const logout = () => {
@@ -19,14 +22,8 @@ export default function Home(props){
         });
     }
 
-    /**Retrieve access token from local storage */
-    const getAccessToken = async () => {
-        try {
-            const token = await AsyncStorage.getItem('accessToken');
-            return token;
-        } catch (error) {
-            console.log(error);
-        }
+    const getToken = () => {
+        setToken(accessToken);
     }
 
     return(
@@ -43,15 +40,15 @@ export default function Home(props){
             <Content padder>
                 <Text>Home screen.</Text>
 
-                <Button onPress={() => {getAccessToken().then(resp => setToken(resp))}}>
-                    <Text>Print access token</Text>
+                <Button onPress={() => {getToken()}}>
+                    <Text>Show access token</Text>
                 </Button>
 
                 <Button onPress={() => logout()}>
                     <Text>Logout</Text>
                 </Button>
 
-                <Text>{accessToken}</Text>
+                <Text>{token}</Text>
             </Content>
         </Container>
     );

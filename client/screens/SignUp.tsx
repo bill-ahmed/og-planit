@@ -47,7 +47,6 @@ export default function SignUp(props){
         fetch(`${ENDPOINT}/createUser`, options)
         .then(resp => resp.json())
         .then(resp => {
-            console.log(resp);
             alert("Succesfully signed up!You may login now.");
             props.setModal(false);
         })
@@ -126,7 +125,7 @@ export default function SignUp(props){
 
                             <Button iconRight disabled={validateUserInfo() || loading} style={styles.button} onPress={() => sendSignUpInfo()}>
                                 <Text>SignUp</Text>
-                                {loading && <Spinner/>}
+                                {loading && <Spinner color="blue"/>}
                             </Button>
                         </Form>
                     </Content>

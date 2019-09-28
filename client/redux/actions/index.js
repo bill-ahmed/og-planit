@@ -7,3 +7,10 @@ export const setAccessToken = (token) => {
         payload: token,
     };
 };
+
+/**Get stored auth token (JWT) */
+export const getAccessToken = () => {
+    return{
+        type: 'GET_ACCESS_TOKEN',
+    };
+};

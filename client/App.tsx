@@ -17,13 +17,14 @@ import Home from './screens/Home';
 /*Redux dependencies */
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import allReducers from './reducers';
+import allReducers from './redux/reducers';
 
 /**Firebase config file; allows authentication, querying firestore, etc. */
 const FIREBASE_CONFIG = require('./firebaseConfig.json');
 
 const STORE = createStore(allReducers);
 
+/**Main page after initialization */
 function Main(props) {
   // Equivalent to this.state
   const [isReady, setReady] = useState(false);
@@ -54,20 +55,27 @@ function Main(props) {
   if(isReady){
     
     return (
-      <Provider store={STORE}>
         <View style={styles.container}>
           <Text>Open up App.tsx to start working on your app!</Text>
           <Button title="Login Page" onPress={() => navigate('Auth')}/>
         </View>
-      </Provider>
     );
   } else{
     return (
-      <View>
-        <AppLoading/>
-      </View>
+        <View>
+          <AppLoading/>
+        </View>
     );
   }
+}
+
+/**Initialize the app */
+export default function App(props){
+  return(
+    <Provider store={STORE}>
+      <Root/>
+    </Provider>
+  );
 }
 
 // App stack to go from Auth --> Home
@@ -97,7 +105,7 @@ const AuthStack = createStackNavigator({
 });
 
 // Combine landing page with Appstack and Authstack
-const App = createAppContainer(createSwitchNavigator({
+const Root = createAppContainer(createSwitchNavigator({
   AuthLoading: Main,
   App: AppStack,
   Auth: AuthStack,
@@ -115,4 +123,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
