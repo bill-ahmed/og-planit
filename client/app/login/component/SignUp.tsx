@@ -30,8 +30,8 @@ export default function SignUp(props){
         let options = {
             method: "POST",
             headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
             },
             body: JSON.stringify({
                 email: userInfo.email,
@@ -58,7 +58,7 @@ export default function SignUp(props){
 
     /**Validate data entered in user info, such as password matching */
     const validateUserInfo = () => {
-        if(userInfo.password === userInfo.confirmPassword || userInfo.password === '' || userInfo.confirmPassword === ''){
+        if (userInfo.password === userInfo.confirmPassword || userInfo.password === '' || userInfo.confirmPassword === '') {
             return false;
         }
         return true;
@@ -73,14 +73,14 @@ export default function SignUp(props){
                         <Left>
                             {/* Close the pop-up modal */}
                             <Button disabled={loading} transparent onPress={() => props.setModal(false)}>
-                                <Icon name='arrow-back'/>
+                                <Icon name='arrow-back' />
                             </Button>
                         </Left>
                         <Body>
                             <Title>Make an Account</Title>
                         </Body>
 
-                        <Right/>
+                        <Right />
                     </Header>
 
                     {/* Main body content */}
@@ -131,7 +131,6 @@ export default function SignUp(props){
                         </Form>
                     </Content>
                 </Container>
-            
             </Modal>
         </View>
     );

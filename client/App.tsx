@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppLoading, } from 'expo';
 import { Text } from 'native-base';
 import { StyleSheet, View, Button } from 'react-native';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import firebase from 'firebase';
+import styles from './AppStyles'
 
 // Components for Redux and persisting the state
 import { Provider } from 'react-redux';
@@ -32,7 +33,7 @@ function Main(props) {
   // Equivalent to componentDidMount()
   useEffect(() => {
     // Load fonts asynchronously
-    async function initFonts(){
+    async function initFonts() {
       await Font.loadAsync({
         Roboto: require('./resources/Fonts/Roboto.ttf'),
         Roboto_medium: require('./resources/Fonts/Roboto_medium.ttf'),
@@ -56,19 +57,18 @@ function Main(props) {
   });
 
   // If app is ready to be loaded
-  if(isReady){
-    
+  if (isReady) {
+
     return (
-        <View style={styles.container}>
-          <Text>Open up App.tsx to start working on your app!</Text>
-          <Button title="Login Page" onPress={() => navigate('Auth')}/>
-        </View>
+      <View style={styles.container}>
+        <Button title="Login Page" onPress={() => navigate('Auth')} />
+      </View>
     );
-  } else{
+  } else {
     return (
-        <View>
-          <AppLoading/>
-        </View>
+      <View>
+        <AppLoading />
+      </View>
     );
   }
 }

@@ -8,6 +8,7 @@ export default function Home(props){
     const [token, setToken] = useState('');
     const accessToken = useSelector(state => state.UserInfo.accessToken);
 
+
     /**Logout the current user, and go to AuthLoading navigator. */
     const logout = () => {
         firebase.auth().signOut()
@@ -34,7 +35,7 @@ export default function Home(props){
                         Home Page!
                     </Title>
                 </Body>
-                <Right/>
+                <Right />
             </Header>
             <Content padder>
                 <Text>Home screen.</Text>

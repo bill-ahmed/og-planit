@@ -66,7 +66,6 @@ export default function Login(props){
             <Container>
                 <Header noLeft>
                     <Left/>
-
                     <Body>
                         <Title>
                             Login
