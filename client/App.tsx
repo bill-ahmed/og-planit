@@ -12,12 +12,11 @@ import { PersistGate } from 'redux-persist/integration/react'
 
 /*React navigation */
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import createReduxStore from './redux/configureStore';
+// import { createStackNavigator } from 'react-navigation-stack';
+import { AppStack, AuthStack } from './utils/navigationStacks';
 
-/*Screens for each page */
-import Login from './screens/Login';
-import Home from './screens/Home';
+/*Configure redux store */
+import createReduxStore from './redux/configureStore';
 
 /**Firebase config file; allows authentication, querying firestore, etc. */
 const FIREBASE_CONFIG = require('./firebaseConfig.json');
@@ -79,32 +78,6 @@ export default function App(props){
     </Provider>
   );
 }
-
-// App stack to go from Auth --> Home
-const AppStack = createStackNavigator({
-  Home: {
-    screen: Home,
-    navigationOptions: {
-      header: null, // Remove all headers
-    }
-  },
-  Auth: { 
-    screen: Login,
-    navigationOptions: {
-      header: null, // Remove all headers
-    }
-   },
-});
-
-// Auth stack handle authentication flow
-const AuthStack = createStackNavigator({ 
-  SignIn: {
-    screen: Login,
-    navigationOptions: {
-      header: null,   // Remove all headers
-    }
-  } 
-});
 
 // Combine landing page with Appstack and Authstack
 const Root = createAppContainer(createSwitchNavigator({

@@ -13,7 +13,7 @@ export default function Home(props){
     const logout = () => {
         firebase.auth().signOut()
         .then(res => {
-            alert("Signed out!");
+            // Navigate to start of application
             props.navigation.navigate('AuthLoading');
         })
         .catch(err => {
