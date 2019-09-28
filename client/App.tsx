@@ -39,13 +39,15 @@ function Main(props) {
         ...Ionicons.font,
       })
         .then((res) => {
-          // Continue initialiazing the app
-          setReady(true);
 
           // Initialize Firebase, if it hasn't been already
           if(!isReady){
             firebase.initializeApp(FIREBASE_CONFIG);
           }
+
+          // Continue initialiazing the app
+          setReady(true);
+
         });
     }
 
