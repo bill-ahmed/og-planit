@@ -6,23 +6,23 @@ import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import firebase from 'firebase';
 
+// Components for Redux and persisting the state
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react'
+
 /*React navigation */
-import {createAppContainer, createSwitchNavigator } from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import createReduxStore from './redux/configureStore';
 
 /*Screens for each page */
 import Login from './screens/Login';
 import Home from './screens/Home';
 
-/*Redux dependencies */
-import {createStore} from 'redux';
-import {Provider} from 'react-redux';
-import allReducers from './redux/reducers';
-
 /**Firebase config file; allows authentication, querying firestore, etc. */
 const FIREBASE_CONFIG = require('./firebaseConfig.json');
 
-const STORE = createStore(allReducers);
+const [STORE, PERSISTOR] = createReduxStore();
 
 /**Main page after initialization */
 function Main(props) {
@@ -73,7 +73,9 @@ function Main(props) {
 export default function App(props){
   return(
     <Provider store={STORE}>
-      <Root/>
+      <PersistGate loading={null} persistor={PERSISTOR}>
+        <Root/>
+      </PersistGate>
     </Provider>
   );
 }
