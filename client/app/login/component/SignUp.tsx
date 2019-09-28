@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Text, Button, Content, Form, Item, Input, Icon, Label, Header, Left, Body, Right, Title, Spinner  } from 'native-base';
 import { Modal, View } from 'react-native';
+import styles from './SignUpStyles';
 
 const ENDPOINT = 'http://100.82.203.156:4000';  // MUST BE YOUR IP ADDRESS ON LOCAL NETWORK!!
 
@@ -135,22 +136,3 @@ export default function SignUp(props){
         </View>
     );
 }
-
-const styles = {
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        flexDirection: 'row',
-        padding: 20,
-    },
-    button: {
-        margin: 10,
-        marginTop: 25,
-        alignItems: 'center',
-        justifyContent: 'center',
-        flex: 1
-    },
-    inputFields: {
-        marginTop: 15,
-    }
-};

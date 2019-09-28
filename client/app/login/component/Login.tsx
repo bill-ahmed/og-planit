@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import {useDispatch} from 'react-redux';
-import { setAccessToken } from '../redux/actions';
+import { setAccessToken } from '../../../redux/actions';
 import firebase from 'firebase';
 import SignUp from './SignUp';
 import { Container, Text, Button, Content, Form, Header, Left, Body, Title, Subtitle, Spinner } from 'native-base';
-import { StyleSheet, View, TextInput } from 'react-native';
+import { View, TextInput } from 'react-native';
+import styles from './LoginStyles';
 
 export default function Login(props){
     const [loading, setLoading] = useState(false);
@@ -111,33 +112,3 @@ export default function Login(props){
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-    },
-    content: {
-        flex: 1, 
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-    },
-    button: {
-        width: 200,
-        marginTop: 30,
-        alignSelf: 'center',
-    },
-    loginIntro: {
-        marginTop: 100,
-    },
-    textInput: {
-        borderWidth: 1, 
-        borderRadius: 7,
-        borderColor: "#BBC0C4", 
-        padding: 5,
-        margin: 10,
-        marginTop: 10,
-        marginBottom: 5,
-    }
-});

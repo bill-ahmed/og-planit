@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import {useSelector} from 'react-redux';
-import { getAccessToken } from '../redux/actions';
 import { Container, Text, Button, Content, Header, Left, Right, Body, Title } from 'native-base';
 import firebase from 'firebase';
-import { AsyncStorage } from 'react-native';
 
+/**Home page for user after authenticating */
 export default function Home(props){
     const [token, setToken] = useState('');
     const accessToken = useSelector(state => state.UserInfo.accessToken);

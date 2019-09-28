@@ -3,8 +3,8 @@ import { createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 /*Screens for each page */
-import Login from '../screens/Login';
-import Home from '../screens/Home';
+import Login from '../app/login/component/Login';
+import Home from '../app/Home';
 
 // App stack to go from Auth --> Home
 export const AppStack = createStackNavigator({
