@@ -37,13 +37,16 @@ function Main(props) {
         Roboto: require('./resources/Fonts/Roboto.ttf'),
         Roboto_medium: require('./resources/Fonts/Roboto_medium.ttf'),
         ...Ionicons.font,
-      });
+      })
+        .then((res) => {
+          // Continue initialiazing the app
+          setReady(true);
 
-      // Continue initialiazing the app
-      setReady(true);
-
-      // Initialize Firebase
-      firebase.initializeApp(FIREBASE_CONFIG);
+          // Initialize Firebase, if it hasn't been already
+          if(!isReady){
+            firebase.initializeApp(FIREBASE_CONFIG);
+          }
+        });
     }
 
     initFonts();
