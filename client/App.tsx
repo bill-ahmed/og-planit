@@ -7,14 +7,24 @@ import { Ionicons } from '@expo/vector-icons';
 import firebase from 'firebase';
 import styles from './AppStyles'
 
+// Components for Redux and persisting the state
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react'
+
+/*React navigation */
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+// import { createStackNavigator } from 'react-navigation-stack';
+import { AppStack, AuthStack } from './utils/navigationStacks';
 
-import Home from './app/Home';
-import Login from './app/login/component/Login';
+/*Configure redux store */
+import createReduxStore from './redux/configureStore';
 
+/**Firebase config file; allows authentication, querying firestore, etc. */
 const FIREBASE_CONFIG = require('./firebaseConfig.json');
 
+const [STORE, PERSISTOR] = createReduxStore();
+
+/**Main page after initialization */
 function Main(props) {
   // Equivalent to this.state
   const [isReady, setReady] = useState(false);
@@ -28,13 +38,18 @@ function Main(props) {
         Roboto: require('./resources/Fonts/Roboto.ttf'),
         Roboto_medium: require('./resources/Fonts/Roboto_medium.ttf'),
         ...Ionicons.font,
-      });
+      })
+        .then((res) => {
 
-      // Continue initialiazing the app
-      setReady(true);
+          // Initialize Firebase, if it hasn't been already
+          if(!isReady){
+            firebase.initializeApp(FIREBASE_CONFIG);
+          }
 
-      // Initialize Firebase
-      firebase.initializeApp(FIREBASE_CONFIG);
+          // Continue initialiazing the app
+          setReady(true);
+
+        });
     }
 
     initFonts();
@@ -58,37 +73,23 @@ function Main(props) {
   }
 }
 
-const AppStack = createStackNavigator({
-  Home: {
-    screen: Home,
-    navigationOptions: {
-      header: null, // Remove all headers
-    }
-  },
-  Auth: {
-    screen: Login,
-    navigationOptions: {
-      header: null, // Remove all headers
-    }
-  },
-});
+/**Initialize the app */
+export default function App(props){
+  return(
+    <Provider store={STORE}>
+      <PersistGate loading={null} persistor={PERSISTOR}>
+        <Root/>
+      </PersistGate>
+    </Provider>
+  );
+}
 
-const AuthStack = createStackNavigator({
-  SignIn: {
-    screen: Login,
-    navigationOptions: {
-      header: null,   // Remove all headers
-    }
-  }
-});
-
-const App = createAppContainer(createSwitchNavigator({
+// Combine landing page with Appstack and Authstack
+const Root = createAppContainer(createSwitchNavigator({
   AuthLoading: Main,
   App: AppStack,
   Auth: AuthStack,
-},
-  {
-    initialRouteName: 'AuthLoading',
-  }));
+  }, {
+  initialRouteName: 'AuthLoading',
+}));
 
-export default App;
