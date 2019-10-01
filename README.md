@@ -19,7 +19,7 @@ Visual Studio Code (preferred IDE of yinlinta)
 
 ## Installing Node.js (Back-end)
 1. Visit the Node.js installations page at https://nodejs.org/en/download/
-2. Install the "Current" version
+2. Install the "LTS" version
 3. Follow through installation steps normally
 4. In the root directory, run `npm install` in the terminal
 5. Done.
