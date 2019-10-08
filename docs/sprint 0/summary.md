@@ -11,8 +11,16 @@ ___
 * Provide an intuitive method of adding locations/events to an itinerary, and being able to share it with others as well
 * Consolidate information from many sources into one outlet, such as Price, Distance, Start/End times, and more
 * Provide essential navigation to/from each destination within an itinerary
-* 
+* And much more...
 
 **Users:** Individuals who like to travel, are indecisive and/or looking to explore a particular region of interests and will possibly go outside their comfort zone to try new experiences. Our users also consist of locals who may not be aware of interesting events/locations within their own region.
 
-**Scenarios:** 
+
+**Scenarios:** Some key scenarios based on the users mentioned above include
+
+1. 
+
+
+**Users:** 
+
+{}
