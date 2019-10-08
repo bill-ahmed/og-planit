@@ -1,3 +1,6 @@
-• The whole team need to agree as to what ”done” means before each story is broken down into tasks.
-• We have standard and additional definitions of done.
-• Note the definition of done applies to all user stories.
+The definition of "done" includes:
+
+* All tasks within the user stories are completed
+* If no additional tasks were accounted for:
+    * The new tasks will be added until the User Story is deemed to address all requirements by the group
+* If any new features cannot be added to the User Story in question
