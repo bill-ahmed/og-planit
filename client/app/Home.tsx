@@ -49,7 +49,7 @@ export default function Home(props){
             </Header>
             <Content padder>
 
-                <Button style={styles.button} onPress={() => {getToken()}}>
+                <Button info style={styles.button} onPress={() => {getToken()}}>
                     <Text>Show access token</Text>
                 </Button>
 
@@ -61,7 +61,7 @@ export default function Home(props){
                     <Text>Create Ratings Page</Text>
                 </Button>
 
-                <Button style={styles.button} onPress={() => logout()}>
+                <Button danger style={styles.button} onPress={() => logout()}>
                     <Text>Logout</Text>
                 </Button>
 

@@ -27,5 +27,6 @@ export default StyleSheet.create({
         margin: 10,
         marginTop: 10,
         marginBottom: 5,
+        fontSize: 18,
     }
 });
