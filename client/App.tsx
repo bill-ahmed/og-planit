@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { AppLoading, } from 'expo';
-import { Text } from 'native-base';
-import { StyleSheet, View, Button } from 'react-native';
+import { Text, Button } from 'native-base';
+import { StyleSheet, View, StatusBar } from 'react-native';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import firebase from 'firebase';
@@ -22,13 +22,13 @@ import createReduxStore from './redux/configureStore';
 /**Firebase config file; allows authentication, querying firestore, etc. */
 const FIREBASE_CONFIG = require('./firebaseConfig.json');
 
-const [STORE, PERSISTOR] = createReduxStore();
+const [STORE, PERSISTOR] = createReduxStore();  // Initialize the store and persistor for keeping data
 
 /**Main page after initialization */
 function Main(props) {
   // Equivalent to this.state
   const [isReady, setReady] = useState(false);
-  const { navigate } = props.navigation;  // Hanlde react-navigation to different screens
+  const { navigate } = props.navigation;  // Handle react-navigation to different screens
 
   // Equivalent to componentDidMount()
   useEffect(() => {
@@ -53,6 +53,7 @@ function Main(props) {
     }
 
     initFonts();
+    StatusBar.setHidden(true);  // Hide the statusbar globally
 
   });
 
@@ -61,7 +62,9 @@ function Main(props) {
 
     return (
       <View style={styles.container}>
-        <Button title="Login Page" onPress={() => navigate('Auth')} />
+        <Button onPress={() => navigate('Auth')}>
+          <Text>Login Page</Text>
+        </Button>
       </View>
     );
   } else {
@@ -73,6 +76,15 @@ function Main(props) {
   }
 }
 
+// Combine landing page with Appstack and Authstack
+const Root = createAppContainer(createSwitchNavigator({
+  AuthLoading: Main,
+  App: AppStack,
+  Auth: AuthStack,
+  }, {
+  initialRouteName: 'AuthLoading',
+}));
+
 /**Initialize the app */
 export default function App(props){
   return(
@@ -83,13 +95,4 @@ export default function App(props){
     </Provider>
   );
 }
-
-// Combine landing page with Appstack and Authstack
-const Root = createAppContainer(createSwitchNavigator({
-  AuthLoading: Main,
-  App: AppStack,
-  Auth: AuthStack,
-  }, {
-  initialRouteName: 'AuthLoading',
-}));
 
