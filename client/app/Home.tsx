@@ -24,7 +24,7 @@ export default function Home(props){
         });
     }
 
-    const goToIinirary = () => {
+    const goToItinerary = () => {
         navigate('Itinerary');
     }
 
@@ -53,7 +53,7 @@ export default function Home(props){
                     <Text>Show access token</Text>
                 </Button>
 
-                <Button style={styles.button} onPress={() => goToIinirary()}>
+                <Button style={styles.button} onPress={() => goToItinerary()}>
                     <Text>Itinerary Page</Text>
                 </Button>
 
