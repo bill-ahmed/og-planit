@@ -103,6 +103,10 @@ export default function Login(props){
                         <Button disabled={loading} light rounded full style={styles.button} onPress={() => setModalOpen(true)}>
                             <Text>Sign Up</Text>
                         </Button>
+
+                        <Button warning rounded full style={styles.button} onPress={() => props.navigation.navigate('App')}>
+                            <Text>Skip Login</Text>
+                        </Button>
                     </Form>
                 </Content>
 

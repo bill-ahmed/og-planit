@@ -3,6 +3,7 @@ import { Container, Header, Left, Right, Body, Title, Content, Text, Button, Ico
 
 import styles from './ItineraryStyles';
 import { View } from 'react-native';
+import GMap from './GMap';
 
 export default function Itinerary(props){
     return(
@@ -25,6 +26,8 @@ export default function Itinerary(props){
                 <Text>
                     Look at mockup for inspiration ~
                 </Text>
+                
+                <GMap/>
             </Content>
         </Container>
     );
