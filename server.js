@@ -50,7 +50,6 @@ APP.post('/createUser', bodyParser.json(), (req, res) => {
         email: req.body.email,
         password: req.body.password,
         emailVerified: false,
-        phoneNumber: req.body.phoneNumber,
         displayName: `${req.body.firstName} ${req.body.middleName} ${req.body.lastName}`,
         photoURL: req.body.photoURL,
         disabled: false,

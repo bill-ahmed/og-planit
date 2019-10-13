@@ -15,7 +15,6 @@ export default function SignUp(props){
         middleName: '',
         lastName: '',
         age: null,
-        phoneNumber: '',
         photoURL: '',
     });
 
@@ -40,7 +39,6 @@ export default function SignUp(props){
                 middleName: userInfo.middleName,
                 lastName: userInfo.lastName,
                 age: userInfo.age,
-                phoneNumber: userInfo.phoneNumber,
                 photoURl: 'http://www.example.com/12345678/photo.png'
             })
         }
@@ -102,11 +100,6 @@ export default function SignUp(props){
                             <Item floatingLabel style={styles.inputFields}>
                                 <Label>Last Name*</Label>
                                 <Input value={userInfo.lastName} onChange={(text) => setUserInfo({...userInfo, lastName: text.nativeEvent.text})}/>
-                            </Item>
-
-                            <Item floatingLabel style={styles.inputFields}>
-                                <Label>Phone Number</Label>
-                                <Input keyboardType="phone-pad" value={userInfo.phoneNumber} onChange={(text) => setUserInfo({...userInfo, phoneNumber: text.nativeEvent.text})}/>
                             </Item>
 
                             <Item floatingLabel style={styles.inputFields}>
