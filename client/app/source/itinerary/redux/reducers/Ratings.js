@@ -5,4 +5,4 @@ const Ratings = (state = {}, action) => {
     };
 };
 
-export default Itinerary;
+export default Ratings;

@@ -5,4 +5,4 @@ const GMap = (state = {}, action) => {
     };
 };
 
-export default Itinerary;
+export default GMap;
