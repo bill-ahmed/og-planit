@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {setAccessToken} from './source/login/redux/actions'
 import { Container, Text, Button, Content, Header, Left, Right, Body, Title } from 'native-base';
 import firebase from 'firebase';
 import styles from './HomeStyles';
@@ -7,8 +8,10 @@ import styles from './HomeStyles';
 /**Home page for user after authenticating */
 export default function Home(props){
     const [token, setToken] = useState('');
-    const accessToken = useSelector(state => state.UserInfo.accessToken);
+    const accessToken = useSelector(state => state['UserInfo']['accessToken']);
     const {navigate} = props.navigation;    // Handle navigations
+
+    const dispatch = useDispatch();
 
 
     /**Logout the current user, and go to AuthLoading navigator. */
@@ -33,6 +36,7 @@ export default function Home(props){
     }
 
     const getToken = () => {
+        console.log(accessToken);
         setToken(accessToken);
     }
 
