@@ -8,8 +8,10 @@ import styles from './HomeStyles';
 /**Home page for user after authenticating */
 export default function Home(props){
     const [token, setToken] = useState('');
-    const accessToken = useSelector(state => state.UserInfo.accessToken);
+    const accessToken = useSelector(state => state['UserInfo']['accessToken']);
     const {navigate} = props.navigation;    // Handle navigations
+
+    const dispatch = useDispatch();
 
 
     /**Logout the current user, and go to AuthLoading navigator. */
@@ -31,10 +33,6 @@ export default function Home(props){
 
     const goToCreateRatingsPage = () => {
         navigate('CreateRating');
-    }
-
-    const setLoginToken = () => {
-        useDispatch(setAccessToken('TEST'));
     }
 
     const getToken = () => {
@@ -68,10 +66,6 @@ export default function Home(props){
                 </Button>
 
                 <Button danger style={styles.button} onPress={() => logout()}>
-                    <Text>Logout</Text>
-                </Button>
-
-                <Button danger style={styles.button} onPress={() => setLoginToken()}>
                     <Text>Logout</Text>
                 </Button>
 

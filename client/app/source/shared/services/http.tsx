@@ -1,7 +1,7 @@
 import { Subject } from 'rxjs';
 
 export function httpGet(uri: string, body?: any, header?: any): Subject<any> {
-    return Subject.create(sub => {
+    return Subject.create((sub:Subject<any>) => {
         fetch(uri, {method: 'GET', headers: header, body: body}).then(
             success => {
                 sub.next(success);
@@ -14,7 +14,7 @@ export function httpGet(uri: string, body?: any, header?: any): Subject<any> {
 }
 
 export function httpPost(uri: string, body: any, header?: any): Subject<any> {
-    return Subject.create(sub => {
+    return Subject.create((sub:Subject<any>) => {
         fetch(uri, {method: 'POST', headers: header, body: body}).then(
             success => {
                 sub.next(success);
