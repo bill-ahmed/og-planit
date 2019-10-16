@@ -24,7 +24,6 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "firebase-admin": "^8.6.0",
-    "native-base": "^2.13.8",
     "ts-node-dev": "^1.0.0-pre.43",
     "typescript": "^3.6.4"
   }
