@@ -17,12 +17,14 @@ var serviceAccount = require("./og-planit-firebase-serviceAccountKey.json");
 // Initialize SDK
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://og-planit.firebaseio.com"
 });
+
+// Reference to firestore
+let db = admin.firestore();
 
 
 /****   API ROUTES  ****/
-const routes = new Routes(admin);
+const routes = new Routes(admin, db);   // Instantiate routes
 
 /** Create new user **/
 APP.post('/createUser', bodyParser.json(), (req: any, res: any) => routes.createUserPOST(req, res));
