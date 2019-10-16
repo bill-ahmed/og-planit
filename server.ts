@@ -10,7 +10,9 @@ const PORT = 4000;  // Port to run the application on
 
 
 /**     SETUP VARIABLES AND OTHER REQUIRED DATA     **/
-var serviceAccount = require("./og-planit-firebase-serviceAccountKey.json"); // Private key to connect to Firebase services
+
+// Private key to connect to Firebase services
+var serviceAccount = require("./og-planit-firebase-serviceAccountKey.json");
 
 // Initialize SDK
 admin.initializeApp({
@@ -19,32 +21,23 @@ admin.initializeApp({
 });
 
 
-/****     INITIALIZE SERVER       ****/
+/****   API ROUTES  ****/
+const routes = new Routes(admin);
 
-// Enable CORS
-//APP.use(CORS());
+/** Create new user **/
+APP.post('/createUser', bodyParser.json(), (req: any, res: any) => routes.createUserPOST(req, res));
 
-/* Enabls CORS */
+
+/****   INITIALIZE SERVER   ****/
+
+//Enabls CORS
 APP.use(function(req: any, res: any, next: any) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
-  });
-
-
-/****     API ROUTES      ****/
-
-/**Root page */
-APP.get('/', (req: any, res: any) => {
-    // Template for simple get request.
-    res.send('Hello World!')
 });
 
-
-/** Create new user **/
-APP.post('/createUser', bodyParser.json(), (req: any, res: any) => Routes.createUserPOST(req, res));
-
-
+// Run the server
 APP.listen(PORT, () => {
     console.log(`Server listening on port ${PORT} (http://localhost:4000)`);
 });
