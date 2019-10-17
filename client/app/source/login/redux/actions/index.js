@@ -14,3 +14,18 @@ export const getAccessToken = () => {
         type: 'GET_ACCESS_TOKEN',
     };
 };
+
+/**Set user information from db */
+export const setUserInformation = (userData) => {
+    return({
+        type: 'SET_USER_INFO',
+        payload: userData,
+    });
+}
+
+/**Get all information about current user */
+export const getAllUserInformation = () => {
+    return({
+        type: 'GET_ALL_USER_INFO',
+    });
+}
