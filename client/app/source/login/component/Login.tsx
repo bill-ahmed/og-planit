@@ -4,8 +4,10 @@ import { setAccessToken } from '../redux/actions';
 import firebase from 'firebase';
 import SignUp from './SignUp';
 import { Container, Text, Button, Content, Form, Header, Left, Body, Title, Subtitle, Spinner } from 'native-base';
-import { View, TextInput } from 'react-native';
+import { View, TextInput, Alert, Image, ScrollView } from 'react-native';
 import styles from './LoginStyles';
+import worldwideSvg from '../assets/worldwideSvg'
+import SvgComponent from '../assets/worldwideSvg';
 
 export default function Login(props){
     const [loading, setLoading] = useState(false);
@@ -62,9 +64,12 @@ export default function Login(props){
     }
 
     return(
+
         <View style={styles.container}>
+            <ScrollView>
             <Container>
-                <Header noLeft>
+
+                {/* <Header noLeft>
                     <Left/>
                     <Body>
                         <Title>
@@ -74,15 +79,19 @@ export default function Login(props){
                             Login below to continue, or make a new account.
                         </Subtitle>
                     </Body>
-                </Header>
+                </Header> */}
 
                 <Content contentContainerStyle={styles.content} padder>
-                    <View style={styles.loginIntro}>
-                        <Text style={{fontSize: 40}}>Welcome to Planit!</Text>
-                    </View>
 
-                    <Form style={{width: '100%', flex: 1, justifyContent: 'center',}}>
 
+
+                <Form style={{width: '90%', flex: 1, justifyContent: 'center',}}>
+                <Image source={require('../assets/earth.png')} style={styles.stretch}/>
+
+                <View style={styles.loginIntro}>
+                        <Text style={{fontSize: 40, color: '#FFFFFF'}}>Welcome Back,</Text>
+                        <Text style={{fontSize: 20, color: '#FFFFFF'}}>Sign in to continue</Text>
+                </View>
                         <TextInput style={styles.textInput} 
                         keyboardType="email-address" 
                         value={email} 
@@ -95,23 +104,24 @@ export default function Login(props){
                         onChange={text => handlePasswordChange(text)} 
                         placeholder="Password" />
 
-                        <Button disabled={loading} primary rounded full style={styles.button} onPress={() => signIn()}>
-                            <Text>Login</Text>
+
+                        <Text onPress={() => Alert.alert('forgot password')}  style={styles.loginOuttro}>Forgot Password?</Text>
+
+
+
+                        <Button disabled={loading} light rounded full style={styles.button} onPress={() => signIn()}>
+                            <Text style={{color:'#1977B5', fontSize: 20, marginTop: '14%'}}>Login</Text>
                             {loading && <Spinner color="blue"/>}
                         </Button>
 
-                        <Button disabled={loading} light rounded full style={styles.button} onPress={() => setModalOpen(true)}>
-                            <Text>Sign Up</Text>
-                        </Button>
+                        <Text style={styles.signUp}>Need an account? <Text onPress={() => setModalOpen(true)} style={{color: 'white', textDecorationLine: 'underline'}}>Sign up</Text></Text>
 
-                        <Button warning rounded full style={styles.button} onPress={() => props.navigation.navigate('App')}>
-                            <Text>Skip Login</Text>
-                        </Button>
                     </Form>
                 </Content>
 
                 {signUpModalOpen && <SignUp open={signUpModalOpen} setModal={setModalOpen}/>}
             </Container>
+            </ScrollView>
         </View>
     );
 }
