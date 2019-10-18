@@ -1,4 +1,4 @@
-import React, { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
     container: {
@@ -27,5 +27,6 @@ export default StyleSheet.create({
         margin: 10,
         marginTop: 10,
         marginBottom: 5,
+        fontSize: 18,
     }
 });

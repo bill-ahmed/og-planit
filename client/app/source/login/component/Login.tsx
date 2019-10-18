@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {useDispatch} from 'react-redux';
-import { setAccessToken } from '../../../redux/actions';
+import { setAccessToken } from '../redux/actions';
 import firebase from 'firebase';
 import SignUp from './SignUp';
 import { Container, Text, Button, Content, Form, Header, Left, Body, Title, Subtitle, Spinner } from 'native-base';
@@ -102,6 +102,10 @@ export default function Login(props){
 
                         <Button disabled={loading} light rounded full style={styles.button} onPress={() => setModalOpen(true)}>
                             <Text>Sign Up</Text>
+                        </Button>
+
+                        <Button warning rounded full style={styles.button} onPress={() => props.navigation.navigate('App')}>
+                            <Text>Skip Login</Text>
                         </Button>
                     </Form>
                 </Content>
