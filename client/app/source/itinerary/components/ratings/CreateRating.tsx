@@ -37,7 +37,7 @@ export default function CreateRating(props){
                         <Text style={{fontSize: 28}}>Let us know how you liked your past trips!</Text>
                     </View>
 
-                    {data.masp(event => {
+                    {data.map(event => {
                         return <View style={styles.content}>
                                     <View style={styles.container}>
                                         <Text>
