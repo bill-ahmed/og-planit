@@ -1,0 +1,23 @@
+{
+    "Frosh2020": {
+        "Address": {
+            "City": "Toronto",
+            "Country": "Canada",
+            "Number": "1265",
+            "Province": "Ontario",
+            "Street": "Military Trail"
+        },
+        "AvgPrice": "90",
+        "AvgTimeSpent": "9 hrs",
+        "ContactInfo": {
+            "Email": "Frosh.utsc@mail.utoronto.ca",
+            "Phone": "647-123-4567"
+        },
+        "Description": "First Year Orientation",
+        "EndTime": "8 pm",
+        "Location": "UTSC",
+        "StartTime": "11 am",
+        "Tags": ["First Years", "Orientation", "Campus"],
+        "Type": "Orientation"
+    }
+}
