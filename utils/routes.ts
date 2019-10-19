@@ -87,22 +87,20 @@ export default class Routes{
         // Set response header
         res.header("Content-Type", "application/json");
         // Retrieve all doccuments in 'events' collection
+        let resString = "";
         try {
-            let eventCollection = this.db.collection('dev').doc('data').collection('events').get()
+            let collection = this.db.collection('dev').doc('data').collection('events').get()
             .then(snapshot => {
                 snapshot.forEach(doc => {
                     console.log(doc.Name);
-                    res.json += "\n" + doc.data
                 });
             });
-            res.statusCode = 200;
-            res.json = eventCollection;
+            res.status(200).json(collection);
         }
         
         catch (error) {
             console.log("Error retrieving events collection");
-            res.statusCode = 500;
-            res.json(error);
+            res.status(500).send('Error retrieving events collection');
         }
     }
 

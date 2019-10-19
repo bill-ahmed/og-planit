@@ -30,7 +30,7 @@ const routes = new Routes(admin, db);   // Instantiate routes
 APP.post('/createUser', bodyParser.json(), (req: any, res: any) => routes.createUserPOST(req, res));
 
 /** Get events collection */
-APP.get('/getEventsList', bodyParser.json(), (req: any, res: any) => routes.getEventsList(req, res));
+APP.get('/getEventsList', (req: any, res: any) => routes.getEventsList(req, res));
 
 /****   INITIALIZE SERVER   ****/
 
