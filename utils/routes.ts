@@ -81,5 +81,34 @@ export default class Routes{
         });
         
     }
+
+    /** Obtain JSON collection of all stored events */
+    public getEventsList(req : any, res : any) {
+        // Set response header
+        res.header("Content-Type", "application/json");
+        // Retrieve all doccuments in 'events' collection
+        try {
+            let eventCollection = this.db.collection('dev').doc('data').collection('events').get()
+            .then(snapshot => {
+                snapshot.forEach(doc => {
+                    console.log(doc.Name);
+                    res.json += "\n" + doc.data
+                });
+            });
+            res.statusCode = 200;
+            res.json = eventCollection;
+        }
+        
+        catch (error) {
+            console.log("Error retrieving events collection");
+            res.statusCode = 500;
+            res.json(error);
+        }
+    }
+
+    /** Query's events by 'Type' index */
+    public getEventsByType(req : any, res : any) {
+
+    }
 }
 
