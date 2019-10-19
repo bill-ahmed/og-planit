@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Text, Button, Content, Form, Item, Input, Icon, Label, Header, Left, Body, Right, Title, Spinner  } from 'native-base';
-import { Modal, View } from 'react-native';
+import { Modal, View, TextInput, Alert, Image, ScrollView } from 'react-native';
 import styles from './SignUpStyles';
 
 const ENDPOINT = 'http://100.82.203.156:4000';  // MUST BE YOUR IP ADDRESS ON LOCAL NETWORK!!
@@ -67,7 +67,7 @@ export default function SignUp(props){
             <Modal animationType="slide" transparent={false} visible={props.open} presentationStyle="pageSheet" onRequestClose={() => alert("Modal closed")}>
                 <Container>
                     {/* Header content */}
-                    <Header>
+                    <Header style={styles.header}>
                         <Left>
                             {/* Close the pop-up modal */}
                             <Button disabled={loading} transparent onPress={() => props.setModal(false)}>
@@ -75,26 +75,73 @@ export default function SignUp(props){
                             </Button>
                         </Left>
                         <Body>
-                            <Title>Make an Account</Title>
+                            <Title>Sign up</Title>
                         </Body>
 
                         <Right />
                     </Header>
 
                     {/* Main body content */}
-                    <Content padder>
-                        <Text>
+                    <Content style={styles.content} padder>
+                        <Text style={{color: 'white'}}>
                             Fill out below to get started. All fields with a (*) are required!
                         </Text>
-                        <Form>
+                        <Form style={{width: '90%', flex: 1, justifyContent: 'center', alignSelf:'center'}}>
+                        <View>
+
+                        <TextInput style={styles.textInput} 
+                        value={userInfo.firstName} 
+                        onChange={(text) => setUserInfo({...userInfo, firstName: text.nativeEvent.text})}
+                        placeholder="First Name*" />
+
+
+                        <TextInput style={styles.textInput} 
+                        value={userInfo.middleName} 
+                        onChange={(text) => setUserInfo({...userInfo, middleName: text.nativeEvent.text})}
+                        placeholder="Middle Name(s)" />
+
+
+
+                        <TextInput style={styles.textInput} 
+                        value={userInfo.lastName} 
+                        onChange={(text) => setUserInfo({...userInfo, lastName: text.nativeEvent.text})}
+                        placeholder="Last Name*" />
+                        
+
+
+                        <TextInput style={styles.textInput} 
+                        keyboardType="email-address" 
+                        value={userInfo.email} 
+                        onChange={(text) => setUserInfo({...userInfo, email: text.nativeEvent.text})}
+                        placeholder="Email Address*" />
+
+                        <TextInput style={styles.textInput} 
+                        value={userInfo.password} 
+                        onChange={(text) => setUserInfo({...userInfo, password: text.nativeEvent.text})}
+                        placeholder="Password*" />
+
+                        <TextInput style={styles.textInput} 
+                        value={userInfo.confirmPassword} 
+                        onChange={(text) => setUserInfo({...userInfo, confirmPassword: text.nativeEvent.text})}
+                        placeholder="Confirm Password*" />
+
+                        <Button iconRight disabled={validateUserInfo() || loading} style={styles.button} onPress={() => sendSignUpInfo()}>
+                            <Text style={{color: '#1977B5'}}>SignUp</Text>
+                            {loading && <Spinner color="blue"/>}
+                        </Button>
+
+
+                        </View>
+                        </Form>
+                        {/* <Form style={{width: '90%', alignSelf: 'center', alignItems: 'center'}}>
                             <Item floatingLabel style={styles.inputFields}>
-                                <Label>First Name*</Label>
-                                <Input value={userInfo.firstName} onChange={(text) => setUserInfo({...userInfo, firstName: text.nativeEvent.text})}/>
+                                <Label style={styles.label}>First Name*</Label>
+                                <Input style={styles.input} value={userInfo.firstName} onChange={(text) => setUserInfo({...userInfo, firstName: text.nativeEvent.text})}/>
                             </Item>
 
                             <Item floatingLabel style={styles.inputFields}>
                                 <Label>Middle Name(s)</Label>
-                                <Input value={userInfo.middleName} onChange={(text) => setUserInfo({...userInfo, middleName: text.nativeEvent.text})} placeholder=""/>
+                                <Input  value={userInfo.middleName} onChange={(text) => setUserInfo({...userInfo, middleName: text.nativeEvent.text})} placeholder=""/>
                             </Item>
 
                             <Item floatingLabel style={styles.inputFields}>
@@ -117,11 +164,8 @@ export default function SignUp(props){
                                 <Input secureTextEntry={true} value={userInfo.confirmPassword} onChange={(text) => setUserInfo({...userInfo, confirmPassword: text.nativeEvent.text})}/>
                             </Item>
 
-                            <Button iconRight disabled={validateUserInfo() || loading} style={styles.button} onPress={() => sendSignUpInfo()}>
-                                <Text>SignUp</Text>
-                                {loading && <Spinner color="blue"/>}
-                            </Button>
-                        </Form>
+
+                        </Form> */}
                     </Content>
                 </Container>
             </Modal>
