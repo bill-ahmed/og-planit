@@ -29,6 +29,8 @@ const routes = new Routes(admin, db);   // Instantiate routes
 /** Create new user **/
 APP.post('/createUser', bodyParser.json(), (req: any, res: any) => routes.createUserPOST(req, res));
 
+/** Get events collection */
+APP.get('/getEventsList', (req: any, res: any) => routes.getEventsList(req, res));
 
 /****   INITIALIZE SERVER   ****/
 
