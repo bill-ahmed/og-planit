@@ -77,9 +77,36 @@ export default class Routes{
         // Also need to store collection of itineraries for this user
         let itineraries = this.db.collection('dev').doc('data').collection('users').doc(uid).collection('itineraries').doc('INIT_ITINERARY');
         itineraries.set({
-            id: null, type: null, price: null, location: null, time: null, rating: 0, referenceToOriginal: null, review:"", last_edit_time: null  // Firebase requires at least ONE doc per collection
+            id: null, type: null, price: null, location: null, time: null, referenceToOriginal: null, last_edit_time: null  // Firebase requires at least ONE doc per collection
         });
         
+    }
+
+    /** Obtain JSON collection of all stored events */
+    public getEventsList(req : any, res : any) {
+        // Set response header
+        res.header("Content-Type", "application/json");
+        // Retrieve all doccuments in 'events' collection
+        let resString = "";
+        try {
+            let collection = this.db.collection('dev').doc('data').collection('events').get()
+            .then(snapshot => {
+                snapshot.forEach(doc => {
+                    console.log(doc.Name);
+                });
+            });
+            res.status(200).json(collection);
+        }
+        
+        catch (error) {
+            console.log("Error retrieving events collection");
+            res.status(500).send('Error retrieving events collection');
+        }
+    }
+
+    /** Query's events by 'Type' index */
+    public getEventsByType(req : any, res : any) {
+
     }
 
     /**Create a new event in Firebase and provision space in Firestore */
@@ -89,26 +116,32 @@ export default class Routes{
 
         /** Make a request to firebase to create a event **/
         const eventInformation = {
-            Address: `${req.body.City} ${req.body.Country} ${req.body.Number} ${req.body.Province} ${req.body.Street}`,
+            City: req.body.Address.City,
+            Country: req.body.Address.Country,
+            Number: req.body.Address.Number,
+            Province: req.body.Province,
+            Street: req.body.Street,
             AvgPrice: req.body.AvgPrice,
             AvgTimeSpent: req.body.AvgTimeSpent,
-            ContactInfo: `${req.body.Email} ${req.body.Phone}`,
+            Email: req.body.ContactInfo.Email,
+            Phone: req.body.ContactInfo.Phone,
             Description: req.body.Description,
             EndTime: req.body.EndTime,
             Location: req.body.Location,
             Name: req.body.Name,
-            Ratings: `${req.body.AveRating} ${req.body.NumRatings}`,
+            AveRating: req.body.Ratings.AveRating,
+            NumRatings: req.body.Ratings.NumRatings,
             StartTime: req.body.StartTime,
 			Type: req.body.Type
         };
 
-        this.admin.auth().createUser(eventInformation)
+        this.admin.auth().createEvent(eventInformation)
         .then((eventRecord: any) => {
             console.log(`Created new Event with ID: ${eventRecord.uid}`);
 
             // Provision this new event a document in our db
             try {
-                this.provisionNewUser(eventInformation, eventRecord.uid);
+                this.provisionNewEvent(eventInformation, eventRecord.uid);
 
                 res.statusCode = 200;   // 200 = okay
                 res.json(eventRecord);   // Return the response back
@@ -134,23 +167,29 @@ export default class Routes{
     private provisionNewEvent(eventData: any, eid: string){
         /** Create document for this new event **/
         let eventInfo = {
-            Address: [eventData.City, eventData.Country, eventData.Number, eventData.Province, eventData.Street],
+            City: eventData.Address.City,
+            Country: eventData.Address.Country,
+            Number: eventData.Address.Number,
+            Province: eventData.Address.Province,
+            Street: eventData.Address.Street,
             AvgPrice: eventData.AvgPrice,  
             AvgTimeSpent: eventData.AvgTimeSpent,
-            ContactInfo: [eventData.Email, eventData.Phone ],
+            Email: eventData.ContactInfo.Email,
+            Phone: eventData.ContactInfo.Phone,
             Description:  eventData.Description, 
 			EndTime:  eventData.EndTime, 
 			Location:  eventData.Location, 
 			Name:  eventData.Name,
-			Ratings: [eventData.AveRating, eventData.NumRatings ],
+            AveRating: eventData.Ratings.AveRating,
+            NumRatings: eventData.Ratings.NumRatings,
 			StartTime:  eventData.StartTime, 
 			Type:  eventData.Type, 
             Tags: {}
         };
 
         // Commit new document
-        let newUserInfoRef = this.db.collection('dev').doc('data').collection('events').doc(eid);
-        newUserInfoRef.set(eventInfo);
+        let newEventInfoRef = this.db.collection('dev').doc('data').collection('events').doc(eid);
+        newEventInfoRef.set(eventInfo);
     }
 
 }
