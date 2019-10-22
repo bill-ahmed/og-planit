@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Text, Button, Content, Form, Item, Input, Icon, Label, Header, Left, Body, Right, Title, Spinner  } from 'native-base';
-import { Modal, View } from 'react-native';
+import { Modal, View, TextInput, Alert, Image, ScrollView } from 'react-native';
 import styles from './SignUpStyles';
 
 const ENDPOINT = 'http://100.82.203.156:4000';  // MUST BE YOUR IP ADDRESS ON LOCAL NETWORK!!
@@ -63,11 +63,12 @@ export default function SignUp(props){
     }
 
     return(
-        <View style={styles.container}>
-            <Modal animationType="slide" transparent={false} visible={props.open} presentationStyle="pageSheet" onRequestClose={() => alert("Modal closed")}>
+        
+        <Modal animationType="slide" transparent={false} visible={props.open} presentationStyle="overFullScreen" onRequestClose={() => props.setModal(false)}>
+            <View style={styles.container}>
                 <Container>
                     {/* Header content */}
-                    <Header>
+                    <Header noShadow style={styles.header}>
                         <Left>
                             {/* Close the pop-up modal */}
                             <Button disabled={loading} transparent onPress={() => props.setModal(false)}>
@@ -75,56 +76,65 @@ export default function SignUp(props){
                             </Button>
                         </Left>
                         <Body>
-                            <Title>Make an Account</Title>
+                            <Title>Sign up</Title>
                         </Body>
 
                         <Right />
                     </Header>
 
                     {/* Main body content */}
-                    <Content padder>
-                        <Text>
+                    <Content style={styles.content} padder>
+                        <Text style={{color: 'white'}}>
                             Fill out below to get started. All fields with a (*) are required!
                         </Text>
-                        <Form>
-                            <Item floatingLabel style={styles.inputFields}>
-                                <Label>First Name*</Label>
-                                <Input value={userInfo.firstName} onChange={(text) => setUserInfo({...userInfo, firstName: text.nativeEvent.text})}/>
-                            </Item>
+                        <Form style={{width: '90%', flex: 1, justifyContent: 'center', alignSelf:'center'}}>
+                        <View>
 
-                            <Item floatingLabel style={styles.inputFields}>
-                                <Label>Middle Name(s)</Label>
-                                <Input value={userInfo.middleName} onChange={(text) => setUserInfo({...userInfo, middleName: text.nativeEvent.text})} placeholder=""/>
-                            </Item>
+                        <TextInput style={styles.textInput} 
+                        value={userInfo.firstName} 
+                        onChange={(text) => setUserInfo({...userInfo, firstName: text.nativeEvent.text})}
+                        placeholder="First Name*" />
 
-                            <Item floatingLabel style={styles.inputFields}>
-                                <Label>Last Name*</Label>
-                                <Input value={userInfo.lastName} onChange={(text) => setUserInfo({...userInfo, lastName: text.nativeEvent.text})}/>
-                            </Item>
 
-                            <Item floatingLabel style={styles.inputFields}>
-                                <Label>Email Address*</Label>
-                                <Input keyboardType="email-address" value={userInfo.email} onChange={(text) => setUserInfo({...userInfo, email: text.nativeEvent.text})}/>
-                            </Item>
+                        <TextInput style={styles.textInput} 
+                        value={userInfo.middleName} 
+                        onChange={(text) => setUserInfo({...userInfo, middleName: text.nativeEvent.text})}
+                        placeholder="Middle Name(s)" />
 
-                            <Item floatingLabel style={styles.inputFields}>
-                                <Label>Password*</Label>
-                                <Input secureTextEntry={true} value={userInfo.password} onChange={(text) => setUserInfo({...userInfo, password: text.nativeEvent.text})}/>
-                            </Item>
 
-                            <Item floatingLabel last style={styles.inputFields}>
-                                <Label>Confirm Password*</Label>
-                                <Input secureTextEntry={true} value={userInfo.confirmPassword} onChange={(text) => setUserInfo({...userInfo, confirmPassword: text.nativeEvent.text})}/>
-                            </Item>
+                        <TextInput style={styles.textInput} 
+                        value={userInfo.lastName} 
+                        onChange={(text) => setUserInfo({...userInfo, lastName: text.nativeEvent.text})}
+                        placeholder="Last Name*" />
+                        
 
-                            <Button iconRight disabled={validateUserInfo() || loading} style={styles.button} onPress={() => sendSignUpInfo()}>
-                                <Text>SignUp</Text>
-                                {loading && <Spinner color="blue"/>}
-                            </Button>
+                        <TextInput style={styles.textInput}
+                        keyboardType="email-address" 
+                        value={userInfo.email} 
+                        onChange={(text) => setUserInfo({...userInfo, email: text.nativeEvent.text})}
+                        placeholder="Email Address*" />
+
+                        <TextInput style={styles.textInput} secureTextEntry={true}
+                        value={userInfo.password} 
+                        onChange={(text) => setUserInfo({...userInfo, password: text.nativeEvent.text})}
+                        placeholder="Password*" />
+
+                        <TextInput style={styles.textInput} secureTextEntry={true}
+                        value={userInfo.confirmPassword} 
+                        onChange={(text) => setUserInfo({...userInfo, confirmPassword: text.nativeEvent.text})}
+                        placeholder="Confirm Password*" />
+
+                        <Button iconRight disabled={validateUserInfo() || loading} style={styles.button} onPress={() => sendSignUpInfo()}>
+                            <Text style={{color: '#1977B5'}}>SignUp</Text>
+                            {loading && <Spinner color="blue"/>}
+                        </Button>
+
+                        </View>
                         </Form>
                     </Content>
                 </Container>
-            </Modal>
-        </View>
+            </View>
+        </Modal>
+        
     );
 }
