@@ -20,7 +20,8 @@ const persistedReducer = persistReducer(persistConfig, allReducers);
 
 /**Create a persisten store for Redux */
 export default function createReduxStore(){
-    const STORE = createStore(persistedReducer);
+    // Second parameter enables remote debugging
+    const STORE = createStore(persistedReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),);
     const PERSISTOR = persistStore(STORE);
 
     return [STORE, PERSISTOR];

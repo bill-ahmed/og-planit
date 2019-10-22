@@ -56,7 +56,7 @@ Note: The initial compile can be lengthy, however any subsequent changes you mak
 Advice: You can run the expo application on any android emulator. Not all will run using the alternative but you can install the app and run off lan address
 
 ## Back-end
-1. Run `node server.js` to start the server
+1. Run `npm run dev` to start the server
 
 The server be running in development mode at http://localhost:4000/.
 
