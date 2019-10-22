@@ -5,8 +5,10 @@ import { Container, Button, Text } from 'native-base';
 
 import styles from './GMapStyles';
 import LocationDetails from './LocationDetails';
+import { getLocations } from '../api/locationsAPI';
 
-export default function GMap(props){
+export default function GMap(props) {
+
     const initialRegion = {
         latitude: 37.78825,
         longitude: -122.4324,
@@ -15,19 +17,19 @@ export default function GMap(props){
     }
 
     const [currentRegion, setCurrentRegion] = useState(initialRegion);
-    
+
     /** Update user's current region as they move around the map */
-    const updateRegion = (region:Region) => {
+    const updateRegion = (region: Region) => {
         setCurrentRegion(region);
     }
 
-    return(
+    return (
         <View style={styles.container}>
             <MapView showsMyLocationButton onRegionChangeComplete={updateRegion} region={currentRegion} style={styles.mapStyle}>
-                <Marker coordinate={initialRegion} title="Home" description="Starting point of Google Map"  onPress={e => props.openLocationDetails()}/>
-    
+                <Marker coordinate={initialRegion} title="Home" description="Starting point of Google Map" onPress={e => props.openLocationDetails()} />
+
             </MapView>
-            
+
         </View>
     );
 }

@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux';
-import GMapReducer from './GMap'
+import LocationReducer from './location'
 import ItineraryReducer from './Itinerary'
 import RatingsReducer from './Ratings'
 
 const allItineraryReducers = combineReducers({
-    GMap: GMapReducer,
+    Location: LocationReducer,
     Itinerary: ItineraryReducer,
     Ratings: RatingsReducer,
 });
