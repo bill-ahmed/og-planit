@@ -3,7 +3,8 @@ import {Container, Header, Left, Right, Body, Title, Subtitle, Content, Button, 
 import {Rating} from 'react-native-ratings';
 
 import styles from './CreateRatingStyles';
-import { View, Image, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, Dimensions } from 'react-native';
+import Image from 'react-native-scalable-image';
 import { EventEmitter } from '@unimodules/core';
 
 export default function CreateRating(props){
@@ -30,42 +31,43 @@ export default function CreateRating(props){
             </Header>
 
             
-            <Content contentContainerStyle={styles.container} padder>
 
-                <ScrollView>
-                    <View style={styles.ratingHeader}>
-                        <Text style={{fontSize: 28}}>Let us know how you liked your past trips!</Text>
-                    </View>
+            <ScrollView>
+                <View style={styles.ratingHeader}>
+                    <Text style={{ fontSize: 28 }}>Let us know how you liked your past trips!</Text>
+                </View>
 
-                    {data.map(event => {
-                        return <View style={styles.content}>
-                                    <View style={styles.container}>
-                                        <Text>
-                                            <Text style={styles.eventHeader}>
-                                                {event.name}
-                                            </Text>
-                                        </Text>
-                                
-                                        <Image
-                                            style={{width: 400, height: 300}}
-                                            source={event}
-                                            resizeMode="stretch"
-                                        />
-                                        
-                                    </View>
-                                
-                                    <View style={styles.ratingContainer}>
-                                        <Rating
-                                            showRating
-                                            startingValue={0}
-                                            imageSize={28}
-                                            onFinishRating={rate => setRating(rate)}/>
-                                    </View>
-                                 </View>
-                    })}
-                </ScrollView>
+                {data.map(event => {
+                    return (
+                        <View style={styles.container}>
+                            <View style={styles.content}>
+                                <Text>
+                                    <Text style={styles.eventHeader}>
+                                        {event.name}
+                                    </Text>
+                                </Text>
 
-            </Content>
+                                <Rating
+                                    showRating
+                                    startingValue={0}
+                                    imageSize={28}
+                                    onFinishRating={rate => setRating(rate)} />
+
+                            </View>
+
+                            <View>
+                                <Image
+                                    width={Dimensions.get('window').width}
+                                    source={event}
+
+                                />
+                            </View>
+                        </View>
+                    )
+                })}
+            </ScrollView>
+
+
         </Container>
     );
 }

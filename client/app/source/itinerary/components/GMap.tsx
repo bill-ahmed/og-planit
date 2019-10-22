@@ -4,6 +4,7 @@ import { StyleSheet, View, Dimensions } from 'react-native';
 import { Container, Button, Text } from 'native-base';
 
 import styles from './GMapStyles';
+import LocationDetails from './LocationDetails';
 
 export default function GMap(props){
     const initialRegion = {
@@ -23,8 +24,10 @@ export default function GMap(props){
     return(
         <View style={styles.container}>
             <MapView showsMyLocationButton onRegionChangeComplete={updateRegion} region={currentRegion} style={styles.mapStyle}>
-                <Marker coordinate={initialRegion} title="Home" description="Starting point of Google Map"/>
+                <Marker coordinate={initialRegion} title="Home" description="Starting point of Google Map"  onPress={e => props.openLocationDetails()}/>
+    
             </MapView>
+            
         </View>
     );
 }

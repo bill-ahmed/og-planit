@@ -4,6 +4,7 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
+        flexWrap: 'wrap',
     },
     ratingContainer:{
         flex:1,
@@ -13,7 +14,7 @@ export default StyleSheet.create({
     content: {
         flex: 1, 
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         marginTop: 20
     },
     ratingHeader:{
