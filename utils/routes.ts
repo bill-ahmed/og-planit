@@ -77,7 +77,7 @@ export default class Routes{
         // Also need to store collection of itineraries for this user
         let itineraries = this.db.collection('dev').doc('data').collection('users').doc(uid).collection('itineraries').doc('INIT_ITINERARY');
         itineraries.set({
-            id: null, type: null, price: null, location: null, time: null, referenceToOriginal: null, last_edit_time: null  // Firebase requires at least ONE doc per collection
+            id: null, type: null, price: null, location: null, rating: 0, review:"", time: null, referenceToOriginal: null, last_edit_time: null  // Firebase requires at least ONE doc per collection
         });
         
     }
@@ -108,89 +108,4 @@ export default class Routes{
     public getEventsByType(req : any, res : any) {
 
     }
-
-    /**Create a new event in Firebase and provision space in Firestore */
-    public createEventPOST(req: any, res: any){
-        console.log(req.body);
-        res.header("Content-Type", "application/json");
-
-        /** Make a request to firebase to create a event **/
-        const eventInformation = {
-            City: req.body.Address.City,
-            Country: req.body.Address.Country,
-            Number: req.body.Address.Number,
-            Province: req.body.Province,
-            Street: req.body.Street,
-            AvgPrice: req.body.AvgPrice,
-            AvgTimeSpent: req.body.AvgTimeSpent,
-            Email: req.body.ContactInfo.Email,
-            Phone: req.body.ContactInfo.Phone,
-            Description: req.body.Description,
-            EndTime: req.body.EndTime,
-            Location: req.body.Location,
-            Name: req.body.Name,
-            AveRating: req.body.Ratings.AveRating,
-            NumRatings: req.body.Ratings.NumRatings,
-            StartTime: req.body.StartTime,
-			Type: req.body.Type
-        };
-
-        this.admin.auth().createEvent(eventInformation)
-        .then((eventRecord: any) => {
-            console.log(`Created new Event with ID: ${eventRecord.uid}`);
-
-            // Provision this new event a document in our db
-            try {
-                this.provisionNewEvent(eventInformation, eventRecord.uid);
-
-                res.statusCode = 200;   // 200 = okay
-                res.json(eventRecord);   // Return the response back
-
-            } catch (error) {
-                console.log(error);
-                res.statusCode = 500;   // Internal error with Firestore
-                res.json(error)
-            }
-        })
-        .catch((error: any) => {
-            console.log(`Error creating event: ${error}`);
-            res.statusCode = 400;   // 400 = event error caused it to fail...probably
-            res.json(error);    // Return the response back
-        });
-
-    }
-
-    /**Provision a new event into Firestore
-     * @param eventData An object containing address, name, description, ect.
-     * @param eid The unique ID of this new event
-     */
-    private provisionNewEvent(eventData: any, eid: string){
-        /** Create document for this new event **/
-        let eventInfo = {
-            City: eventData.Address.City,
-            Country: eventData.Address.Country,
-            Number: eventData.Address.Number,
-            Province: eventData.Address.Province,
-            Street: eventData.Address.Street,
-            AvgPrice: eventData.AvgPrice,  
-            AvgTimeSpent: eventData.AvgTimeSpent,
-            Email: eventData.ContactInfo.Email,
-            Phone: eventData.ContactInfo.Phone,
-            Description:  eventData.Description, 
-			EndTime:  eventData.EndTime, 
-			Location:  eventData.Location, 
-			Name:  eventData.Name,
-            AveRating: eventData.Ratings.AveRating,
-            NumRatings: eventData.Ratings.NumRatings,
-			StartTime:  eventData.StartTime, 
-			Type:  eventData.Type, 
-            Tags: {}
-        };
-
-        // Commit new document
-        let newEventInfoRef = this.db.collection('dev').doc('data').collection('events').doc(eid);
-        newEventInfoRef.set(eventInfo);
-    }
-
 }
-
