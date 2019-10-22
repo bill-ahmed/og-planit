@@ -5,16 +5,24 @@ import styles from './ItineraryStyles';
 import { View } from 'react-native';
 import GMap from './GMap';
 import LocationDetails from './LocationDetails';
-import Cards from "./Cards";
-export default function Itinerary(props){
-    const [locationDetailsOpen, setLocationDetailsOpen] = useState(false);
+import { getLocations } from '../api/locationsAPI';
+export default function Itinerary(props) {
     
-    return(
+    const [locationDetailsOpen, setLocationDetailsOpen] = useState(false);
+    const [locationsLoaded, setlocationsLoaded] = useState(false);
+    let locations = null;
+    getLocations().then(res => {
+        locations = res;
+        setlocationsLoaded(true);
+        console.log(locations);
+    });
+
+    return (
         <Container>
             <Header>
                 <Left>
                     <Button transparent onPress={() => props.navigation.goBack()}>
-                        <Icon name="arrow-back"/>
+                        <Icon name="arrow-back" />
                     </Button>
                 </Left>
                 <Body>
@@ -22,20 +30,14 @@ export default function Itinerary(props){
                         Itinerary Page
                     </Title>
                 </Body>
-                <Right/>
+                <Right />
             </Header>
 
-            
+
             <Content padder>
-                <Text>
-                    Look at mockup for inspiration ~
-                </Text>
-                
                 {<GMap openLocationDetails={e => setLocationDetailsOpen(true)} />}
-                {/* <Cards/> */}
             </Content>
-            {/*close modal is the function i passed in */}
-            {locationDetailsOpen && <LocationDetails open={locationDetailsOpen} closeModal={e => setLocationDetailsOpen(false)}/>}
+            {locationsLoaded && locationDetailsOpen && <LocationDetails list={locations} open={locationDetailsOpen} closeModal={e => setLocationDetailsOpen(false)} />}
         </Container>
     );
 }
