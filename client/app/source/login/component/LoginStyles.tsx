@@ -26,6 +26,7 @@ export default StyleSheet.create({
         marginHorizontal: '10%',
         marginTop: '10%',
         alignSelf: 'center',
+        width: '60%',
     },
     loginIntro: {
         width: '90%',
@@ -39,6 +40,7 @@ export default StyleSheet.create({
         marginTop: '5%',
         marginBottom: '5%',
         fontSize: 18,
+        color: 'white',
     },
     loginOuttro: {
         color: 'white',

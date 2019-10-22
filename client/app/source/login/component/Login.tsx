@@ -6,8 +6,6 @@ import SignUp from './SignUp';
 import { Container, Text, Button, Content, Form, Header, Left, Body, Title, Subtitle, Spinner } from 'native-base';
 import { View, TextInput, Alert, Image, ScrollView } from 'react-native';
 import styles from './LoginStyles';
-import worldwideSvg from '../assets/worldwideSvg'
-import SvgComponent from '../assets/worldwideSvg';
 
 export default function Login(props){
     const [loading, setLoading] = useState(false);
@@ -66,23 +64,9 @@ export default function Login(props){
     return(
 
         <View style={styles.container}>
-            <ScrollView>
             <Container>
 
-                {/* <Header noLeft>
-                    <Left/>
-                    <Body>
-                        <Title>
-                            Login
-                        </Title>
-                        <Subtitle>
-                            Login below to continue, or make a new account.
-                        </Subtitle>
-                    </Body>
-                </Header> */}
-
                 <Content contentContainerStyle={styles.content} padder>
-
 
 
                 <Form style={{width: '90%', flex: 1, justifyContent: 'center',}}>
@@ -109,9 +93,9 @@ export default function Login(props){
 
 
 
-                        <Button disabled={loading} light rounded full style={styles.button} onPress={() => signIn()}>
+                        <Button disabled={loading} light full style={styles.button} onPress={() => signIn()}>
                             <Text style={{color:'#1977B5', fontSize: 20, marginTop: '14%'}}>Login</Text>
-                            {loading && <Spinner color="blue"/>}
+                            {loading && <Spinner style={{marginTop: '5%'}} color="blue"/>}
                         </Button>
 
                         <Text style={styles.signUp}>Need an account? <Text onPress={() => setModalOpen(true)} style={{color: 'white', textDecorationLine: 'underline'}}>Sign up</Text></Text>
@@ -121,7 +105,6 @@ export default function Login(props){
 
                 {signUpModalOpen && <SignUp open={signUpModalOpen} setModal={setModalOpen}/>}
             </Container>
-            </ScrollView>
         </View>
     );
 }
