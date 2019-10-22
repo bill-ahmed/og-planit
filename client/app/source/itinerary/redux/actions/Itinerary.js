@@ -1,7 +1,7 @@
 // All actions that can be performed for Redux store
 
 /**Set authentication token (JWT) from for a user */
-export const setAccessToken = (token) => {
+export const blah = (token) => {
     return {
         type: 'SET_ACCESS_TOKEN',
         payload: token,
@@ -9,7 +9,7 @@ export const setAccessToken = (token) => {
 };
 
 /**Get stored auth token (JWT) */
-export const getAccessToken = () => {
+export const blah2 = () => {
     return{
         type: 'GET_ACCESS_TOKEN',
     };
