@@ -109,9 +109,8 @@ export default function Login(props){
                         </Button>
                     </Form>
                 </Content>
-
-                {signUpModalOpen && <SignUp open={signUpModalOpen} setModal={setModalOpen}/>}
             </Container>
+            {signUpModalOpen && <SignUp open={signUpModalOpen} setModal={setModalOpen}/>}
         </View>
     );
 }

@@ -10,6 +10,7 @@ export default StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'row',
         padding: 20,
+        backgroundColor: backgroundBlue
     },
     content: {
         backgroundColor: backgroundBlue,
