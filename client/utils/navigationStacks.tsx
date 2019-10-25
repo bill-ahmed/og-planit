@@ -1,17 +1,18 @@
 import React from 'react';
+
 /*React navigation */
-import { createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 /*Auth Pages */
 import Login from '../app/source/login/component/Login';
-import { Text, Icon } from 'native-base';
 
 /* Main app pages */
 import Home from '../app/source/home/components/Home';
 import Itinerary from '../app/source/itinerary/components/Itinerary';
 import Ratings from '../app/source/itinerary/components/ratings/CreateRating';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+
+import { Text, Icon } from 'native-base';
 
 // App stack to go from Auth --> Home and other tabs in bottom navigation
 export const AppStack = createBottomTabNavigator(

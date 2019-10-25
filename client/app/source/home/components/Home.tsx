@@ -20,7 +20,7 @@ function Home(props){
         firebase.auth().signOut()
         .then(res => {
             // Navigate to start of application
-            navigate('SignIn');
+            navigate('Auth');
             console.log("inside signout");
         })
         .catch(err => {
