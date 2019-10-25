@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {setAccessToken} from './source/login/redux/actions'
+import { setAccessToken } from '../../source/login/redux/actions'
 import { Container, Text, Button, Content, Header, Left, Right, Body, Title } from 'native-base';
 import firebase from 'firebase';
 import styles from './HomeStyles';

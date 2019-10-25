@@ -6,14 +6,15 @@ import { createStackNavigator } from 'react-navigation-stack';
 import Login from '../app/source/login/component/Login';
 
 /* Main app pages */
-import Home from '../app/Home';
+import BottomNavigation from './BottomNavigation';
+import Home from '../app/source/home/Home';
 import Itinerary from '../app/source/itinerary/components/Itinerary';
 import CreateRating from '../app/source/itinerary/components/ratings/CreateRating';
 
 // App stack to go from Auth --> Home
 export const AppStack = createStackNavigator({
     Home: {
-      screen: Home,
+      screen: <BottomNavigation/>,
       navigationOptions: {
         header: null, // Remove all headers
       }
