@@ -4,9 +4,10 @@ import { setAccessToken } from '../../login/redux/actions'
 import { Container, Text, Button, Content, Header, Left, Right, Body, Title } from 'native-base';
 import firebase from 'firebase';
 import styles from './HomeStyles';
+import { withNavigation } from 'react-navigation';
 
 /**Home page for user after authenticating */
-export default function Home(props){
+function Home(props){
     const [token, setToken] = useState('');
     const accessToken = useSelector(state => state['UserInfo']['accessToken']);
     const {navigate} = props.navigation;    // Handle navigations
@@ -19,7 +20,8 @@ export default function Home(props){
         firebase.auth().signOut()
         .then(res => {
             // Navigate to start of application
-            navigate('Auth');
+            navigate('SignIn');
+            console.log("inside signout");
         })
         .catch(err => {
             alert("Error logging out. Check console for details");
@@ -66,3 +68,5 @@ export default function Home(props){
         </Container>
     );
 }
+
+export default withNavigation(Home);

@@ -48,13 +48,6 @@ function getTabBarIcons(navigation, focused:boolean, tintColor): JSX.Element {
         default:
             return <Text>N/A</Text>
     }
-    return(
-        <View>
-            <Text>
-                Some tab
-            </Text>
-        </View>
-    );
 }
 
 export default BottomNavigation;
