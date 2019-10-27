@@ -77,7 +77,7 @@ export default class Routes{
         // Also need to store collection of itineraries for this user
         let itineraries = this.db.collection('dev').doc('data').collection('users').doc(uid).collection('itineraries').doc('INIT_ITINERARY');
         itineraries.set({
-            id: null, type: null, price: null, location: null, time: null, referenceToOriginal: null, last_edit_time: null  // Firebase requires at least ONE doc per collection
+            id: null, type: null, price: null, location: null, rating: 0, review:"", time: null, referenceToOriginal: null, last_edit_time: null  // Firebase requires at least ONE doc per collection
         });
         
     }
@@ -109,4 +109,3 @@ export default class Routes{
 
     }
 }
-
