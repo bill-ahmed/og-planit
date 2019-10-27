@@ -108,4 +108,31 @@ export default class Routes{
     public getEventsByType(req : any, res : any) {
 
     }
+
+    /** Obtain JSON collection of all stored events */
+    public getEventsList(req : any, res : any) {
+        // Set response header
+        res.header("Content-Type", "application/json");
+        // Retrieve all doccuments in 'events' collection
+        let resString = "";
+        try {
+            let collection = this.db.collection('dev').doc('data').collection('events').get()
+            .then(snapshot => {
+                snapshot.forEach(doc => {
+                    console.log(doc.Name);
+                });
+            });
+            res.status(200).json(collection);
+        }
+        
+        catch (error) {
+            console.log("Error retrieving events collection");
+            res.status(500).send('Error retrieving events collection');
+        }
+    }
+
+    /** Query's events by 'Type' index */
+    public getEventsByType(req : any, res : any) {
+
+    }
 }
