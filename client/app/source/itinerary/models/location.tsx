@@ -1,4 +1,4 @@
-export interface location {
+export default interface Location {
     Address: Address,
     AvgPrice: number,
     AvgTimeSpent: Date,

@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Container, Header, Left, Right, Body, Title, Content, Text, Button, Icon } from 'native-base';
+import { Container, Header, Left, Right, Body, Title, Content, Button, Icon } from 'native-base';
 
-import styles from './ItineraryStyles';
-import { View } from 'react-native';
 import GMap from './GMap';
 import LocationDetails from './LocationDetails';
 import { getLocations } from '../api/locationsAPI';
+
 export default function Itinerary(props) {
     
     const [locationDetailsOpen, setLocationDetailsOpen] = useState(false);
@@ -14,7 +13,6 @@ export default function Itinerary(props) {
     getLocations().then(res => {
         locations = res;
         setlocationsLoaded(true);
-        console.log(locations);
     });
 
     return (
