@@ -9,9 +9,9 @@ export default function Itinerary(props) {
     
     const [locationDetailsOpen, setLocationDetailsOpen] = useState(false);
     const [locationsLoaded, setlocationsLoaded] = useState(false);
-    let locations = null;
+    const [locations, setLocations] = useState(null);
     getLocations().then(res => {
-        locations = res;
+        setLocations(res);
         setlocationsLoaded(true);
     });
 

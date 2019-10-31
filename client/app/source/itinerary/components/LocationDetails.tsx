@@ -8,6 +8,8 @@ import GMap from'./GMap';
  const events = require("./MockLocationDatabase.json");
 
 export default function LocationDetails(props){
+    const [locations, setLocations] = useState(null);
+
     const getAddress = () => {
         let result;
         for (let [key,value] of Object.entries(events)){
