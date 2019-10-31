@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {useDispatch} from 'react-redux';
 import { setAccessToken } from '../redux/actions';
 import firebase from 'firebase';
+import ResetPassword from './ResetPassword';
 import SignUp from './SignUp';
 import { Container, Text, Button, Content, Form, Header, Left, Body, Title, Subtitle, Spinner } from 'native-base';
 import { View, TextInput, Alert, Image, ScrollView } from 'react-native';
@@ -11,7 +12,8 @@ export default function Login(props){
     const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [signUpModalOpen, setSignUpModalOpen] = useState(false);
+    const [signUpModalOpen, setSignUpModalOpen] = useState(false);  // Keep track of Sign-up modal
+    const [resetPasswordModalOpen, setResetPasswordModalOpen] = useState(false);    // Keep track of Reset Password dialog
     const dispatch = useDispatch(); // Connection to redux store
 
     /**Sign in a user with given email and password combo. */
@@ -61,6 +63,10 @@ export default function Login(props){
         setSignUpModalOpen(val);
     }
 
+    const toggleResetPasswordModalOpen = (val: boolean) => {
+        setResetPasswordModalOpen(val);
+    }
+
     return(
 
         <View style={styles.container}>
@@ -89,7 +95,7 @@ export default function Login(props){
                         placeholder="Password" />
 
 
-                        <Text onPress={() => Alert.alert('forgot password')}  style={styles.loginOuttro}>Forgot Password?</Text>
+                        <Text onPress={() => toggleResetPasswordModalOpen(true)}  style={styles.loginOuttro}>Forgot Password?</Text>
 
 
 
@@ -108,6 +114,7 @@ export default function Login(props){
                 </Content>
             </Container>
             {signUpModalOpen && <SignUp open={signUpModalOpen} setModal={setModalOpen}/>}
+            {resetPasswordModalOpen && <ResetPassword open={resetPasswordModalOpen} closeDialog={() => toggleResetPasswordModalOpen(false)}/>}
         </View>
     );
 }
