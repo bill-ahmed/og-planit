@@ -8,7 +8,7 @@ import Login from '../app/source/login/component/Login';
 
 /* Main app pages */
 import Home from '../app/source/home/components/Home';
-import Itinerary from '../app/source/itinerary/components/Itinerary';
+import ItineraryContainer from '../app/source/itinerary/components/Itinerary';
 import Ratings from '../app/source/itinerary/components/ratings/CreateRating';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import CreateViews from '../app/source/itinerary/components/card_list_views_events/CreateViews';
@@ -19,8 +19,8 @@ import { Text, Icon } from 'native-base';
 export const AppStack = createBottomTabNavigator(
   {
       Home: Home,
-      Itinerary: Itinerary,
-      Ratings: Ratings
+      Itinerary: ItineraryContainer,
+      Ratings: Ratings,
   },
   {
     defaultNavigationOptions: ({navigation}) => ({
@@ -48,10 +48,6 @@ export const AuthStack = createStackNavigator({
     } ,
 });
 
-// App stack to go from list of itineraries --> specific itinerary
-export const EventStack = createStackNavigator({
-    CreateViews: {screen: CreateViews},
-});
 
 /**Return props to render for each section of bottom navigation */
 function getTabBarIcons(navigation, focused:boolean, tintColor): JSX.Element {

@@ -4,13 +4,34 @@ import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon } f
 import styles from './ItineraryStyles';
 import { View , Text, Image, ScrollView} from 'react-native';
 import { Card, ListItem} from 'react-native-elements';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
 
+import CreateViews from './card_list_views_events/CreateViews';
 import GMap from './GMap';
 import LocationDetails from './LocationDetails';
 import { getLocations } from '../api/locationsAPI';
 import { withNavigation, NavigationEvents } from 'react-navigation';
 
-export default function Itinerary(props) {
+// App stack to go from list of itineraries --> specific itinerary
+const EventStack = createAppContainer(createStackNavigator({
+        Itinerary: {
+            screen: Itinerary, 
+            navigationOptions: {
+            header: null,   // Remove all headers
+          }},
+        CreateViews: {
+            screen: CreateViews,
+            navigationOptions: {
+                header: null,   // Remove all headers
+              }
+            },
+    }, 
+    {
+        initialRouteName: "Itinerary",
+    }));
+
+export function Itinerary(props) {
     
     const [locationDetailsOpen, setLocationDetailsOpen] = useState(false);
     const [locationsLoaded, setlocationsLoaded] = useState(false);
@@ -50,5 +71,11 @@ export default function Itinerary(props) {
             </ScrollView>
 
         </Container>
+    );
+}
+
+export default function ItineraryContainer(props){
+    return (
+        <EventStack/>
     );
 }
