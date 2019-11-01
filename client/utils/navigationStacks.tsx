@@ -11,6 +11,7 @@ import Home from '../app/source/home/components/Home';
 import Itinerary from '../app/source/itinerary/components/Itinerary';
 import Ratings from '../app/source/itinerary/components/ratings/CreateRating';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import CreateViews from '../app/source/itinerary/components/card_list_views_events/CreateViews';
 
 import { Text, Icon } from 'native-base';
 
@@ -44,7 +45,12 @@ export const AuthStack = createStackNavigator({
       navigationOptions: {
         header: null,   // Remove all headers
       }
-    } 
+    } ,
+});
+
+// App stack to go from list of itineraries --> specific itinerary
+export const EventStack = createStackNavigator({
+    CreateViews: {screen: CreateViews},
 });
 
 /**Return props to render for each section of bottom navigation */
