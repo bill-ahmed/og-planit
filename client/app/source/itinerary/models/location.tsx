@@ -1,5 +1,3 @@
-import { Timestamp } from "rxjs";
-
 /**All data to describe an event */
 export interface location {
     Name: string,
