@@ -10,6 +10,7 @@ import { createAppContainer } from 'react-navigation';
 import CreateViews from './card_list_views_events/CreateViews';
 import GMap from './GMap';
 import LocationDetails from './LocationDetails';
+import FilterEvents from './filtering/FilterEvents';
 import { getLocations } from '../api/locationsAPI';
 import { withNavigation, NavigationEvents } from 'react-navigation';
 
@@ -25,7 +26,13 @@ const EventStack = createAppContainer(createStackNavigator({
             navigationOptions: {
                 header: null,   // Remove all headers
               }
-            },
+        },
+        FilterEvents: {
+            screen: FilterEvents,
+            navigationOptions: {
+                header: null,
+            }
+        }
     }, 
     {
         initialRouteName: "Itinerary",
@@ -67,6 +74,10 @@ export function Itinerary(props) {
             <ScrollView>
                 <Button style={styles.button} onPress={() => goToItineraryViews()}>
                     <Text>Itinerary 1</Text>
+                </Button>
+
+                <Button style={styles.button} onPress={() => navigate('FilterEvents')}>
+                    <Text>Filter Events Screen</Text>
                 </Button>
             </ScrollView>
 
