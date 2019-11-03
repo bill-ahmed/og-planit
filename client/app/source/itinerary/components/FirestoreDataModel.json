@@ -1,0 +1,41 @@
+{
+    "dev/data/events/{eventID}": {
+        "Address": {
+            "City": "str",
+            "Country": "str",
+            "Number": "str",
+            "Province": "str",
+            "Street": "str"
+        },
+        "AvgPrice": "int",
+        "AvgTimeSpent": "TimeStamp",
+        "ContactInfo": {
+            "Email": "str",
+            "Phone": "str"
+        },
+        "Description": "str",
+        "EndTime": "TimeStamp",
+        "Location": "GeoPoint",
+        "StartTime": "TimeStamp",
+        "Tags": "str []",
+        "Type": "str"
+    },
+
+    "dev/data/users/{userID}": {
+        "age": "int",
+        "currentItinerary": "str",
+        "displayName": "str",
+        "email": "str",
+        "name": "str []",
+        "preferences": { }
+    },
+
+    "dev/data/users/itineraries/{itineraryID}": {
+        "id": "str",
+        "last_edit_time": "TimeStamp",
+        "location": "GeoPoint",
+        "price": "int",
+        "time": "TimeStamp",
+        "type": "str"
+    }
+}

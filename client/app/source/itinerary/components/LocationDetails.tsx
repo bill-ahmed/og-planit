@@ -27,6 +27,13 @@ export default function LocationDetails(props){
         }
         return <Text> {result} </Text>
     }
+    const getEventName = () => {
+        let result;
+        for (let [key,value] of Object.entries(events)){
+            result = events[key]
+        }
+        return <Text> {result} </Text>
+    }
     return (
             <Modal transparent={true} visible={props.locationDetailsOpen} presentationStyle="overFullScreen" onRequestClose={props.closeModal} animationType="fade" >
                 <View style={styles.container}>
@@ -40,7 +47,7 @@ export default function LocationDetails(props){
                     {/* {events.Frosh2020.Address.map(elems => {
                                     return <Text> {elems} </Text>
                                 })} */}
-                    <Text>Frosh</Text>
+                    {getEventName()}
                     {getAddress()}
                     {getEventInfo()}
                     </Content>
