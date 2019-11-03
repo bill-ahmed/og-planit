@@ -3,9 +3,9 @@ import { Container, Header, Left, Right, Body, Title, Content, Text, Button, Ico
 
 import styles from './LocationDetailStyles';
 import { View, Modal, ViewComponent, TouchableWithoutFeedback } from 'react-native';
-import GMap from'./GMap';
+import GMap from'./../GMap/GMap';
 
- const events = require("./MockLocationDatabase.json");
+ const events = require("./../../models/MockLocationDatabase.json");
 
 export default function LocationDetails(props){
     const getAddress = () => {
@@ -25,6 +25,13 @@ export default function LocationDetails(props){
         }
         return <Text> {result} </Text>
     }
+    const getEventName = () => {
+        let result;
+        for (let [key,value] of Object.entries(events)){
+            result = events[key]
+        }
+        return <Text> {result} </Text>
+    }
     return (
             <Modal transparent={true} visible={props.locationDetailsOpen} presentationStyle="overFullScreen" onRequestClose={props.closeModal} animationType="fade" >
                 <View style={styles.container}>
@@ -38,7 +45,7 @@ export default function LocationDetails(props){
                     {/* {events.Frosh2020.Address.map(elems => {
                                     return <Text> {elems} </Text>
                                 })} */}
-                    <Text>Frosh</Text>
+                    {getEventName()}
                     {getAddress()}
                     {getEventInfo()}
                     </Content>

@@ -8,34 +8,36 @@ import Login from '../app/source/login/component/Login';
 
 /* Main app pages */
 import Home from '../app/source/home/components/Home';
-import Itinerary from '../app/source/itinerary/components/Itinerary';
+import ItineraryContainer from '../app/source/itinerary/components/Itinerary/Itinerary';
 import Ratings from '../app/source/itinerary/components/ratings/CreateRating';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import CreateViews from '../app/source/itinerary/components/card_list_views_events/CreateViews';
 
 import { Text, Icon } from 'native-base';
+import NewItinerary from '../app/source/itinerary/components/CreateItinerary/CreateItinerary';
 
 // App stack to go from Auth --> Home and other tabs in bottom navigation
 export const AppStack = createBottomTabNavigator(
   {
       Home: Home,
-      Itinerary: Itinerary,
-      Ratings: Ratings
+      Itinerary: ItineraryContainer,
+      Ratings: Ratings,
   },
   {
-    defaultNavigationOptions: ({navigation}) => ({
-        tabBarIcon: ({focused, tintColor}) =>
-            getTabBarIcons(navigation, focused, tintColor),
-        }),
-      tabBarOptions: {
-          activeTintColor: '#1977B5',
-          inactiveTintColor: 'gray',
-          style: {
-              marginBottom: 5
-          }
-      },
-      initialRouteName: "Home",
+    defaultNavigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, tintColor }) =>
+        getTabBarIcons(navigation, focused, tintColor),
+    }),
+    tabBarOptions: {
+      activeTintColor: '#1977B5',
+      inactiveTintColor: 'gray',
+      style: {
+        marginBottom: 5
+      }
+    },
+    initialRouteName: "Home",
   }
-  );
+);
 
 // Auth stack handle authentication flow
 export const AuthStack = createStackNavigator({ 
@@ -44,21 +46,22 @@ export const AuthStack = createStackNavigator({
       navigationOptions: {
         header: null,   // Remove all headers
       }
-    } 
+    } ,
 });
 
+
 /**Return props to render for each section of bottom navigation */
-function getTabBarIcons(navigation, focused:boolean, tintColor): JSX.Element {
+function getTabBarIcons(navigation, focused: boolean, tintColor): JSX.Element {
   const { routeName } = navigation.state;
 
-  switch(routeName){
-      case 'Home':
-          return <Icon name="home" color={tintColor}/>
-      case 'Itinerary':
-          return <Icon name='ios-planet' color={tintColor}/>
-      case 'Ratings':
-          return <Icon name='ios-star-outline' color={tintColor}/>
-      default:
-          return <Text>N/A</Text>
+  switch (routeName) {
+    case 'Home':
+      return <Icon name="home" color={tintColor} />
+    case 'Itinerary':
+      return <Icon name='ios-planet' color={tintColor} />
+    case 'Ratings':
+      return <Icon name='ios-star-outline' color={tintColor} />
+    default:
+      return <Text>N/A</Text>
   }
 }

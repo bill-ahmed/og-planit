@@ -5,12 +5,19 @@ export default StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         flexDirection: 'row',
-        padding: 20,
     },
     content: {
-        flex: 1, 
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+        padding: 0,
     },
+    textHeader:{
+        fontSize: 28,
+    },
+    textBody:{
+        fontSize: 20,
+    },
+    criticalInfo:{
+        marginTop:10,
+        marginBottom:20,
+        fontSize: 25,
+    }
 });
