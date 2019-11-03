@@ -2,10 +2,10 @@
     {
         "id": "001",
         "name": "Greece Trip",
-        "last_edit_time": "2012-04-17T18:25:43.511Z",
+        "last_edit_time": "April 17, 2012",
         "location": "Athens",
         "price": 200,
-        "time": "2012-04-23T18:25:43.511Z",
+        "time": "April 23, 2019",
         "type": "vacation",
         "events": []
         }
@@ -13,10 +13,10 @@
     {
         "id": "002",
         "name": "Rome Trip",
-        "last_edit_time": "2012-04-17T18:25:43.511Z",
+        "last_edit_time": "April 17, 2012",
         "location": "Rome",
         "price": 300,
-        "time": "2012-04-20T18:25:43.511Z",
+        "time": "April 20, 2012",
         "type": "vacation",
         "events": []
         }
