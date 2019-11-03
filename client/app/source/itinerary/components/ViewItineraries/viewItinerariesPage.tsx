@@ -26,7 +26,7 @@ export default function viewItinerariesPage(props){
                             <Content>
                                 <Text>getItineraries[element].name </Text>
                                 <Text>getItineraries[element].last_edit_time</Text>
-                                
+                                <Text>element.events.length</Text>
 
                             </Content>
                         </View>

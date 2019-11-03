@@ -6,6 +6,7 @@ import { View } from 'react-native';
 import GMap from './GMap';
 import LocationDetails from './LocationDetails';
 import { getLocations } from '../api/locationsAPI';
+import viewItinerariesPage from "./ViewItineraries/viewItinerariesPage"
 export default function Itinerary(props) {
     
     const [locationDetailsOpen, setLocationDetailsOpen] = useState(false);
@@ -35,6 +36,7 @@ export default function Itinerary(props) {
 
 
             <Content padder>
+                {}
                 {<GMap openLocationDetails={e => setLocationDetailsOpen(true)} />}
             </Content>
             {locationsLoaded && locationDetailsOpen && <LocationDetails list={locations} open={locationDetailsOpen} closeModal={e => setLocationDetailsOpen(false)} />}
