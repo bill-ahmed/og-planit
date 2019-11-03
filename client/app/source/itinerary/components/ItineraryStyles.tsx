@@ -13,4 +13,10 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
     },
+    button: {
+        flex: 1,
+        justifyContent: "center",
+        marginBottom: 30,
+        marginTop: 30
+    }
 });
