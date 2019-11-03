@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon, Subtitle, Form, Item, Label, Input } from 'native-base';
 
-import styles from './ItineraryStyles';
+import styles from '../Itinerary/ItineraryStyles';
 import { View , Text, Image, ScrollView} from 'react-native';
 
 export default function NewItinerary(props){
