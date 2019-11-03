@@ -13,4 +13,9 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
     },
+    innerContainer: {
+        flex: 1, 
+        justifyContent: "center",
+        flexDirection: "row"
+    }
 });
