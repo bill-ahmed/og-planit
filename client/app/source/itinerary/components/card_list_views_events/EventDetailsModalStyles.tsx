@@ -7,6 +7,17 @@ export default StyleSheet.create({
         flexDirection: 'row',
     },
     content: {
-        padding: 20,
+        padding: 0,
+    },
+    textHeader:{
+        fontSize: 28,
+    },
+    textBody:{
+        fontSize: 20,
+    },
+    criticalInfo:{
+        marginTop:10,
+        marginBottom:20,
+        fontSize: 25,
     }
 });
