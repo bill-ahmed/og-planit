@@ -14,7 +14,9 @@ export default StyleSheet.create({
         alignItems: 'center',
     },
     button: {
-        marginTop: 30,
+        flex: 1,
+        justifyContent: "center",
         marginBottom: 30,
-    },
+        marginTop: 30
+    }
 });
