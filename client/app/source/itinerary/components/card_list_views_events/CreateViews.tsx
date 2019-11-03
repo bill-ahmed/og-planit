@@ -27,7 +27,8 @@ export default function CreateViews(props){
         setDetailsModalData(data);
     }
 
-    const json = require("../ratings/mockDatabase.json");
+    const itineraryInfo = props.navigation.state.params.data
+    const json = itineraryInfo.events //require("../ratings/mockDatabase.json");
 
     return(
         <Container>
@@ -39,7 +40,7 @@ export default function CreateViews(props){
                 </Left>
                 <Body>
                     <Title>
-                        Itinerary 1
+                        {itineraryInfo.name}
                     </Title>
                     <Subtitle>
                         Events

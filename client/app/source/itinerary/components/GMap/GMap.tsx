@@ -4,8 +4,8 @@ import { StyleSheet, View, Dimensions } from 'react-native';
 import { Container, Button, Text } from 'native-base';
 
 import styles from './GMapStyles';
-import LocationDetails from './LocationDetails';
-import { getLocations } from '../api/locationsAPI';
+import LocationDetails from './../LocationDetails/LocationDetails';
+import { getLocations } from '../../api/locationsAPI';
 
 export default function GMap(props) {
 
