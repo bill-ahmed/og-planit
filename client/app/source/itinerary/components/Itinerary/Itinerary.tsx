@@ -5,16 +5,14 @@ import styles from './ItineraryStyles';
 import { View , Text, Image, ScrollView} from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
-import GMap from './GMap';
-import LocationDetails from './LocationDetails';
-import { getLocations } from '../api/locationsAPI';
+import { getLocations } from '../../api/locationsAPI';
 import { withNavigation, NavigationEvents } from 'react-navigation';
-import newItinerary from './CreateItinerary';
+import newItinerary from './../CreateItinerary/CreateItinerary';
 
 
 
 //App stack to go from list of itineraries --> specific itinerary
-const itineraries=require("./MockItineraryList.json");
+const itineraries=require("./../../models/MockItineraryList.json");
 
 const EventStack = createAppContainer(createStackNavigator({
     Itinerary: {
@@ -65,7 +63,7 @@ export default function Itinerary(props) {
                 </Body>
 
                 <Right>
-                    <Button transparent onPress={() => {navigate(newItinerary)}}>
+                    <Button transparent onPress={() => {navigate('NewItinerary')}}>
                         <Icon name="ios-add"/>
                         <Text> Create New Itinerary</Text>
                     </Button>

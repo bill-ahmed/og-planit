@@ -3,9 +3,9 @@ import { Container, Header, Left, Right, Body, Title, Content, Text, Button, Ico
 
 import styles from './LocationDetailStyles';
 import { View, Modal, ViewComponent, TouchableWithoutFeedback } from 'react-native';
-import GMap from'./GMap';
+import GMap from'./../GMap/GMap';
 
- const events = require("./MockLocationDatabase.json");
+ const events = require("./../../models/MockLocationDatabase.json");
 
 export default function LocationDetails(props){
     const [locations, setLocations] = useState(null);
