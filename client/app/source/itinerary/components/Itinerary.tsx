@@ -1,22 +1,35 @@
 import React, { useState } from 'react';
-import { Container, Header, Left, Right, Body, Title, Content, Text, Button, Icon } from 'native-base';
+import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon } from 'native-base';
 
 import styles from './ItineraryStyles';
-import { View } from 'react-native';
+import { View , Text, Image, ScrollView} from 'react-native';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
 import GMap from './GMap';
 import LocationDetails from './LocationDetails';
 import { getLocations } from '../api/locationsAPI';
-import viewItinerariesPage from "./ViewItineraries/viewItinerariesPage"
-export default function Itinerary(props) {
+import { withNavigation, NavigationEvents } from 'react-navigation';
+
+
+//App stack to go from list of itineraries --> specific itinerary
+const itineraries=require("./MockItineraryList.json");
+
+export function Itinerary(props) {
     
     const [locationDetailsOpen, setLocationDetailsOpen] = useState(false);
     const [locationsLoaded, setlocationsLoaded] = useState(false);
+    const {navigate} = props.navigation;    // Handle navigations
+
     let locations = null;
     getLocations().then(res => {
         locations = res;
         setlocationsLoaded(true);
         console.log(locations);
     });
+
+    const goToItineraryViews = () =>{
+        navigate();
+    }
 
     return (
         <Container>
@@ -34,12 +47,14 @@ export default function Itinerary(props) {
                 <Right />
             </Header>
 
+            <ScrollView>
+                itineraries.forEach(element => {
+                <Button style={styles.button} onPress={() => goToItineraryViews()}>
+                    <Text>element.name</Text>
+                </Button>
+                 });
+            </ScrollView>
 
-            <Content padder>
-                {}
-                {<GMap openLocationDetails={e => setLocationDetailsOpen(true)} />}
-            </Content>
-            {locationsLoaded && locationDetailsOpen && <LocationDetails list={locations} open={locationDetailsOpen} closeModal={e => setLocationDetailsOpen(false)} />}
         </Container>
     );
 }

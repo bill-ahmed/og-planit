@@ -19,8 +19,8 @@ export default function viewItinerariesPage(props){
         <Container>
             <View style={styles.container}>
                 <Content>
-                {getItineraries()};
-                getItineraries.forEach(element => {
+                {getItineraries}=itineraryList
+                itineraryList.forEach(element => {
                     <Container /*onpress= carlos' function to the events list */ >
                         <View style={styles.innerContainer}>
                             <Content>
