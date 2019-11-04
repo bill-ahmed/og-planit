@@ -1,6 +1,4 @@
-
-import { useDispatch } from 'react-redux'
-
+import { PlanitLocation } from "../models/location";
 const firebase = require("firebase");
 
 // Required for side-effects
@@ -18,8 +16,7 @@ export async function getLocationsFrom(userLocation: string, radius: number){
 /**Acquires all Location elements
  * @returns A Promise for get request to Firestore
 */
-export async function getLocations(): Promise<boolean> {
-    const dispatch = useDispatch();
+export async function getLocations(): Promise<PlanitLocation[]> {
     let startingCollection = 'prod';
     // If in dev environment, grab from dev db
     if(__DEV__){
@@ -28,18 +25,17 @@ export async function getLocations(): Promise<boolean> {
     // Reference to firestore db
     var db = firebase.firestore();
 
-    return new Promise<boolean>((resolve, reject) => {
+    return new Promise<PlanitLocation[]>((resolve, reject) => {
         db.collection(startingCollection).doc('data').collection("events").get()
         .then((querySnapshot:any) => {
             const arr = [];
 
             querySnapshot.forEach(doc => arr.push(doc.data()));
-            // dispatch(setLocations(arr));
-            resolve(true);
+            resolve(arr);
         })
         .catch((err:any) => {
             console.log("Error getting document", err);
             reject(err);
         });
-    })
+    });
 }

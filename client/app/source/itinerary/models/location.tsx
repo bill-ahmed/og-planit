@@ -1,5 +1,5 @@
 /**All data to describe an event */
-export interface location {
+export interface PlanitLocation {
     Name: string,
     Address: Address,
     AvgPrice: number,
@@ -41,5 +41,5 @@ export interface Itinerary {
     price: number,
     time: Date,
     type: string,
-    events: [location]
+    events: [PlanitLocation]
 }

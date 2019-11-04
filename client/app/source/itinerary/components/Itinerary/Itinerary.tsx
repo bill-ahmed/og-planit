@@ -5,8 +5,6 @@ import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon, Su
 import { View , Text, Image, ScrollView} from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
-import { getLocations } from '../../api/locationsAPI';
-import { withNavigation, NavigationEvents } from 'react-navigation';
 import newItinerary from './../CreateItinerary/CreateItinerary';
 import CreateViews from '../card_list_views_events/CreateViews';
 
@@ -40,16 +38,7 @@ const EventStack = createAppContainer(createStackNavigator({
 }));
 
 export function Itinerary(props) {
-    
-    const [locationDetailsOpen, setLocationDetailsOpen] = useState(false);
-    const [locationsLoaded, setlocationsLoaded] = useState(false);
-    const [locations, setLocations] = useState(null);
     const {navigate} = props.navigation;    // Handle navigations
-
-    getLocations().then(res => {
-        setLocations(res);
-        setlocationsLoaded(true);
-    });
 
     const goToItineraryViews = () =>{
         navigate(/* carlos' part */);
