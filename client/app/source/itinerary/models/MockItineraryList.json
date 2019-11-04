@@ -1,0 +1,133 @@
+[
+    {
+        "id": "001",
+        "name": "Greece Trip",
+        "last_edit_time": "April 17, 2012",
+        "location": "Athens",
+        "price": 200,
+        "time": "April 23, 2019",
+        "type": "vacation",
+        "events": [
+            {
+                "Address": {
+                    "City": "Toronto",
+                    "Country": "Canada",
+                    "Number": "1265",
+                    "Province": "Ontario",
+                    "Street": "Military Trail"
+                },
+                "AvgPrice": "90",
+                "AvgTimeSpent": "9 hrs",
+                "ContactInfo": {
+                    "Email": "Frosh.utsc@mail.utoronto.ca",
+                    "Phone": "647-123-4567"
+                },
+                "Name": "Mt. Fuji Resort",
+                "Description": "Beneath Mount Fuji, this sleek rural hotel with picture windows is 6 km from Oshino Hakkai hot springs and 4 km from Lake Yamanaka. Bright rooms have understated decor, Western-style beds, free Wi-Fi and flat-screen TVs. Some rooms have views of Mount Fuji and Lake Yamanaka, balconies, and/or tatami mats and short-legged tables. Suites add sitting areas. There's a heated indoor pool and a hot springs bathhouse; 2 saunas, open-air bathing and whirlpool tubs are available. Amenities include a cozy cocktail bar and 3 restaurants; 1 is French, while another offers buffet dining. There’s also a hiking trail though the grounds. Parking is free.",
+                "EndTime": "8 pm",
+                "Location": "UTSC",
+                "StartTime": "11 am",
+                "Tags": [
+                    "First Years",
+                    "Orientation",
+                    "Campus"
+                ],
+                "Type": "Orientation",
+                "uri": "http://japantraveleronline.com/featured/selection/mt-fuji/images/tab_pic_gr_kogetsu.jpg"
+            },
+            {
+                "Address": {
+                    "City": "Toronto",
+                    "Country": "Canada",
+                    "Number": "1265",
+                    "Province": "Ontario",
+                    "Street": "Military Trail"
+                },
+                "AvgPrice": "90",
+                "AvgTimeSpent": "9 hrs",
+                "ContactInfo": {
+                    "Email": "Frosh.utsc@mail.utoronto.ca",
+                    "Phone": "647-123-4567"
+                },
+                "Name": "Hakone Shrine",
+                "Description": "Hakone Shrine (箱根神社, Hakone Jinja) stands at the foot of Mount Hakone along the shores of Lake Ashi. The shrine buildings are hidden in the dense forest, but are well advertised by its huge torii gates, one standing prominently in the lake and two others over the main street of Moto-Hakone. A path leads from the torii gate in Lake Ashi up a series of steps flanked by lanterns through the forest to the main building of the shrine, which sits peacefully among the tall trees. The shrine is beautiful throughout the year, and is particularly breathtaking when shrouded in mist.",
+                "EndTime": "8 pm",
+                "Location": "UTSC",
+                "StartTime": "11 am",
+                "Tags": [
+                    "First Years",
+                    "Orientation",
+                    "Campus"
+                ],
+                "Type": "Orientation",
+                "uri": "https://media-cdn.tripadvisor.com/media/photo-s/0f/04/a7/37/hakone-shrine.jpg"
+            }
+        ]
+        }
+    ,
+    {
+        "id": "002",
+        "name": "Rome Trip",
+        "last_edit_time": "April 17, 2012",
+        "location": "Rome",
+        "price": 300,
+        "time": "April 20, 2012",
+        "type": "vacation",
+        "events": [
+            {
+                "Address": {
+                    "City": "Toronto",
+                    "Country": "Canada",
+                    "Number": "1265",
+                    "Province": "Ontario",
+                    "Street": "Military Trail"
+                },
+                "AvgPrice": "90",
+                "AvgTimeSpent": "9 hrs",
+                "ContactInfo": {
+                    "Email": "Frosh.utsc@mail.utoronto.ca",
+                    "Phone": "647-123-4567"
+                },
+                "Name": "Tenzan Onsen",
+                "Description": "Tenzan onsen is reached by bus (or taxi) - a short 10-minutes journey from the train station. This nice, large ryokan has several segregated baths with hot water. Some of them are placed one belong the other, forming thus an artificial waterfall (the higher you go, the warmer the water). It also has a cold water bath, as well as an old fashioned sauna: just put some salt on your body, and enter the small structure located close to the bath and lay or sit down... until the temperature just is unbearable!",
+                "EndTime": "8 pm",
+                "Location": "UTSC",
+                "StartTime": "11 am",
+                "Tags": [
+                    "First Years",
+                    "Orientation",
+                    "Campus"
+                ],
+                "Type": "Orientation",
+                "uri": "https://static.tripzilla.com/thumb/5/3/147795_800x.jpg"
+            },
+            {
+                "Address": {
+                    "City": "Toronto",
+                    "Country": "Canada",
+                    "Number": "1265",
+                    "Province": "Ontario",
+                    "Street": "Military Trail"
+                },
+                "AvgPrice": "90",
+                "AvgTimeSpent": "9 hrs",
+                "ContactInfo": {
+                    "Email": "Frosh.utsc@mail.utoronto.ca",
+                    "Phone": "647-123-4567"
+                },
+                "Name": "Shiraito Falls",
+                "Description": "The Shiraito Falls (白糸の滝, Shiraito no Taki) are located in the southwestern foothills of Mount Fuji. Ranked among the most beautiful waterfalls in Japan, the 150 meter wide cascade is fed by the volcano's spring water and flows off the edge of a 20 meter high cliff in thin white streams that resemble hanging threads of silk - hence its name. The base of the waterfall is easily accessible from the road via a walking trail in just a few minutes.",
+                "EndTime": "8 pm",
+                "Location": "UTSC",
+                "StartTime": "11 am",
+                "Tags": [
+                    "First Years",
+                    "Orientation",
+                    "Campus"
+                ],
+                "Type": "Orientation",
+                "uri": "https://upload.wikimedia.org/wikipedia/commons/6/65/N2_Shiraito_Falls_2.jpg"
+            }
+        ]
+        }
+    ]
