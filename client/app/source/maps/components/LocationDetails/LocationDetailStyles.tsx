@@ -1,15 +1,25 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
 
 const backgroundBlue = '#1977B5';
 export default StyleSheet.create({
     header: {
         backgroundColor: backgroundBlue,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    backButton: {
+        width: '50px'
     },
     container: {
         flex: 1,
         justifyContent: 'center',
         flexDirection: 'row',
         padding: 20,
+        backgroundColor: backgroundBlue
+    },
+    containerContent: {
+        justifyContent: 'flex-start',
+        flexDirection: 'column',
         backgroundColor: backgroundBlue
     },
     content: {
@@ -43,4 +53,20 @@ export default StyleSheet.create({
         fontSize: 18,
         color: 'white',
     },
+    h24: {
+        fontSize: 24,
+    },
+    h18: {
+        fontSize: 18,
+    },
+    h16: {
+        fontSize: 16,
+    },
+    h14: {
+        fontSize: 14,
+    },
+    Text:{
+        color: 'white',
+    }
+    
 });

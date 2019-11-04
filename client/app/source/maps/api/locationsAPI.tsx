@@ -31,6 +31,17 @@ export async function getLocations(): Promise<PlanitLocation[]> {
             const arr = [];
 
             querySnapshot.forEach(doc => arr.push(doc.data()));
+            arr.forEach(item => {
+
+                if(item.StartTime) {
+                    const start = item.StartTime.seconds;
+                    item.StartTime = toDateTime(start.toString());
+                }
+                if(item.EndTime) {
+                    const end = item.EndTime.seconds;
+                    item.EndTime = toDateTime(end.toString());
+                }
+            })
             resolve(arr);
         })
         .catch((err:any) => {
@@ -38,4 +49,10 @@ export async function getLocations(): Promise<PlanitLocation[]> {
             reject(err);
         });
     });
+}
+
+function toDateTime(secs) {
+    var t = new Date(1970, 0, 1); // Epoch
+    t.setSeconds(secs);
+    return t;
 }

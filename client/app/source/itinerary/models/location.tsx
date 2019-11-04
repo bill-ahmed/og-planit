@@ -4,15 +4,12 @@ export interface PlanitLocation {
     Address: Address,
     AvgPrice: number,
     AvgTimeSpent: Date,
-    Ratings: {
-        AveRatings: number,
-        NumRatings: number,
-    },
+    Ratings: locationRatings
     ContactInfo: ContactInfo,
     Description: string,
     EndTime: Date,
     Location: Geolocation,
-    StartTime: Geolocation,
+    StartTime: Date,
     Tags: [string],
     Type: string
 }
@@ -24,6 +21,11 @@ export interface Address {
     Number: string,
     Province: string,
     Street: string
+}
+
+export interface locationRatings {
+    AveRatings: number,
+    NumRatings: number,
 }
 
 /**Contact information for the event */

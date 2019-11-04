@@ -2,11 +2,23 @@ import React, { useState } from 'react';
 import { Text, View, Container, Header, Left, Button, Icon, Title, Right, Body, Content, Form } from 'native-base';
 import { TextInput } from 'react-native-gesture-handler';
 import styles from './LocationDetailStyles';
-import { Modal } from 'react-native';
+import { Modal, FlatList } from 'react-native';
+import { PlanitLocation, Address } from '../../../itinerary/models/location';
 
 const events = require("./../../models/MockLocationDatabase.json");
 
 export default function LocationDetails(props) {
+    const locObj: PlanitLocation = props.location;
+
+    const formRow = (header, text, styleValue = styles.h18) =>
+        <View>
+            <Text style={[styles.h14, styles.Text]}>
+                {header}
+            </Text>
+            <Text style={[styleValue, styles.Text]}>
+                {text}
+            </Text>
+        </View>
 
     return (
         <Modal animationType="slide" transparent={false} visible={props.open} presentationStyle="overFullScreen" onRequestClose={() => props.setModal(false)}>
@@ -21,21 +33,40 @@ export default function LocationDetails(props) {
                             </Button>
                         </Left>
                         <Body>
-                            <Title>Sign up</Title>
+                            <Title>Location Details</Title>
                         </Body>
-
-                        <Right />
+                        <Right></Right>
                     </Header>
 
                     {/* Main body content */}
                     <Content style={styles.content} padder>
-                        <Text style={{ color: 'white' }}>
-                            Fill out below to get started. All fields with a (*) are required!
-                </Text>
-                        <Form style={{ width: '90%', flex: 1, justifyContent: 'center', alignSelf: 'center' }}>
-                            <View>
-                            </View>
-                        </Form>
+                        <Container style={styles.containerContent}>
+                            {locObj.Name && formRow("Name: ", locObj.Name, styles.h24)}
+                            {locObj.Name && <Text />}
+                            {locObj.Type && formRow("Type of Activity: ", locObj.Type)}
+                            {locObj.Tags && formRow("Tags: ", locObj.Tags.map((tag, index) => {
+                                if ((index + 1) === locObj.Tags.length) {
+                                    return tag;
+                                } else {
+                                    return tag + ", "
+                                }
+                            }, styles.h16))}
+                            {locObj.Tags && locObj.Type && <Text />}
+                            {locObj.Ratings && formRow("Average Rating: ", locObj.Ratings.AveRatings)}
+                            {locObj.Ratings && <Text />}
+                            {locObj.AvgPrice && formRow("Average Price: ", locObj.AvgPrice)}
+                            {locObj.AvgPrice &&< Text />}
+                            {locObj.StartTime && locObj.EndTime && formRow("Active From: ", locObj.StartTime.toLocaleString() + ":" + locObj.EndTime.toLocaleString())}
+                            {locObj.AvgTimeSpent && formRow("Average Visitation Time: ", locObj.AvgTimeSpent)}
+                            {locObj.StartTime && locObj.EndTime && locObj.AvgTimeSpent && <Text />}
+                            {locObj.Address && formRow("Address: ", locObj.Address.Number + " " + locObj.Address.Street + ", " + locObj.Address.City)}
+                            {locObj.Address && <Text />}
+                            {locObj.Description && formRow("Description: ", locObj.Description)}
+                            {locObj.Description && <Text />}
+                            {locObj.ContactInfo && formRow("Phone: ", locObj.ContactInfo.Phone)}
+                            {locObj.ContactInfo && formRow("Email: ", locObj.ContactInfo.Email)}
+
+                        </Container>
                     </Content>
                 </Container>
             </View>
