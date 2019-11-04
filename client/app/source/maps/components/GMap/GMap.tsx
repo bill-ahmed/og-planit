@@ -4,17 +4,17 @@ import { View, Modal, Alert } from 'react-native';
 
 import styles from './GMapStyles';
 import LocationDetails from '../LocationDetails/LocationDetails';
+
+const initialRegion = {
+    latitude: 37.78825,
+    longitude: -122.4324,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+}
+
 export default function GMap(props) {
-    const [showLocationDetails, setShowLocationDetails] = useState(false);
-
-    const initialRegion = {
-        latitude: 37.78825,
-        longitude: -122.4324,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-    }
-
     const [currentRegion, setCurrentRegion] = useState(initialRegion);
+    const [showLocationDetails, setShowLocationDetails] = useState(false);
 
     /** Update user's current region as they move around the map */
     const updateRegion = (region: Region) => {
