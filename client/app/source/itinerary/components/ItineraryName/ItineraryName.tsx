@@ -1,24 +1,37 @@
-import React, { useState } from 'react';
-import { Container, Header, Left, Right, Body, Title, Content, Text, Button, Icon } from 'native-base';
+import React, { Component, useState } from 'react';
+import {Container, Header, Left, Right, Body, Title, Subtitle, Content, Button, Icon } from 'native-base';
+import {Rating} from 'react-native-ratings';
 
 import styles from './ItineraryNameStyles';
-import { View } from 'react-native';
-import GMap from './GMap';
-import LocationDetails from './LocationDetails';
-import { getLocations } from '../api/locationsAPI';
+import { View, TextInput, Text, ScrollView, Dimensions, Modal, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { Card, ListItem} from 'react-native-elements';
+import Image from 'react-native-scalable-image';
+import { EventEmitter } from '@unimodules/core';
+import { array } from 'prop-types';
+import { database } from 'firebase';
+
+
 export default function ItineraryName(props) {
 
-    return(<Container>
-        <html>
-            <body>
-                <form>
-                    Current itinerary:
-                    <select id="myItinerary">
-                        <option value="INIT_ITINERARY">INIT_ITINERARY</option>
-                        <option value="nAhhGfGAz0qchchkVk1m">nAhhGfGAz0qchchkVk1m</option>
-                    </select>
-                </form>
-            </body>
-        </html>
+    return( <Container>
+        <Header noLeft>
+            <Left>
+                <Button transparent onPress={() => props.navigation.goBack()}>
+                    <Icon name="arrow-back"/>
+                </Button>
+            </Left>
+            <Body>
+                <Title>
+                    <TextInput style={styles.textInput} 
+                        keyboardType="default" 
+                        placeholder="Rename" />
+                </Title>
+                <Subtitle>
+                    Events
+                </Subtitle>
+            </Body>
+            <Right>
+            </Right>
+        </Header>
     </Container>)
 }

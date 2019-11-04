@@ -7,6 +7,7 @@ import { View, Text, ScrollView, Dimensions, Modal, TouchableHighlight, Touchabl
 import { Card, ListItem} from 'react-native-elements';
 import Image from 'react-native-scalable-image';
 import EventDetailsModal from './EventDetailsModal';
+import ItineraryName from '../ItineraryName/ItineraryName';
 import { EventEmitter } from '@unimodules/core';
 import { array } from 'prop-types';
 import { database } from 'firebase';
@@ -25,6 +26,10 @@ export default function CreateViews(props){
     const setModalOpen = (val: boolean, data: any) => {
         setEventDetailsModal(val);
         setDetailsModalData(data);
+    }
+
+    const changeName = (data: any) => {
+        ItineraryName(data);
     }
 
     const itineraryInfo = props.navigation.state.params.data
@@ -46,7 +51,11 @@ export default function CreateViews(props){
                         Events
                     </Subtitle>
                 </Body>
-                <Right/>
+                <Right>
+                    <Button onPress={() => changeName(event)}>
+                        <Icon name="create"/>
+                    </Button>
+                </Right>
             </Header>
             <ScrollView>
                 {json.map(event => {
