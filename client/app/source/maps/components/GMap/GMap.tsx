@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import MapView, { Region, Marker } from 'react-native-maps';
-import { StyleSheet, View, Dimensions } from 'react-native';
-import { Container, Button, Text } from 'native-base';
+import { View, Modal, Alert } from 'react-native';
 
 import styles from './GMapStyles';
-import LocationDetails from './../LocationDetails/LocationDetails';
-import { getLocations } from '../../api/locationsAPI';
-
+import LocationDetails from '../LocationDetails/LocationDetails';
 export default function GMap(props) {
+    const [showLocationDetails, setShowLocationDetails] = useState(false);
 
     const initialRegion = {
         latitude: 37.78825,
@@ -26,10 +24,18 @@ export default function GMap(props) {
     return (
         <View style={styles.container}>
             <MapView showsMyLocationButton onRegionChangeComplete={updateRegion} region={currentRegion} style={styles.mapStyle}>
-                <Marker coordinate={initialRegion} title="Home" description="Starting point of Google Map" onPress={e => props.openLocationDetails()} />
+                <Marker coordinate={initialRegion} title="Home" description="Starting point of Google Map" onPress={e => setShowLocationDetails(!showLocationDetails)} />
 
             </MapView>
-
+            {showLocationDetails &&
+                <Modal animationType="slide"
+                    transparent={false}
+                    visible={showLocationDetails}
+                    onRequestClose={() => {
+                        setShowLocationDetails(false);
+                    }}>
+                    <LocationDetails></LocationDetails>
+                </Modal>}
         </View>
     );
 }
