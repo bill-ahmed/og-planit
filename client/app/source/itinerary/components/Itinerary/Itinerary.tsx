@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon, Subtitle, Card, CardItem, Radio} from 'native-base';
 import styles from './ItineraryStyles';
 import { View , Text, Image, ScrollView} from 'react-native';
@@ -8,10 +9,18 @@ import { getLocations } from '../../api/locationsAPI';
 import { withNavigation, NavigationEvents } from 'react-navigation';
 import newItinerary from './../CreateItinerary/CreateItinerary';
 import { GestureHandlerGestureEvent } from 'react-native-gesture-handler';
+=======
+import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon, Subtitle, Card, CardItem} from 'native-base';
+
+//import styles from './ItineraryStyles';
+import { View , Text, Image, ScrollView} from 'react-native';
+import { getItinerarySigned } from '../../api/itineraryAPI';
+>>>>>>> 66e616f293fb662d0c9bc670e099ba9be7f890b9
 
 //App stack to go from list of itineraries --> specific itinerary
 const itineraries=require("./../../models/MockItineraryList.json");
 
+<<<<<<< HEAD
 const EventStack = createAppContainer(createStackNavigator({
     Itinerary: {
         screen: Itinerary, 
@@ -39,6 +48,13 @@ export default function Itinerary(props) {
         locations = res;
         setlocationsLoaded(true);
         console.log(locations);
+=======
+export function Itinerary(props) {
+    const {navigate} = props.navigation;    // Handle navigations
+
+    getItinerarySigned().then(res => {
+        console.log(res);
+>>>>>>> 66e616f293fb662d0c9bc670e099ba9be7f890b9
     });
 
     const goToItineraryViews = () =>{
@@ -68,7 +84,7 @@ export default function Itinerary(props) {
                 </Body>
 
                 <Right>
-                    <Button transparent onPress={() => {navigate('NewItinerary')}}>
+                    <Button transparent onPress={() => navigate('NewItinerary')}>
                         <Icon name="ios-add"/>
                         <Text> Create New Itinerary</Text>
                     </Button>
@@ -81,7 +97,7 @@ export default function Itinerary(props) {
                         <Text> {element.time} </Text>  */}
                 {itineraries.map(element => {
                 return(<Card>
-                    <CardItem header button onPress={() => console.log(`Clicked the button ${element.name}!`)/* carlos replace with yours*/}>
+                    <CardItem header button onPress={() => navigate("ViewItineraryEvents", {data: element})}>
                     <Text> {element.name} </Text>
                     </CardItem>
                     <CardItem button onPress={() => console.log(`Clicked the description of ${element.name}!`)/* carlos replace with yours*/}>
@@ -97,10 +113,5 @@ export default function Itinerary(props) {
                  })}
             </ScrollView>
         </Container>
-    );
-}
-export function ItineraryContainer(props){
-    return (
-        <EventStack/>
     );
 }
