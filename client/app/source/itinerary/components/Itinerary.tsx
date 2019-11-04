@@ -4,6 +4,7 @@ import { Container, Header, Left, Right, Body, Title, Content, Text, Button, Ico
 import styles from './ItineraryStyles';
 import { View } from 'react-native';
 import GMap from './GMap';
+import ItineraryName from './ItineraryName';
 import LocationDetails from './LocationDetails';
 import { getLocations } from '../api/locationsAPI';
 export default function Itinerary(props) {
@@ -36,6 +37,7 @@ export default function Itinerary(props) {
 
             <Content padder>
                 {<GMap openLocationDetails={e => setLocationDetailsOpen(true)} />}
+                {<ItineraryName openLocationDetails={e => setLocationDetailsOpen(true)} />}
             </Content>
             {locationsLoaded && locationDetailsOpen && <LocationDetails list={locations} open={locationDetailsOpen} closeModal={e => setLocationDetailsOpen(false)} />}
         </Container>
