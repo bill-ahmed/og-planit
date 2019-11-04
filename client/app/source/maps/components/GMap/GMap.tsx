@@ -27,15 +27,7 @@ export default function GMap(props) {
                 <Marker coordinate={initialRegion} title="Home" description="Starting point of Google Map" onPress={e => setShowLocationDetails(!showLocationDetails)} />
 
             </MapView>
-            {showLocationDetails &&
-                <Modal animationType="slide"
-                    transparent={false}
-                    visible={showLocationDetails}
-                    onRequestClose={() => {
-                        setShowLocationDetails(false);
-                    }}>
-                    <LocationDetails></LocationDetails>
-                </Modal>}
+            {showLocationDetails && <LocationDetails open={showLocationDetails} setModal={setShowLocationDetails}/>}
         </View>
     );
 }
