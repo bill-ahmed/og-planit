@@ -40,8 +40,11 @@ export interface Itinerary {
     location: string,
     price: number,
 <<<<<<< HEAD
+<<<<<<< HEAD
     rating: [number],
     review: [string],
+=======
+>>>>>>> 04f52cd5132d3dbbec2cd95fe94e0460aa7d490a
 =======
 >>>>>>> 04f52cd5132d3dbbec2cd95fe94e0460aa7d490a
     time: Date,
