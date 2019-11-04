@@ -28,8 +28,8 @@ export default function CreateViews(props){
         setDetailsModalData(data);
     }
 
-    const changeName = (data: any) => {
-        ItineraryName(data);
+    const changeName = (val: boolean) => {
+        ItineraryName(val);
     }
 
     const itineraryInfo = props.navigation.state.params.data
@@ -52,7 +52,7 @@ export default function CreateViews(props){
                     </Subtitle>
                 </Body>
                 <Right>
-                    <Button onPress={() => changeName(event)}>
+                    <Button onPress={() => changeName(true)}>
                         <Icon name="create"/>
                     </Button>
                 </Right>
