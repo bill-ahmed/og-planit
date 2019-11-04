@@ -3,6 +3,9 @@ import { Container, Header, Left, Right, Body, Title, Content, Text, Button, Ico
 
 import styles from './ItineraryNameStyles';
 import { View } from 'react-native';
+import GMap from './GMap';
+import LocationDetails from './LocationDetails';
+import { getLocations } from '../api/locationsAPI';
 export default function ItineraryName(props) {
 
     return(<Container>
