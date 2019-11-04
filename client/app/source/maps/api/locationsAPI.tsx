@@ -1,4 +1,4 @@
-import { PlanitLocation } from "../models/location";
+import { PlanitLocation } from "../../itinerary/models/location";
 const firebase = require("firebase");
 
 // Required for side-effects
