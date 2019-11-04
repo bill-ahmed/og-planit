@@ -8,39 +8,20 @@ import Login from '../app/source/login/component/Login';
 
 /* Main app pages */
 import Home from '../app/source/home/components/Home';
-import Itinerary from '../app/source/itinerary/components/Itinerary/Itinerary';
+import ItineraryContainer from '../app/source/itinerary/components/Itinerary/Itinerary';
 import Ratings from '../app/source/itinerary/components/ratings/CreateRating';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import CreateViews from '../app/source/itinerary/components/card_list_views_events/CreateViews';
 
 import { Text, Icon } from 'native-base';
 import NewItinerary from '../app/source/itinerary/components/CreateItinerary/CreateItinerary';
 
-// Itinerary Stack
-export const ItineraryStack = createStackNavigator({
-  Itinerary: {
-    screen: Itinerary,
-    navigationOptions: {
-      header: null,   // Remove all headers
-    }
-  },
-  NewItinerary: {
-    screen: NewItinerary,
-    navigationOptions: {
-      header: null,   // Remove all headers
-    }
-  }
-},
-{
-  initialRouteName: 'Itinerary'
-}
-)
-
 // App stack to go from Auth --> Home and other tabs in bottom navigation
 export const AppStack = createBottomTabNavigator(
   {
-    Home: Home,
-    Itinerary: ItineraryStack,
-    Ratings: Ratings
+      Home: Home,
+      Itinerary: ItineraryContainer,
+      Ratings: Ratings,
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -59,14 +40,15 @@ export const AppStack = createBottomTabNavigator(
 );
 
 // Auth stack handle authentication flow
-export const AuthStack = createStackNavigator({
-  SignIn: {
-    screen: Login,
-    navigationOptions: {
-      header: null,   // Remove all headers
-    }
-  }
+export const AuthStack = createStackNavigator({ 
+    SignIn: {
+      screen: Login,
+      navigationOptions: {
+        header: null,   // Remove all headers
+      }
+    } ,
 });
+
 
 /**Return props to render for each section of bottom navigation */
 function getTabBarIcons(navigation, focused: boolean, tintColor): JSX.Element {

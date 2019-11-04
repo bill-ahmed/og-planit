@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon, Subtitle, Card, CardItem} from 'native-base';
 
-import styles from './ItineraryStyles';
+//import styles from './ItineraryStyles';
 import { View , Text, Image, ScrollView} from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import { getLocations } from '../../api/locationsAPI';
 import { withNavigation, NavigationEvents } from 'react-navigation';
 import newItinerary from './../CreateItinerary/CreateItinerary';
+import CreateViews from '../card_list_views_events/CreateViews';
 
 
 
@@ -25,13 +26,20 @@ const EventStack = createAppContainer(createStackNavigator({
         navigationOptions: {
             header: null,}
         
+    },
+    ViewItineraryEvents: {
+        screen: CreateViews,
+        navigationOptions: {
+            header: null,
+        }
     }
 
 }, 
 {
     initialRouteName: "Itinerary",
 }));
-export default function Itinerary(props) {
+
+export function Itinerary(props) {
     
     const [locationDetailsOpen, setLocationDetailsOpen] = useState(false);
     const [locationsLoaded, setlocationsLoaded] = useState(false);
@@ -63,7 +71,7 @@ export default function Itinerary(props) {
                 </Body>
 
                 <Right>
-                    <Button transparent onPress={() => {navigate('NewItinerary')}}>
+                    <Button transparent onPress={() => navigate('NewItinerary')}>
                         <Icon name="ios-add"/>
                         <Text> Create New Itinerary</Text>
                     </Button>
@@ -78,7 +86,7 @@ export default function Itinerary(props) {
                         <Text> {element.time} </Text>  */}
                 {itineraries.map(element => {
                 return(<Card>
-                    <CardItem header button onPress={() => console.log(`Clicked the button ${element.name}!`)/* carlos replace with yours*/}>
+                    <CardItem header button onPress={() => navigate("ViewItineraryEvents", {data: element})}>
                     <Text> {element.name} </Text>
                     </CardItem>
                     <CardItem button onPress={() => console.log(`Clicked the description of ${element.name}!`)/* carlos replace with yours*/}>
@@ -94,7 +102,7 @@ export default function Itinerary(props) {
         </Container>
     );
 }
-export function ItineraryContainer(props){
+export default function ItineraryContainer(props){
     return (
         <EventStack/>
     );
