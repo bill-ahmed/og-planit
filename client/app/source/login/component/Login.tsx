@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import {useDispatch} from 'react-redux';
-import { setAccessToken } from '../redux/actions';
+import { setAccessToken, setUserID } from '../redux/actions';
 import firebase from 'firebase';
+import ResetPassword from './ResetPassword';
 import SignUp from './SignUp';
 import { Container, Text, Button, Content, Form, Header, Left, Body, Title, Subtitle, Spinner } from 'native-base';
 import { View, TextInput, Alert, Image, ScrollView } from 'react-native';
@@ -11,7 +12,8 @@ export default function Login(props){
     const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [signUpModalOpen, setSignUpModalOpen] = useState(false);
+    const [signUpModalOpen, setSignUpModalOpen] = useState(false);  // Keep track of Sign-up modal
+    const [resetPasswordModalOpen, setResetPasswordModalOpen] = useState(false);    // Keep track of Reset Password dialog
     const dispatch = useDispatch(); // Connection to redux store
 
     /**Sign in a user with given email and password combo. */
@@ -21,8 +23,10 @@ export default function Login(props){
         // Try logging in via Firebase
         firebase.auth().signInWithEmailAndPassword(email, password)
         .then(res => {
-
             setLoading(false);
+
+            //save userid
+            dispatch(setUserID(res.user.uid));
 
             // Grab the access token before continuing
             res.user.getIdToken()
@@ -61,6 +65,10 @@ export default function Login(props){
         setSignUpModalOpen(val);
     }
 
+    const toggleResetPasswordModalOpen = (val: boolean) => {
+        setResetPasswordModalOpen(val);
+    }
+
     return(
 
         <View style={styles.container}>
@@ -89,7 +97,7 @@ export default function Login(props){
                         placeholder="Password" />
 
 
-                        <Text onPress={() => Alert.alert('forgot password')}  style={styles.loginOuttro}>Forgot Password?</Text>
+                        <Text onPress={() => toggleResetPasswordModalOpen(true)}  style={styles.loginOuttro}>Forgot Password?</Text>
 
 
 
@@ -98,12 +106,17 @@ export default function Login(props){
                             {loading && <Spinner style={{marginTop: '5%'}} color="blue"/>}
                         </Button>
 
+                        <Button light full style={styles.button} onPress={() => props.navigation.navigate('App')}> 
+                            <Text style={{color:'#1977B5', fontSize: 20, marginTop: '14%'}}>Skip Login</Text>
+                        </Button>
+
                         <Text style={styles.signUp}>Need an account? <Text onPress={() => setModalOpen(true)} style={{color: 'white', textDecorationLine: 'underline'}}>Sign up</Text></Text>
 
                     </Form>
                 </Content>
             </Container>
             {signUpModalOpen && <SignUp open={signUpModalOpen} setModal={setModalOpen}/>}
+            {resetPasswordModalOpen && <ResetPassword open={resetPasswordModalOpen} closeDialog={() => toggleResetPasswordModalOpen(false)}/>}
         </View>
     );
 }
