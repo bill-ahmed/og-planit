@@ -15,6 +15,8 @@ import { database } from 'firebase';
 export default function CreateViews(props){
     // Control if modal is open or not
     const [eventDetailsModalOpen, setEventDetailsModal] = useState(false);
+    const [nameChangeModal, setNameChangeModal] = useState(false);
+    const [itinerayData, setItineraryData] = useState(null);
 
     // Control what data is sent to the modal
     const [detailsdModalData, setDetailsModalData] = useState(null);
@@ -28,8 +30,9 @@ export default function CreateViews(props){
         setDetailsModalData(data);
     }
 
-    const changeName = (val: boolean) => {
-        ItineraryName(val);
+    const changeName = (data: any) => {
+        setNameChangeModal(true);
+        setItineraryData(data);
     }
 
     const itineraryInfo = props.navigation.state.params.data
@@ -52,7 +55,7 @@ export default function CreateViews(props){
                     </Subtitle>
                 </Body>
                 <Right>
-                    <Button onPress={() => changeName(true)}>
+                    <Button onPress={() => changeName(itineraryInfo.name)}>
                         <Icon name="create"/>
                     </Button>
                 </Right>
@@ -78,6 +81,7 @@ export default function CreateViews(props){
                     })}
             </ScrollView>
             {eventDetailsModalOpen && <EventDetailsModal data={detailsdModalData} closeModal={() => setModalOpen(false, null)}/>}
+            {nameChangeModal && <ItineraryName data={itinerayData} close={() => setNameChangeModal(false)}/>}
         </Container>
     );
 }
