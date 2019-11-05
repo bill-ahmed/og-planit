@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon, Subtitle, Form, Item, Label, Input, ListItem, CheckBox, List} from 'native-base';
 import PropTypes, { checkPropTypes } from 'prop-types';
 import styles from './CreateItineraryStyles';
-import { View , Text, Image, ScrollView, GestureResponderEvent} from 'react-native';
+import { View , Text, Image, ScrollView, GestureResponderEvent, TextInput} from 'react-native';
 
 import symbolicateStackTrace from 'react-native/Libraries/Core/Devtools/symbolicateStackTrace';
 import { clearUpdateCacheExperimentalAsync } from 'expo/build/Updates/Updates';
+
 
 export default function NewItinerary(props){
   
@@ -34,19 +35,25 @@ export default function NewItinerary(props){
   const onSetHotels = (value: GestureResponderEvent) =>{
     setHotels(!Hotels)
   }
+const [name, setName] = useState("");
+const handleSetName=(name)=>{
+  setName(name)
+}
 
-    const listOfCheckBoxes = {"Museum":Museum, "Aquarium":Aquarium, "Festival":Festival, "Galleries":Galleries, "Beach":Beach, "Hotels":Hotels}
+const [date, setDate] = useState("");
+const handleSetDate=(date)=>{
+  setDate(date)
+}
+    const listOfData = {"Name": name, "Date":date, "Museum":Museum, "Aquarium":Aquarium, "Festival":Festival, "Galleries":Galleries, "Beach":Beach, "Hotels":Hotels}
     return(
       <Container>
         <Content>
         <Form>
             <Item fixedLabel>
-              <Label>Name</Label>
-              <Input/>
+              <TextInput keyboardType="default" placeholder="Name" onChange={text => handleSetName(text)}/>
             </Item>
             <Item fixedLabel>
-              <Label>Date Planned</Label>
-              <Input />
+              <TextInput keyboardType="default" placeholder="Date Planned" onChange={text => handleSetName(text)}/>
             </Item>
           </Form>
           <Right>
@@ -111,6 +118,7 @@ export default function NewItinerary(props){
 
           <Button style={styles.button}>
               <Text> Submit </Text>
+              client/app/itinerary/api/itineraryAPi/constructItinerary({JSON.parse('{"Name": name, "Date":date, "Museum":Museum, "Aquarium":Aquarium, "Festival":Festival, "Galleries":Galleries, "Beach":Beach, "Hotels":Hotels}')})
 
           </Button>
           </Content>
