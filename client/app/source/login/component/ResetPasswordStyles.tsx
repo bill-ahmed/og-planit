@@ -10,10 +10,11 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row',
+        backgroundColor: 'rgba(0,0,0,0.6)'
     },
     content: {
         backgroundColor: "white",
-        width: 300,
+        width: 500,
         padding: 20,
         shadowOpacity: 1.0,
         shadowRadius: 5,
@@ -24,7 +25,7 @@ export default StyleSheet.create({
         },
     },
     button: {
-        marginTop: 25,
+        margin: 10,
         textAlign: "center"
     },
     textInput: {
