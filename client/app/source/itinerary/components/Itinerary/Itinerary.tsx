@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon, Subtitle, Card, CardItem} from 'native-base';
+import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon, Subtitle, Card, CardItem, Switch} from 'native-base';
 
 //import styles from './ItineraryStyles';
 import { View , Text, Image, ScrollView} from 'react-native';
@@ -9,8 +9,8 @@ import { getLocations } from '../../api/locationsAPI';
 import { withNavigation, NavigationEvents } from 'react-navigation';
 import newItinerary from './../CreateItinerary/CreateItinerary';
 import CreateViews from '../card_list_views_events/CreateViews';
-
-
+import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import styles  from './ItineraryStyles'
 
 //App stack to go from list of itineraries --> specific itinerary
 const itineraries=require("./../../models/MockItineraryList.json");
@@ -44,7 +44,11 @@ export function Itinerary(props) {
     const [locationDetailsOpen, setLocationDetailsOpen] = useState(false);
     const [locationsLoaded, setlocationsLoaded] = useState(false);
     const {navigate} = props.navigation;    // Handle navigations
+    var following = "";
 
+    function follow(name){
+        following = name;
+    }
     let locations = null;
     getLocations().then(res => {
         locations = res;
@@ -71,35 +75,52 @@ export function Itinerary(props) {
                     </Title>
                 </Body>
 
-                <Right>
+                {/* <Right>
                     <Button transparent onPress={() => navigate('NewItinerary')}>
                         <Icon name="ios-add"/>
                         <Text> Create New Itinerary</Text>
                     </Button>
-                </Right>
-              
+                </Right> */}
+
+
             </Header>
-  
+            
+            {/* <Button style={styles.addbtn} onPress={() => navigate('NewItinerary')}> */}
+
+
+
             <ScrollView>
             {/* <Title> <Text>{element.name}</Text> </Title>
                         <Subtitle> <Text>{element.events.length}</Text></Subtitle>
                         <Subtitle> <Text>{element.last_edit_time}</Text> </Subtitle>
                         <Text> {element.time} </Text>  */}
                 {itineraries.map(element => {
-                return(<Card>
+                return(<Card style={styles.card}>
                     <CardItem header button onPress={() => navigate("ViewItineraryEvents", {data: element})}>
-                    <Text> {element.name} </Text>
+                    <Text style={{fontSize: 20}}> {element.name} </Text>
                     </CardItem>
                     <CardItem button onPress={() => console.log(`Clicked the description of ${element.name}!`)/* carlos replace with yours*/}>
                         <Body>
+                        <Image source={require('../../../login/assets/earth.png')} style={{width: "90%",height: 200,  alignSelf: "center"}}/>
                         <Text>Number of Events:  {element.events.length}</Text>
                         <Text>Last Edited:  {element.last_edit_time}</Text>
                         </Body>
+
                     </CardItem>
+                    <CardItem footer style={{alignSelf: "flex-end"}}>
+                            <Button onPress={() => alert("following")} style={styles.follow}>
+                            {console.log(following)}
+                            
+                            {element.name == following && <Text style={{color: "white"}}>Following!</Text>}
+                            {element.name != following && <Text style={{color: "white"}}>Click to follow</Text>}
+                            </Button>
+                        </CardItem>
                 </Card>);
                  })}
             </ScrollView>
-
+            <Button style={styles.addbtn} onPress={() => navigate('NewItinerary')}>
+          <Text style={styles.plus} >+</Text>
+        </Button>
         </Container>
     );
 }
