@@ -17,10 +17,8 @@ export default function CreateViews(props){
     const [eventDetailsModalOpen, setEventDetailsModal] = useState(false);
     const [nameChangeModal, setNameChangeModal] = useState(false);
     const [itinerayData, setItineraryData] = useState(null);
-
     // Control what data is sent to the modal
     const [detailsdModalData, setDetailsModalData] = useState(null);
-
     /**Open or close the event details modal modal
      * @param val If the modal is open or not
      * @param data The data to send to the pop-up modal

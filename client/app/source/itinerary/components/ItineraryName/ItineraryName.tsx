@@ -22,7 +22,7 @@ export default function ItineraryName(props) {
     props.close();
   }
 
-  //console.log(`=================================== ${name}`)
+  
   return (
     <Modal animationType="fade" transparent={true} visible={props.open} presentationStyle="fullScreen" onRequestClose={() => props.closeDialog()}>
             <View style={styles.container}>
@@ -37,7 +37,7 @@ export default function ItineraryName(props) {
                         value={name} 
                         onChange={text => setName(text.nativeEvent.text)} 
                         placeholder= {currentName} />
-                    <Button light full style={styles.button} onPress={() => changeName()}>
+                    <Button full style={styles.button} onPress={() => changeName()}>
                       <Text>
                         Change
                       </Text>
@@ -47,7 +47,6 @@ export default function ItineraryName(props) {
                         Cancel
                       </Text>
                     </Button>
-                    
                 </View>
             </View>
         </Modal>
