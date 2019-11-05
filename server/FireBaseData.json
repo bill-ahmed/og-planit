@@ -1,0 +1,965 @@
+{
+    "events": [
+        {
+            "Name": "Ripley's Aquarium of Canada",
+            "Address": {
+                "address1": "288 Bremner Blvd",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M5V 3L9",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "288 Bremner Blvd",
+                    "Toronto, ON M5V 3L9",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 647-351-3474",
+            "Location": {
+                "latitude": 43.64238,
+                "longitude": -79.38604
+            },
+            "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/utQ8KjZa2aLaM9iuKxySDA/o.jpg",
+            "Url": "https://www.yelp.com/biz/ripleys-aquarium-of-canada-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 4,
+            "NumRatings": 582,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 286,
+            "AvgTimeSpent": 254,
+            "Type": "Aquariums",
+            "StartTime": "2020-02-15T00:00:00-05:00",
+            "EndTime": "2019-12-19T00:00:00-05:00"
+        },
+        {
+            "Name": "Art Gallery of Ontario AGO",
+            "Address": {
+                "address1": "317 Dundas Street W",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M5T 1G4",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "317 Dundas Street W",
+                    "Toronto, ON M5T 1G4",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-979-6688",
+            "Location": {
+                "latitude": 43.6536766,
+                "longitude": -79.3923394
+            },
+            "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/07qnaruDMpqO02Q1q0hCEw/o.jpg",
+            "Url": "https://www.yelp.com/biz/art-gallery-of-ontario-ago-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 4.5,
+            "NumRatings": 225,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 303,
+            "AvgTimeSpent": 73,
+            "Type": "Art Museums",
+            "StartTime": "2020-03-18T00:00:00-04:00",
+            "EndTime": "2020-03-09T00:00:00-04:00"
+        },
+        {
+            "Name": "Royal Ontario Museum",
+            "Address": {
+                "address1": "100 Queen's Park",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M5S 2C6",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "100 Queen's Park",
+                    "Toronto, ON M5S 2C6",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-586-8000",
+            "Location": {
+                "latitude": 43.6682441250201,
+                "longitude": -79.3947601318359
+            },
+            "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/0t1VXlaMq23qBNuhM9GTlw/o.jpg",
+            "Url": "https://www.yelp.com/biz/royal-ontario-museum-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 4,
+            "NumRatings": 308,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 176,
+            "AvgTimeSpent": 246,
+            "Type": "Museums",
+            "StartTime": "2019-12-23T00:00:00-05:00",
+            "EndTime": "2020-02-14T00:00:00-05:00"
+        },
+        {
+            "Name": "Hockey Hall of Fame",
+            "Address": {
+                "address1": "Brookfield Place",
+                "address2": "30 Yonge Street",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M5E 1X8",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "Brookfield Place",
+                    "30 Yonge Street",
+                    "Toronto, ON M5E 1X8",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-360-7765",
+            "Location": {
+                "latitude": 43.6469506219313,
+                "longitude": -79.3772372096349
+            },
+            "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/Eam2hKBPXhNZXRjEBTtWuA/o.jpg",
+            "Url": "https://www.yelp.com/biz/hockey-hall-of-fame-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 4.5,
+            "NumRatings": 172,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 480,
+            "AvgTimeSpent": 66,
+            "Type": "Museums",
+            "StartTime": "2020-04-01T00:00:00-04:00",
+            "EndTime": "2020-04-13T00:00:00-04:00"
+        },
+        {
+            "Name": "Casa Loma",
+            "Address": {
+                "address1": "1 Austin Terrace",
+                "address2": "",
+                "address3": null,
+                "city": "Toronto",
+                "zip_code": "M5R 1X8",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "1 Austin Terrace",
+                    "Toronto, ON M5R 1X8",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-923-1171",
+            "Location": {
+                "latitude": 43.678142,
+                "longitude": -79.409433
+            },
+            "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/na2EwGni3YUCF6nGeEp2SQ/o.jpg",
+            "Url": "https://www.yelp.com/biz/casa-loma-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 3.5,
+            "NumRatings": 299,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 417,
+            "AvgTimeSpent": 206,
+            "Type": "Museums",
+            "StartTime": "2020-01-19T00:00:00-05:00",
+            "EndTime": "2020-03-07T00:00:00-05:00"
+        },
+        {
+            "Name": "Delta Hotels by Marriott Toronto",
+            "Address": {
+                "address1": "75 Lower Simcoe Street",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M5J 3A6",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "75 Lower Simcoe Street",
+                    "Toronto, ON M5J 3A6",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-849-1200",
+            "Location": {
+                "latitude": 43.643068947579,
+                "longitude": -79.3838649988174
+            },
+            "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/LBZokcAIHrI2e1ZOyVE4mw/o.jpg",
+            "Url": "https://www.yelp.com/biz/delta-hotels-by-marriott-toronto-toronto-2?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 4.5,
+            "NumRatings": 119,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 380,
+            "AvgTimeSpent": 69,
+            "Type": "Hotels",
+            "StartTime": "2020-05-04T00:00:00-04:00",
+            "EndTime": "2020-02-16T00:00:00-05:00"
+        },
+        {
+            "Name": "Toronto Island",
+            "Address": {
+                "address1": "Toronto Island",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M5J 1A7",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "Toronto Island",
+                    "Toronto, ON M5J 1A7",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-392-8186",
+            "Location": {
+                "latitude": 43.6196735315115,
+                "longitude": -79.376220703125
+            },
+            "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/0ySyF5p12muTmFxYxc7w6Q/o.jpg",
+            "Url": "https://www.yelp.com/biz/toronto-island-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 4.5,
+            "NumRatings": 97,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 396,
+            "AvgTimeSpent": 240,
+            "Type": "Parks",
+            "StartTime": "2019-11-17T00:00:00-05:00",
+            "EndTime": "2020-04-21T00:00:00-04:00"
+        },
+        {
+            "Name": "The Drake Hotel",
+            "Address": {
+                "address1": "1150 Queen Street W",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M6J 1J3",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "1150 Queen Street W",
+                    "Toronto, ON M6J 1J3",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-531-5042",
+            "Location": {
+                "latitude": 43.64328,
+                "longitude": -79.42459
+            },
+            "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/X4Xc_GRICZNv57ztgVmKCQ/o.jpg",
+            "Url": "https://www.yelp.com/biz/the-drake-hotel-toronto-2?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 3.5,
+            "NumRatings": 372,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 307,
+            "AvgTimeSpent": 101,
+            "Type": "Hotels",
+            "StartTime": "2020-02-25T00:00:00-05:00",
+            "EndTime": "2020-01-16T00:00:00-05:00"
+        },
+        {
+            "Name": "Shangri-La Hotel",
+            "Address": {
+                "address1": "188 University Avenue",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M5H 0A3",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "188 University Avenue",
+                    "Toronto, ON M5H 0A3",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 647-788-8888",
+            "Location": {
+                "latitude": 43.6492855,
+                "longitude": -79.3858557
+            },
+            "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/xYkgM7CPuokWzenFfuJ3jA/o.jpg",
+            "Url": "https://www.yelp.com/biz/shangri-la-hotel-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 4,
+            "NumRatings": 143,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 213,
+            "AvgTimeSpent": 163,
+            "Type": "Hotels",
+            "StartTime": "2020-01-29T00:00:00-05:00",
+            "EndTime": "2020-03-03T00:00:00-05:00"
+        },
+        {
+            "Name": "The Ritz-Carlton Toronto",
+            "Address": {
+                "address1": "181 Wellington Street W",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M5V 3G7",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "181 Wellington Street W",
+                    "Toronto, ON M5V 3G7",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-585-2500",
+            "Location": {
+                "latitude": 43.6453482728907,
+                "longitude": -79.3869441747665
+            },
+            "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/fuw2q1j7NdFvmlixYNGujA/o.jpg",
+            "Url": "https://www.yelp.com/biz/the-ritz-carlton-toronto-toronto-2?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 4.5,
+            "NumRatings": 105,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 350,
+            "AvgTimeSpent": 176,
+            "Type": "Hotels",
+            "StartTime": "2020-02-10T00:00:00-05:00",
+            "EndTime": "2020-04-06T00:00:00-04:00"
+        },
+        {
+            "Name": "Tilt Arcade Bar",
+            "Address": {
+                "address1": "824 Dundas Street West",
+                "address2": null,
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M6J 1V3",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "824 Dundas Street West",
+                    "Toronto, ON M6J 1V3",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-551-8458",
+            "Location": {
+                "latitude": 43.65182,
+                "longitude": -79.40925
+            },
+            "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/f9VpdFMKswM_rDQsNKK7Uw/o.jpg",
+            "Url": "https://www.yelp.com/biz/tilt-arcade-bar-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 4.5,
+            "NumRatings": 74,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 244,
+            "AvgTimeSpent": 184,
+            "Type": "Arcades",
+            "StartTime": "2019-12-01T00:00:00-05:00",
+            "EndTime": "2020-03-17T00:00:00-04:00"
+        },
+        {
+            "Name": "The Grand Hotel & Suites",
+            "Address": {
+                "address1": "225 Jarvis St",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M5B 2C1",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "225 Jarvis St",
+                    "Toronto, ON M5B 2C1",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-863-9000",
+            "Location": {
+                "latitude": 43.65646,
+                "longitude": -79.37376
+            },
+            "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/ZkJnIBi2QTe7Qy97UHNS_w/o.jpg",
+            "Url": "https://www.yelp.com/biz/the-grand-hotel-and-suites-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 4,
+            "NumRatings": 89,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 43,
+            "AvgTimeSpent": 276,
+            "Type": "Hotels",
+            "StartTime": "2020-03-28T00:00:00-04:00",
+            "EndTime": "2020-04-18T00:00:00-04:00"
+        },
+        {
+            "Name": "Fairmont Royal York",
+            "Address": {
+                "address1": "100 Front Street W",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M5J 1E3",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "100 Front Street W",
+                    "Toronto, ON M5J 1E3",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-368-2511",
+            "Location": {
+                "latitude": 43.6456941328547,
+                "longitude": -79.3818844799212
+            },
+            "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/vBSLtWOuKDsKXN2iD8vmzQ/o.jpg",
+            "Url": "https://www.yelp.com/biz/fairmont-royal-york-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 3.5,
+            "NumRatings": 234,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 340,
+            "AvgTimeSpent": 285,
+            "Type": "Hotels",
+            "StartTime": "2020-04-01T00:00:00-04:00",
+            "EndTime": "2020-04-16T00:00:00-04:00"
+        },
+        {
+            "Name": "Four Seasons Toronto",
+            "Address": {
+                "address1": "60 Yorkville Avenue",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M4W 0A4",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "60 Yorkville Avenue",
+                    "Toronto, ON M4W 0A4",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-964-0411",
+            "Location": {
+                "latitude": 43.6718235014363,
+                "longitude": -79.3897868908398
+            },
+            "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/U8nPN4DZWMFGLUNgJjO02g/o.jpg",
+            "Url": "https://www.yelp.com/biz/four-seasons-toronto-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 4.5,
+            "NumRatings": 63,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 79,
+            "AvgTimeSpent": 203,
+            "Type": "Hotels",
+            "StartTime": "2020-02-16T00:00:00-05:00",
+            "EndTime": "2019-11-16T00:00:00-05:00"
+        },
+        {
+            "Name": "The Omni King Edward Hotel",
+            "Address": {
+                "address1": "37 King Street E",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M5C 1E9",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "37 King Street E",
+                    "Toronto, ON M5C 1E9",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-863-9700",
+            "Location": {
+                "latitude": 43.64926,
+                "longitude": -79.3759199
+            },
+            "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/pMT5UIZJbIbv35c5nwo2gw/o.jpg",
+            "Url": "https://www.yelp.com/biz/the-omni-king-edward-hotel-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 4,
+            "NumRatings": 114,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 293,
+            "AvgTimeSpent": 215,
+            "Type": "Hotels",
+            "StartTime": "2019-12-07T00:00:00-05:00",
+            "EndTime": "2020-02-09T00:00:00-05:00"
+        },
+        {
+            "Name": "Gladstone Hotel",
+            "Address": {
+                "address1": "1214 Queen Street W",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M6J 1J6",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "1214 Queen Street W",
+                    "Toronto, ON M6J 1J6",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-531-4635",
+            "Location": {
+                "latitude": 43.6426812337086,
+                "longitude": -79.4268306344748
+            },
+            "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/wnUdCUifGIAX5fpO-HD2oA/o.jpg",
+            "Url": "https://www.yelp.com/biz/gladstone-hotel-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 3.5,
+            "NumRatings": 193,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 445,
+            "AvgTimeSpent": 162,
+            "Type": "Hotels",
+            "StartTime": "2020-03-30T00:00:00-04:00",
+            "EndTime": "2020-03-19T00:00:00-04:00"
+        },
+        {
+            "Name": "Le Germain Hotel",
+            "Address": {
+                "address1": "30 Mercer Street",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M5V 1H3",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "30 Mercer Street",
+                    "Toronto, ON M5V 1H3",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-345-9500",
+            "Location": {
+                "latitude": 43.645823,
+                "longitude": -79.39088
+            },
+            "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/wtIKTeN97fmr3JeOOBwetA/o.jpg",
+            "Url": "https://www.yelp.com/biz/le-germain-hotel-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 4.5,
+            "NumRatings": 51,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 463,
+            "AvgTimeSpent": 178,
+            "Type": "Hotels",
+            "StartTime": "2020-04-09T00:00:00-04:00",
+            "EndTime": "2019-11-29T00:00:00-05:00"
+        },
+        {
+            "Name": "The Bata Shoe Museum",
+            "Address": {
+                "address1": "327 Bloor Street W",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M5S 1W7",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "327 Bloor Street W",
+                    "Toronto, ON M5S 1W7",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-979-7799",
+            "Location": {
+                "latitude": 43.66723,
+                "longitude": -79.40011
+            },
+            "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/siG3I1lX1Kw4jbsQuWJ54A/o.jpg",
+            "Url": "https://www.yelp.com/biz/the-bata-shoe-museum-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 4,
+            "NumRatings": 92,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 237,
+            "AvgTimeSpent": 266,
+            "Type": "Museums",
+            "StartTime": "2020-04-17T00:00:00-04:00",
+            "EndTime": "2020-04-30T00:00:00-04:00"
+        },
+        {
+            "Name": "Le Germain Hotel Toronto Maple Leaf Square",
+            "Address": {
+                "address1": "75 Bremner Boulevard",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M5J 0A1",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "75 Bremner Boulevard",
+                    "Toronto, ON M5J 0A1",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-649-7575",
+            "Location": {
+                "latitude": 43.6429151,
+                "longitude": -79.3814237
+            },
+            "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/EApSjYU8DFMNKWs77uElBQ/o.jpg",
+            "Url": "https://www.yelp.com/biz/le-germain-hotel-toronto-maple-leaf-square-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 4.5,
+            "NumRatings": 35,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 439,
+            "AvgTimeSpent": 92,
+            "Type": "Hotels",
+            "StartTime": "2020-04-20T00:00:00-04:00",
+            "EndTime": "2020-04-12T00:00:00-04:00"
+        },
+        {
+            "Name": "Thompson Toronto",
+            "Address": {
+                "address1": "550 Wellington Street W",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M5V 2V4",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "550 Wellington Street W",
+                    "Toronto, ON M5V 2V4",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-640-7778",
+            "Location": {
+                "latitude": 43.64305,
+                "longitude": -79.40111
+            },
+            "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/HmJdzmYkv2G7HX-_-G6R4g/o.jpg",
+            "Url": "https://www.yelp.com/biz/thompson-toronto-toronto-2?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 3.5,
+            "NumRatings": 136,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 401,
+            "AvgTimeSpent": 295,
+            "Type": "Hotels",
+            "StartTime": "2019-12-12T00:00:00-05:00",
+            "EndTime": "2020-02-21T00:00:00-05:00"
+        },
+        {
+            "Name": "The Hazelton Hotel",
+            "Address": {
+                "address1": "118 Yorkville Avenue",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M5R 1C2",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "118 Yorkville Avenue",
+                    "Toronto, ON M5R 1C2",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-963-6300",
+            "Location": {
+                "latitude": 43.6708347,
+                "longitude": -79.3937136
+            },
+            "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/4K8RRi-gZCwAqungBGd6_A/o.jpg",
+            "Url": "https://www.yelp.com/biz/the-hazelton-hotel-toronto-2?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 4.5,
+            "NumRatings": 31,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 369,
+            "AvgTimeSpent": 270,
+            "Type": "Hotels",
+            "StartTime": "2020-04-29T00:00:00-04:00",
+            "EndTime": "2020-01-14T00:00:00-05:00"
+        },
+        {
+            "Name": "The Rec Room",
+            "Address": {
+                "address1": "255 Bremner Boulevard",
+                "address2": "",
+                "address3": null,
+                "city": "Toronto",
+                "zip_code": "M5V 3M9",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "255 Bremner Boulevard",
+                    "Toronto, ON M5V 3M9",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-815-0086",
+            "Location": {
+                "latitude": 43.641115,
+                "longitude": -79.386616
+            },
+            "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/ZiAnja3X991AorqVbds3nA/o.jpg",
+            "Url": "https://www.yelp.com/biz/the-rec-room-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 3,
+            "NumRatings": 268,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 124,
+            "AvgTimeSpent": 136,
+            "Type": "Arcades",
+            "StartTime": "2020-04-30T00:00:00-04:00",
+            "EndTime": "2020-01-30T00:00:00-05:00"
+        },
+        {
+            "Name": "The SoHo Hotel  & Residences",
+            "Address": {
+                "address1": "318 Wellington Street W",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M5V 3T4",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "318 Wellington Street W",
+                    "Toronto, ON M5V 3T4",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-599-8800",
+            "Location": {
+                "latitude": 43.6448,
+                "longitude": -79.39219
+            },
+            "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/Ap5CL-via6D-8tPtYUHOZA/o.jpg",
+            "Url": "https://www.yelp.com/biz/the-soho-hotel-and-residences-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 4.5,
+            "NumRatings": 46,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 350,
+            "AvgTimeSpent": 38,
+            "Type": "Hotels",
+            "StartTime": "2020-03-29T00:00:00-04:00",
+            "EndTime": "2020-03-13T00:00:00-04:00"
+        },
+        {
+            "Name": "The Westin Harbour Castle, Toronto",
+            "Address": {
+                "address1": "1 Harbour Square",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M5J 1A6",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "1 Harbour Square",
+                    "Toronto, ON M5J 1A6",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-869-1600",
+            "Location": {
+                "latitude": 43.641066788738,
+                "longitude": -79.376205722878
+            },
+            "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/n6rUOuXF3BQaCpQH-9bNQg/o.jpg",
+            "Url": "https://www.yelp.com/biz/the-westin-harbour-castle-toronto-toronto-2?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 3,
+            "NumRatings": 224,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 65,
+            "AvgTimeSpent": 219,
+            "Type": "Hotels",
+            "StartTime": "2020-03-07T00:00:00-05:00",
+            "EndTime": "2020-03-06T00:00:00-05:00"
+        },
+        {
+            "Name": "Hilton Toronto",
+            "Address": {
+                "address1": "145 Richmond Street W",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M5H 2L2",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "145 Richmond Street W",
+                    "Toronto, ON M5H 2L2",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-869-3456",
+            "Location": {
+                "latitude": 43.6499459,
+                "longitude": -79.385479
+            },
+            "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/kIV0EjPGOFYZsxqPot83UQ/o.jpg",
+            "Url": "https://www.yelp.com/biz/hilton-toronto-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 3.5,
+            "NumRatings": 143,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 270,
+            "AvgTimeSpent": 42,
+            "Type": "Hotels",
+            "StartTime": "2020-02-08T00:00:00-05:00",
+            "EndTime": "2019-12-13T00:00:00-05:00"
+        },
+        {
+            "Name": "InterContinental Toronto Centre",
+            "Address": {
+                "address1": "225 Front Street W",
+                "address2": "",
+                "address3": null,
+                "city": "Toronto",
+                "zip_code": "M5V 2X3",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "225 Front Street W",
+                    "Toronto, ON M5V 2X3",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-597-1400",
+            "Location": {
+                "latitude": 43.6443468346629,
+                "longitude": -79.3853018386715
+            },
+            "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/-9emZK7rc1qhMITRmrQzHw/o.jpg",
+            "Url": "https://www.yelp.com/biz/intercontinental-toronto-centre-toronto-3?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 3.5,
+            "NumRatings": 105,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 394,
+            "AvgTimeSpent": 112,
+            "Type": "Hotels",
+            "StartTime": "2019-12-01T00:00:00-05:00",
+            "EndTime": "2020-02-07T00:00:00-05:00"
+        },
+        {
+            "Name": "Ward's Island",
+            "Address": {
+                "address1": "Toronto Island",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M5J 2H3",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "Toronto Island",
+                    "Toronto, ON M5J 2H3",
+                    "Canada"
+                ]
+            },
+            "Phone": "",
+            "Location": {
+                "latitude": 43.6316024295128,
+                "longitude": -79.3575096130371
+            },
+            "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/pmqQcoi0aKokfRN5fWqK6w/o.jpg",
+            "Url": "https://www.yelp.com/biz/wards-island-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 4.5,
+            "NumRatings": 34,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 387,
+            "AvgTimeSpent": 171,
+            "Type": "Beaches",
+            "StartTime": "2020-03-18T00:00:00-04:00",
+            "EndTime": "2020-02-17T00:00:00-05:00"
+        },
+        {
+            "Name": "One King West Hotel & Residence",
+            "Address": {
+                "address1": "1 King Street W",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M5H 1A1",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "1 King Street W",
+                    "Toronto, ON M5H 1A1",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-548-8100",
+            "Location": {
+                "latitude": 43.64882,
+                "longitude": -79.37805
+            },
+            "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/VU7rvDGHx6OB09xJKhHTpw/o.jpg",
+            "Url": "https://www.yelp.com/biz/one-king-west-hotel-and-residence-toronto-2?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 3.5,
+            "NumRatings": 147,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 244,
+            "AvgTimeSpent": 127,
+            "Type": "Hotels",
+            "StartTime": "2020-05-04T00:00:00-04:00",
+            "EndTime": "2020-01-02T00:00:00-05:00"
+        },
+        {
+            "Name": "Sheraton Centre Toronto Hotel",
+            "Address": {
+                "address1": "123 Queen Street W",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M5H 2M9",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "123 Queen Street W",
+                    "Toronto, ON M5H 2M9",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-361-1000",
+            "Location": {
+                "latitude": 43.6514,
+                "longitude": -79.38312
+            },
+            "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/uQKCd9SqSu48e0g3J7-X8g/o.jpg",
+            "Url": "https://www.yelp.com/biz/sheraton-centre-toronto-hotel-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 3,
+            "NumRatings": 225,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 116,
+            "AvgTimeSpent": 95,
+            "Type": "Hotels",
+            "StartTime": "2020-02-06T00:00:00-05:00",
+            "EndTime": "2020-03-14T00:00:00-04:00"
+        },
+        {
+            "Name": "Residence Inn Toronto Downtown/Entertainment District",
+            "Address": {
+                "address1": "255 Wellington Street West",
+                "address2": "",
+                "address3": "",
+                "city": "Toronto",
+                "zip_code": "M5V 3P9",
+                "country": "CA",
+                "state": "ON",
+                "display_address": [
+                    "255 Wellington Street West",
+                    "Toronto, ON M5V 3P9",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 416-581-1800",
+            "Location": {
+                "latitude": 43.64479,
+                "longitude": -79.39053
+            },
+            "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/T9tDvthjscrhDYJ4_Ea8Hw/o.jpg",
+            "Url": "https://www.yelp.com/biz/residence-inn-toronto-downtown-entertainment-district-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "AveRating": 4,
+            "NumRatings": 80,
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 150,
+            "AvgTimeSpent": 41,
+            "Type": "Hotels",
+            "StartTime": "2019-12-13T00:00:00-05:00",
+            "EndTime": "2019-12-09T00:00:00-05:00"
+        }
+    ]
+}

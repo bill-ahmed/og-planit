@@ -3,7 +3,7 @@ import MapView, { Region, Marker } from 'react-native-maps';
 import { View, Modal, Alert } from 'react-native';
 
 import styles from './GMapStyles';
-import LocationDetails from '../LocationDetails/LocationDetails';
+import LocationDetails from '../../../shared/component/LocationDetails/LocationDetails';
 import { getLocations } from '../../api/locationsAPI';
 import { Spinner } from 'native-base';
 
