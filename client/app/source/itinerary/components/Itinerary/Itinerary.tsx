@@ -10,7 +10,7 @@ import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-
 export function Itinerary(props) {
     const [itineraries, setItineraries] = useState(null);
     const [itineraryLoaded, setItineraryLoaded] = useState(false);
-    const [selected, setSelected] = useState("");
+    const [selected, setSelected] = useState(-1);
     const navigate = props.navigation;    // Handle navigations
 
     getItinerarySigned().then(res => {
@@ -26,7 +26,7 @@ export function Itinerary(props) {
         navigate(/* carlos' part */);
     }
 
-    const handleRadioButtonChange = (newRadioButtonValue: string) => {
+    const handleRadioButtonChange = (newRadioButtonValue: number) => {
         setSelected(newRadioButtonValue);
         console.log("User selected " + newRadioButtonValue);
     }
@@ -54,7 +54,7 @@ export function Itinerary(props) {
   
             <ScrollView>
                 {!itineraries && <Spinner color='blue'/>}
-                {itineraries && itineraries.map((element: ItineraryModel) => {
+                {itineraries && itineraries.map((element: ItineraryModel, index) => {
                     return (<Card>
                         <CardItem header button onPress={() => navigate("ViewItineraryEvents", { data: element })}>
                             <Text> {element.name} </Text>
@@ -64,7 +64,7 @@ export function Itinerary(props) {
                                 {element.events && <Text>Number of Events: {element.events.length}</Text>}
                                 {element.last_edit_time && <Text>Last Edited: {element.last_edit_time.toLocaleString()}</Text>}
                                 <Right>
-                                <Radio selected={selected === element.name} onPress={() => handleRadioButtonChange(element.name)}/>
+                                <Radio selected={selected === index} onPress={() => handleRadioButtonChange(index)}/>
                                 </Right>
                             </Body>
                         </CardItem>
