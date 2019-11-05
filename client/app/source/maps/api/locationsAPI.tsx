@@ -16,7 +16,7 @@ export async function getLocationsFrom(userLocation: string, radius: number){
 /**Acquires all Location elements
  * @returns A Promise for get request to Firestore
 */
-export async function getLocations(): Promise<PlanitLocation[]> {
+export async function getLocations(filterFn: (location:PlanitLocation) => boolean = (location) => true): Promise<PlanitLocation[]> {
     let startingCollection = 'prod';
     // If in dev environment, grab from dev db
     if(__DEV__){
@@ -28,7 +28,7 @@ export async function getLocations(): Promise<PlanitLocation[]> {
     return new Promise<PlanitLocation[]>((resolve, reject) => {
         db.collection(startingCollection).doc('data').collection("events").get()
         .then((querySnapshot:any) => {
-            const arr = [];
+            let arr = [];
 
             querySnapshot.forEach(doc => arr.push(doc.data()));
             arr.forEach(item => {
@@ -42,6 +42,8 @@ export async function getLocations(): Promise<PlanitLocation[]> {
                     item.EndTime = toDateTime(end.toString());
                 }
             })
+
+            arr = arr.filter(location => filterFn(location));
             resolve(arr);
         })
         .catch((err:any) => {

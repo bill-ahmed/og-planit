@@ -50,7 +50,7 @@ export default function LocationDetails(props) {
                                 } else {
                                     return tag + ", "
                                 }
-                            }, styles.h16))}
+                            }, styles.h14))}
                             {locObj.Tags && locObj.Type && <Text />}
                             {locObj.Ratings && formRow("Average Rating: ", locObj.Ratings.AveRatings)}
                             {locObj.Ratings && <Text />}
