@@ -1,4 +1,5 @@
 <h4>Participants: </h4>
+
 Entire Group
 
 <h4>Completed Tasks:</h4>
@@ -40,7 +41,9 @@ Entire Group
 - Recording project process on Jira more accurately.
 
 <h4>Best Experience:</h4>
+
 - Seeing all the different components work together in the end.
 
 <h4>Worst Experience:</h4>
+
 - Massive amount of work left over at the end of the sprint.
