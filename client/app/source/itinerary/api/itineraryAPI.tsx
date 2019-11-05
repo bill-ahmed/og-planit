@@ -1,14 +1,41 @@
-import { Itinerary } from "../models/location";
+import { Itinerary, PlanitLocation } from "../models/location";
 import { useSelector } from "react-redux";
+import { async } from "rxjs/internal/scheduler/async";
+import { Subject, Observable, combineLatest } from "rxjs";
 const firebase = require("firebase");
 
 // Required for side-effects
 require("firebase/firestore");
 
-export async function getItinerarySigned(filterFn: (itin:Itinerary) => boolean = (itin) => true): Promise<Itinerary[]> {
+async function getItineraryEvents(db, startingCollection, uid, itinID): Promise<PlanitLocation[]> {
+    return new Promise<PlanitLocation[]>((resolve, reject) => {
+        db.collection(startingCollection).doc('data').collection('users').doc(uid).collection('itineraries').doc(itinID).collection('events').get().then(query => {
+            let arr = [];
+
+            query.forEach(doc => arr.push(doc.data()));
+            arr.forEach(item => {
+                if (item.StartTime && item.StartTime.seconds) {
+                    const start = item.StartTime.seconds;
+                    item.StartTime = toDateTime(start.toString());
+                }
+                if (item.EndTime && item.EndTime.seconds) {
+                    const end = item.EndTime.seconds;
+                    item.EndTime = toDateTime(end.toString());
+                }
+            });
+            resolve(arr);
+        })
+            .catch((err: any) => {
+                console.log("Error getting document", err);
+                reject(err);
+            });
+    });
+}
+
+export async function getItinerarySigned(filterFn: (itin: Itinerary) => boolean = (itin) => true): Promise<Itinerary[]> {
     let startingCollection = 'prod';
     // If in dev environment, grab from dev db
-    if(__DEV__){
+    if (__DEV__) {
         startingCollection = 'dev';
     }
     // Reference to firestore db
@@ -16,28 +43,38 @@ export async function getItinerarySigned(filterFn: (itin:Itinerary) => boolean =
     const uid = useSelector(state => state['UserInfo']['uid']);
 
     return new Promise<Itinerary[]>((resolve, reject) => {
-        db.collection(startingCollection).doc('data').collection('users').doc(uid).collection('itineraries').get().then((querySnapshot:any) => {
-            
-                let arr = [];
-    
-                querySnapshot.forEach(doc => arr.push(doc.data()));
+        db.collection(startingCollection).doc('data').collection('users').doc(uid).collection('itineraries').get().then((querySnapshot) => {
+            let obsArr = [];
+            let i = 0;
+            querySnapshot.forEach(doc => {
+                obsArr[i] = Observable.create(obs => {
+                    const obj = (doc.data() as Itinerary);
+                    getItineraryEvents(db, startingCollection, uid, doc.id).then(resolve => {
+                        obj.events = resolve;
+                        obs.next(obj);
+                    });
+                });
+                i++;
+            });
 
-                arr.forEach(itin => {
-                    if(itin.time) {
-                        const start = itin.time.seconds;
+            combineLatest(obsArr).subscribe((res: Itinerary[]) => {
+                res.forEach(itin => {
+                    if (itin.time && (itin.time as any).seconds) {
+                        const start = (itin.time as any).seconds;
                         itin.time = toDateTime(start.toString());
                     }
-                    if(itin.last_edit_time) {
-                        const start = itin.last_edit_time.seconds;
+                    if (itin.last_edit_time && (itin.last_edit_time as any).seconds) {
+                        const start = (itin.last_edit_time as any).seconds;
                         itin.last_edit_time = toDateTime(start.toString());
                     }
                 });
 
-                arr = arr.filter((itin:Itinerary) => filterFn(itin));
+                res = res.filter((itin: Itinerary) => filterFn(itin));
 
-                resolve(arr);
+                resolve(res);
             })
-            .catch((err:any) => {
+        })
+            .catch((err: any) => {
                 console.log("Error getting document", err);
                 reject(err);
             });

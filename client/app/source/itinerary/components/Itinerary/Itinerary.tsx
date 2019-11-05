@@ -1,21 +1,26 @@
 import React, { useState } from 'react';
-import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon, Subtitle, Card, CardItem} from 'native-base';
+import { Container, Header, Left, Right, Body, Title, Content, Button, Icon, Subtitle, Card, CardItem, Spinner } from 'native-base';
 
 //import styles from './ItineraryStyles';
-import { View , Text, Image, ScrollView} from 'react-native';
+import { Itinerary as ItineraryModel } from './../../models/location';
+import { View, Text, Image, ScrollView } from 'react-native';
 import { getItinerarySigned } from '../../api/itineraryAPI';
 
-//App stack to go from list of itineraries --> specific itinerary
-const itineraries=require("./../../models/MockItineraryList.json");
-
 export function Itinerary(props) {
-    const {navigate} = props.navigation;    // Handle navigations
+    const [itineraries, setItineraries] = useState(null);
+    const [itineraryLoaded, setItineraryLoaded] = useState(false);
+    const navigate = props.navigation;    // Handle navigations
 
     getItinerarySigned().then(res => {
-        console.log(res);
+        if (!itineraries) {
+            console.log(res);
+            setItineraries(res);
+            setItineraryLoaded(true);
+        }
     });
 
-    const goToItineraryViews = () =>{
+
+    const goToItineraryViews = () => {
         navigate(/* carlos' part */);
     }
 
@@ -44,23 +49,20 @@ export function Itinerary(props) {
             </Header>
   
             <ScrollView>
-            {/* <Title> <Text>{element.name}</Text> </Title>
-                        <Subtitle> <Text>{element.events.length}</Text></Subtitle>
-                        <Subtitle> <Text>{element.last_edit_time}</Text> </Subtitle>
-                        <Text> {element.time} </Text>  */}
-                {itineraries.map(element => {
-                return(<Card>
-                    <CardItem header button onPress={() => navigate("ViewItineraryEvents", {data: element})}>
-                    <Text> {element.name} </Text>
-                    </CardItem>
-                    <CardItem button onPress={() => console.log(`Clicked the description of ${element.name}!`)/* carlos replace with yours*/}>
-                        <Body>
-                        <Text>Number of Events:  {element.events.length}</Text>
-                        <Text>Last Edited:  {element.last_edit_time}</Text>
-                        </Body>
-                    </CardItem>
-                </Card>);
-                 })}
+                {!itineraries && <Spinner color='blue'/>}
+                {itineraries && itineraries.map((element: ItineraryModel) => {
+                    return (<Card>
+                        <CardItem header button onPress={() => navigate("ViewItineraryEvents", { data: element })}>
+                            <Text> {element.name} </Text>
+                        </CardItem>
+                        <CardItem button onPress={() => console.log(`Clicked the description of ${element.name}!`) /* carlos replace with yours*/}>
+                            <Body>
+                                {element.events && <Text>Number of Events: {element.events.length}</Text>}
+                                {element.last_edit_time && <Text>Last Edited: {element.last_edit_time.toLocaleString()}</Text>}
+                            </Body>
+                        </CardItem>
+                    </Card>);
+                })}
             </ScrollView>
 
         </Container>
