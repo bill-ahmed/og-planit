@@ -1,27 +1,31 @@
 import React, { useState } from 'react';
-import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon, Subtitle, Card, CardItem, Radio} from 'native-base';
+import { Container, Header, Left, Right, Body, Title, Content, Button, Icon, Subtitle, Card, CardItem, Radio, Spinner } from 'native-base';
 
 //import styles from './ItineraryStyles';
-import { View , Text, Image, ScrollView} from 'react-native';
+import { View, Text, Image, ScrollView } from 'react-native';
 import { getItinerarySigned } from '../../api/itineraryAPI';
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import { Itinerary as ItineraryModel } from './../../models/location';
+import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
 
 //App stack to go from list of itineraries --> specific itinerary
-const itineraries=require("./../../models/MockItineraryList.json");
+// const itineraries=require("./../../models/MockItineraryList.json");
 
 export function Itinerary(props) {
-    const {navigate} = props.navigation;    // Handle navigations
-    const [selected, setSelected] = useState("");
+    const { navigate } = props.navigation;    // Handle navigations
+    const [itineraries, setItineraries] = useState(null);
+    const [selected, setSelected] = useState(-1);
 
     getItinerarySigned().then(res => {
-        console.log(res);
+        if (!itineraries && res != undefined) {
+            setItineraries(res);
+        }
     });
 
-    const goToItineraryViews = () =>{
+    const goToItineraryViews = () => {
         navigate(/* carlos' part */);
     }
 
-    const handleRadioButtonChange = (newRadioButtonValue: string) => {
+    const handleRadioButtonChange = (newRadioButtonValue: number) => {
         setSelected(newRadioButtonValue);
         console.log("User selected " + newRadioButtonValue);
     }
@@ -41,33 +45,30 @@ export function Itinerary(props) {
                 </Body>
                 <Right>
                     <Button transparent onPress={() => navigate('NewItinerary')}>
-                        <Icon name="ios-add"/>
+                        <Icon name="ios-add" />
                         <Text> Create New Itinerary</Text>
                     </Button>
                 </Right>
             </Header>
-  
+
             <ScrollView>
-            {/* <Title> <Text>{element.name}</Text> </Title>
-                        <Subtitle> <Text>{element.events.length}</Text></Subtitle>
-                        <Subtitle> <Text>{element.last_edit_time}</Text> </Subtitle>
-                        <Text> {element.time} </Text>  */}
-                {itineraries.map(element => {
-                return(<Card>
-                    <CardItem header button onPress={() => navigate("ViewItineraryEvents", {data: element})}>
-                    <Text> {element.name} </Text>
-                    </CardItem>
-                    <CardItem button onPress={() => console.log(`Clicked the description of ${element.name}!`)/* carlos replace with yours*/}>
-                        <Body>
-                        <Text>Number of Events:  {element.events.length}</Text>
-                        <Text>Last Edited:  {element.last_edit_time}</Text>
-                            <Right>
-                            <Radio selected={selected === element.name} onPress={() => handleRadioButtonChange(element.name)}/>
-                            </Right>
-                        </Body>
-                    </CardItem>
-                </Card>);
-                 })}
+                {!itineraries && <Spinner color='blue' />}
+                {itineraries && itineraries.map((element: ItineraryModel, index) => {
+                    return (<Card key={index}>
+                        <CardItem header button onPress={() => navigate("ViewItineraryEvents", { data: element })}>
+                            <Text> {element.name} </Text>
+                        </CardItem>
+                        <CardItem button onPress={() => console.log(`Clicked the description of ${element.name}!`) /* carlos replace with yours*/}>
+                            <Body>
+                                {element.events && <Text>Number of Events: {element.events.length}</Text>}
+                                {element.last_edit_time && <Text>Last Edited: {element.last_edit_time.toLocaleString()}</Text>}
+                                <Right>
+                                    <Radio selected={selected === index} onPress={() => handleRadioButtonChange(index)} />
+                                </Right>
+                            </Body>
+                        </CardItem>
+                    </Card>);
+                })}
             </ScrollView>
         </Container>
     );
