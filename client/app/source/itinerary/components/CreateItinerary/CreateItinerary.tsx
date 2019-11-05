@@ -3,22 +3,19 @@ import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon, Su
 import PropTypes, { checkPropTypes } from 'prop-types';
 import styles from './CreateItineraryStyles';
 import { View , Text, Image, ScrollView, GestureResponderEvent, TextInput} from 'react-native';
-
 import symbolicateStackTrace from 'react-native/Libraries/Core/Devtools/symbolicateStackTrace';
 import { clearUpdateCacheExperimentalAsync } from 'expo/build/Updates/Updates';
-
+import {ItineraryAPI} from "../../api/itineraryAPI";
 
 export default function NewItinerary(props){
-  
   const [Museum, setMuseum] = useState(false);
   const onSetMuseum = (value: GestureResponderEvent) => {
     setMuseum(!Museum)
   }
-
   const [Aquarium, setAquarium] = useState(false);
   const onSetAquarium = (value: GestureResponderEvent) => {
-    setAquarium(!Aquarium)}
-  
+    setAquarium(!Aquarium)
+  }
   const [Festival, setFestival] = useState(false);
   const onSetFestival = (value: GestureResponderEvent) =>{
     setFestival(!Festival)
@@ -116,9 +113,9 @@ const handleSetDate=(date)=>{
             </Body>
           </ListItem>
 
-          <Button style={styles.button}>
+          <Button style={styles.button} onPress={constructItinerary(listOfData)}>
               <Text> Submit </Text>
-              client/app/itinerary/api/itineraryAPi/constructItinerary({JSON.parse('{"Name": name, "Date":date, "Museum":Museum, "Aquarium":Aquarium, "Festival":Festival, "Galleries":Galleries, "Beach":Beach, "Hotels":Hotels}')})
+              
 
           </Button>
           </Content>

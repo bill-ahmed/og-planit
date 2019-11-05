@@ -1,73 +1,27 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD
 import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon, Subtitle, Card, CardItem, Radio} from 'native-base';
 import styles from './ItineraryStyles';
 import { View , Text, Image, ScrollView} from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
-import { getLocations } from '../../api/locationsAPI';
+
 import { withNavigation, NavigationEvents } from 'react-navigation';
 import newItinerary from './../CreateItinerary/CreateItinerary';
 import { GestureHandlerGestureEvent } from 'react-native-gesture-handler';
-=======
-import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon, Subtitle, Card, CardItem} from 'native-base';
-
-//import styles from './ItineraryStyles';
-import { View , Text, Image, ScrollView} from 'react-native';
-import { getItinerarySigned } from '../../api/itineraryAPI';
->>>>>>> 66e616f293fb662d0c9bc670e099ba9be7f890b9
-
 //App stack to go from list of itineraries --> specific itinerary
+
 const itineraries=require("./../../models/MockItineraryList.json");
 
-<<<<<<< HEAD
-const EventStack = createAppContainer(createStackNavigator({
-    Itinerary: {
-        screen: Itinerary, 
-        navigationOptions: {
-        header: null,   // Remove all headers
-      }},
-    NewItinerary:{
-        screen: newItinerary,
-        navigationOptions: {
-            header: null,}
-    }
-}, 
-{
-    initialRouteName: "Itinerary",
-}));
 export default function Itinerary(props) {
     
     const [locationDetailsOpen, setLocationDetailsOpen] = useState(false);
     const [locationsLoaded, setlocationsLoaded] = useState(false);
     const {navigate} = props.navigation;    // Handle navigations
 
-
-    let locations = null;
-    getLocations().then(res => {
-        locations = res;
-        setlocationsLoaded(true);
-        console.log(locations);
-=======
-export function Itinerary(props) {
-    const {navigate} = props.navigation;    // Handle navigations
-
-    getItinerarySigned().then(res => {
-        console.log(res);
->>>>>>> 66e616f293fb662d0c9bc670e099ba9be7f890b9
-    });
-
     const goToItineraryViews = () =>{
         navigate(/* carlos' part */);
     }
-    const makeRadioButton = () =>{
-        [selected,setSelectedOn] = useState(false);
-        const onSetSelected = (value: GestureHandlerGestureEvent) =>{
-            onSetSelected(!selected)
 
-        }
-        return <Radio selected={false} onPress={onSetSelected}/>
-    }
     return (
         <Container>
             <Header>
@@ -105,9 +59,7 @@ export function Itinerary(props) {
                         <Text>Number of Events:  {element.events.length}</Text>
                         <Text>Last Edited:  {element.last_edit_time}</Text>
                         </Body>
-                    <Right>
-                        {makeRadioButton}
-                    </Right>
+            
                     </CardItem>
                 </Card>);
                  })}
