@@ -54,7 +54,7 @@ export function Itinerary(props) {
             <ScrollView>
                 {!itineraries && <Spinner color='blue' />}
                 {itineraries && itineraries.map((element: ItineraryModel, index) => {
-                    return (<Card>
+                    return (<Card key={index}>
                         <CardItem header button onPress={() => navigate("ViewItineraryEvents", { data: element })}>
                             <Text> {element.name} </Text>
                         </CardItem>

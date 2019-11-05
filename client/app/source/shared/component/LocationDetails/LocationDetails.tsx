@@ -54,7 +54,7 @@ export default function LocationDetails(props) {
                             {locObj.Tags && locObj.Type && <Text />}
                             {locObj.Ratings && formRow("Average Rating: ", locObj.Ratings.AveRatings)}
                             {locObj.Ratings && <Text />}
-                            {locObj.AvgPrice && formRow("Average Price: ", locObj.AvgPrice)}
+                            {locObj.AvgPrice && formRow("Average Price: $", locObj.AvgPrice)}
                             {locObj.AvgPrice && < Text />}
                             {locObj.StartTime && locObj.EndTime && formRow("Active From: ", locObj.StartTime.toLocaleString() + " :")}
                             {locObj.AvgTimeSpent && <Text style={[styles.h18, styles.Text]}>

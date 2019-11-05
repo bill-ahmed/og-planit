@@ -11,6 +11,7 @@ import ItineraryName from '../ItineraryName/ItineraryName';
 import { EventEmitter } from '@unimodules/core';
 import { array } from 'prop-types';
 import { database } from 'firebase';
+import LocationDetails from '../../../shared/component/LocationDetails/LocationDetails';
 
 export default function CreateViews(props){
     // Control if modal is open or not
@@ -59,9 +60,9 @@ export default function CreateViews(props){
                 </Right>
             </Header>
             <ScrollView>
-                {json.map(event => {
+                {json.map((event, index) => {
                     return(
-                        <TouchableOpacity onPress={() => setModalOpen(true, event)}>
+                        <TouchableOpacity onPress={() => setModalOpen(true, event)} key={index}>
                             <Card
                                 image={{uri: event.uri}}>
                                 <Text style={styles.eventHeader}>
@@ -78,7 +79,7 @@ export default function CreateViews(props){
                     )
                     })}
             </ScrollView>
-            {eventDetailsModalOpen && <EventDetailsModal data={detailsdModalData} closeModal={() => setModalOpen(false, null)}/>}
+            {eventDetailsModalOpen && <LocationDetails location={detailsdModalData} open={eventDetailsModalOpen} setModal={setEventDetailsModal} />}
             {nameChangeModal && <ItineraryName data={itinerayData} close={() => setNameChangeModal(false)}/>}
         </Container>
     );
