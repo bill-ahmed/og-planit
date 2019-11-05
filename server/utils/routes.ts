@@ -55,6 +55,50 @@ export default class Routes{
 
     }
 
+    /**Given an access token and itinerary info, create a new itinerary for this user
+     * Request body MUST be in the format:
+     * 
+     * {
+     *  accessToken: string,
+     *  itineraryDetails: {name: string || null, last_edit_time: TimeStamp || null},
+     *  events: [Array of event objects]
+     * }
+     * 
+     */
+    public createItineraryPOST(req: any, res: any){
+        // console.log("New itinerary", req.body);
+        res.header("Content-Type", "application/json");
+
+        // Validate access token
+        this.admin.auth().verifyIdToken(req.body.accessToken)
+        .then((decodedToken: any) => {
+
+            // If access token is valid, add this itinerary to the user's collection of itineraries
+            let uid = decodedToken.uid
+            const newItinerary = req.body.itineraryDetails;
+            const newItineraryEvents = req.body.events;
+
+            let newItineararyRef = this.db.collection('dev').doc('data').collection('users').doc(uid).collection('itineraries').add(newItinerary).then((resp: any) => {
+                console.log("Created new itinerary for user " + uid + " with id " + resp.id);
+
+                // Add events to this itinerary
+                newItineraryEvents.map((elem: any) => {
+                    this.db.collection('dev').doc('data').collection('users').doc(uid).collection('itineraries').doc(resp.id).collection('events').add(elem);
+                })
+                res.statusCode = 200;
+                res.json(resp);
+            });
+
+            
+        })
+        .catch((err: any) => {
+            console.log(err);
+            res.statusCode = 400;
+            res.json(err);
+        })
+
+    }
+
     /**Provision a new user into Firestore
      * @param userData An object containing email, name, age, etc.
      * @param uid The unique ID of this new user
@@ -77,7 +121,7 @@ export default class Routes{
         // Also need to store collection of itineraries for this user
         let itineraries = this.db.collection('dev').doc('data').collection('users').doc(uid).collection('itineraries').doc('INIT_ITINERARY');
         itineraries.set({
-            id: null, type: null, price: null, location: null, rating: 0, review:"", time: null, referenceToOriginal: null, last_edit_time: null  // Firebase requires at least ONE doc per collection
+            name: null, last_edit_time: null  // Firebase requires at least ONE doc per collection
         });
         
     }
@@ -90,8 +134,8 @@ export default class Routes{
         let resString = "";
         try {
             let collection = this.db.collection('dev').doc('data').collection('events').get()
-            .then(snapshot => {
-                snapshot.forEach(doc => {
+            .then((snapshot: any) => {
+                snapshot.forEach((doc: any) => {
                     console.log(doc.Name);
                 });
             });
@@ -102,10 +146,5 @@ export default class Routes{
             console.log("Error retrieving events collection");
             res.status(500).send('Error retrieving events collection');
         }
-    }
-
-    /** Query's events by 'Type' index */
-    public getEventsByType(req : any, res : any) {
-
     }
 }

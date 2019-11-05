@@ -32,6 +32,9 @@ APP.post('/createUser', bodyParser.json(), (req: any, res: any) => routes.create
 /** Get events collection */
 APP.get('/getEventsList', (req: any, res: any) => routes.getEventsList(req, res));
 
+/**Create a new itinerary */
+APP.post('/createItinerary', bodyParser.json(), (req: any, res: any) => routes.createItineraryPOST(req, res));
+
 /****   INITIALIZE SERVER   ****/
 
 //Enabls CORS
