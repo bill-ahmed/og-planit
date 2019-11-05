@@ -5,6 +5,7 @@ import styles from './CreateItineraryStyles';
 import { View , Text, Image, ScrollView, GestureResponderEvent, TextInput} from 'react-native';
 import symbolicateStackTrace from 'react-native/Libraries/Core/Devtools/symbolicateStackTrace';
 import { clearUpdateCacheExperimentalAsync } from 'expo/build/Updates/Updates';
+import navigation from '../../../maps/navigation';
 import {ItineraryAPI} from "../../api/itineraryAPI";
 
 export default function NewItinerary(props){
@@ -32,6 +33,10 @@ export default function NewItinerary(props){
   const onSetHotels = (value: GestureResponderEvent) =>{
     setHotels(!Hotels)
   }
+  const [Arcades, setArcades]=useState(false);
+  const onSetArcades = (value: GestureResponderEvent) =>{
+    setArcades(!Arcades)
+  }
 const [name, setName] = useState("");
 const handleSetName=(name)=>{
   setName(name)
@@ -41,10 +46,28 @@ const [date, setDate] = useState("");
 const handleSetDate=(date)=>{
   setDate(date)
 }
-    const listOfData = {"Name": name, "Date":date, "Museum":Museum, "Aquarium":Aquarium, "Festival":Festival, "Galleries":Galleries, "Beach":Beach, "Hotels":Hotels}
+const handleSubmitted =(value: any) =>{
+  //constructItinerary(listOfData)
+  alert("Clicked submit!");
+  //props.navigation.goback()
+}
+    const listOfData = {"Name": name, "Date":date, "Museum":Museum, "Aquarium":Aquarium, "Festival":Festival,
+     "Galleries":Galleries, "Beach":Beach, "Hotels":Hotels, "Arcades":Arcades}
     return(
       <Container>
         <Content>
+          <Header>
+            <Left>
+              <Button transparent onPress={() => props.navigation.goBack()}>
+                <Icon name="arrow-back" />
+              </Button>
+            </Left>
+            <Body>
+              <Title>
+                Create an Itinerary
+              </Title>
+            </Body>
+          </Header>
         <Form>
             <Item fixedLabel>
               <TextInput keyboardType="default" placeholder="Name" onChange={text => handleSetName(text)}/>
@@ -89,7 +112,7 @@ const handleSetDate=(date)=>{
               <Text>Beach</Text>
             </Left>
             <Body>
-              <CheckBox checked={Beach} onPress={onSetFestival}/>
+              <CheckBox checked={Beach} onPress={onSetBeach}/>
             </Body>
           </ListItem>
 
@@ -112,9 +135,19 @@ const handleSetDate=(date)=>{
               <CheckBox checked={Hotels} onPress={onSetHotels}/>
             </Body>
           </ListItem>
+          <ListItem>
+            <Left>
+              <Text>
+                Arcades
+              </Text>
+            </Left>
+            <Body>
+              <CheckBox checked={Arcades} onPress={onSetArcades}/>
+            </Body>
+          </ListItem>
 
-          <Button style={styles.button} onPress={constructItinerary(listOfData)}>
-              <Text> Submit </Text>
+     <Button  style={styles.button} onPress={() => handleSubmitted(listOfData)}>
+      <Text> Submit </Text>
               
 
           </Button>

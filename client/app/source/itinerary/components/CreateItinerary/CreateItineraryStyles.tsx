@@ -24,7 +24,17 @@ export default StyleSheet.create({
     button:{
         flex: 1,
         justifyContent:"center",
-        innerWidth: 20,
         backgroundColor: backgroundBlue
-    }
+    },
+    textInput: {
+        borderWidth: 2, 
+        borderRadius: 7,
+        borderColor: "white", 
+        padding: '3%',
+        margin: '2%',
+        marginTop: '5%',
+        marginBottom: '5%',
+        fontSize: 18,
+        color: 'white',
+    },
 })

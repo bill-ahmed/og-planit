@@ -1,25 +1,29 @@
 import React, { useState } from 'react';
 import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon, Subtitle, Card, CardItem, Radio} from 'native-base';
-import styles from './ItineraryStyles';
+
+//import styles from './ItineraryStyles';
 import { View , Text, Image, ScrollView} from 'react-native';
-import { createStackNavigator } from 'react-navigation-stack';
-import { createAppContainer } from 'react-navigation';
+import { getItinerarySigned } from '../../api/itineraryAPI';
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
 
-import { withNavigation, NavigationEvents } from 'react-navigation';
-import newItinerary from './../CreateItinerary/CreateItinerary';
-import { GestureHandlerGestureEvent } from 'react-native-gesture-handler';
 //App stack to go from list of itineraries --> specific itinerary
-
 const itineraries=require("./../../models/MockItineraryList.json");
 
-export default function Itinerary(props) {
-    
-    const [locationDetailsOpen, setLocationDetailsOpen] = useState(false);
-    const [locationsLoaded, setlocationsLoaded] = useState(false);
+export function Itinerary(props) {
     const {navigate} = props.navigation;    // Handle navigations
+    const [selected, setSelected] = useState("");
+
+    getItinerarySigned().then(res => {
+        console.log(res);
+    });
 
     const goToItineraryViews = () =>{
         navigate(/* carlos' part */);
+    }
+
+    const handleRadioButtonChange = (newRadioButtonValue: string) => {
+        setSelected(newRadioButtonValue);
+        console.log("User selected " + newRadioButtonValue);
     }
 
     return (
@@ -30,13 +34,11 @@ export default function Itinerary(props) {
                         <Icon name="arrow-back" />
                     </Button>
                 </Left>
-               
                 <Body>
                     <Title>
                         Itinerary Page
                     </Title>
                 </Body>
-
                 <Right>
                     <Button transparent onPress={() => navigate('NewItinerary')}>
                         <Icon name="ios-add"/>
@@ -44,6 +46,7 @@ export default function Itinerary(props) {
                     </Button>
                 </Right>
             </Header>
+  
             <ScrollView>
             {/* <Title> <Text>{element.name}</Text> </Title>
                         <Subtitle> <Text>{element.events.length}</Text></Subtitle>
@@ -58,8 +61,10 @@ export default function Itinerary(props) {
                         <Body>
                         <Text>Number of Events:  {element.events.length}</Text>
                         <Text>Last Edited:  {element.last_edit_time}</Text>
+                            <Right>
+                            <Radio selected={selected === element.name} onPress={() => handleRadioButtonChange(element.name)}/>
+                            </Right>
                         </Body>
-            
                     </CardItem>
                 </Card>);
                  })}
