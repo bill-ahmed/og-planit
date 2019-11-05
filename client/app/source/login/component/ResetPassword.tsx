@@ -46,14 +46,15 @@ export default function ResetPassword(props){
                         onChange={text => handleEmailChange(text)} 
                         placeholder="Email" />
 
-                    <Button style={styles.button} onPress={() => requestPasswordReset()}>
-                        <Text>
+                    <Button primary full transparent style={styles.button} onPress={() => requestPasswordReset()}>
+                        <Text style={{color: "#1977B5", fontSize: 20}}>
                             Reset
                         </Text>
                     </Button>
+                  
 
-                    <Button style={styles.button} onPress={() => props.closeDialog()}>
-                        <Text>
+                    <Button light full transparent style={styles.button} onPress={() => props.closeDialog()}>
+                        <Text style={{color:'rbg(0,0,0,0.75)', fontSize: 20}}>
                             Cancel
                         </Text>
                     </Button>
