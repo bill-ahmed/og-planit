@@ -5,7 +5,7 @@ import styles from './LocationDetailStyles';
 import { Modal, FlatList } from 'react-native';
 import { PlanitLocation, Address } from '../../../itinerary/models/location';
 
-const events = require("./../../models/MockLocationDatabase.json");
+const events = require("./../../../maps/models/MockLocationDatabase.json");
 
 export default function LocationDetails(props) {
     const locObj: PlanitLocation = props.location;
