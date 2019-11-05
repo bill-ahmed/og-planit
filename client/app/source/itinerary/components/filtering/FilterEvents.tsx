@@ -14,12 +14,13 @@ export default function FilterEvents(props){
 
     const[price, setPrice] = useState(0);
     const getPrice = (newPrice) => {
-        setPrice(newPrice)
+        setPrice(newPrice);
     }
 
-    const[checked, setChecked] = useState(false);
+    const[isChecked, setChecked] = useState([]);
     const getChecked = (newChecked) => {
-        setChecked(newChecked)
+        setChecked(newChecked);
+        // console.log(isChecked);
     }
 
 
@@ -117,21 +118,23 @@ export default function FilterEvents(props){
                 </Content>
 
 
-                <Content>
+                { <Content>
                     <Text style={styles.dateHeader}>
                         Category
                     </Text>
                     <View style={styles.contentCategory}>
-                    {data.map(category => {
+                    {data.map((category, key) => {
+
                         return(
-                            <CheckBox checked={checked}
+                            <CheckBox checked={true}
                                 title={category.Type}
-                                onPress={() => getChecked(!checked)}
+                                onPress={() => {
+                                }}
                             />
                         )
                     })}
                     </View>
-                </Content>
+                </Content> }
             </ScrollView>
       </Container>
     );

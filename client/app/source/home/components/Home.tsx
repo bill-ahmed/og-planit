@@ -4,7 +4,10 @@ import { setAccessToken } from '../../login/redux/actions'
 import { Container, Text, Button, Content, Header, Left, Right, Body, Title } from 'native-base';
 import firebase from 'firebase';
 import styles from './HomeStyles';
-import { withNavigation } from 'react-navigation';
+import { withNavigation, createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import FilterEvents from '../../itinerary/components/filtering/FilterEvents';
+
 
 /**Home page for user after authenticating */
 function Home(props){
@@ -42,6 +45,11 @@ function Home(props){
         setToken(accessToken);
     }
 
+    const [eventFilterModalOpen, setEventFilterModal] = useState(false);
+    const setModalOpen = (val: boolean) => {
+        setEventFilterModal(val);
+    }
+
     return(
         <Container>
             <Header noLeft>
@@ -59,14 +67,21 @@ function Home(props){
                     <Text>Show access token</Text>
                 </Button>
 
+                <Button style={styles.button} onPress={() => setModalOpen(true)}>
+                    <Text>
+                        Event Filtering Page
+                    </Text>
+                </Button>
+
                 <Button danger style={styles.button} onPress={() => logout()}>
                     <Text>Logout</Text>
                 </Button>
 
                 <Text>{token}</Text>
             </Content>
+            {eventFilterModalOpen && <FilterEvents closeModal={() => setModalOpen(false)}/>}
         </Container>
     );
 }
-
 export default withNavigation(Home);
+
