@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {useDispatch} from 'react-redux';
-import { setAccessToken } from '../redux/actions';
+import { setAccessToken, setUserID } from '../redux/actions';
 import firebase from 'firebase';
 import ResetPassword from './ResetPassword';
 import SignUp from './SignUp';
@@ -23,8 +23,10 @@ export default function Login(props){
         // Try logging in via Firebase
         firebase.auth().signInWithEmailAndPassword(email, password)
         .then(res => {
-
             setLoading(false);
+
+            //save userid
+            dispatch(setUserID(res.user.uid));
 
             // Grab the access token before continuing
             res.user.getIdToken()

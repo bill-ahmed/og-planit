@@ -3,53 +3,16 @@ import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon, Su
 
 //import styles from './ItineraryStyles';
 import { View , Text, Image, ScrollView} from 'react-native';
-import { createStackNavigator } from 'react-navigation-stack';
-import { createAppContainer } from 'react-navigation';
-import { getLocations } from '../../api/locationsAPI';
-import { withNavigation, NavigationEvents } from 'react-navigation';
-import newItinerary from './../CreateItinerary/CreateItinerary';
-import CreateViews from '../card_list_views_events/CreateViews';
-
-
+import { getItinerarySigned } from '../../api/itineraryAPI';
 
 //App stack to go from list of itineraries --> specific itinerary
 const itineraries=require("./../../models/MockItineraryList.json");
 
-const EventStack = createAppContainer(createStackNavigator({
-    Itinerary: {
-        screen: Itinerary, 
-        navigationOptions: {
-        header: null,   // Remove all headers
-      }},
-    NewItinerary:{
-        screen: newItinerary,
-        navigationOptions: {
-            header: null,}
-        
-    },
-    ViewItineraryEvents: {
-        screen: CreateViews,
-        navigationOptions: {
-            header: null,
-        }
-    }
-
-}, 
-{
-    initialRouteName: "Itinerary",
-}));
-
 export function Itinerary(props) {
-    
-    const [locationDetailsOpen, setLocationDetailsOpen] = useState(false);
-    const [locationsLoaded, setlocationsLoaded] = useState(false);
     const {navigate} = props.navigation;    // Handle navigations
 
-    let locations = null;
-    getLocations().then(res => {
-        locations = res;
-        setlocationsLoaded(true);
-        console.log(locations);
+    getItinerarySigned().then(res => {
+        console.log(res);
     });
 
     const goToItineraryViews = () =>{
@@ -101,10 +64,5 @@ export function Itinerary(props) {
             </ScrollView>
 
         </Container>
-    );
-}
-export default function ItineraryContainer(props){
-    return (
-        <EventStack/>
     );
 }

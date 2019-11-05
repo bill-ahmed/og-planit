@@ -9,6 +9,6 @@ export default StyleSheet.create({
     },
     mapStyle: {
       width: Dimensions.get('window').width,
-      height: Dimensions.get('window').height - 700,
+      height: Dimensions.get('window').height * 0.95,
     },
   });

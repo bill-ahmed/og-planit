@@ -1,5 +1,4 @@
-import { location } from "../models/location";
-
+import { PlanitLocation } from "../../itinerary/models/location";
 const firebase = require("firebase");
 
 // Required for side-effects
@@ -17,23 +16,32 @@ export async function getLocationsFrom(userLocation: string, radius: number){
 /**Acquires all Location elements
  * @returns A Promise for get request to Firestore
 */
-export async function getLocations() {
+export async function getLocations(): Promise<PlanitLocation[]> {
     let startingCollection = 'prod';
-
     // If in dev environment, grab from dev db
     if(__DEV__){
         startingCollection = 'dev';
     }
-
     // Reference to firestore db
     var db = firebase.firestore();
 
-    return new Promise<location[]>((resolve, reject) =>{
+    return new Promise<PlanitLocation[]>((resolve, reject) => {
         db.collection(startingCollection).doc('data').collection("events").get()
         .then((querySnapshot:any) => {
             const arr = [];
 
             querySnapshot.forEach(doc => arr.push(doc.data()));
+            arr.forEach(item => {
+
+                if(item.StartTime) {
+                    const start = item.StartTime.seconds;
+                    item.StartTime = toDateTime(start.toString());
+                }
+                if(item.EndTime) {
+                    const end = item.EndTime.seconds;
+                    item.EndTime = toDateTime(end.toString());
+                }
+            })
             resolve(arr);
         })
         .catch((err:any) => {
@@ -41,4 +49,10 @@ export async function getLocations() {
             reject(err);
         });
     });
+}
+
+function toDateTime(secs) {
+    var t = new Date(1970, 0, 1); // Epoch
+    t.setSeconds(secs);
+    return t;
 }
