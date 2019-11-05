@@ -71,18 +71,18 @@ export default class Routes{
 
         // Validate access token
         this.admin.auth().verifyIdToken(req.body.accessToken)
-        .then(decodedToken => {
+        .then((decodedToken: any) => {
 
             // If access token is valid, add this itinerary to the user's collection of itineraries
             let uid = decodedToken.uid
             const newItinerary = req.body.itineraryDetails;
             const newItineraryEvents = req.body.events;
 
-            let newItineararyRef = this.db.collection('dev').doc('data').collection('users').doc(uid).collection('itineraries').add(newItinerary).then(resp => {
+            let newItineararyRef = this.db.collection('dev').doc('data').collection('users').doc(uid).collection('itineraries').add(newItinerary).then((resp: any) => {
                 console.log("Created new itinerary for user " + uid + " with id " + resp.id);
 
                 // Add events to this itinerary
-                newItineraryEvents.map(elem => {
+                newItineraryEvents.map((elem: any) => {
                     this.db.collection('dev').doc('data').collection('users').doc(uid).collection('itineraries').doc(resp.id).collection('events').add(elem);
                 })
                 res.statusCode = 200;
@@ -91,7 +91,7 @@ export default class Routes{
 
             
         })
-        .catch(err => {
+        .catch((err: any) => {
             console.log(err);
             res.statusCode = 400;
             res.json(err);
@@ -134,8 +134,8 @@ export default class Routes{
         let resString = "";
         try {
             let collection = this.db.collection('dev').doc('data').collection('events').get()
-            .then(snapshot => {
-                snapshot.forEach(doc => {
+            .then((snapshot: any) => {
+                snapshot.forEach((doc: any) => {
                     console.log(doc.Name);
                 });
             });
