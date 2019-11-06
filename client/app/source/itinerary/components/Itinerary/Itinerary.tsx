@@ -58,13 +58,7 @@ export function Itinerary(props) {
 
     return (
         <Container>
-            <Header>
-                <Left>
-                    <Button transparent onPress={() => props.navigation.goBack()}>
-                        <Icon name="arrow-back" />
-                    </Button>
-                </Left>
-               
+            <Header>               
                 <Body>
                     <Title>
                         Itinerary Page
