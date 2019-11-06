@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import MapView, { Region, Marker, AnimatedRegion, MapViewAnimated } from 'react-native-maps';
-import { View, Modal, Alert } from 'react-native';
+import { View, Modal, Alert, Geolocation } from 'react-native';
+import GMapCardView from './GMapCardView';
 
 import styles from './GMapStyles';
 import LocationDetails from '../../../shared/component/LocationDetails/LocationDetails';
 import { getLocations } from '../../api/locationsAPI';
-import { Spinner } from 'native-base';
+import { Spinner, Text } from 'native-base';
 
 export default function GMap(props) {
     const [currentRegion, setCurrentRegion] = useState(props.initialRegion ? props.initialRegion : null);
@@ -29,6 +30,10 @@ export default function GMap(props) {
 
     const openMarker = (index: number) => {
         setCurrLocation(locations[index]);
+        //setShowLocationDetails(!showLocationDetails);
+    }
+
+    const openLocationDetails = () => {
         setShowLocationDetails(!showLocationDetails);
     }
 
@@ -36,7 +41,8 @@ export default function GMap(props) {
     if(locationsLoaded){
         return(
             <View style={styles.container}>
-                <MapView showsMyLocationButton onRegionChangeComplete={updateRegion} region={currentRegion} style={styles.mapStyle}>
+                <MapView loadingEnabled={true} showsMyLocationButton onRegionChangeComplete={updateRegion} 
+                region={currentRegion} style={styles.mapStyle} onPress={() => setCurrLocation(null)}>
                     {/* <Marker coordinate={initialRegion} title="Home" description="Starting point of Google Map" onPress={e => openMarker()} /> */}
                     {locationsLoaded && locations.map((event: any, index: number) => {
                         return(
@@ -45,6 +51,8 @@ export default function GMap(props) {
                     })}
 
                 </MapView>
+                
+                {currLocation && <GMapCardView eventInfo={currLocation} seeEventDetails={() => openLocationDetails()}/>}
                 {showLocationDetails && <LocationDetails location={currLocation} open={showLocationDetails} setModal={setShowLocationDetails} />}
             </View>
         );
