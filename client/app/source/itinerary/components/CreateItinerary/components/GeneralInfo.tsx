@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon, Subtitle, Form, Item, Label, Input, ListItem, CheckBox, List} from 'native-base';
+import { Container, Content,  Button, Icon, Form, Item, Label, Input} from 'native-base';
 import styles from './GeneralInfoStyles';
-import { View , Text, TextInput, DatePickerAndroid, TimePickerAndroid} from 'react-native';
+import { View , Text, TextInput, DatePickerAndroid, TimePickerAndroid, Dimensions} from 'react-native';
+
 export default function NewItinerary(props){
-  const [visible, setVisible] = useState(false);
+
+  const { navigate } = props.navigation;  // Allow going to other screens in stack
 
   // Keep track of when itinerary should start and end
   const [startDate, setStartDate] = useState(new Date());
@@ -30,9 +32,17 @@ export default function NewItinerary(props){
   }
   
   /**Callback for when user clicks "Next" button */
-  const handleSubmitted =(value: any): void =>{
-    //constructItinerary(listOfData)
-    alert("Clicked submit!");
+  const handleNextButton = (): void =>{
+
+    // Pass all data to next screen
+    navigate('FilterSelection', { data: 
+      {
+        itineraryName: name, 
+        itineraryLocation: location, 
+        startDate: startDate, 
+        endDate: endDate
+      } 
+    })
   }
 
   /**Handle user selecting a starting date for itinerary*/
@@ -104,9 +114,8 @@ export default function NewItinerary(props){
   }
 
     return(
-      <Container>
-        <Content>
-          <View>
+      <View>
+          <View style={{height: '100%'}}>
             {/* Header content */}
             <View style={styles.header}>
                 <Button transparent onPress={() => props.navigation.pop()}>
@@ -162,8 +171,15 @@ export default function NewItinerary(props){
               </View>
             </View>
 
+            {/* Footer content */}
+            <View style={styles.footer}>
+              <Button full transparent iconRight onPress={() => handleNextButton()}>
+                <Text style={styles.buttonText}>Next</Text>
+                <Icon style={styles.buttonIcon} name='arrow-forward'/>
+              </Button>
+            </View>
+
           </View>
-          </Content>
-        </Container>
+        </View>
     );
 }

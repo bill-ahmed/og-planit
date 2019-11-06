@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 const backgroundBlue = '#1977B5';
 export default StyleSheet.create({
     header: {
-        flex: 1,
+        display: 'flex',
         flexDirection: 'row',
         justifyContent: 'flex-start',
         alignItems: 'center',
@@ -15,19 +15,16 @@ export default StyleSheet.create({
         fontSize: 28,
         color: backgroundBlue
     },
-    subheading: {
-
-    },
     content: {
         padding: 20,
     },
     selectDateContainer: {
-        flex: 1,
+        display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         width: '100%',
-        marginTop: 20
+        marginTop: 30
     },
     form:{
         width: "50%"
@@ -48,5 +45,17 @@ export default StyleSheet.create({
         fontSize: 18,
         marginTop: 5,
         marginBottom: 5
+    },
+    buttonText: {
+      color: backgroundBlue, // Colour for font if "transparent" flag given
+      fontSize: 24
+    },
+    buttonIcon: {
+        color: backgroundBlue
+    },
+    footer: {
+        alignSelf: 'center',
+        width: '100%',
+        marginTop: '30%'
     }
 })
