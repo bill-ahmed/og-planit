@@ -23,14 +23,17 @@ export default StyleSheet.create({
     },
     selectDateContainer: {
         flex: 1,
-        justifyContent: 'space-evenly',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        width: '100%'
+        width: '100%',
+        marginTop: 20
     },
-    button:{
-        flex: 1,
-        justifyContent:"center",
-        margin: 10,
+    form:{
+        width: "50%"
+    },
+    formItem: {
+        marginBottom: 20
     },
     textInput: {
         fontSize: 18,
@@ -38,7 +41,8 @@ export default StyleSheet.create({
         borderColor: 'rgba(0,0,0,0.5)',
         borderRadius: 7,
         padding: 8,
-        marginTop: 10
+        marginTop: 10,
+        marginBottom: 10,
     },
     text: {
         fontSize: 18,

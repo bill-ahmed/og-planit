@@ -1,28 +1,35 @@
 import React, { useState } from 'react';
 import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon, Subtitle, Form, Item, Label, Input, ListItem, CheckBox, List} from 'native-base';
 import styles from './GeneralInfoStyles';
-import { View , Text, Image, ScrollView, GestureResponderEvent, TextInput, DatePickerAndroid, TimePickerAndroid} from 'react-native';
-
+import { View , Text, TextInput, DatePickerAndroid, TimePickerAndroid} from 'react-native';
 export default function NewItinerary(props){
+  const [visible, setVisible] = useState(false);
 
-  // Keep track of when itinerary should start
+  // Keep track of when itinerary should start and end
   const [startDate, setStartDate] = useState(new Date());
-  const [startTime, setStartTime] = useState({hour: new Date().getHours(), minute: new Date().getMinutes()});
-
-  // When itinerary should end
-  const [endDate, setEndDate] = useState(null);
-  const [endTime, setEndTime] = useState(null);
+  const [endDate, setEndDate] = useState(new Date());
 
   // Keep track of name for this itinerary
   const [name, setName] = useState("");
 
+  // Location that user is interested in
+  const [location, setLocation] = useState("");
+
+  /**Update name of the itinerary
+   * @param name The new name for current itinerary
+   */
   const handleSetName=(name)=>{
     setName(name)
   }
-  
-  const handleSetDate=(date)=>{
-    setDate(date)
+
+  /**Update name of the location
+   * @param location The new location
+   */
+  const handleSetLocation=(name)=>{
+    setLocation(location)
   }
+  
+  /**Callback for when user clicks "Next" button */
   const handleSubmitted =(value: any): void =>{
     //constructItinerary(listOfData)
     alert("Clicked submit!");
@@ -30,193 +37,133 @@ export default function NewItinerary(props){
 
   /**Handle user selecting a starting date for itinerary*/
   const handleChooseStartDate = (): void => {
-
+    trigggerDateSelection(startDate, setStartDate);
   }
 
-  const trigggerDateSelection = async (): Promise<Date> => {
+  /**Handle user selecting a end date for itinerary*/
+  const handleChoosingEndDate = (): void => {
+    trigggerDateSelection(endDate, setEndDate);
+  }
+
+  /**Handle user selecting a starting time for itinerary*/
+  const handleChoosingStartTime = (): void => {
+    triggerTimeSelection(startDate, setStartDate);
+  }
+
+  /**Handle user selecting a starting time for itinerary*/
+  const handleChoosingEndTime = (): void => {
+    triggerTimeSelection(endDate, setEndDate);
+  }
+
+  /**Show the user a date selection modal.
+   * @param date The current date
+   * @param callback The function to execute once the user has selected. Provides a Date() object
+   */
+  const trigggerDateSelection = async (date: Date, callback: Function): Promise<any> => {
     try {
       const { action, year, month, day } = await DatePickerAndroid.open({
         date: new Date(),
       });
-
-      // Once user has selected date, continue
       if (action !== DatePickerAndroid.dismissedAction) {
-        return(new Date(year, month, day));
+        callback(new Date(year, month, day));
       }
+
     } catch ({ code, message }) {
-      console.warn('Cannot open date picker', code, message);
+      console.warn('Cannot open date picker', message);
     }
+    
   }
 
-  const triggerTimeSelection = async (): Promise<any> => {
-    try {
-      const {action, hour, minute} = await TimePickerAndroid.open({
-        hour: new Date().getSeconds(),
-        minute: new Date().getMinutes(),
-        is24Hour: false,
-      });
+  /**Show the user a time selection modal.
+   * @param startDate The current data that needs to be edited
+   * @param callback The function to execute once user has selected the date. Provide {hour: number, minute: number}
+   */
+  const triggerTimeSelection = (startDate: Date, callback: Function): Promise<any> => {
+    return new Promise((resolve, reject) => {
+      try {
+        const {action, hour, minute} = TimePickerAndroid.open({
+          hour: new Date().getSeconds(),
+          minute: new Date().getMinutes(),
+          is24Hour: false,
+        }).then(res => {
+          // Once user has selected time, continue
+          if(res.action === TimePickerAndroid.timeSetAction){
 
-      // Once user has selected time, continue
-      if(action !== TimePickerAndroid.dismissedAction){
-        return({hour: hour, minute: minute});
+            // Update time
+            let newTime = startDate;
+            newTime.setHours(hour, minute);
+            callback(newTime);
+          }
+        });
+  
+      } catch ({code, message}) {
+        console.log("Error ocurred trying to get the time.", code, message);
       }
-
-    } catch ({code, message}) {
-      console.log("Error ocurred trying to get the time.", code, message)
-    }
+    })
+    
   }
 
     return(
       <Container>
         <Content>
           <View>
-          {/* Header content */}
-          <View style={styles.header}>
-              <Button transparent onPress={() => props.navigation.pop()}>
-                <Icon name="arrow-back" />
-              </Button>
-              
-              <Text style={styles.heading}>
-                Create an Itinerary
-              </Text>
-          </View>
+            {/* Header content */}
+            <View style={styles.header}>
+                <Button transparent onPress={() => props.navigation.pop()}>
+                  <Icon name="arrow-back" />
+                </Button>
+                
+                <Text style={styles.heading}>
+                  Create an Itinerary
+                </Text>
+            </View>
 
-          {/* Main content of page */}
-          <View style={styles.content}>
+            {/* Main content of page */}
+            <View style={styles.content}>
               <Text style={styles.text}>
                 Lets start with some general information. Fill out all the fields below to continue.
               </Text>
 
+              {/* Get name and initial location for itinerary */}
               <TextInput style={styles.textInput} keyboardType="default" placeholder="Name" onChange={text => handleSetName(text)}/>
 
-              <Text style={styles.text}>
-                Choose a start and end date.
-              </Text>
-              {/* Get user to enter date/time for start and end */}
+              <TextInput style={styles.textInput} keyboardType="default" placeholder="Loction (e.g. '1265 Military Trail')" onChange={text => handleSetLocation(text)}/>
+
+              {/* Get user to enter start date/time */}
               <View style={styles.selectDateContainer}>
+                <Form style={styles.form}>
+                  <Item floatingLabel style={styles.formItem} onPress={() => handleChooseStartDate()}>
+                    <Label>Start Date</Label>
+                    <Icon active name='calendar'/>
+                    <Input disabled value={startDate.toDateString()}/>
+                  </Item>
 
-                <Button onPress={() => handleChooseStartDate()}>
-                  <Text>Choose Start date</Text>
-                </Button>
+                  <Item floatingLabel style={styles.formItem} onPress={() => handleChoosingStartTime()}>
+                    <Label>Start Time</Label>
+                    <Icon active name='clock'/>
+                    <Input disabled value={startDate.toTimeString()}/>
+                  </Item>
+                </Form>
                 
-                <Button>
-                  <Text>Choose end date</Text>
-                </Button>
+                {/* Populate end date/time */}
+                <Form style={styles.form}>
+                  <Item floatingLabel style={styles.formItem} onPress={() => handleChoosingEndDate()}>
+                    <Label>End Date</Label>
+                    <Icon active name='calendar'/>
+                    <Input disabled value={endDate.toDateString()}/>
+                  </Item>
+
+                  <Item floatingLabel style={styles.formItem} onPress={() => handleChoosingEndTime()}>
+                    <Label>End Time</Label>
+                    <Icon active name='clock'/>
+                    <Input disabled value={endDate.toTimeString()}/>
+                  </Item>
+                </Form>
               </View>
-
-              
-
-          </View>
-
-          {/* <Button  style={styles.button} onPress={() => handleSubmitted(listOfData)}>
-            <Text> Submit </Text>
-          </Button> */}
+            </View>
 
           </View>
           </Content>
         </Container>
     );
 }
-  // const listOfData = {"Name": name, "Date":date, "Museum":Museum, "Aquarium":Aquarium, "Festival":Festival,
-  //   "Galleries":Galleries, "Beach":Beach, "Hotels":Hotels, "Arcades":Arcades}
-
-
-  // const [Museum, setMuseum] = useState(false);
-  // const onSetMuseum = (value: GestureResponderEvent) => {
-  //   setMuseum(!Museum)
-  // }
-  // const [Aquarium, setAquarium] = useState(false);
-  // const onSetAquarium = (value: GestureResponderEvent) => {
-  //   setAquarium(!Aquarium)
-  // }
-  // const [Festival, setFestival] = useState(false);
-  // const onSetFestival = (value: GestureResponderEvent) =>{
-  //   setFestival(!Festival)
-  // }  
-  // const [Beach, setBeach] = useState(false);
-  // const onSetBeach = (value: GestureResponderEvent) =>{
-  //   setBeach(!Beach)
-  // }
-  // const [Galleries, setGalleries] = useState(false);
-  // const onsetGalleries = (value: GestureResponderEvent) => {
-  //   setGalleries(!Galleries)
-  // }
-  // const [Hotels, setHotels]=useState(false);
-  // const onSetHotels = (value: GestureResponderEvent) =>{
-  //   setHotels(!Hotels)
-  // }
-  // const [Arcades, setArcades]=useState(false);
-  // const onSetArcades = (value: GestureResponderEvent) =>{
-  //   setArcades(!Arcades)
-  // }
-  // const [name, setName] = useState("");
-  // const handleSetName=(name)=>{
-  //   setName(name)
-  // }
-
-
-          /* <ListItem>
-            <Left>
-                <Text>Museums</Text>
-            </Left>
-            <Body>
-              <CheckBox checked= {Museum} onPressOut={onSetMuseum}/>
-            </Body>
-          </ListItem>
-
-         <ListItem>
-            <Left>
-              <Text>Aquarium</Text>
-            </Left>
-            <Body>
-              <CheckBox checked={Aquarium} onPress={onSetAquarium}/>
-            </Body>
-          </ListItem> 
-
-          <ListItem>
-            <Left>
-              <Text>Festivals</Text>
-            </Left>
-            <Body>
-              <CheckBox checked={Festival} onPress={onSetFestival}/>
-            </Body>
-          </ListItem>
-
-          <ListItem>
-            <Left>
-              <Text>Beach</Text>
-            </Left>
-            <Body>
-              <CheckBox checked={Beach} onPress={onSetBeach}/>
-            </Body>
-          </ListItem>
-
-          <ListItem>
-            <Left>
-              <Text>Galleries</Text>
-            </Left>
-            <Body>
-              <CheckBox checked={Galleries} onPress={onsetGalleries}/>
-            </Body>
-          </ListItem>
-
-          <ListItem>
-            <Left>
-              <Text>
-                Hotels
-              </Text>
-            </Left>
-            <Body>
-              <CheckBox checked={Hotels} onPress={onSetHotels}/>
-            </Body>
-          </ListItem>
-          <ListItem>
-            <Left>
-              <Text>
-                Arcades
-              </Text>
-            </Left>
-            <Body>
-              <CheckBox checked={Arcades} onPress={onSetArcades}/>
-            </Body>
-          </ListItem> */
