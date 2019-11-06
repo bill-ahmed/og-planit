@@ -33,11 +33,6 @@ export function Itinerary(props) {
     return (
         <Container>
             <Header>
-                <Left>
-                    <Button transparent onPress={() => props.navigation.goBack()}>
-                        <Icon name="arrow-back" />
-                    </Button>
-                </Left>
                 <Body>
                     <Title>
                         Itinerary Page
@@ -46,7 +41,6 @@ export function Itinerary(props) {
                 <Right>
                     <Button transparent onPress={() => navigate('NewItinerary')}>
                         <Icon name="ios-add" />
-                        <Text> Create New Itinerary</Text>
                     </Button>
                 </Right>
             </Header>
