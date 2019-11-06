@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MapView, { Region, Marker } from 'react-native-maps';
+import MapView, { Region, Marker, AnimatedRegion, MapViewAnimated } from 'react-native-maps';
 import { View, Modal, Alert } from 'react-native';
 
 import styles from './GMapStyles';
@@ -7,15 +7,8 @@ import LocationDetails from '../../../shared/component/LocationDetails/LocationD
 import { getLocations } from '../../api/locationsAPI';
 import { Spinner } from 'native-base';
 
-const initialRegion = {
-    latitude: 37.78825,
-    longitude: -122.4324,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,
-}
-
 export default function GMap(props) {
-    const [currentRegion, setCurrentRegion] = useState(initialRegion);
+    const [currentRegion, setCurrentRegion] = useState(props.initialRegion ? props.initialRegion : null);
     const [showLocationDetails, setShowLocationDetails] = useState(false);
     const [locationsLoaded, setLocationsLoaded] = useState(false);
     const [locations, setLocations] = useState(null);
@@ -24,6 +17,7 @@ export default function GMap(props) {
     getLocations().then(res => {
         if (!locationsLoaded) {
             setLocations(res);
+            setCurrentRegion(res[0].Location);
             setLocationsLoaded(true);
         }
     });
@@ -33,20 +27,32 @@ export default function GMap(props) {
         setCurrentRegion(region);
     }
 
-    const openMarker = () => {
-        const val = Math.floor(Math.random() * locations.length);
-        setCurrLocation(locations[val]);
+    const openMarker = (index: number) => {
+        setCurrLocation(locations[index]);
         setShowLocationDetails(!showLocationDetails);
     }
 
-    return (
-        <View style={styles.container}>
-            {!locationsLoaded && <Spinner color='blue' />}
-            {locationsLoaded && <MapView showsMyLocationButton onRegionChangeComplete={updateRegion} region={currentRegion} style={styles.mapStyle}>
-                <Marker coordinate={initialRegion} title="Home" description="Starting point of Google Map" onPress={e => openMarker()} />
+    // If we're ready to render the map
+    if(locationsLoaded){
+        return(
+            <View style={styles.container}>
+                <MapView showsMyLocationButton onRegionChangeComplete={updateRegion} region={currentRegion} style={styles.mapStyle}>
+                    {/* <Marker coordinate={initialRegion} title="Home" description="Starting point of Google Map" onPress={e => openMarker()} /> */}
+                    {locationsLoaded && locations.map((event: any, index: number) => {
+                        return(
+                            <Marker coordinate={event.Location} title={event.Name} description={event.Description} onPress={() => openMarker(index)}/>
+                        );
+                    })}
 
-            </MapView>}
-            {showLocationDetails && <LocationDetails location={currLocation} open={showLocationDetails} setModal={setShowLocationDetails} />}
-        </View>
-    );
+                </MapView>
+                {showLocationDetails && <LocationDetails location={currLocation} open={showLocationDetails} setModal={setShowLocationDetails} />}
+            </View>
+        );
+    } else{
+         return (
+            <View style={styles.container}>
+                <Spinner color='blue' />
+            </View>
+        );
+    }
 }
