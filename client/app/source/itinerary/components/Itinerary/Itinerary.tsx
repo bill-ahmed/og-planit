@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon, Subtitle, Card, CardItem} from 'native-base';
+import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon, Subtitle, Card, CardItem, Fab} from 'native-base';
 
 //import styles from './ItineraryStyles';
 import { View , Text, Image, ScrollView} from 'react-native';
@@ -45,6 +45,9 @@ export function Itinerary(props) {
     const [locationsLoaded, setlocationsLoaded] = useState(false);
     const {navigate} = props.navigation;    // Handle navigations
 
+
+    const backgroundBlue = '#1977B5';
+
     let locations = null;
     getLocations().then(res => {
         locations = res;
@@ -56,9 +59,11 @@ export function Itinerary(props) {
         navigate(/* carlos' part */);
     }
 
+
+
     return (
         <Container>
-            <Header>               
+            <Header style={{backgroundColor: backgroundBlue}}>               
                 <Body>
                     <Title>
                         Itinerary Page
@@ -93,7 +98,17 @@ export function Itinerary(props) {
                 </Card>);
                  })}
             </ScrollView>
-
+            
+            <Fab
+      active={false}
+      direction="up"
+      containerStyle={{ }}
+      style={{ backgroundColor: backgroundBlue }}
+      position="bottomRight"
+      onPress={() => navigate("NewItinerary")}
+    >
+      <Icon name="ios-add" />
+    </Fab>
         </Container>
     );
 }
