@@ -1,15 +1,9 @@
 import React, { Component, useState } from 'react';
-import {Container, Header, Left, Right, Body, Title, Subtitle, Content, Button, Icon } from 'native-base';
-import {Rating} from 'react-native-ratings';
+import {Container, Header, Left, Right, Body, Title, Subtitle, Content, Button, Icon, Input } from 'native-base';
 
 import styles from './CreateViewsStyles';
 import { View, Text, ScrollView, Dimensions, Modal, TouchableHighlight, TouchableOpacity } from 'react-native';
 import { Card, ListItem} from 'react-native-elements';
-import Image from 'react-native-scalable-image';
-import ItineraryName from '../ItineraryName/ItineraryName';
-import { EventEmitter } from '@unimodules/core';
-import { array } from 'prop-types';
-import { database } from 'firebase';
 import LocationDetails from '../../../shared/component/LocationDetails/LocationDetails';
 
 export default function CreateViews(props){
@@ -31,6 +25,10 @@ export default function CreateViews(props){
     const itineraryInfo = props.navigation.state.params.data
     const json = itineraryInfo.events //require("../ratings/mockDatabase.json");
 
+    if(!itinerayData) {
+        setItineraryData(itineraryInfo);
+    }
+
     return(
         <Container>
             <Header noLeft>
@@ -41,6 +39,7 @@ export default function CreateViews(props){
                 </Left>
                 <Body>
                     <Title>
+                        {itinerayData && <Input editable={editFields} value={itinerayData.name} placeholder="Title"/>}
                         {itineraryInfo.name}
                     </Title>
                     <Subtitle>
