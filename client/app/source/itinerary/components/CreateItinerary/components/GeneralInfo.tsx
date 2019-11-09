@@ -178,7 +178,7 @@ export default function GeneralInfo(props){
                   <Item floatingLabel style={styles.formItem} onPress={() => handleChoosingStartTime()}>
                     <Label>Start Time</Label>
                     <Icon active name='clock'/>
-                    <Input disabled value={itineraryData.startTime.toTimeString().slice(0, -36)}/>
+                    <Input disabled value={itineraryData.startTime.toTimeString().slice(0, 5)}/>
                   </Item>
                 </Form>
                 
@@ -193,7 +193,7 @@ export default function GeneralInfo(props){
                   <Item floatingLabel error={itineraryData.endTime < itineraryData.startTime} style={styles.formItem} onPress={() => handleChoosingEndTime()}>
                     <Label>End Time</Label>
                     <Icon active name='clock'/>
-                    <Input disabled value={itineraryData.endTime.toTimeString().slice(0, -36)}/>
+                    <Input disabled value={itineraryData.endTime.toTimeString().slice(0, 5)}/>
                   </Item>
                 </Form>
               </View>
