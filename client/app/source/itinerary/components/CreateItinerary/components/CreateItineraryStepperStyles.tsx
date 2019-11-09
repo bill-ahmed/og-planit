@@ -24,7 +24,8 @@ export default StyleSheet.create({
     },
     buttonText: {
       color: backgroundBlue, // Colour for font if "transparent" flag given
-      fontSize: 24
+      fontSize: 24,
+      margin: 5
     },
     buttonIcon: {
         color: backgroundBlue
@@ -34,7 +35,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         position: 'absolute',
-        bottom: 30,
+        bottom: 15,
         alignItems: 'center',
         alignSelf: 'center',
         width: '100%',

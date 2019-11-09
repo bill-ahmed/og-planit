@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View , Text, TextInput, DatePickerAndroid, TimePickerAndroid, Dimensions} from 'react-native';
+import { Modal, View , Text, TextInput, DatePickerAndroid, TimePickerAndroid, Dimensions} from 'react-native';
 import { Container, Content,  Button, Icon, Form, Item, Label, Input} from 'native-base';
 import StepIndicator from 'react-native-step-indicator';
 import GeneralInfo from './GeneralInfo';
@@ -27,8 +27,8 @@ export default function CreateItineraryStepper(props){
         endTime: new Date(),
     }
 
-    const [itineraryInfo, setItineraryInfo] = useState(itinerary);
-    const [currentStep, setCurrentStep] = useState(0);
+    const [itineraryInfo, setItineraryInfo] = useState(itinerary);  // All itinerary data to be uploaded
+    const [currentStep, setCurrentStep] = useState(0);  // Current step in progress bar
 
     // Component to render at each step
     const steps = [
@@ -72,43 +72,45 @@ export default function CreateItineraryStepper(props){
     }
 
     return(
-        <View style={styles.container}>
-            
-            {/* Header content */}
-            <View style={styles.header}>
-                <Button transparent onPress={() => props.navigation.pop()}>
-                  <Icon name="arrow-back" />
-                </Button>
+        <Modal animationType="slide" transparent={false} visible={props.open} presentationStyle='fullScreen' onRequestClose={() => props.close()}>
+            <View style={styles.container}>
                 
-                <Text style={styles.heading}>
-                  Create an Itinerary
-                </Text>
+                {/* Header content */}
+                <View style={styles.header}>
+                    <Button transparent onPress={() => props.close()}>
+                    <Icon name="arrow-back" />
+                    </Button>
+                    
+                    <Text style={styles.heading}>
+                    Create an Itinerary
+                    </Text>
+                </View>
+
+                {/* Main body content */}
+                <View style={styles.content}>
+                    <StepIndicator
+                        customStyles={StepperStyles}
+                        currentPosition={currentStep} 
+                        stepCount={steps.length}
+                        labels={labels}
+                    />
+
+                    {steps[currentStep]}
+                </View>
+
+                {/* Footer content */}
+                <View style={styles.footer}>
+                    <Button full transparent iconLeft disabled={currentStep === 0} onPress={() => handlePrevStep()}>
+                        <Icon style={styles.buttonIcon} name='arrow-round-back'/>
+                        <Text style={styles.buttonText}>Back</Text>
+                    </Button>
+
+                    <Button full transparent iconRight disabled={currentStep === steps.length} onPress={() => handleNextStep()}>
+                        <Text style={styles.buttonText}>Next</Text>
+                        <Icon style={styles.buttonIcon} name='arrow-round-forward'/>
+                    </Button>
+                </View>
             </View>
-
-            {/* Main body content */}
-            <View style={styles.content}>
-                <StepIndicator
-                    customStyles={StepperStyles}
-                    currentPosition={currentStep} 
-                    stepCount={steps.length}
-                    labels={labels}
-                />
-
-                {steps[currentStep]}
-            </View>
-
-            {/* Footer content */}
-            <View style={styles.footer}>
-                <Button full transparent iconRight disabled={currentStep === 0} onPress={() => handlePrevStep()}>
-                    <Icon style={styles.buttonIcon} name='arrow-back'/>
-                    <Text style={styles.buttonText}>Back</Text>
-                </Button>
-
-                <Button full transparent iconRight disabled={currentStep === steps.length} onPress={() => handleNextStep()}>
-                    <Text style={styles.buttonText}>Next</Text>
-                    <Icon style={styles.buttonIcon} name='arrow-forward'/>
-                </Button>
-            </View>
-        </View>
+        </Modal>
     );
 }

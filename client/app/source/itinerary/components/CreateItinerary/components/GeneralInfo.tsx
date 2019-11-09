@@ -133,7 +133,7 @@ export default function GeneralInfo(props){
         if(action === TimePickerAndroid.timeSetAction){
 
           // Update time
-          let newTime = startDate;
+          let newTime = (startDate ? startDate : new Date());
           newTime.setHours(hour, minute);
 
           callback(newTime);
@@ -156,9 +156,15 @@ export default function GeneralInfo(props){
               </Text>
 
               {/* Get name and initial location for itinerary */}
-              <TextInput style={styles.textInput} keyboardType="default" placeholder="Name" onChange={text => handleSetName(text.nativeEvent.text)}/>
+              <Item regular style={styles.textInputContainer} error={itineraryData.name === ""} success={itineraryData.name !== ""}>
+                <Input style={styles.textInput} keyboardType="default" placeholder="Name" onChange={text => handleSetName(text.nativeEvent.text)}/>
+              </Item>
+              
+              <Item regular style={styles.textInputContainer} error={itineraryData.location === ""} success={itineraryData.location !== ""}>
+                <Input style={styles.textInput} keyboardType="default" placeholder="Loction (e.g. '1265 Military Trail')" onChange={text => handleSetLocation(text.nativeEvent.text)}/>
+              </Item>
 
-              <TextInput style={styles.textInput} keyboardType="default" placeholder="Loction (e.g. '1265 Military Trail')" onChange={text => handleSetLocation(text.nativeEvent.text)}/>
+              
 
               {/* Get user to enter start date/time */}
               <View style={styles.selectDateContainer}>
@@ -178,13 +184,13 @@ export default function GeneralInfo(props){
                 
                 {/* Populate end date/time */}
                 <Form style={styles.form}>
-                  <Item floatingLabel style={styles.formItem} onPress={() => handleChoosingEndDate()}>
+                  <Item floatingLabel error={itineraryData.endTime < itineraryData.startTime} style={styles.formItem} onPress={() => handleChoosingEndDate()}>
                     <Label>End Date</Label>
                     <Icon active name='calendar'/>
                     <Input disabled value={itineraryData.endTime.toDateString()}/>
                   </Item>
 
-                  <Item floatingLabel style={styles.formItem} onPress={() => handleChoosingEndTime()}>
+                  <Item floatingLabel error={itineraryData.endTime < itineraryData.startTime} style={styles.formItem} onPress={() => handleChoosingEndTime()}>
                     <Label>End Time</Label>
                     <Icon active name='clock'/>
                     <Input disabled value={itineraryData.endTime.toTimeString().slice(0, -36)}/>

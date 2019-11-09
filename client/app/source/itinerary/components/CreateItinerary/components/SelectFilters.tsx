@@ -8,22 +8,23 @@ export default function SelectFilters(props){
     console.log(itineraryData);
 
     return(
-        <View>
-            <View style={styles.container}>
+        <View style={styles.content}>
+            {/* Main Content */}
+            <View style={styles.filtersIntroduction}>
+                <Text style={styles.text}>
+                    Now for some filters! This will help us give you a more personalized itinerary.
+                </Text>
+                
+                <Text style={styles.subtext}>
+                    Don't worry, you can always modify any events we add.
+                </Text>
+            </View>
 
-                {/* Main Content */}
-                <View>
-                    <Text>
-                        Template for filters such as checkboxes, radio buttons, etc.
-                    </Text>
-                </View>
-
-                {/* Footer content */}
-                <View>
-                    <Text>
-                        Next button here
-                    </Text>
-                </View>
+            {/* Footer content */}
+            <View>
+                <Text>
+                    Next button here
+                </Text>
             </View>
         </View>
     );

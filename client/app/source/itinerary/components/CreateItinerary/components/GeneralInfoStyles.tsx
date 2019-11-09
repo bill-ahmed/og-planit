@@ -21,25 +21,24 @@ export default StyleSheet.create({
     selectDateContainer: {
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-evenly',
         alignItems: 'center',
         width: '100%',
         marginTop: 30
     },
     form:{
-        width: "50%"
+        width: "45%"
     },
     formItem: {
         marginBottom: 20
     },
-    textInput: {
-        fontSize: 18,
-        borderWidth: 1,
-        borderColor: 'rgba(0,0,0,0.5)',
-        borderRadius: 7,
-        padding: 8,
+    textInputContainer: {
         marginTop: 10,
         marginBottom: 10,
+    },
+    textInput: {
+        fontSize: 18,
+        padding: 8,
     },
     text: {
         fontSize: 18,
