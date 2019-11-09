@@ -45,7 +45,6 @@ export default function CreateItineraryStepper(props){
 
     /**Update all data in itinerary */
     const updateItineraryInfo = (newData : NewItinerary) => {
-        console.log("new itinerary data", newData);
         setItineraryInfo(newData);
     }
 

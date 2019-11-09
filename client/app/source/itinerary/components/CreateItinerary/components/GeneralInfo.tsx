@@ -50,7 +50,7 @@ export default function GeneralInfo(props){
 
   /** Update start time for this itinerary */
   const handleSetStartTime = (newStartTime : Date) => {
-    let temp = {...itineraryData, endTime: newStartTime};
+    let temp = {...itineraryData, startTime: newStartTime};
 
     props.updateItinerary(temp);
     setItineraryData(temp);
@@ -98,10 +98,17 @@ export default function GeneralInfo(props){
   const trigggerDateSelection = async (date: Date, callback: Function): Promise<any> => {
     try {
       const { action, year, month, day } = await DatePickerAndroid.open({
-        date: new Date(),
+        date: date,
       });
       if (action !== DatePickerAndroid.dismissedAction) {
-        callback(new Date(year, month, day));
+        let tempDate = date;
+
+        // Update year, month and day component of currently stored date
+        date.setFullYear(year)
+        date.setMonth(month),
+        date.setDate(day);
+
+        callback(tempDate);
       }
 
     } catch ({ code, message }) {
@@ -114,29 +121,27 @@ export default function GeneralInfo(props){
    * @param startDate The current data that needs to be edited
    * @param callback The function to execute once user has selected the date. Provide {hour: number, minute: number}
    */
-  const triggerTimeSelection = (startDate: Date, callback: Function): Promise<any> => {
-    return new Promise((resolve, reject) => {
+  const triggerTimeSelection = async (startDate: Date, callback: Function): Promise<any> => {
       try {
-        const {action, hour, minute} = TimePickerAndroid.open({
-          hour: new Date().getSeconds(),
+        const { action, hour, minute} = await TimePickerAndroid.open({
+          hour: new Date().getHours(),
           minute: new Date().getMinutes(),
           is24Hour: false,
-        }).then(res => {
-          // Once user has selected time, continue
-          if(res.action === TimePickerAndroid.timeSetAction){
+        })
 
-            // Update time
-            let newTime = startDate;
-            newTime.setHours(hour, minute);
-            callback(newTime);
-          }
-        });
+        // Once user has selected time, continue
+        if(action === TimePickerAndroid.timeSetAction){
+
+          // Update time
+          let newTime = startDate;
+          newTime.setHours(hour, minute);
+
+          callback(newTime);
+        }
   
       } catch ({code, message}) {
         console.log("Error ocurred trying to get the time.", code, message);
       }
-    })
-    
   }
 
     return(
@@ -166,7 +171,7 @@ export default function GeneralInfo(props){
                   <Item floatingLabel style={styles.formItem} onPress={() => handleChoosingStartTime()}>
                     <Label>Start Time</Label>
                     <Icon active name='clock'/>
-                    <Input disabled value={itineraryData.startTime.toTimeString()}/>
+                    <Input disabled value={itineraryData.startTime.toTimeString().slice(0, -36)}/>
                   </Item>
                 </Form>
                 
@@ -181,7 +186,7 @@ export default function GeneralInfo(props){
                   <Item floatingLabel style={styles.formItem} onPress={() => handleChoosingEndTime()}>
                     <Label>End Time</Label>
                     <Icon active name='clock'/>
-                    <Input disabled value={itineraryData.endTime.toTimeString()}/>
+                    <Input disabled value={itineraryData.endTime.toTimeString().slice(0, -36)}/>
                   </Item>
                 </Form>
               </View>
