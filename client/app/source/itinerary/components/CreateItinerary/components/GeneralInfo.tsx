@@ -150,14 +150,15 @@ export default function GeneralInfo(props){
 
             {/* Main content of page */}
             <View style={styles.content}>
+
               <Text style={styles.text}>
                 Lets start with some general information. Fill out all the fields below to continue.
               </Text>
 
               {/* Get name and initial location for itinerary */}
-              <TextInput style={styles.textInput} keyboardType="default" placeholder="Name" onChange={text => handleSetName(text)}/>
+              <TextInput style={styles.textInput} keyboardType="default" placeholder="Name" onChange={text => handleSetName(text.nativeEvent.text)}/>
 
-              <TextInput style={styles.textInput} keyboardType="default" placeholder="Loction (e.g. '1265 Military Trail')" onChange={text => handleSetLocation(text)}/>
+              <TextInput style={styles.textInput} keyboardType="default" placeholder="Loction (e.g. '1265 Military Trail')" onChange={text => handleSetLocation(text.nativeEvent.text)}/>
 
               {/* Get user to enter start date/time */}
               <View style={styles.selectDateContainer}>
@@ -190,14 +191,6 @@ export default function GeneralInfo(props){
                   </Item>
                 </Form>
               </View>
-            </View>
-
-            {/* Footer content */}
-            <View style={styles.footer}>
-              <Button full transparent iconRight onPress={() => handleNextButton()}>
-                <Text style={styles.buttonText}>Next</Text>
-                <Icon style={styles.buttonIcon} name='arrow-forward'/>
-              </Button>
             </View>
 
           </View>

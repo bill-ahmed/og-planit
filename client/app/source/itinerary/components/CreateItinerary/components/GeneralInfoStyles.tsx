@@ -16,7 +16,7 @@ export default StyleSheet.create({
         color: backgroundBlue
     },
     content: {
-        padding: 20,
+        marginTop: 30,
     },
     selectDateContainer: {
         display: 'flex',
@@ -43,8 +43,8 @@ export default StyleSheet.create({
     },
     text: {
         fontSize: 18,
-        marginTop: 5,
-        marginBottom: 5
+        marginTop: 10,
+        marginBottom: 10
     },
     buttonText: {
       color: backgroundBlue, // Colour for font if "transparent" flag given

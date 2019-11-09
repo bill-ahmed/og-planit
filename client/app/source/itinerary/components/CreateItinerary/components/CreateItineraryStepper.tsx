@@ -3,6 +3,7 @@ import { View , Text, TextInput, DatePickerAndroid, TimePickerAndroid, Dimension
 import { Container, Content,  Button, Icon, Form, Item, Label, Input} from 'native-base';
 import StepIndicator from 'react-native-step-indicator';
 import GeneralInfo from './GeneralInfo';
+import SelectFilters from './SelectFilters';
 import styles, { StepperStyles } from './CreateItineraryStepperStyles';
 
 /**Represent a new itinerary the user will construct */
@@ -27,7 +28,7 @@ export default function CreateItineraryStepper(props){
     }
 
     const [itineraryInfo, setItineraryInfo] = useState(itinerary);
-    const[currentStep, setCurrentStep] = useState(0);
+    const [currentStep, setCurrentStep] = useState(0);
 
     // Component to render at each step
     const steps = [
@@ -36,12 +37,20 @@ export default function CreateItineraryStepper(props){
             goNext={() => handleNextStep()} goBack={() => handlePrevStep()}/>
         ,
 
+        <SelectFilters itineraryInfo={itineraryInfo} updateItinerary={(newData: NewItinerary) => updateItineraryInfo(newData)}
+            goNext={() => handleNextStep()} goBack={() => handlePrevStep()}/>
+        ,
         <View>
-            <Text>Select Filters</Text>
+            <Text>Generate the itinerary</Text>
         </View>
+        ,
+        <View>
+            <Text>Save/Upload itinerary</Text>
+        </View>
+
     ];
 
-    const labels = ["General Info", "Select Filters"];
+    const labels = ["General Info", "Select Filters", "Generate Itinerary", "Done!"];
 
     /**Update all data in itinerary */
     const updateItineraryInfo = (newData : NewItinerary) => {
@@ -76,14 +85,30 @@ export default function CreateItineraryStepper(props){
                 </Text>
             </View>
 
-            <StepIndicator
-                customStyles={StepperStyles}
-                currentPosition={currentStep} 
-                stepCount={steps.length}
-                labels={labels}
-            />
+            {/* Main body content */}
+            <View style={styles.content}>
+                <StepIndicator
+                    customStyles={StepperStyles}
+                    currentPosition={currentStep} 
+                    stepCount={steps.length}
+                    labels={labels}
+                />
 
-            {steps[currentStep]}
+                {steps[currentStep]}
+            </View>
+
+            {/* Footer content */}
+            <View style={styles.footer}>
+                <Button full transparent iconRight disabled={currentStep === 0} onPress={() => handlePrevStep()}>
+                    <Icon style={styles.buttonIcon} name='arrow-back'/>
+                    <Text style={styles.buttonText}>Back</Text>
+                </Button>
+
+                <Button full transparent iconRight disabled={currentStep === steps.length} onPress={() => handleNextStep()}>
+                    <Text style={styles.buttonText}>Next</Text>
+                    <Icon style={styles.buttonIcon} name='arrow-forward'/>
+                </Button>
+            </View>
         </View>
     );
 }

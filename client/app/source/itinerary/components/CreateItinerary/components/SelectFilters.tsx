@@ -4,32 +4,25 @@ import styles from './SelectFiltersStyles';
 import { View , Text, TextInput, DatePickerAndroid, TimePickerAndroid} from 'react-native';
 
 export default function SelectFilters(props){
-    const { navigate } = props.navigation;
-    const data = props.navigation.state.params.data;
-    console.log(data);
+    const itineraryData = props.itineraryInfo;
+    console.log(itineraryData);
 
     return(
         <View>
             <View style={styles.container}>
-                {/* Header content */}
-                <View style={styles.header}>
-                    <Button transparent onPress={() => props.navigation.pop()}>
-                    <Icon name="arrow-back" />
-                    </Button>
-                    
-                    <Text style={styles.heading}>
-                        Filter Selection
-                    </Text>
-                </View>
 
                 {/* Main Content */}
                 <View>
-                    
+                    <Text>
+                        Template for filters such as checkboxes, radio buttons, etc.
+                    </Text>
                 </View>
 
                 {/* Footer content */}
                 <View>
-
+                    <Text>
+                        Next button here
+                    </Text>
                 </View>
             </View>
         </View>

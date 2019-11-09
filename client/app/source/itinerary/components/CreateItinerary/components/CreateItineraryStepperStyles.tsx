@@ -22,34 +22,6 @@ export default StyleSheet.create({
     content: {
         padding: 20,
     },
-    selectDateContainer: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        width: '100%',
-        marginTop: 30
-    },
-    form:{
-        width: "50%"
-    },
-    formItem: {
-        marginBottom: 20
-    },
-    textInput: {
-        fontSize: 18,
-        borderWidth: 1,
-        borderColor: 'rgba(0,0,0,0.5)',
-        borderRadius: 7,
-        padding: 8,
-        marginTop: 10,
-        marginBottom: 10,
-    },
-    text: {
-        fontSize: 18,
-        marginTop: 5,
-        marginBottom: 5
-    },
     buttonText: {
       color: backgroundBlue, // Colour for font if "transparent" flag given
       fontSize: 24
@@ -58,9 +30,14 @@ export default StyleSheet.create({
         color: backgroundBlue
     },
     footer: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        position: 'absolute',
+        bottom: 30,
+        alignItems: 'center',
         alignSelf: 'center',
         width: '100%',
-        marginTop: '30%'
     }
 });
 
@@ -85,5 +62,5 @@ export const StepperStyles = {
     stepIndicatorLabelUnFinishedColor: '#aaaaaa',
     labelColor: '#999999',
     labelSize: 13,
-    currentStepLabelColor: backgroundBlue
+    currentStepLabelColor: backgroundBlue,
   }
