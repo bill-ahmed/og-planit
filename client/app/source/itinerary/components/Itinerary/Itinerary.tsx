@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon, Subtitle, Card, CardItem, Fab} from 'native-base';
+import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon, Subtitle, Card, CardItem, Fab, Thumbnail} from 'native-base';
 
 //import styles from './ItineraryStyles';
 import { View , Text, Image, ScrollView} from 'react-native';
@@ -87,12 +87,14 @@ export function Itinerary(props) {
                 {itineraries.map(element => {
                 return(<Card>
                     <CardItem header button onPress={() => navigate("ViewItineraryEvents", {data: element})}>
-                    <Text> {element.name} </Text>
+                    <Thumbnail source={require('./../../../login/assets/earth.png')} style={{maxWidth:30, maxHeight:30}}></Thumbnail>
+                    <Text style={{fontSize: 25}}> {element.name} </Text>
                     </CardItem>
+                    <CardItem></CardItem>
                     <CardItem button onPress={() => console.log(`Clicked the description of ${element.name}!`)/* carlos replace with yours*/}>
                         <Body>
-                        <Text>Number of Events:  {element.events.length}</Text>
-                        <Text>Last Edited:  {element.last_edit_time}</Text>
+                        <Text>{element.events.length} {((element.events.length == 0) && (element.events.length == 1)) ?'event': 'events'}</Text>
+                        <Text>Last edited at {element.last_edit_time}</Text>
                         </Body>
                     </CardItem>
                 </Card>);
