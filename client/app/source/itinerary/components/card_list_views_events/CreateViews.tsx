@@ -1,23 +1,19 @@
 import React, { Component, useState } from 'react';
-import {Container, Header, Left, Right, Body, Title, Subtitle, Content, Button, Icon } from 'native-base';
-import {Rating} from 'react-native-ratings';
+import { Container, Header, Left, Right, Body, Title, Subtitle, Content, Button, Icon } from 'native-base';
 
 import styles from './CreateViewsStyles';
-import { View, Text, ScrollView, Dimensions, Modal, TouchableHighlight, TouchableOpacity } from 'react-native';
-import { Card, ListItem} from 'react-native-elements';
-import Image from 'react-native-scalable-image';
-import EventDetailsModal from './EventDetailsModal';
-import ItineraryName from '../ItineraryName/ItineraryName';
-import { EventEmitter } from '@unimodules/core';
-import { array } from 'prop-types';
-import { database } from 'firebase';
+import { Text, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+import { Card, Input } from 'react-native-elements';
 import LocationDetails from '../../../shared/component/LocationDetails/LocationDetails';
 
-export default function CreateViews(props){
+export default function CreateViews(props) {
     // Control if modal is open or not
     const [eventDetailsModalOpen, setEventDetailsModal] = useState(false);
-    const [nameChangeModal, setNameChangeModal] = useState(false);
+    const [editFields, setEditFields] = useState(false);
     const [itinerayData, setItineraryData] = useState(null);
+    const [events, setEvents] = useState(null);
+    const [initialized, setInitialized] = useState(false);
+    const [backup, setBackup] = useState(null);
     // Control what data is sent to the modal
     const [detailsdModalData, setDetailsModalData] = useState(null);
     /**Open or close the event details modal modal
@@ -29,42 +25,66 @@ export default function CreateViews(props){
         setDetailsModalData(data);
     }
 
-    const changeName = (data: any) => {
-        setNameChangeModal(true);
-        setItineraryData(data);
+    const initState = () => {
+        setItineraryData(props.navigation.state.params.data);
+        setEvents(props.navigation.state.params.data.events);
+        setInitialized(true);
     }
 
-    const itineraryInfo = props.navigation.state.params.data
-    const json = itineraryInfo.events //require("../ratings/mockDatabase.json");
+    const saveBackup = () => {
+        let bckup = JSON.parse(JSON.stringify(props.navigation.state.params.data));
+        setBackup(bckup);
+    }
 
-    return(
+    const saveChanges = () => {
+        saveBackup();
+        setEditFields(false);
+    }
+
+    const discardChanges = () => {
+        itinerayData.name = backup.name;
+        setEditFields(false);
+    }
+
+    const setTitle = (e) => {
+        itinerayData.name = e;
+    }
+
+    if (props.navigation.state.params.data && !initialized) {
+        initState();
+        saveBackup();
+    }
+
+    return (
         <Container>
-            <Header noLeft>
+            <Header>
                 <Left>
                     <Button transparent onPress={() => props.navigation.goBack()}>
-                        <Icon name="arrow-back"/>
+                        <Icon name="arrow-back" />
                     </Button>
                 </Left>
-                <Body>
-                    <Title>
-                        {itineraryInfo.name}
-                    </Title>
-                    <Subtitle>
-                        Events
-                    </Subtitle>
-                </Body>
-                <Right>
-                    <Button onPress={() => changeName(itineraryInfo.name)}>
-                        <Icon name="create"/>
-                    </Button>
-                </Right>
+                {initialized && <Body>
+                    {editFields && <Input onChangeText={(e) => setTitle(e)}><Title>{itinerayData.name}</Title></Input>}
+                    {!editFields && <Title>{itinerayData.name}</Title>}
+                </Body>}
+                {initialized && <Right>
+                    {editFields && <Button onPress={() => saveChanges()}>
+                        <Icon name="save" />
+                    </Button>}
+                    {editFields && <Button onPress={() => discardChanges()}>
+                        <Icon name="ios-close" />
+                    </Button>}
+                    {!editFields && <Button onPress={() => setEditFields(true)}>
+                        <Icon name="create" />
+                    </Button>}
+                </Right>}
             </Header>
             <ScrollView>
-                {json.map((event, index) => {
-                    return(
+                {initialized && events.map((event, index) => {
+                    return (
                         <TouchableOpacity onPress={() => setModalOpen(true, event)} key={index}>
                             <Card
-                                image={{uri: event.uri}}>
+                                image={{ uri: event.uri }}>
                                 <Text style={styles.eventHeader}>
                                     {event.Name}
                                 </Text>
@@ -77,10 +97,9 @@ export default function CreateViews(props){
                             </Card>
                         </TouchableOpacity>
                     )
-                    })}
+                })}
             </ScrollView>
-            {eventDetailsModalOpen && <LocationDetails location={detailsdModalData} open={eventDetailsModalOpen} setModal={setEventDetailsModal} />}
-            {nameChangeModal && <ItineraryName data={itinerayData} close={() => setNameChangeModal(false)}/>}
+            {initialized && eventDetailsModalOpen && <LocationDetails location={detailsdModalData} open={eventDetailsModalOpen} setModal={setEventDetailsModal} />}
         </Container>
     );
 }
