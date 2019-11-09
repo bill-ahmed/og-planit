@@ -1,17 +1,13 @@
 import { createStackNavigator } from "react-navigation-stack";
-import GeneralInfoScreen from './components/GeneralInfo';
-import SelectFilter from './components/SelectFilters';
+import CreateItineraryStepper from './components/CreateItineraryStepper';
 
 export default createStackNavigator({
-    GeneralInfo: {
-        screen: GeneralInfoScreen, 
-    },
-    FilterSelection: {
-        screen: SelectFilter,
+    CreateItineraryStepper: {
+        screen: CreateItineraryStepper, 
     },
 }, 
 {
-    initialRouteName: "GeneralInfo",
+    initialRouteName: "CreateItineraryStepper",
     defaultNavigationOptions: {
         header: null,
     }

@@ -1,68 +1,94 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Content,  Button, Icon, Form, Item, Label, Input} from 'native-base';
 import styles from './GeneralInfoStyles';
 import { View , Text, TextInput, DatePickerAndroid, TimePickerAndroid, Dimensions} from 'react-native';
 
-export default function NewItinerary(props){
+export default function GeneralInfo(props){
 
-  const { navigate } = props.navigation;  // Allow going to other screens in stack
-
-  // Keep track of when itinerary should start and end
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-
-  // Keep track of name for this itinerary
-  const [name, setName] = useState("");
-
-  // Location that user is interested in
-  const [location, setLocation] = useState("");
+  // Keep track of all itinerary data
+  const [itineraryData, setItineraryData] = useState(props.itineraryInfo);
 
   /**Update name of the itinerary
    * @param name The new name for current itinerary
    */
-  const handleSetName=(name)=>{
-    setName(name)
+  const handleSetName = (name: string)=>{
+    let temp = {...itineraryData, name: name};
+
+    props.updateItinerary(temp);
+    setItineraryData(temp); // We update local state so component can re-render easily
   }
 
   /**Update name of the location
    * @param location The new location
    */
-  const handleSetLocation=(name)=>{
-    setLocation(location)
+  const handleSetLocation= (name: string) =>{
+    let temp = {...itineraryData, location: name};
+    
+    props.updateItinerary(temp);
+    setItineraryData(temp);
   }
+
+  /** Update the end data for this itinerary */
+  const handleSetStartDate = (newStartDate: Date) => {
+    let temp = {...itineraryData, startTime: newStartDate};
+
+    props.updateItinerary(temp);
+    setItineraryData(temp);
+
+    // Update itinerary data to reflect this
+  }
+
+  /** Update the end data for this itinerary */
+  const handleSetEndDate = (newEndDate: Date) => {
+    let temp = {...itineraryData, endTime: newEndDate};
+    
+    props.updateItinerary(temp);
+    setItineraryData(temp);
+
+    // Update itinerary data to reflect this
+  }
+
+  /** Update start time for this itinerary */
+  const handleSetStartTime = (newStartTime : Date) => {
+    let temp = {...itineraryData, endTime: newStartTime};
+
+    props.updateItinerary(temp);
+    setItineraryData(temp);
+  }
+
+  /** Update end time for this itinerary */
+  const handleSetEndTime = (newEndTime : Date) => {
+    let temp = {...itineraryData, endTime: newEndTime};
+
+    props.updateItinerary(temp);
+    setItineraryData(temp);
+
+  }
+
   
   /**Callback for when user clicks "Next" button */
   const handleNextButton = (): void =>{
-
-    // Pass all data to next screen
-    navigate('FilterSelection', { data: 
-      {
-        itineraryName: name, 
-        itineraryLocation: location, 
-        startDate: startDate, 
-        endDate: endDate
-      } 
-    })
+    props.goNext();
   }
 
   /**Handle user selecting a starting date for itinerary*/
   const handleChooseStartDate = (): void => {
-    trigggerDateSelection(startDate, setStartDate);
+    trigggerDateSelection(itineraryData.startTime, handleSetStartDate);
   }
 
   /**Handle user selecting a end date for itinerary*/
   const handleChoosingEndDate = (): void => {
-    trigggerDateSelection(endDate, setEndDate);
+    trigggerDateSelection(itineraryData.endTime, handleSetEndDate);
   }
 
   /**Handle user selecting a starting time for itinerary*/
   const handleChoosingStartTime = (): void => {
-    triggerTimeSelection(startDate, setStartDate);
+    triggerTimeSelection(itineraryData.starTime, handleSetStartTime);
   }
 
   /**Handle user selecting a starting time for itinerary*/
   const handleChoosingEndTime = (): void => {
-    triggerTimeSelection(endDate, setEndDate);
+    triggerTimeSelection(itineraryData.endTime, handleSetEndTime);
   }
 
   /**Show the user a date selection modal.
@@ -116,16 +142,6 @@ export default function NewItinerary(props){
     return(
       <View>
           <View style={{height: '100%'}}>
-            {/* Header content */}
-            <View style={styles.header}>
-                <Button transparent onPress={() => props.navigation.pop()}>
-                  <Icon name="arrow-back" />
-                </Button>
-                
-                <Text style={styles.heading}>
-                  Create an Itinerary
-                </Text>
-            </View>
 
             {/* Main content of page */}
             <View style={styles.content}>
@@ -144,13 +160,13 @@ export default function NewItinerary(props){
                   <Item floatingLabel style={styles.formItem} onPress={() => handleChooseStartDate()}>
                     <Label>Start Date</Label>
                     <Icon active name='calendar'/>
-                    <Input disabled value={startDate.toDateString()}/>
+                    <Input disabled value={itineraryData.startTime.toDateString()}/>
                   </Item>
 
                   <Item floatingLabel style={styles.formItem} onPress={() => handleChoosingStartTime()}>
                     <Label>Start Time</Label>
                     <Icon active name='clock'/>
-                    <Input disabled value={startDate.toTimeString()}/>
+                    <Input disabled value={itineraryData.startTime.toTimeString()}/>
                   </Item>
                 </Form>
                 
@@ -159,13 +175,13 @@ export default function NewItinerary(props){
                   <Item floatingLabel style={styles.formItem} onPress={() => handleChoosingEndDate()}>
                     <Label>End Date</Label>
                     <Icon active name='calendar'/>
-                    <Input disabled value={endDate.toDateString()}/>
+                    <Input disabled value={itineraryData.endTime.toDateString()}/>
                   </Item>
 
                   <Item floatingLabel style={styles.formItem} onPress={() => handleChoosingEndTime()}>
                     <Label>End Time</Label>
                     <Icon active name='clock'/>
-                    <Input disabled value={endDate.toTimeString()}/>
+                    <Input disabled value={itineraryData.endTime.toTimeString()}/>
                   </Item>
                 </Form>
               </View>
