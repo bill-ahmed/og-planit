@@ -17,32 +17,7 @@ var dataToLoad = require('./FireBaseData.json');
 
 /**Populate all event data to firestore */
 function loadDataToFirestore(){
-    dataToLoad.events.forEach((elem: any) => {
-    
-        // Create new model
-        let newDoc = {
-            Name: elem.Name,
-            Address: {
-                City: elem.Address.city,
-                Country: elem.Address.country,
-                Number: elem.Address.address1.split(" ")[0],
-                Province: elem.Address.state,
-                Street: elem.Address.address1.split(" ")[1] + " " + elem.Address.address1.split(" ")[2],
-            },
-            AvgPrice: elem.AvgPrice,
-            AvgTimeSpent: elem.AvgTimeSpent,
-            ContactInfo: {
-                Phone: elem.Phone,
-                Email: !!elem.Email ? elem.Email : "N/A",
-            },
-            Description: elem.Description,
-            EndTime: new Date(elem.EndTime),
-            StartTime: new Date(elem.StartTime),
-            Location: new admin.firestore.GeoPoint(
-                elem.Location.latitude, elem.Location.longitude),
-            Tags: [elem.Type],
-            Type: elem.Type,
-        };
+    GetEventsData().forEach((newDoc: any) => {
     
         // Commit to firestore
         db.collection(startingCollection).doc('data').collection('events')
@@ -53,8 +28,6 @@ function loadDataToFirestore(){
         .catch((err: any) => {
             console.log("Error writing document. ", err)
         });
-    
-        console.log(newDoc);
     });
 }
 
@@ -103,6 +76,7 @@ function GetEventsData(): Array<any>{
                     elem.Location.latitude, elem.Location.longitude),
                 Tags: [elem.Type],
                 Type: elem.Type,
+                GroupSize: elem['Reccomended Group Size']
             }
         );
     });
@@ -124,3 +98,5 @@ function main(){
 
     // console.log(eventsToAdd, eventsToAdd.length);
 }
+
+loadDataToFirestore();

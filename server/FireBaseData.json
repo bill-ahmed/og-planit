@@ -23,14 +23,13 @@
             },
             "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/utQ8KjZa2aLaM9iuKxySDA/o.jpg",
             "Url": "https://www.yelp.com/biz/ripleys-aquarium-of-canada-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 4,
-            "NumRatings": 582,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 286,
-            "AvgTimeSpent": 254,
+            "AvgPrice": 341,
+            "AvgTimeSpent": 93,
             "Type": "Aquariums",
-            "StartTime": "2020-02-15T00:00:00-05:00",
-            "EndTime": "2019-12-19T00:00:00-05:00"
+            "StartTime": "2019-11-14T00:00:00-05:00",
+            "EndTime": "2019-11-21T00:00:00-05:00",
+            "Reccomended Group Size": 2
         },
         {
             "Name": "Art Gallery of Ontario AGO",
@@ -55,14 +54,13 @@
             },
             "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/07qnaruDMpqO02Q1q0hCEw/o.jpg",
             "Url": "https://www.yelp.com/biz/art-gallery-of-ontario-ago-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 4.5,
-            "NumRatings": 225,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 303,
-            "AvgTimeSpent": 73,
+            "AvgPrice": 10,
+            "AvgTimeSpent": 55,
             "Type": "Art Museums",
-            "StartTime": "2020-03-18T00:00:00-04:00",
-            "EndTime": "2020-03-09T00:00:00-04:00"
+            "StartTime": "2020-01-09T00:00:00-05:00",
+            "EndTime": "2019-12-31T00:00:00-05:00",
+            "Reccomended Group Size": 6
         },
         {
             "Name": "Royal Ontario Museum",
@@ -87,14 +85,13 @@
             },
             "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/0t1VXlaMq23qBNuhM9GTlw/o.jpg",
             "Url": "https://www.yelp.com/biz/royal-ontario-museum-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 4,
-            "NumRatings": 308,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 176,
-            "AvgTimeSpent": 246,
+            "AvgPrice": 336,
+            "AvgTimeSpent": 151,
             "Type": "Museums",
-            "StartTime": "2019-12-23T00:00:00-05:00",
-            "EndTime": "2020-02-14T00:00:00-05:00"
+            "StartTime": "2019-11-25T00:00:00-05:00",
+            "EndTime": "2019-11-29T00:00:00-05:00",
+            "Reccomended Group Size": 6
         },
         {
             "Name": "Hockey Hall of Fame",
@@ -120,14 +117,13 @@
             },
             "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/Eam2hKBPXhNZXRjEBTtWuA/o.jpg",
             "Url": "https://www.yelp.com/biz/hockey-hall-of-fame-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 4.5,
-            "NumRatings": 172,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 480,
-            "AvgTimeSpent": 66,
+            "AvgPrice": 61,
+            "AvgTimeSpent": 264,
             "Type": "Museums",
-            "StartTime": "2020-04-01T00:00:00-04:00",
-            "EndTime": "2020-04-13T00:00:00-04:00"
+            "StartTime": "2020-02-12T00:00:00-05:00",
+            "EndTime": "2019-12-30T00:00:00-05:00",
+            "Reccomended Group Size": 7
         },
         {
             "Name": "Casa Loma",
@@ -152,14 +148,13 @@
             },
             "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/na2EwGni3YUCF6nGeEp2SQ/o.jpg",
             "Url": "https://www.yelp.com/biz/casa-loma-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 3.5,
-            "NumRatings": 299,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 417,
-            "AvgTimeSpent": 206,
+            "AvgPrice": 74,
+            "AvgTimeSpent": 46,
             "Type": "Museums",
-            "StartTime": "2020-01-19T00:00:00-05:00",
-            "EndTime": "2020-03-07T00:00:00-05:00"
+            "StartTime": "2019-12-30T00:00:00-05:00",
+            "EndTime": "2019-12-09T00:00:00-05:00",
+            "Reccomended Group Size": 19
         },
         {
             "Name": "Delta Hotels by Marriott Toronto",
@@ -184,14 +179,13 @@
             },
             "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/LBZokcAIHrI2e1ZOyVE4mw/o.jpg",
             "Url": "https://www.yelp.com/biz/delta-hotels-by-marriott-toronto-toronto-2?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 4.5,
-            "NumRatings": 119,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 380,
-            "AvgTimeSpent": 69,
+            "AvgPrice": 338,
+            "AvgTimeSpent": 263,
             "Type": "Hotels",
-            "StartTime": "2020-05-04T00:00:00-04:00",
-            "EndTime": "2020-02-16T00:00:00-05:00"
+            "StartTime": "2019-12-01T00:00:00-05:00",
+            "EndTime": "2019-12-28T00:00:00-05:00",
+            "Reccomended Group Size": 15
         },
         {
             "Name": "Toronto Island",
@@ -216,14 +210,13 @@
             },
             "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/0ySyF5p12muTmFxYxc7w6Q/o.jpg",
             "Url": "https://www.yelp.com/biz/toronto-island-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 4.5,
-            "NumRatings": 97,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 396,
-            "AvgTimeSpent": 240,
+            "AvgPrice": 40,
+            "AvgTimeSpent": 140,
             "Type": "Parks",
-            "StartTime": "2019-11-17T00:00:00-05:00",
-            "EndTime": "2020-04-21T00:00:00-04:00"
+            "StartTime": "2019-12-21T00:00:00-05:00",
+            "EndTime": "2020-01-15T00:00:00-05:00",
+            "Reccomended Group Size": 11
         },
         {
             "Name": "The Drake Hotel",
@@ -248,14 +241,13 @@
             },
             "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/X4Xc_GRICZNv57ztgVmKCQ/o.jpg",
             "Url": "https://www.yelp.com/biz/the-drake-hotel-toronto-2?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 3.5,
-            "NumRatings": 372,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 307,
-            "AvgTimeSpent": 101,
+            "AvgPrice": 363,
+            "AvgTimeSpent": 228,
             "Type": "Hotels",
-            "StartTime": "2020-02-25T00:00:00-05:00",
-            "EndTime": "2020-01-16T00:00:00-05:00"
+            "StartTime": "2020-03-30T00:00:00-04:00",
+            "EndTime": "2019-11-27T00:00:00-05:00",
+            "Reccomended Group Size": 8
         },
         {
             "Name": "Shangri-La Hotel",
@@ -280,14 +272,13 @@
             },
             "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/xYkgM7CPuokWzenFfuJ3jA/o.jpg",
             "Url": "https://www.yelp.com/biz/shangri-la-hotel-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 4,
-            "NumRatings": 143,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 213,
-            "AvgTimeSpent": 163,
+            "AvgPrice": 457,
+            "AvgTimeSpent": 271,
             "Type": "Hotels",
-            "StartTime": "2020-01-29T00:00:00-05:00",
-            "EndTime": "2020-03-03T00:00:00-05:00"
+            "StartTime": "2020-01-26T00:00:00-05:00",
+            "EndTime": "2019-12-13T00:00:00-05:00",
+            "Reccomended Group Size": 10
         },
         {
             "Name": "The Ritz-Carlton Toronto",
@@ -312,14 +303,13 @@
             },
             "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/fuw2q1j7NdFvmlixYNGujA/o.jpg",
             "Url": "https://www.yelp.com/biz/the-ritz-carlton-toronto-toronto-2?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 4.5,
-            "NumRatings": 105,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 350,
-            "AvgTimeSpent": 176,
+            "AvgPrice": 260,
+            "AvgTimeSpent": 150,
             "Type": "Hotels",
-            "StartTime": "2020-02-10T00:00:00-05:00",
-            "EndTime": "2020-04-06T00:00:00-04:00"
+            "StartTime": "2019-12-26T00:00:00-05:00",
+            "EndTime": "2020-01-31T00:00:00-05:00",
+            "Reccomended Group Size": 5
         },
         {
             "Name": "Tilt Arcade Bar",
@@ -344,14 +334,13 @@
             },
             "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/f9VpdFMKswM_rDQsNKK7Uw/o.jpg",
             "Url": "https://www.yelp.com/biz/tilt-arcade-bar-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 4.5,
-            "NumRatings": 74,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 244,
-            "AvgTimeSpent": 184,
+            "AvgPrice": 250,
+            "AvgTimeSpent": 231,
             "Type": "Arcades",
-            "StartTime": "2019-12-01T00:00:00-05:00",
-            "EndTime": "2020-03-17T00:00:00-04:00"
+            "StartTime": "2019-12-07T00:00:00-05:00",
+            "EndTime": "2019-12-09T00:00:00-05:00",
+            "Reccomended Group Size": 5
         },
         {
             "Name": "The Grand Hotel & Suites",
@@ -376,14 +365,13 @@
             },
             "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/ZkJnIBi2QTe7Qy97UHNS_w/o.jpg",
             "Url": "https://www.yelp.com/biz/the-grand-hotel-and-suites-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 4,
-            "NumRatings": 89,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 43,
-            "AvgTimeSpent": 276,
+            "AvgPrice": 342,
+            "AvgTimeSpent": 299,
             "Type": "Hotels",
-            "StartTime": "2020-03-28T00:00:00-04:00",
-            "EndTime": "2020-04-18T00:00:00-04:00"
+            "StartTime": "2019-11-16T00:00:00-05:00",
+            "EndTime": "2019-11-25T00:00:00-05:00",
+            "Reccomended Group Size": 1
         },
         {
             "Name": "Fairmont Royal York",
@@ -408,14 +396,13 @@
             },
             "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/vBSLtWOuKDsKXN2iD8vmzQ/o.jpg",
             "Url": "https://www.yelp.com/biz/fairmont-royal-york-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 3.5,
-            "NumRatings": 234,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 340,
-            "AvgTimeSpent": 285,
+            "AvgPrice": 303,
+            "AvgTimeSpent": 84,
             "Type": "Hotels",
-            "StartTime": "2020-04-01T00:00:00-04:00",
-            "EndTime": "2020-04-16T00:00:00-04:00"
+            "StartTime": "2020-02-15T00:00:00-05:00",
+            "EndTime": "2020-03-02T00:00:00-05:00",
+            "Reccomended Group Size": 9
         },
         {
             "Name": "Four Seasons Toronto",
@@ -440,14 +427,13 @@
             },
             "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/U8nPN4DZWMFGLUNgJjO02g/o.jpg",
             "Url": "https://www.yelp.com/biz/four-seasons-toronto-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 4.5,
-            "NumRatings": 63,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 79,
-            "AvgTimeSpent": 203,
+            "AvgPrice": 135,
+            "AvgTimeSpent": 263,
             "Type": "Hotels",
-            "StartTime": "2020-02-16T00:00:00-05:00",
-            "EndTime": "2019-11-16T00:00:00-05:00"
+            "StartTime": "2020-01-29T00:00:00-05:00",
+            "EndTime": "2020-02-21T00:00:00-05:00",
+            "Reccomended Group Size": 8
         },
         {
             "Name": "The Omni King Edward Hotel",
@@ -472,14 +458,13 @@
             },
             "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/pMT5UIZJbIbv35c5nwo2gw/o.jpg",
             "Url": "https://www.yelp.com/biz/the-omni-king-edward-hotel-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 4,
-            "NumRatings": 114,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 293,
-            "AvgTimeSpent": 215,
+            "AvgPrice": 24,
+            "AvgTimeSpent": 217,
             "Type": "Hotels",
-            "StartTime": "2019-12-07T00:00:00-05:00",
-            "EndTime": "2020-02-09T00:00:00-05:00"
+            "StartTime": "2019-12-09T00:00:00-05:00",
+            "EndTime": "2019-12-12T00:00:00-05:00",
+            "Reccomended Group Size": 3
         },
         {
             "Name": "Gladstone Hotel",
@@ -504,14 +489,13 @@
             },
             "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/wnUdCUifGIAX5fpO-HD2oA/o.jpg",
             "Url": "https://www.yelp.com/biz/gladstone-hotel-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 3.5,
-            "NumRatings": 193,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 445,
-            "AvgTimeSpent": 162,
+            "AvgPrice": 464,
+            "AvgTimeSpent": 96,
             "Type": "Hotels",
-            "StartTime": "2020-03-30T00:00:00-04:00",
-            "EndTime": "2020-03-19T00:00:00-04:00"
+            "StartTime": "2020-01-01T00:00:00-05:00",
+            "EndTime": "2019-12-25T00:00:00-05:00",
+            "Reccomended Group Size": 17
         },
         {
             "Name": "Le Germain Hotel",
@@ -536,14 +520,13 @@
             },
             "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/wtIKTeN97fmr3JeOOBwetA/o.jpg",
             "Url": "https://www.yelp.com/biz/le-germain-hotel-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 4.5,
-            "NumRatings": 51,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 463,
-            "AvgTimeSpent": 178,
+            "AvgPrice": 462,
+            "AvgTimeSpent": 290,
             "Type": "Hotels",
-            "StartTime": "2020-04-09T00:00:00-04:00",
-            "EndTime": "2019-11-29T00:00:00-05:00"
+            "StartTime": "2019-12-25T00:00:00-05:00",
+            "EndTime": "2019-11-15T00:00:00-05:00",
+            "Reccomended Group Size": 17
         },
         {
             "Name": "The Bata Shoe Museum",
@@ -568,14 +551,13 @@
             },
             "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/siG3I1lX1Kw4jbsQuWJ54A/o.jpg",
             "Url": "https://www.yelp.com/biz/the-bata-shoe-museum-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 4,
-            "NumRatings": 92,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 237,
-            "AvgTimeSpent": 266,
+            "AvgPrice": 393,
+            "AvgTimeSpent": 154,
             "Type": "Museums",
-            "StartTime": "2020-04-17T00:00:00-04:00",
-            "EndTime": "2020-04-30T00:00:00-04:00"
+            "StartTime": "2019-11-30T00:00:00-05:00",
+            "EndTime": "2019-12-30T00:00:00-05:00",
+            "Reccomended Group Size": 15
         },
         {
             "Name": "Le Germain Hotel Toronto Maple Leaf Square",
@@ -600,14 +582,13 @@
             },
             "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/EApSjYU8DFMNKWs77uElBQ/o.jpg",
             "Url": "https://www.yelp.com/biz/le-germain-hotel-toronto-maple-leaf-square-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 4.5,
-            "NumRatings": 35,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 439,
-            "AvgTimeSpent": 92,
+            "AvgPrice": 251,
+            "AvgTimeSpent": 139,
             "Type": "Hotels",
-            "StartTime": "2020-04-20T00:00:00-04:00",
-            "EndTime": "2020-04-12T00:00:00-04:00"
+            "StartTime": "2019-12-24T00:00:00-05:00",
+            "EndTime": "2019-12-31T00:00:00-05:00",
+            "Reccomended Group Size": 14
         },
         {
             "Name": "Thompson Toronto",
@@ -632,14 +613,13 @@
             },
             "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/HmJdzmYkv2G7HX-_-G6R4g/o.jpg",
             "Url": "https://www.yelp.com/biz/thompson-toronto-toronto-2?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 3.5,
-            "NumRatings": 136,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 401,
-            "AvgTimeSpent": 295,
+            "AvgPrice": 113,
+            "AvgTimeSpent": 183,
             "Type": "Hotels",
-            "StartTime": "2019-12-12T00:00:00-05:00",
-            "EndTime": "2020-02-21T00:00:00-05:00"
+            "StartTime": "2020-02-01T00:00:00-05:00",
+            "EndTime": "2019-11-29T00:00:00-05:00",
+            "Reccomended Group Size": 10
         },
         {
             "Name": "The Hazelton Hotel",
@@ -664,14 +644,13 @@
             },
             "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/4K8RRi-gZCwAqungBGd6_A/o.jpg",
             "Url": "https://www.yelp.com/biz/the-hazelton-hotel-toronto-2?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 4.5,
-            "NumRatings": 31,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 369,
-            "AvgTimeSpent": 270,
+            "AvgPrice": 335,
+            "AvgTimeSpent": 255,
             "Type": "Hotels",
-            "StartTime": "2020-04-29T00:00:00-04:00",
-            "EndTime": "2020-01-14T00:00:00-05:00"
+            "StartTime": "2019-11-28T00:00:00-05:00",
+            "EndTime": "2019-11-27T00:00:00-05:00",
+            "Reccomended Group Size": 13
         },
         {
             "Name": "The Rec Room",
@@ -696,14 +675,13 @@
             },
             "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/ZiAnja3X991AorqVbds3nA/o.jpg",
             "Url": "https://www.yelp.com/biz/the-rec-room-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 3,
-            "NumRatings": 268,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 124,
-            "AvgTimeSpent": 136,
+            "AvgPrice": 218,
+            "AvgTimeSpent": 128,
             "Type": "Arcades",
-            "StartTime": "2020-04-30T00:00:00-04:00",
-            "EndTime": "2020-01-30T00:00:00-05:00"
+            "StartTime": "2019-11-30T00:00:00-05:00",
+            "EndTime": "2019-11-30T00:00:00-05:00",
+            "Reccomended Group Size": 13
         },
         {
             "Name": "The SoHo Hotel  & Residences",
@@ -728,14 +706,13 @@
             },
             "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/Ap5CL-via6D-8tPtYUHOZA/o.jpg",
             "Url": "https://www.yelp.com/biz/the-soho-hotel-and-residences-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 4.5,
-            "NumRatings": 46,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 350,
-            "AvgTimeSpent": 38,
+            "AvgPrice": 107,
+            "AvgTimeSpent": 217,
             "Type": "Hotels",
-            "StartTime": "2020-03-29T00:00:00-04:00",
-            "EndTime": "2020-03-13T00:00:00-04:00"
+            "StartTime": "2020-01-08T00:00:00-05:00",
+            "EndTime": "2020-01-03T00:00:00-05:00",
+            "Reccomended Group Size": 19
         },
         {
             "Name": "The Westin Harbour Castle, Toronto",
@@ -760,14 +737,13 @@
             },
             "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/n6rUOuXF3BQaCpQH-9bNQg/o.jpg",
             "Url": "https://www.yelp.com/biz/the-westin-harbour-castle-toronto-toronto-2?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 3,
-            "NumRatings": 224,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 65,
-            "AvgTimeSpent": 219,
+            "AvgPrice": 379,
+            "AvgTimeSpent": 132,
             "Type": "Hotels",
-            "StartTime": "2020-03-07T00:00:00-05:00",
-            "EndTime": "2020-03-06T00:00:00-05:00"
+            "StartTime": "2019-12-13T00:00:00-05:00",
+            "EndTime": "2020-02-08T00:00:00-05:00",
+            "Reccomended Group Size": 17
         },
         {
             "Name": "Hilton Toronto",
@@ -792,14 +768,13 @@
             },
             "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/kIV0EjPGOFYZsxqPot83UQ/o.jpg",
             "Url": "https://www.yelp.com/biz/hilton-toronto-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 3.5,
-            "NumRatings": 143,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 270,
-            "AvgTimeSpent": 42,
+            "AvgPrice": 260,
+            "AvgTimeSpent": 250,
             "Type": "Hotels",
-            "StartTime": "2020-02-08T00:00:00-05:00",
-            "EndTime": "2019-12-13T00:00:00-05:00"
+            "StartTime": "2019-11-15T00:00:00-05:00",
+            "EndTime": "2019-11-16T00:00:00-05:00",
+            "Reccomended Group Size": 18
         },
         {
             "Name": "InterContinental Toronto Centre",
@@ -824,14 +799,13 @@
             },
             "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/-9emZK7rc1qhMITRmrQzHw/o.jpg",
             "Url": "https://www.yelp.com/biz/intercontinental-toronto-centre-toronto-3?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 3.5,
-            "NumRatings": 105,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 394,
-            "AvgTimeSpent": 112,
+            "AvgPrice": 434,
+            "AvgTimeSpent": 294,
             "Type": "Hotels",
-            "StartTime": "2019-12-01T00:00:00-05:00",
-            "EndTime": "2020-02-07T00:00:00-05:00"
+            "StartTime": "2019-11-25T00:00:00-05:00",
+            "EndTime": "2019-12-10T00:00:00-05:00",
+            "Reccomended Group Size": 18
         },
         {
             "Name": "Ward's Island",
@@ -856,14 +830,13 @@
             },
             "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/pmqQcoi0aKokfRN5fWqK6w/o.jpg",
             "Url": "https://www.yelp.com/biz/wards-island-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 4.5,
-            "NumRatings": 34,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 387,
-            "AvgTimeSpent": 171,
+            "AvgPrice": 236,
+            "AvgTimeSpent": 163,
             "Type": "Beaches",
-            "StartTime": "2020-03-18T00:00:00-04:00",
-            "EndTime": "2020-02-17T00:00:00-05:00"
+            "StartTime": "2019-12-01T00:00:00-05:00",
+            "EndTime": "2019-12-13T00:00:00-05:00",
+            "Reccomended Group Size": 2
         },
         {
             "Name": "One King West Hotel & Residence",
@@ -888,14 +861,13 @@
             },
             "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/VU7rvDGHx6OB09xJKhHTpw/o.jpg",
             "Url": "https://www.yelp.com/biz/one-king-west-hotel-and-residence-toronto-2?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 3.5,
-            "NumRatings": 147,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 244,
-            "AvgTimeSpent": 127,
+            "AvgPrice": 128,
+            "AvgTimeSpent": 195,
             "Type": "Hotels",
-            "StartTime": "2020-05-04T00:00:00-04:00",
-            "EndTime": "2020-01-02T00:00:00-05:00"
+            "StartTime": "2019-12-19T00:00:00-05:00",
+            "EndTime": "2019-12-14T00:00:00-05:00",
+            "Reccomended Group Size": 18
         },
         {
             "Name": "Sheraton Centre Toronto Hotel",
@@ -920,14 +892,13 @@
             },
             "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/uQKCd9SqSu48e0g3J7-X8g/o.jpg",
             "Url": "https://www.yelp.com/biz/sheraton-centre-toronto-hotel-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 3,
-            "NumRatings": 225,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 116,
-            "AvgTimeSpent": 95,
+            "AvgPrice": 435,
+            "AvgTimeSpent": 103,
             "Type": "Hotels",
-            "StartTime": "2020-02-06T00:00:00-05:00",
-            "EndTime": "2020-03-14T00:00:00-04:00"
+            "StartTime": "2020-01-09T00:00:00-05:00",
+            "EndTime": "2020-02-05T00:00:00-05:00",
+            "Reccomended Group Size": 9
         },
         {
             "Name": "Residence Inn Toronto Downtown/Entertainment District",
@@ -952,14 +923,1572 @@
             },
             "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/T9tDvthjscrhDYJ4_Ea8Hw/o.jpg",
             "Url": "https://www.yelp.com/biz/residence-inn-toronto-downtown-entertainment-district-toronto?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
-            "AveRating": 4,
-            "NumRatings": 80,
             "Description": "Loreum ipsum dolor sit amet",
-            "AvgPrice": 150,
-            "AvgTimeSpent": 41,
+            "AvgPrice": 298,
+            "AvgTimeSpent": 30,
             "Type": "Hotels",
-            "StartTime": "2019-12-13T00:00:00-05:00",
-            "EndTime": "2019-12-09T00:00:00-05:00"
+            "StartTime": "2020-03-26T00:00:00-04:00",
+            "EndTime": "2019-12-04T00:00:00-05:00",
+            "Reccomended Group Size": 16
+        },
+        {
+            "Name": "Vancouver Aquarium",
+            "Address": {
+                "address1": "845 Avison Way",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6G 3E2",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "845 Avison Way",
+                    "Vancouver, BC V6G 3E2",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-659-3400",
+            "Location": {
+                "latitude": 49.3007944919085,
+                "longitude": -123.130930028311
+            },
+            "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/Hzt8BLKkoAN5S3z-Z4xZrw/o.jpg",
+            "Url": "https://www.yelp.com/biz/vancouver-aquarium-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 152,
+            "AvgTimeSpent": 243,
+            "Type": "Aquariums",
+            "StartTime": "2019-11-12T00:00:00-05:00",
+            "EndTime": "2020-01-05T00:00:00-05:00",
+            "Reccomended Group Size": 7
+        },
+        {
+            "Name": "Museum of Anthropology",
+            "Address": {
+                "address1": "6393 NW Marine Drive",
+                "address2": "",
+                "address3": "University of British Columbia",
+                "city": "Vancouver",
+                "zip_code": "V6T 1Z2",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "6393 NW Marine Drive",
+                    "University of British Columbia",
+                    "Vancouver, BC V6T 1Z2",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-822-5087",
+            "Location": {
+                "latitude": 49.2694442373977,
+                "longitude": -123.258967355186
+            },
+            "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/eyxGBGWfmK0RNWDbHNhyOw/o.jpg",
+            "Url": "https://www.yelp.com/biz/museum-of-anthropology-vancouver-2?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 430,
+            "AvgTimeSpent": 231,
+            "Type": "Museums",
+            "StartTime": "2019-11-16T00:00:00-05:00",
+            "EndTime": "2019-11-27T00:00:00-05:00",
+            "Reccomended Group Size": 15
+        },
+        {
+            "Name": "Aperture Coffee Bar",
+            "Address": {
+                "address1": "243 W Broadway",
+                "address2": "",
+                "address3": null,
+                "city": "Vancouver",
+                "zip_code": "V5Y 3L1",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "243 W Broadway",
+                    "Vancouver, BC V5Y 3L1",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-620-8065",
+            "Location": {
+                "latitude": 49.2632037459,
+                "longitude": -123.110469593
+            },
+            "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/kL1AJq8gpJXALaYIla7c2Q/o.jpg",
+            "Url": "https://www.yelp.com/biz/aperture-coffee-bar-vancouver-2?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 205,
+            "AvgTimeSpent": 24,
+            "Type": "Coffee & Tea",
+            "StartTime": "2019-12-06T00:00:00-05:00",
+            "EndTime": "2020-01-22T00:00:00-05:00",
+            "Reccomended Group Size": 17
+        },
+        {
+            "Name": "FlyOver Canada",
+            "Address": {
+                "address1": "999 Canada Place",
+                "address2": "Unit 201",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6C 3E1",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "999 Canada Place",
+                    "Unit 201",
+                    "Vancouver, BC V6C 3E1",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 855-463-4822",
+            "Location": {
+                "latitude": 49.2892408046063,
+                "longitude": -123.108993979103
+            },
+            "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/JPBPAwByVVH5XBVqrzj4jg/o.jpg",
+            "Url": "https://www.yelp.com/biz/flyover-canada-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 494,
+            "AvgTimeSpent": 262,
+            "Type": "Amusement Parks",
+            "StartTime": "2019-12-15T00:00:00-05:00",
+            "EndTime": "2019-11-17T00:00:00-05:00",
+            "Reccomended Group Size": 15
+        },
+        {
+            "Name": "Science World",
+            "Address": {
+                "address1": "TELUS World of Science",
+                "address2": "1455 Quebec Street",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6A 3Z7",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "TELUS World of Science",
+                    "1455 Quebec Street",
+                    "Vancouver, BC V6A 3Z7",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-443-7440",
+            "Location": {
+                "latitude": 49.2734872517579,
+                "longitude": -123.10337607853
+            },
+            "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/B-IG3pWWz3Xt1R7i1Eb4sg/o.jpg",
+            "Url": "https://www.yelp.com/biz/science-world-vancouver-2?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 428,
+            "AvgTimeSpent": 47,
+            "Type": "Museums",
+            "StartTime": "2019-11-19T00:00:00-05:00",
+            "EndTime": "2019-11-12T00:00:00-05:00",
+            "Reccomended Group Size": 19
+        },
+        {
+            "Name": "Vancouver Art Gallery",
+            "Address": {
+                "address1": "750 Hornby Street",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6Z 2H7",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "750 Hornby Street",
+                    "Vancouver, BC V6Z 2H7",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-662-4700",
+            "Location": {
+                "latitude": 49.2830721,
+                "longitude": -123.1208098
+            },
+            "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/rPnLfdQlUGfETt9UI-BMSg/o.jpg",
+            "Url": "https://www.yelp.com/biz/vancouver-art-gallery-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 421,
+            "AvgTimeSpent": 68,
+            "Type": "Art Museums",
+            "StartTime": "2019-11-12T00:00:00-05:00",
+            "EndTime": "2019-11-22T00:00:00-05:00",
+            "Reccomended Group Size": 11
+        },
+        {
+            "Name": "Spanish Banks",
+            "Address": {
+                "address1": "4707 Marine Drive NW",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6T 1A1",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "4707 Marine Drive NW",
+                    "Vancouver, BC V6T 1A1",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-224-7941",
+            "Location": {
+                "latitude": 49.2771736402592,
+                "longitude": -123.219585992796
+            },
+            "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/dI1yXabNmZjCbAWeLTVEeg/o.jpg",
+            "Url": "https://www.yelp.com/biz/spanish-banks-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 39,
+            "AvgTimeSpent": 287,
+            "Type": "Beaches",
+            "StartTime": "2019-11-10T00:00:00-05:00",
+            "EndTime": "2019-12-18T00:00:00-05:00",
+            "Reccomended Group Size": 6
+        },
+        {
+            "Name": "The FALL Tattooing",
+            "Address": {
+                "address1": "644 Seymour Street",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6B 3K4",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "644 Seymour Street",
+                    "Vancouver, BC V6B 3K4",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-676-3066",
+            "Location": {
+                "latitude": 49.28231,
+                "longitude": -123.11588
+            },
+            "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/fR_DQqlY4sr_lglkB8EDHg/o.jpg",
+            "Url": "https://www.yelp.com/biz/the-fall-tattooing-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 277,
+            "AvgTimeSpent": 66,
+            "Type": "Tattoo",
+            "StartTime": "2019-12-06T00:00:00-05:00",
+            "EndTime": "2019-12-06T00:00:00-05:00",
+            "Reccomended Group Size": 6
+        },
+        {
+            "Name": "Far Out Coffee Post",
+            "Address": {
+                "address1": "2173 Dundas Street",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V5L 1B1",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "2173 Dundas Street",
+                    "Vancouver, BC V5L 1B1",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-875-8090",
+            "Location": {
+                "latitude": 49.2847954,
+                "longitude": -123.0598874
+            },
+            "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/MHmcduZT81vM1Hnhmf7gyA/o.jpg",
+            "Url": "https://www.yelp.com/biz/far-out-coffee-post-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 315,
+            "AvgTimeSpent": 12,
+            "Type": "Coffee & Tea",
+            "StartTime": "2019-11-15T00:00:00-05:00",
+            "EndTime": "2019-11-16T00:00:00-05:00",
+            "Reccomended Group Size": 1
+        },
+        {
+            "Name": "Wreck Beach",
+            "Address": {
+                "address1": "NW Marine Drive",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6T 1Z2",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "NW Marine Drive",
+                    "Vancouver, BC V6T 1Z2",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-224-5739",
+            "Location": {
+                "latitude": 49.2799,
+                "longitude": -123.242472
+            },
+            "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/v2w520tunLI2-uXLpjWeig/o.jpg",
+            "Url": "https://www.yelp.com/biz/wreck-beach-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 156,
+            "AvgTimeSpent": 45,
+            "Type": "Beaches",
+            "StartTime": "2019-12-19T00:00:00-05:00",
+            "EndTime": "2019-12-31T00:00:00-05:00",
+            "Reccomended Group Size": 1
+        },
+        {
+            "Name": "Liquid Amber Tattoo & Art Collective",
+            "Address": {
+                "address1": "62 Powell Street",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6A 1E7",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "62 Powell Street",
+                    "Vancouver, BC V6A 1E7",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-738-3667",
+            "Location": {
+                "latitude": 49.28314,
+                "longitude": -123.102813
+            },
+            "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/7sZ7vrqVBkvBap6W-2GZGA/o.jpg",
+            "Url": "https://www.yelp.com/biz/liquid-amber-tattoo-and-art-collective-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 488,
+            "AvgTimeSpent": 232,
+            "Type": "Tattoo",
+            "StartTime": "2019-12-10T00:00:00-05:00",
+            "EndTime": "2019-11-18T00:00:00-05:00",
+            "Reccomended Group Size": 7
+        },
+        {
+            "Name": "Kitsilano Beach Park",
+            "Address": {
+                "address1": "1499 Arbutus Street",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6K 1B5",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "1499 Arbutus Street",
+                    "Vancouver, BC V6K 1B5",
+                    "Canada"
+                ]
+            },
+            "Phone": "",
+            "Location": {
+                "latitude": 49.2754242185313,
+                "longitude": -123.153516010284
+            },
+            "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/UdwAZNkmNgoH6RV140grqw/o.jpg",
+            "Url": "https://www.yelp.com/biz/kitsilano-beach-park-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 186,
+            "AvgTimeSpent": 272,
+            "Type": "Parks",
+            "StartTime": "2020-03-15T00:00:00-04:00",
+            "EndTime": "2020-04-19T00:00:00-04:00",
+            "Reccomended Group Size": 11
+        },
+        {
+            "Name": "Third Beach",
+            "Address": {
+                "address1": "Ferguson Point",
+                "address2": "Stanley Park Drive",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6G 3E2",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "Ferguson Point",
+                    "Stanley Park Drive",
+                    "Vancouver, BC V6G 3E2",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-873-7000",
+            "Location": {
+                "latitude": 49.3037476935955,
+                "longitude": -123.155708312988
+            },
+            "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/OpibzXlw_9TC8fLs1ao7ug/o.jpg",
+            "Url": "https://www.yelp.com/biz/third-beach-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 321,
+            "AvgTimeSpent": 212,
+            "Type": "Beaches",
+            "StartTime": "2019-12-21T00:00:00-05:00",
+            "EndTime": "2019-11-12T00:00:00-05:00",
+            "Reccomended Group Size": 14
+        },
+        {
+            "Name": "Sunset Beach",
+            "Address": {
+                "address1": "Beach Avenue",
+                "address2": "Between Thurlow and Bute",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "Beach Avenue",
+                    "Between Thurlow and Bute",
+                    "Vancouver, BC",
+                    "Canada"
+                ]
+            },
+            "Phone": "",
+            "Location": {
+                "latitude": 49.2786731790719,
+                "longitude": -123.138192451625
+            },
+            "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/fT42jaWZ75lvqpf_UGKBlw/o.jpg",
+            "Url": "https://www.yelp.com/biz/sunset-beach-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 155,
+            "AvgTimeSpent": 244,
+            "Type": "Beaches",
+            "StartTime": "2019-11-19T00:00:00-05:00",
+            "EndTime": "2019-11-28T00:00:00-05:00",
+            "Reccomended Group Size": 19
+        },
+        {
+            "Name": "Jericho Beach",
+            "Address": {
+                "address1": "Wallace St & Discovery St",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6R 4K5",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "Wallace St & Discovery St",
+                    "Vancouver, BC V6R 4K5",
+                    "Canada"
+                ]
+            },
+            "Phone": "",
+            "Location": {
+                "latitude": 49.2709968241682,
+                "longitude": -123.192315101624
+            },
+            "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/KunXgngev4_XSNSYTOFzpQ/o.jpg",
+            "Url": "https://www.yelp.com/biz/jericho-beach-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 312,
+            "AvgTimeSpent": 272,
+            "Type": "Beaches",
+            "StartTime": "2019-12-12T00:00:00-05:00",
+            "EndTime": "2019-12-06T00:00:00-05:00",
+            "Reccomended Group Size": 8
+        },
+        {
+            "Name": "Vancouver Police Museum",
+            "Address": {
+                "address1": "240 Cordova Street E",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6A 1L3",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "240 Cordova Street E",
+                    "Vancouver, BC V6A 1L3",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-665-3346",
+            "Location": {
+                "latitude": 49.2821225,
+                "longitude": -123.0985437
+            },
+            "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/jIZDZSZpME-YIz1h5CclhA/o.jpg",
+            "Url": "https://www.yelp.com/biz/vancouver-police-museum-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 467,
+            "AvgTimeSpent": 36,
+            "Type": "Museums",
+            "StartTime": "2020-02-10T00:00:00-05:00",
+            "EndTime": "2020-02-23T00:00:00-05:00",
+            "Reccomended Group Size": 4
+        },
+        {
+            "Name": "Museum of Vancouver",
+            "Address": {
+                "address1": "1100 Chestnut Street",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6J 3J9",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "1100 Chestnut Street",
+                    "Vancouver, BC V6J 3J9",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-736-4431",
+            "Location": {
+                "latitude": 49.2762622444507,
+                "longitude": -123.144458037557
+            },
+            "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/FDdZaGrPI21QGjp6FHVD5g/o.jpg",
+            "Url": "https://www.yelp.com/biz/museum-of-vancouver-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 408,
+            "AvgTimeSpent": 117,
+            "Type": "Museums",
+            "StartTime": "2020-01-17T00:00:00-05:00",
+            "EndTime": "2019-11-24T00:00:00-05:00",
+            "Reccomended Group Size": 11
+        },
+        {
+            "Name": "Crab Park",
+            "Address": {
+                "address1": "101 E Waterfront Rd",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6A",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "101 E Waterfront Rd",
+                    "Vancouver, BC V6A",
+                    "Canada"
+                ]
+            },
+            "Phone": "",
+            "Location": {
+                "latitude": 49.285114,
+                "longitude": -123.102857
+            },
+            "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/lp3LNvtrlS_Bxvh3srCvog/o.jpg",
+            "Url": "https://www.yelp.com/biz/crab-park-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 20,
+            "AvgTimeSpent": 187,
+            "Type": "Parks",
+            "StartTime": "2019-12-16T00:00:00-05:00",
+            "EndTime": "2020-02-28T00:00:00-05:00",
+            "Reccomended Group Size": 14
+        },
+        {
+            "Name": "Vancouver Maritime Museum",
+            "Address": {
+                "address1": "Vanier Park",
+                "address2": "1905 Ogden Avenue",
+                "address3": null,
+                "city": "Vancouver",
+                "zip_code": "V6J 1A3",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "Vanier Park",
+                    "1905 Ogden Avenue",
+                    "Vancouver, BC V6J 1A3",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-257-8300",
+            "Location": {
+                "latitude": 49.27729,
+                "longitude": -123.1488
+            },
+            "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/eIJujClCR0yicUjiyk0HsA/o.jpg",
+            "Url": "https://www.yelp.com/biz/vancouver-maritime-museum-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 197,
+            "AvgTimeSpent": 110,
+            "Type": "Museums",
+            "StartTime": "2019-12-29T00:00:00-05:00",
+            "EndTime": "2019-11-23T00:00:00-05:00",
+            "Reccomended Group Size": 16
+        },
+        {
+            "Name": "Beaty Biodiversity Museum",
+            "Address": {
+                "address1": "2212 Main Mall",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6T 1Z4",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "2212 Main Mall",
+                    "Vancouver, BC V6T 1Z4",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-827-4955",
+            "Location": {
+                "latitude": 49.2631793,
+                "longitude": -123.2511082
+            },
+            "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/fLv9ucazCUVxMFwMzMeKmQ/o.jpg",
+            "Url": "https://www.yelp.com/biz/beaty-biodiversity-museum-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 305,
+            "AvgTimeSpent": 56,
+            "Type": "Museums",
+            "StartTime": "2020-02-15T00:00:00-05:00",
+            "EndTime": "2020-02-21T00:00:00-05:00",
+            "Reccomended Group Size": 2
+        },
+        {
+            "Name": "Grandview Lanes",
+            "Address": {
+                "address1": "2195 Commercial Drive",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V5N 4B3",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "2195 Commercial Drive",
+                    "Vancouver, BC V5N 4B3",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-253-2747",
+            "Location": {
+                "latitude": 49.2652141,
+                "longitude": -123.0699262
+            },
+            "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/dMqAwLqDimTWqwjrAtM6hg/o.jpg",
+            "Url": "https://www.yelp.com/biz/grandview-lanes-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 424,
+            "AvgTimeSpent": 93,
+            "Type": "Bowling",
+            "StartTime": "2019-12-30T00:00:00-05:00",
+            "EndTime": "2020-02-09T00:00:00-05:00",
+            "Reccomended Group Size": 11
+        },
+        {
+            "Name": "Commodore Lanes & Billiards",
+            "Address": {
+                "address1": "838 Granville Street",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6Z 1K3",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "838 Granville Street",
+                    "Vancouver, BC V6Z 1K3",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-681-1531",
+            "Location": {
+                "latitude": 49.2806998,
+                "longitude": -123.1205463
+            },
+            "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/kKjFqa0udXXz7cgdLIXJNQ/o.jpg",
+            "Url": "https://www.yelp.com/biz/commodore-lanes-and-billiards-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 237,
+            "AvgTimeSpent": 212,
+            "Type": "Pool Halls",
+            "StartTime": "2020-02-25T00:00:00-05:00",
+            "EndTime": "2020-01-18T00:00:00-05:00",
+            "Reccomended Group Size": 8
+        },
+        {
+            "Name": "Playland at the PNE",
+            "Address": {
+                "address1": "2901 E Hastings Street",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V5K 5J1",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "2901 E Hastings Street",
+                    "Vancouver, BC V5K 5J1",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-253-2311",
+            "Location": {
+                "latitude": 49.2815215010687,
+                "longitude": -123.036236690635
+            },
+            "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/JvZUdBW9XJ4KdHdYPmjPPw/o.jpg",
+            "Url": "https://www.yelp.com/biz/playland-at-the-pne-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 376,
+            "AvgTimeSpent": 140,
+            "Type": "Amusement Parks",
+            "StartTime": "2019-11-29T00:00:00-05:00",
+            "EndTime": "2019-11-24T00:00:00-05:00",
+            "Reccomended Group Size": 1
+        },
+        {
+            "Name": "Lattimer Gallery",
+            "Address": {
+                "address1": "1590 2nd Ave W",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6J 1H2",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "1590 2nd Ave W",
+                    "Vancouver, BC V6J 1H2",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-732-4556",
+            "Location": {
+                "latitude": 49.2695713,
+                "longitude": -123.1406578
+            },
+            "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/zLchUWEdtaeV9ozFTzcIQw/o.jpg",
+            "Url": "https://www.yelp.com/biz/lattimer-gallery-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 440,
+            "AvgTimeSpent": 30,
+            "Type": "Jewelry",
+            "StartTime": "2019-12-16T00:00:00-05:00",
+            "EndTime": "2019-11-28T00:00:00-05:00",
+            "Reccomended Group Size": 19
+        },
+        {
+            "Name": "Movieland Arcade",
+            "Address": {
+                "address1": "906 Granville Street",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6Z 1L2",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "906 Granville Street",
+                    "Vancouver, BC V6Z 1L2",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-681-6915",
+            "Location": {
+                "latitude": 49.27992,
+                "longitude": -123.12142
+            },
+            "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/QG_JvjpEUXucPhpIhkZTdQ/o.jpg",
+            "Url": "https://www.yelp.com/biz/movieland-arcade-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 156,
+            "AvgTimeSpent": 95,
+            "Type": "Arcades",
+            "StartTime": "2020-02-10T00:00:00-05:00",
+            "EndTime": "2020-02-19T00:00:00-05:00",
+            "Reccomended Group Size": 6
+        },
+        {
+            "Name": "Chapel Arts",
+            "Address": {
+                "address1": "304 Dunlevy Street",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6A",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "304 Dunlevy Street",
+                    "Vancouver, BC V6A",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-682-1611",
+            "Location": {
+                "latitude": 49.28193,
+                "longitude": -123.09507
+            },
+            "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/qIvpHHO-2yME4cGgWlnLGg/o.jpg",
+            "Url": "https://www.yelp.com/biz/chapel-arts-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 163,
+            "AvgTimeSpent": 182,
+            "Type": "Music Venues",
+            "StartTime": "2019-11-16T00:00:00-05:00",
+            "EndTime": "2019-11-18T00:00:00-05:00",
+            "Reccomended Group Size": 11
+        },
+        {
+            "Name": "New Brighton Park",
+            "Address": {
+                "address1": "New Brighton Rd and Yale St",
+                "address2": "Hastings-Sunrise",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V5K 5J7",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "New Brighton Rd and Yale St",
+                    "Hastings-Sunrise",
+                    "Vancouver, BC V5K 5J7",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-257-8613",
+            "Location": {
+                "latitude": 49.2909047,
+                "longitude": -123.0414957
+            },
+            "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/0EDHtqURU6bnCe6DTDqLPA/o.jpg",
+            "Url": "https://www.yelp.com/biz/new-brighton-park-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 153,
+            "AvgTimeSpent": 142,
+            "Type": "Beaches",
+            "StartTime": "2019-11-11T00:00:00-05:00",
+            "EndTime": "2020-01-22T00:00:00-05:00",
+            "Reccomended Group Size": 15
+        },
+        {
+            "Name": "Roedde House Museum",
+            "Address": {
+                "address1": "1415 Barclay Street",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6G 1J6",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "1415 Barclay Street",
+                    "Vancouver, BC V6G 1J6",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-684-7040",
+            "Location": {
+                "latitude": 49.2870599,
+                "longitude": -123.13237
+            },
+            "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/nyxBt-6GLLskyzhl9DX4Jw/o.jpg",
+            "Url": "https://www.yelp.com/biz/roedde-house-museum-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 389,
+            "AvgTimeSpent": 66,
+            "Type": "Museums",
+            "StartTime": "2019-11-23T00:00:00-05:00",
+            "EndTime": "2019-12-08T00:00:00-05:00",
+            "Reccomended Group Size": 7
+        },
+        {
+            "Name": "Parq Vancouver",
+            "Address": {
+                "address1": "39 Smithe Street",
+                "address2": "",
+                "address3": null,
+                "city": "Vancouver",
+                "zip_code": "V6B 0R3",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "39 Smithe Street",
+                    "Vancouver, BC V6B 0R3",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-683-7277",
+            "Location": {
+                "latitude": 49.2754899451157,
+                "longitude": -123.113253769069
+            },
+            "Image Url": "https://s3-media4.fl.yelpcdn.com/bphoto/L1inQkkAauDtnBvrj9vzXA/o.jpg",
+            "Url": "https://www.yelp.com/biz/parq-vancouver-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 60,
+            "AvgTimeSpent": 19,
+            "Type": "Casinos",
+            "StartTime": "2019-12-17T00:00:00-05:00",
+            "EndTime": "2020-02-15T00:00:00-05:00",
+            "Reccomended Group Size": 12
+        },
+        {
+            "Name": "River Rock Casino Resort",
+            "Address": {
+                "address1": "8811 River Road",
+                "address2": "",
+                "address3": "",
+                "city": "Richmond",
+                "zip_code": "V6X 3P8",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "8811 River Road",
+                    "Richmond, BC V6X 3P8",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-247-8900",
+            "Location": {
+                "latitude": 49.19594,
+                "longitude": -123.1274527
+            },
+            "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/2w2viRk5oA5y498j6fbO3w/o.jpg",
+            "Url": "https://www.yelp.com/biz/river-rock-casino-resort-richmond?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 459,
+            "AvgTimeSpent": 101,
+            "Type": "Casinos",
+            "StartTime": "2020-03-05T00:00:00-05:00",
+            "EndTime": "2020-03-02T00:00:00-05:00",
+            "Reccomended Group Size": 18
+        },
+        {
+            "Name": "FUSE",
+            "Address": {
+                "address1": "At the Vancouver Art Gallery",
+                "address2": "750 Hornby Street",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6Z 2H7",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "At the Vancouver Art Gallery",
+                    "750 Hornby Street",
+                    "Vancouver, BC V6Z 2H7",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-662-4719",
+            "Location": {
+                "latitude": 49.2830721,
+                "longitude": -123.1208098
+            },
+            "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/9N6OxwNuUV2WmAky9dtVBg/o.jpg",
+            "Url": "https://www.yelp.com/biz/fuse-vancouver-2?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 262,
+            "AvgTimeSpent": 148,
+            "Type": "Art Galleries",
+            "StartTime": "2019-11-21T00:00:00-05:00",
+            "EndTime": "2019-12-13T00:00:00-05:00",
+            "Reccomended Group Size": 14
+        },
+        {
+            "Name": "Arts Off Main",
+            "Address": {
+                "address1": "1704 Charles Street",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V5L 2T6",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "1704 Charles Street",
+                    "Vancouver, BC V5L 2T6",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-876-2785",
+            "Location": {
+                "latitude": 49.2728747,
+                "longitude": -123.0692437
+            },
+            "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/KGkJ5yxGpNcr16Jv2hhZBQ/o.jpg",
+            "Url": "https://www.yelp.com/biz/arts-off-main-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 494,
+            "AvgTimeSpent": 43,
+            "Type": "Art Galleries",
+            "StartTime": "2020-01-28T00:00:00-05:00",
+            "EndTime": "2020-02-10T00:00:00-05:00",
+            "Reccomended Group Size": 9
+        },
+        {
+            "Name": "H R MacMillan Space Centre",
+            "Address": {
+                "address1": "1100 Chestnut St",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6J 3J9",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "1100 Chestnut St",
+                    "Vancouver, BC V6J 3J9",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-738-7827",
+            "Location": {
+                "latitude": 49.2759781,
+                "longitude": -123.1459842
+            },
+            "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/FPj8DmSbgC1-IA5yVu5paw/o.jpg",
+            "Url": "https://www.yelp.com/biz/h-r-macmillan-space-centre-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 454,
+            "AvgTimeSpent": 176,
+            "Type": "Museums",
+            "StartTime": "2019-12-28T00:00:00-05:00",
+            "EndTime": "2019-11-19T00:00:00-05:00",
+            "Reccomended Group Size": 12
+        },
+        {
+            "Name": "Douglas Reynolds Gallery",
+            "Address": {
+                "address1": "2335 Granville St",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6H 3G4",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "2335 Granville St",
+                    "Vancouver, BC V6H 3G4",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-731-9292",
+            "Location": {
+                "latitude": 49.2650172,
+                "longitude": -123.1387368
+            },
+            "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/aBrk2YQApm70OnJk64KkZg/o.jpg",
+            "Url": "https://www.yelp.com/biz/douglas-reynolds-gallery-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 106,
+            "AvgTimeSpent": 263,
+            "Type": "Jewelry",
+            "StartTime": "2019-11-23T00:00:00-05:00",
+            "EndTime": "2019-12-19T00:00:00-05:00",
+            "Reccomended Group Size": 9
+        },
+        {
+            "Name": "Bill Reid Gallery of Northwest Coast Art",
+            "Address": {
+                "address1": "639 Hornby Street",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6C 2G3",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "639 Hornby Street",
+                    "Vancouver, BC V6C 2G3",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-682-3455",
+            "Location": {
+                "latitude": 49.28432,
+                "longitude": -123.1198
+            },
+            "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/1mXsosF1SESkDLQPHu3bNg/o.jpg",
+            "Url": "https://www.yelp.com/biz/bill-reid-gallery-of-northwest-coast-art-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 157,
+            "AvgTimeSpent": 223,
+            "Type": "Museums",
+            "StartTime": "2019-12-01T00:00:00-05:00",
+            "EndTime": "2019-11-22T00:00:00-05:00",
+            "Reccomended Group Size": 16
+        },
+        {
+            "Name": "Doctor Vigari Gallery",
+            "Address": {
+                "address1": "1816 Commercial Dr",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V5N 4A5",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "1816 Commercial Dr",
+                    "Vancouver, BC V5N 4A5",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-255-9513",
+            "Location": {
+                "latitude": 49.2684676,
+                "longitude": -123.0695151
+            },
+            "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/awW-6bCL7O0wIJW-XyQ8WA/o.jpg",
+            "Url": "https://www.yelp.com/biz/doctor-vigari-gallery-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 176,
+            "AvgTimeSpent": 93,
+            "Type": "Art Galleries",
+            "StartTime": "2020-01-02T00:00:00-05:00",
+            "EndTime": "2019-11-28T00:00:00-05:00",
+            "Reccomended Group Size": 14
+        },
+        {
+            "Name": "Ambleside Park",
+            "Address": {
+                "address1": "1500 Argyle Avenue",
+                "address2": "",
+                "address3": "",
+                "city": "West Vancouver",
+                "zip_code": "V7V 1A6",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "1500 Argyle Avenue",
+                    "West Vancouver, BC V7V 1A6",
+                    "Canada"
+                ]
+            },
+            "Phone": "",
+            "Location": {
+                "latitude": 49.3234535506925,
+                "longitude": -123.148898184299
+            },
+            "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/RntZ6hZWo4-6yJWPwP59mA/o.jpg",
+            "Url": "https://www.yelp.com/biz/ambleside-park-west-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 420,
+            "AvgTimeSpent": 119,
+            "Type": "Beaches",
+            "StartTime": "2020-01-10T00:00:00-05:00",
+            "EndTime": "2020-02-20T00:00:00-05:00",
+            "Reccomended Group Size": 18
+        },
+        {
+            "Name": "Hill's Native Art",
+            "Address": {
+                "address1": "120 E Broadway",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V5T 1V9",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "120 E Broadway",
+                    "Vancouver, BC V5T 1V9",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-685-4249",
+            "Location": {
+                "latitude": 49.2628315,
+                "longitude": -123.1023847
+            },
+            "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/9ICFPlp58uchklwtwdkhuw/o.jpg",
+            "Url": "https://www.yelp.com/biz/hills-native-art-vancouver-2?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 168,
+            "AvgTimeSpent": 73,
+            "Type": "Jewelry",
+            "StartTime": "2019-11-24T00:00:00-05:00",
+            "EndTime": "2019-11-10T00:00:00-05:00",
+            "Reccomended Group Size": 18
+        },
+        {
+            "Name": "Locarno Beach",
+            "Address": {
+                "address1": "NW Marine Drive & Tomie Street",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6J 5L1",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "NW Marine Drive & Tomie Street",
+                    "Vancouver, BC V6J 5L1",
+                    "Canada"
+                ]
+            },
+            "Phone": "",
+            "Location": {
+                "latitude": 49.2732228926705,
+                "longitude": -123.207292556763
+            },
+            "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/Atn16_vmyMoUB1JqJ4TYXw/o.jpg",
+            "Url": "https://www.yelp.com/biz/locarno-beach-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 11,
+            "AvgTimeSpent": 239,
+            "Type": "Beaches",
+            "StartTime": "2019-11-10T00:00:00-05:00",
+            "EndTime": "2019-12-16T00:00:00-05:00",
+            "Reccomended Group Size": 11
+        },
+        {
+            "Name": "The Sport Gallery",
+            "Address": {
+                "address1": "1551 Johnston Street",
+                "address2": "Suite 105",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6H 3R9",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "1551 Johnston Street",
+                    "Suite 105",
+                    "Vancouver, BC V6H 3R9",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-620-5834",
+            "Location": {
+                "latitude": 49.2717831328982,
+                "longitude": -123.134420213286
+            },
+            "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/aUeXplU59V_d5_GAKiSiOg/o.jpg",
+            "Url": "https://www.yelp.com/biz/the-sport-gallery-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 466,
+            "AvgTimeSpent": 43,
+            "Type": "Sports Wear",
+            "StartTime": "2020-04-08T00:00:00-04:00",
+            "EndTime": "2020-02-01T00:00:00-05:00",
+            "Reccomended Group Size": 6
+        },
+        {
+            "Name": "Inuit Gallery of Vancouver",
+            "Address": {
+                "address1": "206 Cambie St",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6B 2M9",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "206 Cambie St",
+                    "Vancouver, BC V6B 2M9",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-688-7323",
+            "Location": {
+                "latitude": 49.28408,
+                "longitude": -123.10877
+            },
+            "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/SVSVrVO9QorkDkTaYWOryQ/o.jpg",
+            "Url": "https://www.yelp.com/biz/inuit-gallery-of-vancouver-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 435,
+            "AvgTimeSpent": 145,
+            "Type": "Art Galleries",
+            "StartTime": "2020-01-31T00:00:00-05:00",
+            "EndTime": "2020-03-14T00:00:00-04:00",
+            "Reccomended Group Size": 3
+        },
+        {
+            "Name": "Burnaby Village Museum & Carousel",
+            "Address": {
+                "address1": "6501 Deer Lake Avenue",
+                "address2": "",
+                "address3": null,
+                "city": "Burnaby",
+                "zip_code": "V5G 3T6",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "6501 Deer Lake Avenue",
+                    "Burnaby, BC V5G 3T6",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-297-4565",
+            "Location": {
+                "latitude": 49.2393068882836,
+                "longitude": -122.965446409925
+            },
+            "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/3MKdfIY3UkXns41w_EXrgQ/o.jpg",
+            "Url": "https://www.yelp.com/biz/burnaby-village-museum-and-carousel-burnaby?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 344,
+            "AvgTimeSpent": 4,
+            "Type": "Museums",
+            "StartTime": "2019-11-14T00:00:00-05:00",
+            "EndTime": "2019-11-20T00:00:00-05:00",
+            "Reccomended Group Size": 10
+        },
+        {
+            "Name": "Folkart",
+            "Address": {
+                "address1": "3720 10th Avenue W",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6R 2G4",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "3720 10th Avenue W",
+                    "Vancouver, BC V6R 2G4",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-731-7576",
+            "Location": {
+                "latitude": 49.26319,
+                "longitude": -123.18648
+            },
+            "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/KeaCiDv0gVggfrhBfr9qhQ/o.jpg",
+            "Url": "https://www.yelp.com/biz/folkart-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 354,
+            "AvgTimeSpent": 118,
+            "Type": "Antiques",
+            "StartTime": "2020-01-17T00:00:00-05:00",
+            "EndTime": "2020-01-10T00:00:00-05:00",
+            "Reccomended Group Size": 16
+        },
+        {
+            "Name": "Frame Of Mind",
+            "Address": {
+                "address1": "106?350 East 2nd Avenue",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V5T 4R8",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "106?350 East 2nd Avenue",
+                    "Vancouver, BC V5T 4R8",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-871-1175",
+            "Location": {
+                "latitude": 49.26677,
+                "longitude": -123.09717
+            },
+            "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/Rct0WijfYkP2RC77cnqO5w/o.jpg",
+            "Url": "https://www.yelp.com/biz/frame-of-mind-vancouver-2?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 39,
+            "AvgTimeSpent": 20,
+            "Type": "Home Decor",
+            "StartTime": "2019-12-01T00:00:00-05:00",
+            "EndTime": "2020-01-06T00:00:00-05:00",
+            "Reccomended Group Size": 2
+        },
+        {
+            "Name": "Guys & Dolls Billiards",
+            "Address": {
+                "address1": "2434 Main St",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V5T 3E2",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "2434 Main St",
+                    "Vancouver, BC V5T 3E2",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-879-4433",
+            "Location": {
+                "latitude": 49.26336,
+                "longitude": -123.1006
+            },
+            "Image Url": "https://s3-media2.fl.yelpcdn.com/bphoto/v51pAJZtNDEWTfZStcdtiQ/o.jpg",
+            "Url": "https://www.yelp.com/biz/guys-and-dolls-billiards-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 342,
+            "AvgTimeSpent": 20,
+            "Type": "Pool Halls",
+            "StartTime": "2020-02-12T00:00:00-05:00",
+            "EndTime": "2020-01-07T00:00:00-05:00",
+            "Reccomended Group Size": 16
+        },
+        {
+            "Name": "Gallery of BC Ceramics",
+            "Address": {
+                "address1": "1359 Cartwright Street",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6H 3R7",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "1359 Cartwright Street",
+                    "Vancouver, BC V6H 3R7",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-669-3606",
+            "Location": {
+                "latitude": 49.27006,
+                "longitude": -123.13427
+            },
+            "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/nyG1bMLfDw31Y0EGIQ-mZA/o.jpg",
+            "Url": "https://www.yelp.com/biz/gallery-of-bc-ceramics-vancouver-2?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 275,
+            "AvgTimeSpent": 189,
+            "Type": "Art Galleries",
+            "StartTime": "2019-11-18T00:00:00-05:00",
+            "EndTime": "2019-12-22T00:00:00-05:00",
+            "Reccomended Group Size": 3
+        },
+        {
+            "Name": "CCBC Shop & Gallery",
+            "Address": {
+                "address1": "1386 Cartwright Street",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6H 3R8",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "1386 Cartwright Street",
+                    "Vancouver, BC V6H 3R8",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-687-7270",
+            "Location": {
+                "latitude": 49.2698172281084,
+                "longitude": -123.134854554376
+            },
+            "Image Url": "https://s3-media1.fl.yelpcdn.com/bphoto/qJR5Qycs3CQWGDaOm4lbog/o.jpg",
+            "Url": "https://www.yelp.com/biz/ccbc-shop-and-gallery-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 449,
+            "AvgTimeSpent": 126,
+            "Type": "Art Galleries",
+            "StartTime": "2020-03-13T00:00:00-04:00",
+            "EndTime": "2019-11-11T00:00:00-05:00",
+            "Reccomended Group Size": 16
+        },
+        {
+            "Name": "Bau-Xi Gallery",
+            "Address": {
+                "address1": "3045 Granville St",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "V6H 3J9",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "3045 Granville St",
+                    "Vancouver, BC V6H 3J9",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-733-7011",
+            "Location": {
+                "latitude": 49.2585,
+                "longitude": -123.13918
+            },
+            "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/yvOPLkyQ_t2wt2-wf0JsOw/o.jpg",
+            "Url": "https://www.yelp.com/biz/bau-xi-gallery-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 276,
+            "AvgTimeSpent": 129,
+            "Type": "Art Galleries",
+            "StartTime": "2019-11-21T00:00:00-05:00",
+            "EndTime": "2019-11-13T00:00:00-05:00",
+            "Reccomended Group Size": 11
+        },
+        {
+            "Name": "VR Funtastic World",
+            "Address": {
+                "address1": "1496 Cartwright Street",
+                "address2": "",
+                "address3": null,
+                "city": "Vancouver",
+                "zip_code": "V6H 3Y5",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "1496 Cartwright Street",
+                    "Vancouver, BC V6H 3Y5",
+                    "Canada"
+                ]
+            },
+            "Phone": "+1 604-500-6097",
+            "Location": {
+                "latitude": 49.2702199,
+                "longitude": -123.1356738
+            },
+            "Image Url": "https://s3-media3.fl.yelpcdn.com/bphoto/FHjAoEQ_2b2tGHnRUyYDjg/o.jpg",
+            "Url": "https://www.yelp.com/biz/vr-funtastic-world-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 288,
+            "AvgTimeSpent": 33,
+            "Type": "Amusement Parks",
+            "StartTime": "2020-01-02T00:00:00-05:00",
+            "EndTime": "2019-12-17T00:00:00-05:00",
+            "Reccomended Group Size": 4
+        },
+        {
+            "Name": "Jordan's Dude Den",
+            "Address": {
+                "address1": "10th and Carolina",
+                "address2": "",
+                "address3": "",
+                "city": "Vancouver",
+                "zip_code": "",
+                "country": "CA",
+                "state": "BC",
+                "display_address": [
+                    "10th and Carolina",
+                    "Vancouver, BC",
+                    "Canada"
+                ]
+            },
+            "Phone": "",
+            "Location": {
+                "latitude": 49.2616196,
+                "longitude": -123.091011
+            },
+            "Image Url": "",
+            "Url": "https://www.yelp.com/biz/jordans-dude-den-vancouver?adjust_creative=TGmdeLp3GCD1p22Yb8oqFA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=TGmdeLp3GCD1p22Yb8oqFA",
+            "Description": "Loreum ipsum dolor sit amet",
+            "AvgPrice": 329,
+            "AvgTimeSpent": 72,
+            "Type": "Arcades",
+            "StartTime": "2019-11-27T00:00:00-05:00",
+            "EndTime": "2019-12-11T00:00:00-05:00",
+            "Reccomended Group Size": 13
         }
     ]
 }
