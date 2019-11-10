@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Content,  Button, Icon, Form, Item, Label, Input} from 'native-base';
 import styles from './GeneralInfoStyles';
-import { View , Text, TextInput, DatePickerAndroid, TimePickerAndroid, Dimensions} from 'react-native';
+import { View , Text, TextInput, DatePickerAndroid, TimePickerAndroid, Dimensions, ScrollView} from 'react-native';
 
 export default function GeneralInfo(props){
 
@@ -145,7 +145,7 @@ export default function GeneralInfo(props){
   }
 
     return(
-      <View>
+      <ScrollView>
           <View style={{height: '100%'}}>
 
             {/* Main content of page */}
@@ -200,6 +200,6 @@ export default function GeneralInfo(props){
             </View>
 
           </View>
-        </View>
+        </ScrollView>
     );
 }

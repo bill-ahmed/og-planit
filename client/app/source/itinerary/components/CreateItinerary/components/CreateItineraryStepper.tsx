@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Modal, View , Text, TextInput, DatePickerAndroid, TimePickerAndroid, Dimensions} from 'react-native';
-import { Container, Content,  Button, Icon, Form, Item, Label, Input} from 'native-base';
+import { Modal, View , Text, TextInput, DatePickerAndroid, TimePickerAndroid, Dimensions, ScrollView} from 'react-native';
+import { Container, Content,  Button, Icon, Form, Item, Label, Input, Footer} from 'native-base';
 import StepIndicator from 'react-native-step-indicator';
 import GeneralInfo from './GeneralInfo';
 import SelectFilters from './SelectFilters';
@@ -16,6 +16,9 @@ interface NewItinerary{
     startTime: Date,
     /**End date and time */
     endTime: Date,
+    /**Maximum distance from location */
+    maxDistance: number,
+    categories: [],
 }
 
 /**A progress stepper to allow users to create a new itinerary */
@@ -25,6 +28,8 @@ export default function CreateItineraryStepper(props){
         location: '',
         startTime: new Date(),
         endTime: new Date(),
+        maxDistance: 0,
+        categories: [],
     }
 
     const [itineraryInfo, setItineraryInfo] = useState(itinerary);  // All itinerary data to be uploaded
@@ -72,7 +77,9 @@ export default function CreateItineraryStepper(props){
     }
 
     return(
+       
         <Modal animationType="slide" transparent={false} visible={props.open} presentationStyle='fullScreen' onRequestClose={() => props.close()}>
+             <ScrollView>
             <View style={styles.container}>
                 
                 {/* Header content */}
@@ -99,18 +106,27 @@ export default function CreateItineraryStepper(props){
                 </View>
 
                 {/* Footer content */}
+                
+            </View>
+            </ScrollView>
+            <Footer style={styles.footerContainer}>
                 <View style={styles.footer}>
-                    <Button full transparent iconLeft disabled={currentStep === 0} onPress={() => handlePrevStep()}>
+                    {currentStep !== 0 &&
+                     <Button full transparent iconLeft disabled={currentStep === 0} onPress={() => handlePrevStep()}>
                         <Icon style={styles.buttonIcon} name='arrow-round-back'/>
                         <Text style={styles.buttonText}>Back</Text>
                     </Button>
+                    }
 
-                    <Button full transparent iconRight disabled={currentStep === steps.length} onPress={() => handleNextStep()}>
+                    {currentStep !== steps.length && 
+                     <Button full transparent iconRight disabled={currentStep === steps.length} onPress={() => handleNextStep()}>
                         <Text style={styles.buttonText}>Next</Text>
                         <Icon style={styles.buttonIcon} name='arrow-round-forward'/>
                     </Button>
+                    }
                 </View>
-            </View>
+            </Footer>
         </Modal>
+
     );
 }

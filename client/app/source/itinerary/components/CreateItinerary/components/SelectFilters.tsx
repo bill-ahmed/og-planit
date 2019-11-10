@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View , Text, TextInput, DatePickerAndroid, TimePickerAndroid, ScrollView, TouchableOpacity} from 'react-native';
 import { Container, Content,  Button, Icon, Subtitle, Form, Item, Label, Input, ListItem, CheckBox, List, Body} from 'native-base';
-import { Slider } from 'react-native-elements'
+import { Divider, Slider } from 'react-native-elements'
 import styles from './SelectFiltersStyles';
 
 /**Allow user to select filters when generating an itinerary. */
@@ -22,6 +22,7 @@ export default function SelectFilters(props){
     /**Update the distance from location */
     const updateDistance = (newDistance: number) => {
         setDistance(newDistance);
+        props.updateItinerary({...itineraryData, maxDistance: newDistance});
     }
 
     /**Update which check boxes the user has selected for categories */
@@ -39,7 +40,9 @@ export default function SelectFilters(props){
             temp.push(categorySelected);
             setCategoriesSelected(temp);
         }
+        
         setUpdateComponent(!updateComponent);
+        props.updateItinerary({...itineraryData, categories: temp});
     }
 
     return(
@@ -58,6 +61,7 @@ export default function SelectFilters(props){
                     </Text>
                 </View>
                 
+
                 {/* Section 1: Choose distance from location */}
                 <View style={styles.distanceContainer}>
                     <Text style={styles.heading}>Distance</Text>
@@ -67,6 +71,8 @@ export default function SelectFilters(props){
                         minimumValue={0} maximumValue={100} step={1}/>
 
                 </View>
+
+                <Divider/>
 
                 {/* Section 2: Choose possible categories */}
                 <View style={styles.categoriesContainer}>
@@ -93,13 +99,6 @@ export default function SelectFilters(props){
                 <View style={styles.otherContainer}>
                     <Text style={styles.heading}>Miscellaneous</Text>
                 </View>
-            </View>
-
-            {/* Footer content */}
-            <View>
-                <Text>
-                    Next button here
-                </Text>
             </View>
         </ScrollView>
     );

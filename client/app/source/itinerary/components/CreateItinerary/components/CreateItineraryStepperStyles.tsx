@@ -30,12 +30,15 @@ export default StyleSheet.create({
     buttonIcon: {
         color: backgroundBlue
     },
+    footerContainer: {
+        backgroundColor: 'white',
+        marginTop: 10,
+        paddingBottom: 10
+    },
     footer: {
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-around',
-        position: 'absolute',
-        bottom: 15,
         alignItems: 'center',
         alignSelf: 'center',
         width: '100%',
