@@ -161,7 +161,7 @@ export default function GeneralInfo(props){
               </Item>
               
               <Item regular style={styles.textInputContainer} error={itineraryData.location === ""} success={itineraryData.location !== ""}>
-                <Input style={styles.textInput} keyboardType="default" placeholder="Loction (e.g. '1265 Military Trail')" onChange={text => handleSetLocation(text.nativeEvent.text)}/>
+                <Input style={styles.textInput} keyboardType="default" placeholder="City (e.g. Toronto, Vancouver)" onChange={text => handleSetLocation(text.nativeEvent.text)}/>
               </Item>
 
               
