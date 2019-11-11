@@ -18,7 +18,6 @@ var dataToLoad = require('./FireBaseData.json');
 /**Populate all event data to firestore */
 function loadDataToFirestore(){
     GetEventsData().forEach((newDoc: any) => {
-    
         // Commit to firestore
         db.collection(startingCollection).doc('data').collection('events')
         .add(newDoc)
@@ -76,7 +75,9 @@ function GetEventsData(): Array<any>{
                     elem.Location.latitude, elem.Location.longitude),
                 Tags: [elem.Type],
                 Type: elem.Type,
-                GroupSize: elem['Reccomended Group Size']
+                GroupSize: elem['Reccomended Group Size'],
+                imageURL: elem["Image Url"],
+                websiteURL: elem.Url
             }
         );
     });
@@ -85,16 +86,18 @@ function GetEventsData(): Array<any>{
 }
 
 function main(){
-    const uid = "7XVFTyYojiUTiFMeTI1pTRFhhiB2";
-    var eventsToAdd = GetEventsData().filter(() => getRndInteger(1, 100)%3 === 0);
+    // const uid = "7XVFTyYojiUTiFMeTI1pTRFhhiB2";
+    // var eventsToAdd = GetEventsData().filter(() => getRndInteger(1, 100)%3 === 0);
 
-    createItineraryForUser(uid, {
-        itineraryInfo: {
-            name: "Test itinerary 1",
-            last_edit_time: new Date()
-        },
-        events: eventsToAdd
-    });
+    // createItineraryForUser(uid, {
+    //     itineraryInfo: {
+    //         name: "Test itinerary 1",
+    //         last_edit_time: new Date()
+    //     },
+    //     events: eventsToAdd
+    // });
 
-    // console.log(eventsToAdd, eventsToAdd.length);
+    
 }
+
+loadDataToFirestore();

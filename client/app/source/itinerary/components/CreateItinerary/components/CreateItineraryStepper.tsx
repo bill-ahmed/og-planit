@@ -19,7 +19,10 @@ interface NewItinerary{
     endTime: Date,
     /**Maximum distance from location */
     maxDistance: number,
+    maxDistanceBetweenEvents: number,
     categories: [],
+    groupSize: number,
+    maxPrice: 0,
 }
 
 /**A progress stepper to allow users to create a new itinerary */
@@ -30,7 +33,10 @@ export default function CreateItineraryStepper(props){
         startTime: new Date(),
         endTime: new Date(),
         maxDistance: 0,
+        maxDistanceBetweenEvents: 0,
         categories: [],
+        groupSize: 0,
+        maxPrice: 0,
     }
 
     const [itineraryInfo, setItineraryInfo] = useState(itinerary);  // All itinerary data to be uploaded
@@ -90,7 +96,6 @@ export default function CreateItineraryStepper(props){
     return(
        
         <Modal animationType="slide" transparent={false} visible={props.open} presentationStyle='fullScreen' hardwareAccelerated={true} onRequestClose={() => props.close()}>
-            <ScrollView contentContainerStyle={{ flex: 1 }}>
                 <View style={styles.container}>
                     
                     {/* Header content */}
@@ -123,10 +128,7 @@ export default function CreateItineraryStepper(props){
                                 );
                             })}
                     </ViewPager>
-                    
-                    
                 </View>
-            </ScrollView>
         </Modal>
 
     );

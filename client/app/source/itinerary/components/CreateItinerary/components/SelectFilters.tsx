@@ -8,9 +8,12 @@ import styles from './SelectFiltersStyles';
 export default function SelectFilters(props){
     // Keep track of distance user selects
     const [distanceFromLocation, setDistance] = useState(props.itineraryInfo.maxDistance);
+    const [distanceBetweenEvents, setDistanceBetweenEvents] = useState(props.itineraryInfo.maxDistanceBetweenEvents);
+    const [price, setPrice] = useState(props.itineraryInfo.maxPrice);
+    const [gorupSize, setGroupSize] = useState(props.itineraryInfo.groupSize);
 
     /**All possible categories for events */
-    const [eventCategories, setEventCategories] = useState(["Museums", "Hotels", "Arcades", "Concerts", "Bars"].sort())
+    const [eventCategories, setEventCategories] = useState(["Museums", "Hotels", "Arcades", "Beaches", "Aquariums", "Galleries"].sort())
 
     /**Keep track of which categories are selected */
     const [categoriesSelected, setCategoriesSelected] = useState(props.itineraryInfo.categories);
@@ -23,6 +26,21 @@ export default function SelectFilters(props){
     const updateDistance = (newDistance: number) => {
         setDistance(newDistance);
         props.updateItinerary({...itineraryData, maxDistance: newDistance});
+    }
+
+    const updateDistanceBetweenEvents = (newDistance: number) => {
+        setDistanceBetweenEvents(newDistance); 
+        props.updateItinerary({...itineraryData, maxDistanceBetweenEvents: newDistance})
+    }
+
+    const updatePrice = (newPrice: number) => {
+        setPrice(newPrice); 
+        props.updateItinerary({...itineraryData, maximumPrice: newPrice})
+    }
+
+    const updateGroupSize = (val: number) => {
+        setGroupSize(val); 
+        props.updateItinerary({...itineraryData, groupSize: val})
     }
 
     /**Update which check boxes the user has selected for categories */
@@ -64,11 +82,35 @@ export default function SelectFilters(props){
 
                 {/* Section 1: Choose distance from location */}
                 <View style={styles.distanceContainer}>
-                    <Text style={styles.heading}>Distance</Text>
-                    <Text style={styles.text}>Distance from {itineraryData.location}: {distanceFromLocation} KM</Text>
+                    <Text style={styles.heading}>Distances</Text>
 
-                    <Slider style={styles.slider} value={distanceFromLocation} onValueChange={(value) => updateDistance(value)} 
+                    {/* Distance from user's city */}
+                    <Text style={styles.text}>Distance from City: {distanceFromLocation} KM</Text>
+                    <Slider style={styles.slider} thumbTintColor="#1977B5" value={distanceFromLocation} onValueChange={(value) => updateDistance(value)} 
                         minimumValue={0} maximumValue={100} step={1}/>
+
+                    {/* Max distance between events */}
+                    <Text style={styles.text}>Max Distance between Events: {distanceBetweenEvents} KM</Text>
+                    <Slider style={styles.slider} thumbTintColor="#1977B5" value={distanceBetweenEvents} onValueChange={(value) => updateDistanceBetweenEvents(value)} 
+                        minimumValue={0} maximumValue={100} step={1}/>
+
+                </View>
+
+                <Divider/>
+
+                {/* Section 1.5: Choose price range */}
+                <View style={styles.distanceContainer}>
+                    <Text style={styles.heading}>Price & Group Sizes</Text>
+
+                    {/* Max price for user */}
+                    <Text style={styles.text}>Maximum Price: ${price}</Text>
+                    <Slider style={styles.slider} thumbTintColor="#1977B5" value={price} onValueChange={(value) => updatePrice(value)} 
+                        minimumValue={0} maximumValue={300} step={5}/>
+
+                    {/* max group size for user */}
+                    <Text style={styles.text}>Group Size: {gorupSize} {gorupSize === 1 ? "Person" : "People"} </Text>
+                    <Slider style={styles.slider} thumbTintColor="#1977B5" value={gorupSize} onValueChange={(value) => updateGroupSize(value)} 
+                        minimumValue={0} maximumValue={50} step={1}/>
 
                 </View>
 

@@ -32,7 +32,7 @@ export default StyleSheet.create({
     },
     text: {
         fontSize: 18,
-        marginBottom: 10
+        marginTop: 10
     },
     subtext: {
         fontSize: 15,
@@ -41,6 +41,7 @@ export default StyleSheet.create({
     slider: {
         marginTop: 10,
         marginBottom: 10,
+        color: backgroundBlue
     },
     footer: {
         alignSelf: 'center',
