@@ -15,7 +15,9 @@ export interface location {
     StartTime: Geolocation,
     Tags: [string],
     Type: string,
-    GroupSize: number
+    GroupSize: number,
+    imageURL: string,
+    websiteURL: string
 }
 
 /**Address to represent where a location is */
