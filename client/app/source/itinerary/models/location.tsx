@@ -1,18 +1,15 @@
 /**All data to describe an event */
-export interface location {
+export interface PlanitLocation {
     Name: string,
     Address: Address,
     AvgPrice: number,
     AvgTimeSpent: Date,
-    Ratings: {
-        AveRatings: number,
-        NumRatings: number,
-    },
+    Ratings: locationRatings
     ContactInfo: ContactInfo,
     Description: string,
     EndTime: Date,
     Location: Geolocation,
-    StartTime: Geolocation,
+    StartTime: Date,
     Tags: [string],
     Type: string,
     GroupSize: number,
@@ -29,6 +26,11 @@ export interface Address {
     Street: string
 }
 
+export interface locationRatings {
+    AveRatings: number,
+    NumRatings: number,
+}
+
 /**Contact information for the event */
 export interface ContactInfo {
     Email: string,
@@ -37,13 +39,15 @@ export interface ContactInfo {
 
 /**An itinerary for a user */
 export interface Itinerary {
-    Id: string,
-    Name: string,
-    LastEditTime: Date,
-    Location: string,
-    Price: number,
-    Time: Date,
-    Type: string,
-    Events: [location],
+    id: string,
+    name: string,
+    last_edit_time: Date,
+    location: string,
+    price: number,
+    rating: [number],
+    review: [string],
+    time: Date,
+    type: string,
+    events: PlanitLocation[],
     GroupSize: number
 }

@@ -1,0 +1,21 @@
+ - OG-97 UI to setup config for itinerary generation
+ - OG-95 Setup Backend Request that filters by requested location and Distance
+ - OG-100 Function to generate itinerary
+ - OG-96 Itinerary has start and end times
+ - OG-101 Update Itinerary Event Summary to have save action
+ - OG-102 Ensure Filter object is saved with Itinerary
+ - OG-98 Create endpoint for accepting a new itinerary submission
+ - OG-103 Design Filter Object to be stored with Itinerary
+ - OG-105 Create UI to remove locations from Itinerary
+ - OG-106 Create UI to add locations to Events
+ - OG-107 Create Modal to modify filters
+ - OG-112 Make Title a Edit Field
+ - OG-113 Create API to delete Itinerary
+ - OG-114 Fix Image Urls on Events Summary
+ - OG-109 Update Itinerary and Location data models
+ - OG-110 Update UI Model
+ - OG-111 Update Location and Itinerary Displays
+ - OG-91 Cleanup Styles for Itinerary Page
+ - OG-92 Populate map with markers based on itinerary
+ - OG-93 Center map around center of all events
+ - OG-115 Navigate from itinerary page to map

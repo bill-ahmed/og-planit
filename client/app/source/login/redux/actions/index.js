@@ -29,3 +29,10 @@ export const getAllUserInformation = () => {
         type: 'GET_ALL_USER_INFO',
     });
 }
+
+export const setUserID = (id) => {
+    return({
+        type: 'SET_USER_ID',
+        payload: id
+    })
+}
