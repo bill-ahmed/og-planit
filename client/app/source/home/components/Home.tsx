@@ -13,10 +13,11 @@ import FilterEvents from '../../itinerary/components/filtering/FilterEvents';
 function Home(props){
     const [token, setToken] = useState('');
     const accessToken = useSelector(state => state['UserInfo']['accessToken']);
+    const uid = useSelector(state => state['UserInfo']['uid']);
     const {navigate} = props.navigation;    // Handle navigations
 
     const dispatch = useDispatch();
-
+    console.log(uid);
 
     /**Logout the current user, and go to AuthLoading navigator. */
     const logout = () => {
