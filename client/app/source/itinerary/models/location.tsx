@@ -14,7 +14,8 @@ export interface location {
     Location: Geolocation,
     StartTime: Geolocation,
     Tags: [string],
-    Type: string
+    Type: string,
+    GroupSize: number
 }
 
 /**Address to represent where a location is */
@@ -34,12 +35,13 @@ export interface ContactInfo {
 
 /**An itinerary for a user */
 export interface Itinerary {
-    id: string,
-    name: string,
-    last_edit_time: Date,
-    location: string,
-    price: number,
-    time: Date,
-    type: string,
-    events: [location]
+    Id: string,
+    Name: string,
+    LastEditTime: Date,
+    Location: string,
+    Price: number,
+    Time: Date,
+    Type: string,
+    Events: [location],
+    GroupSize: number
 }
