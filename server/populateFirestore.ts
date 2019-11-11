@@ -98,5 +98,3 @@ function main(){
 
     // console.log(eventsToAdd, eventsToAdd.length);
 }
-
-loadDataToFirestore();

@@ -16,18 +16,19 @@ export default StyleSheet.create({
         color: backgroundBlue
     },
     content: {
-        marginTop: 30,
+        marginTop: 15,
     },
     selectDateContainer: {
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'space-evenly',
         alignItems: 'center',
         width: '100%',
         marginTop: 30
     },
     form:{
-        width: "45%"
+        width: "80%",
+        marginBottom: 30
     },
     formItem: {
         marginBottom: 20

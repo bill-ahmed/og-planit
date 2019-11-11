@@ -6,7 +6,7 @@ export default StyleSheet.create({
         fontSize: 24,
     },
     content: {
-        marginTop: 30,
+        marginTop: 15,
     },
     filtersIntroduction: {
         marginBottom: 30

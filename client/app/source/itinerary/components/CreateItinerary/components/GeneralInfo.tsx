@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Container, Content,  Button, Icon, Form, Item, Label, Input} from 'native-base';
 import styles from './GeneralInfoStyles';
 import { View , Text, TextInput, DatePickerAndroid, TimePickerAndroid, Dimensions, ScrollView} from 'react-native';

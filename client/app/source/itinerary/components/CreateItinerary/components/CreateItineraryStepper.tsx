@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, View , Text, TextInput, DatePickerAndroid, TimePickerAndroid, Dimensions, ScrollView} from 'react-native';
 import { Container, Content,  Button, Icon, Form, Item, Label, Input, Footer} from 'native-base';
+import { ViewPager } from 'rn-viewpager'
 import StepIndicator from 'react-native-step-indicator';
 import GeneralInfo from './GeneralInfo';
 import SelectFilters from './SelectFilters';
@@ -47,6 +48,7 @@ export default function CreateItineraryStepper(props){
         ,
         <View>
             <Text>Generate the itinerary</Text>
+            <Text> {JSON.stringify(itineraryInfo)} </Text>
         </View>
         ,
         <View>
@@ -76,56 +78,55 @@ export default function CreateItineraryStepper(props){
         }
     }
 
+    /**Handle updating a new step */
+    const updateCurrentStep = (newStep: number) => {
+        if(newStep > currentStep){
+            handleNextStep();
+        } else {
+            handlePrevStep();
+        }
+    }
+
     return(
        
-        <Modal animationType="slide" transparent={false} visible={props.open} presentationStyle='fullScreen' onRequestClose={() => props.close()}>
-             <ScrollView>
-            <View style={styles.container}>
-                
-                {/* Header content */}
-                <View style={styles.header}>
-                    <Button transparent onPress={() => props.close()}>
-                    <Icon name="arrow-back" />
-                    </Button>
+        <Modal animationType="slide" transparent={false} visible={props.open} presentationStyle='fullScreen' hardwareAccelerated={true} onRequestClose={() => props.close()}>
+            <ScrollView contentContainerStyle={{ flex: 1 }}>
+                <View style={styles.container}>
                     
-                    <Text style={styles.heading}>
-                    Create an Itinerary
-                    </Text>
+                    {/* Header content */}
+                    <View style={styles.header}>
+                        <Button transparent onPress={() => props.close()}>
+                        <Icon name="close" />
+                        </Button>
+                        
+                        <Text style={styles.heading}>
+                        Create an Itinerary
+                        </Text>
+                    </View>
+
+                    {/* Main body content */}
+                    <View style={styles.content}>
+                        <StepIndicator
+                            customStyles={StepperStyles}
+                            currentPosition={currentStep} 
+                            stepCount={steps.length}
+                            labels={labels}
+                        />
+                    </View>
+
+                    <ViewPager style={styles.viewPager} initialPage={0} onPageSelected={elem => updateCurrentStep(elem.position)}>
+                            {steps.map((elem: any, index: number) => {
+                                return(
+                                    <View style={styles.screenContainer} key={index}>
+                                        {elem}
+                                    </View>
+                                );
+                            })}
+                    </ViewPager>
+                    
+                    
                 </View>
-
-                {/* Main body content */}
-                <View style={styles.content}>
-                    <StepIndicator
-                        customStyles={StepperStyles}
-                        currentPosition={currentStep} 
-                        stepCount={steps.length}
-                        labels={labels}
-                    />
-
-                    {steps[currentStep]}
-                </View>
-
-                {/* Footer content */}
-                
-            </View>
             </ScrollView>
-            <Footer style={styles.footerContainer}>
-                <View style={styles.footer}>
-                    {currentStep !== 0 &&
-                     <Button full transparent iconLeft disabled={currentStep === 0} onPress={() => handlePrevStep()}>
-                        <Icon style={styles.buttonIcon} name='arrow-round-back'/>
-                        <Text style={styles.buttonText}>Back</Text>
-                    </Button>
-                    }
-
-                    {currentStep !== steps.length && 
-                     <Button full transparent iconRight disabled={currentStep === steps.length} onPress={() => handleNextStep()}>
-                        <Text style={styles.buttonText}>Next</Text>
-                        <Icon style={styles.buttonIcon} name='arrow-round-forward'/>
-                    </Button>
-                    }
-                </View>
-            </Footer>
         </Modal>
 
     );

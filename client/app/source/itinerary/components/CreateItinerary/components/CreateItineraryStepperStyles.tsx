@@ -22,6 +22,12 @@ export default StyleSheet.create({
     content: {
         padding: 20,
     },
+    viewPager: {
+        flex: 1,
+    },
+    screenContainer: {
+        padding: 20
+    },
     buttonText: {
       color: backgroundBlue, // Colour for font if "transparent" flag given
       fontSize: 24,
@@ -29,19 +35,6 @@ export default StyleSheet.create({
     },
     buttonIcon: {
         color: backgroundBlue
-    },
-    footerContainer: {
-        backgroundColor: 'white',
-        marginTop: 10,
-        paddingBottom: 10
-    },
-    footer: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        alignSelf: 'center',
-        width: '100%',
     }
 });
 

@@ -7,13 +7,13 @@ import styles from './SelectFiltersStyles';
 /**Allow user to select filters when generating an itinerary. */
 export default function SelectFilters(props){
     // Keep track of distance user selects
-    const [distanceFromLocation, setDistance] = useState(0);
+    const [distanceFromLocation, setDistance] = useState(props.itineraryInfo.maxDistance);
 
     /**All possible categories for events */
     const [eventCategories, setEventCategories] = useState(["Museums", "Hotels", "Arcades", "Concerts", "Bars"].sort())
 
     /**Keep track of which categories are selected */
-    const [categoriesSelected, setCategoriesSelected] = useState([]);
+    const [categoriesSelected, setCategoriesSelected] = useState(props.itineraryInfo.categories);
 
     const [updateComponent, setUpdateComponent] = useState(true);   // Workaround for component not updating even though another state is
 
