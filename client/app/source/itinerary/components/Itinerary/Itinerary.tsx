@@ -63,19 +63,14 @@ export function Itinerary(props) {
 
     return (
         <Container>
-            <Header style={{backgroundColor: backgroundBlue}}>               
+            <Header style={{backgroundColor: backgroundBlue}}>          
                 <Body>
                     <Title>
                         Itinerary Page
                     </Title>
                 </Body>
 
-                <Right>
-                    <Button transparent onPress={() => navigate('NewItinerary')}>
-                        <Icon name="ios-add"/>
-                        <Text> Create New Itinerary</Text>
-                    </Button>
-                </Right>
+
               
             </Header>
   
