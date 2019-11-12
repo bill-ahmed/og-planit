@@ -33,12 +33,7 @@ export function Itinerary(props) {
 
     return (
         <Container>
-            <Header>
-                <Left>
-                    <Button transparent onPress={() => props.navigation.goBack()}>
-                        <Icon name="arrow-back" />
-                    </Button>
-                </Left>
+             <Header style={{backgroundColor: backgroundBlue}}>          
                 <Body>
                     <Title>
                         Itinerary Page
@@ -53,25 +48,24 @@ export function Itinerary(props) {
             </Header>
 
             <ScrollView>
-            {/* <Title> <Text>{element.name}</Text> </Title>
-                        <Subtitle> <Text>{element.events.length}</Text></Subtitle>
-                        <Subtitle> <Text>{element.last_edit_time}</Text> </Subtitle>
-                        <Text> {element.time} </Text>  */}
-                {itineraries.map(element => {
-                return(<Card>
-                    <CardItem header button onPress={() => navigate("ViewItineraryEvents", {data: element})}>
-                    <Thumbnail source={require('./../../../login/assets/earth.png')} style={{maxWidth:30, maxHeight:30}}></Thumbnail>
-                    <Text style={{fontSize: 25}}> {element.name} </Text>
-                    </CardItem>
-                    <CardItem></CardItem>
-                    <CardItem button onPress={() => console.log(`Clicked the description of ${element.name}!`)/* carlos replace with yours*/}>
-                        <Body>
-                        <Text>{element.events.length} {((element.events.length == 0) && (element.events.length == 1)) ?'event': 'events'}</Text>
-                        <Text>Last edited at {element.last_edit_time}</Text>
-                        </Body>
-                    </CardItem>
-                </Card>);
-                 })}
+            {!itineraries && <Spinner color='blue' />}
+                {itineraries && itineraries.map((element: ItineraryModel, index) => {
+                    return (<Card key={index}>
+                        <CardItem header button onPress={() => navigate("ViewItineraryEvents", { data: element })}>
+                        <Thumbnail source={require('./../../../login/assets/earth.png')} style={{maxWidth:30, maxHeight:30}}></Thumbnail>
+                        <Text style={{fontSize: 25}}> {element.name} </Text>                            
+                        </CardItem>
+                        <CardItem button onPress={() => console.log(`Clicked the description of ${element.name}!`) /* carlos replace with yours*/}>
+                            <Body>
+                                {element.events && <Text>Number of Events: {element.events.length}</Text>}
+                                {element.last_edit_time && <Text>Last Edited: {element.last_edit_time.toLocaleString()}</Text>}
+                                <Right>
+                                    <Radio selected={selected === index} onPress={() => handleRadioButtonChange(index)} />
+                                </Right>
+                            </Body>
+                        </CardItem>
+                    </Card>);
+                })}
             </ScrollView>
             
             <Fab
