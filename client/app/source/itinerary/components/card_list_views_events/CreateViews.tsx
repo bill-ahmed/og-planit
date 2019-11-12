@@ -1,14 +1,16 @@
 import React, { Component, useState } from 'react';
-import { Container, Header, Left, Right, Body, Title, Subtitle, Content, Button, Icon } from 'native-base';
+import { Container, Header, Left, Right, Body, Title, Button, Icon, View } from 'native-base';
 
 import styles from './CreateViewsStyles';
 import { Text, ScrollView, TextInput, TouchableOpacity } from 'react-native';
 import { Card, Input } from 'react-native-elements';
 import LocationDetails from '../../../shared/component/LocationDetails/LocationDetails';
+import EventsSelector from '../eventsSelector/eventsSelector';
 
 export default function CreateViews(props) {
     // Control if modal is open or not
     const [eventDetailsModalOpen, setEventDetailsModal] = useState(false);
+    const [chooseEventModalOpen, setChooseEventModal] = useState(false);
     const [editFields, setEditFields] = useState(false);
     const [itinerayData, setItineraryData] = useState(null);
     const [events, setEvents] = useState(null);
@@ -20,11 +22,11 @@ export default function CreateViews(props) {
      * @param val If the modal is open or not
      * @param data The data to send to the pop-up modal
      */
-    const setModalOpen = (val: boolean, data: any) => {
+    const setEventDetailsModalOpen = (val: boolean, data: any) => {
         setEventDetailsModal(val);
         setDetailsModalData(data);
     }
-
+    
     const initState = () => {
         setItineraryData(props.navigation.state.params.data);
         setEvents(props.navigation.state.params.data.events);
@@ -82,7 +84,7 @@ export default function CreateViews(props) {
             <ScrollView>
                 {initialized && events.map((event, index) => {
                     return (
-                        <TouchableOpacity onPress={() => setModalOpen(true, event)} key={index}>
+                        <TouchableOpacity onPress={() => setEventDetailsModalOpen(true, event)} key={index}>
                             <Card
                                 image={{ uri: event.uri }}>
                                 <Text style={styles.eventHeader}>
@@ -98,8 +100,14 @@ export default function CreateViews(props) {
                         </TouchableOpacity>
                     )
                 })}
+                <Text></Text>
+                {editFields && <View style={styles.addButton}><Button onPress={() => setChooseEventModal(true)}>
+                        <Icon name="ios-add" />
+                    </Button></View>}
+                <Text></Text>
             </ScrollView>
             {initialized && eventDetailsModalOpen && <LocationDetails location={detailsdModalData} open={eventDetailsModalOpen} setModal={setEventDetailsModal} />}
+            {initialized && chooseEventModalOpen && <EventsSelector open={chooseEventModalOpen} setModal={setChooseEventModal} />}
         </Container>
     );
 }
