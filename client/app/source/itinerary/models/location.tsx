@@ -4,14 +4,20 @@ export interface PlanitLocation {
     Address: Address,
     AvgPrice: number,
     AvgTimeSpent: Date,
-    Ratings: locationRatings
+    Ratings: {
+        AveRatings: number,
+        NumRatings: number,
+    },
     ContactInfo: ContactInfo,
     Description: string,
     EndTime: Date,
     Location: Geolocation,
-    StartTime: Date,
+    StartTime: Geolocation,
     Tags: [string],
-    Type: string
+    Type: string,
+    GroupSize: number,
+    imageURL: string,
+    websiteURL: string
 }
 
 /**Address to represent where a location is */

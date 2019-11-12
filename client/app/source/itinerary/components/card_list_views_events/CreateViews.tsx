@@ -1,8 +1,8 @@
 import React, { Component, useState } from 'react';
-import { Container, Header, Left, Right, Body, Title, Subtitle, Content, Button, Icon } from 'native-base';
+import { Container, Header, Left, Right, Body, Title, Subtitle, Content, Button, Icon, View } from 'native-base';
 
 import styles from './CreateViewsStyles';
-import { Text, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+import { Text, ScrollView, TextInput, TouchableOpacity, Image } from 'react-native';
 import { Card, Input } from 'react-native-elements';
 import LocationDetails from '../../../shared/component/LocationDetails/LocationDetails';
 
@@ -84,18 +84,19 @@ export default function CreateViews(props) {
                     return (
                         <TouchableOpacity onPress={() => setModalOpen(true, event)} key={index}>
                             <Card
-                                image={{ uri: event.uri }}>
+                                image={{uri: event.imageURL}}>
                                 <Text style={styles.eventHeader}>
                                     {event.Name}
                                 </Text>
-                                <Text>
-                                    {"$" + event.AvgPrice + "\n"}
-                                    {event.Address.Number + " " + event.Address.Street + ", " + event.Address.City + ", " + event.Address.Province + "\n"}
-                                    {event.StartTime + " - " + event.EndTime}
-                                </Text>
-
+                                <View style={styles.cardBody}>
+                                    <Text>${event.AvgPrice.toString()}</Text>
+                                    <Text>{event.Address.toString()}{"\n"}</Text>
+                                    {event.StartTime && <Text> {event.StartTime.toLocaleTimeString()}</Text>}
+                                    {event.EndTime && <Text>{event.EndTime.toLocaleTimeString()}</Text>}
+                                </View>
                             </Card>
                         </TouchableOpacity>
+                        
                     )
                 })}
             </ScrollView>
