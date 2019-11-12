@@ -39,7 +39,7 @@ export default function FilterEvents(props){
                 </Body>
             </Header>
 
-            <ScrollView style={styles.container}>
+            <ScrollView >
 
                 <Content>
                 <Text style={styles.dateHeader}>
@@ -123,12 +123,27 @@ export default function FilterEvents(props){
                         Category
                     </Text>
                     <View style={styles.contentCategory}>
-                    {data.map((category, key) => {
+                    {data.map(category => {
 
                         return(
-                            <CheckBox checked={true}
+                            <CheckBox checked={category.Type in isChecked}
                                 title={category.Type}
                                 onPress={() => {
+                                    let index = isChecked.indexOf(category.Type)
+                                    if(index !== -1){
+                                        let temp = isChecked
+                                        temp.splice(index, 1)
+                                        setChecked(temp)
+                                        console.log(temp)
+                                        console.log("ISCHECKED: ", isChecked)
+                                    }
+                                    else{
+                                        let temp = isChecked
+                                        temp.push(category.Type)
+                                        setChecked(temp)
+                                        console.log(temp)
+                                        console.log("ISCHECKED: ", isChecked)
+                                    }
                                 }}
                             />
                         )
