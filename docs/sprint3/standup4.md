@@ -8,7 +8,7 @@ Nov 8: Done -
 To Do - Populate database with new JSON data matching model. Implement create itinerary function.
 
  - Yiming
-Nov 7.
+Nov 8.
 got the floating button working
 so add itinerary ui is improved
 
