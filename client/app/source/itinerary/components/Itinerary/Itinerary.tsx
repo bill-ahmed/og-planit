@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD
-import { Container, Header, Left, Right, Body, Title, Content,  Button, Icon, Subtitle, Card, CardItem, Fab, Thumbnail} from 'native-base';
-=======
-import { Container, Header, Left, Right, Body, Title, Content, Button, Icon, Subtitle, Card, CardItem, Radio, Spinner } from 'native-base';
->>>>>>> origin/develop
+import { Container, Header, Left, Right, Body, Title, Content, Button, Icon, Subtitle, Card, CardItem, Radio, Spinner, Fab, Thumbnail } from 'native-base';
 
 //import styles from './ItineraryStyles';
 import { View, Text, Image, ScrollView } from 'react-native';
@@ -19,34 +15,17 @@ export function Itinerary(props) {
     const [itineraries, setItineraries] = useState(null);
     const [selected, setSelected] = useState(-1);
 
-<<<<<<< HEAD
-
     const backgroundBlue = '#1977B5';
-
-    let locations = null;
-    getLocations().then(res => {
-        locations = res;
-        setlocationsLoaded(true);
-        console.log(locations);
-=======
     getItinerarySigned().then(res => {
         if (!itineraries && res != undefined) {
             setItineraries(res);
         }
->>>>>>> origin/develop
     });
 
     const goToItineraryViews = () => {
         navigate(/* carlos' part */);
     }
 
-<<<<<<< HEAD
-
-
-    return (
-        <Container>
-            <Header style={{backgroundColor: backgroundBlue}}>          
-=======
     const handleRadioButtonChange = (newRadioButtonValue: number) => {
         setSelected(newRadioButtonValue);
         console.log("User selected " + newRadioButtonValue);
@@ -60,28 +39,20 @@ export function Itinerary(props) {
                         <Icon name="arrow-back" />
                     </Button>
                 </Left>
->>>>>>> origin/develop
                 <Body>
                     <Title>
                         Itinerary Page
                     </Title>
                 </Body>
-<<<<<<< HEAD
-
-
-              
-=======
                 <Right>
                     <Button transparent onPress={() => navigate('NewItinerary')}>
                         <Icon name="ios-add" />
                         <Text> Create New Itinerary</Text>
                     </Button>
                 </Right>
->>>>>>> origin/develop
             </Header>
 
             <ScrollView>
-<<<<<<< HEAD
             {/* <Title> <Text>{element.name}</Text> </Title>
                         <Subtitle> <Text>{element.events.length}</Text></Subtitle>
                         <Subtitle> <Text>{element.last_edit_time}</Text> </Subtitle>
@@ -113,26 +84,6 @@ export function Itinerary(props) {
     >
       <Icon name="ios-add" />
     </Fab>
-=======
-                {!itineraries && <Spinner color='blue' />}
-                {itineraries && itineraries.map((element: ItineraryModel, index) => {
-                    return (<Card key={index}>
-                        <CardItem header button onPress={() => navigate("ViewItineraryEvents", { data: element })}>
-                            <Text> {element.name} </Text>
-                        </CardItem>
-                        <CardItem button onPress={() => console.log(`Clicked the description of ${element.name}!`) /* carlos replace with yours*/}>
-                            <Body>
-                                {element.events && <Text>Number of Events: {element.events.length}</Text>}
-                                {element.last_edit_time && <Text>Last Edited: {element.last_edit_time.toLocaleString()}</Text>}
-                                <Right>
-                                    <Radio selected={selected === index} onPress={() => handleRadioButtonChange(index)} />
-                                </Right>
-                            </Body>
-                        </CardItem>
-                    </Card>);
-                })}
-            </ScrollView>
->>>>>>> origin/develop
         </Container>
     );
 }
