@@ -8,19 +8,19 @@ import Login from '../app/source/login/component/Login';
 
 /* Main app pages */
 import Home from '../app/source/home/components/Home';
-import ItineraryContainer from '../app/source/itinerary/components/Itinerary/Itinerary';
+import ItineraryContainer from '../app/source/itinerary/navigation';
+import GMap from '../app/source/maps/navigation';
 import Ratings from '../app/source/itinerary/components/ratings/CreateRating';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import CreateViews from '../app/source/itinerary/components/card_list_views_events/CreateViews';
 
 import { Text, Icon } from 'native-base';
-import NewItinerary from '../app/source/itinerary/components/CreateItinerary/CreateItinerary';
 
 // App stack to go from Auth --> Home and other tabs in bottom navigation
 export const AppStack = createBottomTabNavigator(
   {
       Home: Home,
       Itinerary: ItineraryContainer,
+      Map: GMap,
       Ratings: Ratings,
   },
   {
@@ -61,6 +61,8 @@ function getTabBarIcons(navigation, focused: boolean, tintColor): JSX.Element {
       return <Icon name='ios-planet' color={tintColor} />
     case 'Ratings':
       return <Icon name='ios-star-outline' color={tintColor} />
+    case 'Map':
+      return <Icon name='map' color={tintColor} />
     default:
       return <Text>N/A</Text>
   }
