@@ -11,7 +11,10 @@ export interface PlanitLocation {
     Location: Geolocation,
     StartTime: Date,
     Tags: [string],
-    Type: string
+    Type: string,
+    GroupSize: number,
+    imageURL: string,
+    websiteURL: string
 }
 
 /**Address to represent where a location is */
@@ -45,5 +48,6 @@ export interface Itinerary {
     review: [string],
     time: Date,
     type: string,
-    events: PlanitLocation[]
+    events: PlanitLocation[],
+    GroupSize: number
 }
