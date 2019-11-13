@@ -2,30 +2,30 @@ import React, { useState } from 'react';
 import { Text, View, Container, Header, Left, Button, Icon, Title, Right, Body, Content, Form } from 'native-base';
 import { TextInput } from 'react-native-gesture-handler';
 import styles from './LocationDetailStyles';
-import { Modal, FlatList } from 'react-native';
+import { Modal, FlatList, Dimensions,Image } from 'react-native';
 import { PlanitLocation, Address } from '../../../itinerary/models/location';
 
-const events = require("./../../../maps/models/MockLocationDatabase.json");
+
 
 export default function LocationDetails(props) {
-    const locObj: PlanitLocation = props.location;
+    const data: PlanitLocation = props.location;
 
-    const formRow = (header, text, styleValue = styles.h18) =>
+    const formRow = (header, text) =>
         <View>
-            <Text style={[styles.h14, styles.Text]}>
+            <Text >
                 {header}
             </Text>
-            <Text style={[styleValue, styles.Text]}>
+            <Text>
                 {text}
             </Text>
         </View>
-
+    const imgWidth = Dimensions.get('window').width;
     return (
         <Modal animationType="slide" transparent={false} visible={props.open} presentationStyle="overFullScreen" onRequestClose={() => props.setModal(false)}>
             <View style={styles.container}>
                 <Container>
                     {/* Header content */}
-                    <Header noShadow style={styles.header}>
+                    <Header noShadow>
                         <Left>
                             {/* Close the pop-up modal */}
                             <Button transparent onPress={() => props.setModal(false)}>
@@ -39,37 +39,60 @@ export default function LocationDetails(props) {
                     </Header>
 
                     {/* Main body content */}
-                    <Content style={styles.content} padder>
-                        <Container style={styles.containerContent}>
-                            {locObj.Name && formRow("Name: ", locObj.Name, styles.h24)}
-                            {locObj.Name && <Text />}
-                            {locObj.Type && formRow("Type of Activity: ", locObj.Type)}
-                            {locObj.Tags && formRow("Tags: ", locObj.Tags.map((tag, index) => {
-                                if ((index + 1) === locObj.Tags.length) {
-                                    return tag;
-                                } else {
-                                    return tag + ", "
-                                }
-                            }, styles.h14))}
-                            {locObj.Tags && locObj.Type && <Text />}
-                            {locObj.Ratings && formRow("Average Rating: ", locObj.Ratings.AveRatings)}
-                            {locObj.Ratings && <Text />}
-                            {locObj.AvgPrice && formRow("Average Price:", "$" + locObj.AvgPrice)}
-                            {locObj.AvgPrice && < Text />}
-                            {locObj.StartTime && locObj.EndTime && formRow("Active From: ", locObj.StartTime.toLocaleString() + " :")}
-                            {locObj.AvgTimeSpent && <Text style={[styles.h18, styles.Text]}>
-                                {"\t\t" + locObj.EndTime.toLocaleString()}
-                            </Text>}
-                            {locObj.StartTime && locObj.EndTime && locObj.AvgTimeSpent && <Text />}
-                            {locObj.Address && formRow("Address: ", locObj.Address.Number + " " + locObj.Address.Street + ", " + locObj.Address.City)}
-                            {locObj.Address && <Text />}
-                            {locObj.Description && formRow("Description: ", locObj.Description)}
-                            {locObj.Description && <Text />}
-                            {locObj.ContactInfo && formRow("Phone: ", locObj.ContactInfo.Phone)}
-                            {locObj.ContactInfo && formRow("Email: ", locObj.ContactInfo.Email)}
+                    <Content>
+                        <View style={styles.container}>
+                            <Image
+                                style={{width: imgWidth, height: imgWidth/1.5, marginTop: 0}}
+                                source={{uri: data.imageURL}}
+                            />
+                        </View>
+                        <Text style={styles.eventHeader}>{data.Name}</Text>
+                        <Text style={styles.criticalInfo}>
+                            {"Pricing: $" + data.AvgPrice + "\nAverage Time Spent: " + data.AvgTimeSpent + "\nStart Time: " + data.StartTime + "\nEnd Time: " + data.EndTime }
+                        </Text>
 
-                        </Container>
+                        <Text style={styles.textHeader}>About:</Text>
+                        <Text style={styles.textBody}>{data.Description}</Text>
+                        
+                        <Text style={styles.textHeader}>Contact information:</Text>
+                        <Text style={styles.textBody}>Email:  + {data.ContactInfo.Email + "\n" + "Phone: " + data.ContactInfo.Phone}</Text>
+                        <Text style={styles.textBody}>{`${data.Address.Number} ${data.Address.Street}, ${data.Address.City} ${data.Address.Province}, ${data.Address.Country}`}</Text>
                     </Content>
+                    {/* <Content padder>
+                        
+                        <View style={styles.container}>
+                            <Image
+                                width={Dimensions.get('window').width}
+                                source={{ uri: data.imageURL }} />
+                        </View>
+
+                        <Text>`${data.Name}`</Text>
+                        <Text>Description:</Text>>
+                        <Text>`${data.Description}`</Text>
+                    
+                        {data.Tags && data.Type && <Text />}
+                        {data.Ratings && formRow("Average Rating: ", data.Ratings.AveRatings)}
+                        {data.Ratings && <Text />}
+                        {data.AvgPrice && formRow("Average Price:", "$" + data.AvgPrice)}
+                        {data.AvgPrice && < Text />}
+                        {data.StartTime && data.EndTime && formRow("Active From: ", data.StartTime.toLocaleString() + " :")}
+                        {data.AvgTimeSpent && <Text style={[styles.h18, styles.Text]}>
+                            {"\t\t" + data.EndTime.toLocaleString()}
+                        </Text>}
+                        {data.StartTime && data.EndTime && data.AvgTimeSpent && <Text />}
+                        {data.Address && formRow("Address: ", data.Address.Number + " " + data.Address.Street + ", " + data.Address.City)}
+                        {data.Address && <Text />}
+                        {data.ContactInfo && formRow("Phone: ", data.ContactInfo.Phone)}
+                        {data.ContactInfo && formRow("Email: ", data.ContactInfo.Email)}
+                        {data.Type && formRow("Type of Activity: ", data.Type)}
+                        {data.Tags && formRow("Tags: ", data.Tags.map((tag, index) => {
+                            if ((index + 1) === data.Tags.length) {
+                                return tag;
+                            } else {
+                                return tag + ", "
+                            }
+                        }, styles.h14))}
+                    </Content> */}
                 </Container>
             </View>
         </Modal>

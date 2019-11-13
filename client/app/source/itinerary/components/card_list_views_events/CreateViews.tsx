@@ -90,9 +90,9 @@ export default function CreateViews(props) {
                                 </Text>
                                 <View style={styles.cardBody}>
                                     <Text>${event.AvgPrice.toString()}</Text>
-                                    <Text>{event.Address.toString()}{"\n"}</Text>
-                                    {event.StartTime && <Text> {event.StartTime.toLocaleTimeString()}</Text>}
-                                    {event.EndTime && <Text>{event.EndTime.toLocaleTimeString()}</Text>}
+                                    {event.Address && <Text>Address: {event.Address.Number}, {event.Address.Street}, {event.Address.City}</Text>}
+                                    {event.StartTime && <Text>Starting Time: {event.StartTime.toLocaleTimeString()}</Text>}
+                                    {event.EndTime && <Text>Ending Time: {event.EndTime.toLocaleTimeString()}</Text>}
                                 </View>
                             </Card>
                         </TouchableOpacity>
