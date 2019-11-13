@@ -44,8 +44,6 @@ export default function GeneralInfo(props){
     
     props.updateItinerary(temp);
     setItineraryData(temp);
-
-    // Update itinerary data to reflect this
   }
 
   /** Update start time for this itinerary */
@@ -62,9 +60,7 @@ export default function GeneralInfo(props){
 
     props.updateItinerary(temp);
     setItineraryData(temp);
-
   }
-
   
   /**Callback for when user clicks "Next" button */
   const handleNextButton = (): void =>{
