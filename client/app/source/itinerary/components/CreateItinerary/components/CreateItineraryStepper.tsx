@@ -6,6 +6,7 @@ import StepIndicator from 'react-native-step-indicator';
 import GeneralInfo from './GeneralInfo';
 import SelectFilters from './SelectFilters';
 import styles, { StepperStyles } from './CreateItineraryStepperStyles';
+import CreateFromUserSetting from ;
 
 /**Represent a new itinerary the user will construct */
 interface NewItinerary{
@@ -22,7 +23,16 @@ interface NewItinerary{
     maxDistanceBetweenEvents: number,
     categories: [],
     groupSize: number,
-    maxPrice: 0,
+    budget: 0,
+}
+interface Filter{
+    Name: String,
+    City: String,
+    StartTime: Date,
+    TravelDistance: number,
+    Categories: [],
+    GroupSize: number,
+    Budget: number
 }
 
 /**A progress stepper to allow users to create a new itinerary */
@@ -36,7 +46,39 @@ export default function CreateItineraryStepper(props){
         maxDistanceBetweenEvents: 0,
         categories: [],
         groupSize: 0,
-        maxPrice: 0,
+        budget: 0,
+    }
+
+    var filter: Filter = {
+        Name: itinerary.name,
+        City: itinerary.location,
+        StartTime:itinerary.startTime,
+        TravelDistance: itinerary.maxDistanceBetweenEvents,
+        Categories: itinerary.categories,
+        GroupSize: itinerary.groupSize,
+        Budget: itinerary.budget
+    }
+
+    function createItineraryRequest(){
+
+        let options = {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            body:JSON.stringify(filter)
+        }
+
+        fetch(`${ENDPOINT}/createItinerary`, options)
+        .then(resp => resp.json())
+        .then(resp => {
+            alert("Here is your Itinerary!");
+            props.setModal(false);
+        })
+        .catch(res => {
+            alert("Error ocurred during fetch. Check console log.");
+            console.log(res)});
     }
 
     const [itineraryInfo, setItineraryInfo] = useState(itinerary);  // All itinerary data to be uploaded
@@ -55,6 +97,7 @@ export default function CreateItineraryStepper(props){
         <View>
             <Text>Generate the itinerary</Text>
             <Text> {JSON.stringify(itineraryInfo)} </Text>
+            {fetch(CreateFromUserSetting(filter))}
         </View>
         ,
         <View>
