@@ -49,5 +49,17 @@ export interface Itinerary {
     time: Date,
     type: string,
     events: PlanitLocation[],
-    GroupSize: number
+    GroupSize: number,
+    Filter: Filter
+}
+
+/** Filter Object that goes with each itinerary. Records user filters for easier modification. */
+export interface Filter {
+    Name: string,
+    City: string,
+    StartTime: Date,
+    TravelDistance: number,
+    Categories: [string],
+    GroupSize: number,
+    Budget: number
 }
