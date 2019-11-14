@@ -1,8 +1,15 @@
 import { StyleSheet } from 'react-native'
+const blueTheme = '#1977B5';
 export default StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
+        flexDirection: 'column',
+    },
+    contactInfoContainer: {
+        flex:1,
+        paddingRight: 10,
+        justifyContent: 'flex-start',
         flexDirection: 'row',
     },
     content: {
@@ -17,13 +24,27 @@ export default StyleSheet.create({
     },
     criticalInfo:{
         marginTop:10,
-        fontSize: 15,
+        fontSize: 20,
         color: "grey",
     },
     eventHeader:{
         fontSize: 28,
-        fontStyle: "italic",
-        color: "blue",
+        color: blueTheme,
+        fontWeight: 'bold',
+    },
+    iconStyle: {
+        color: blueTheme
+    },
+    bodyContainer: {
+        flex:1,
+        justifyContent: 'center',
+        flexDirection: 'column',
+        paddingLeft: 10
+    },
+    titleRating: {
+        flex:1,
+        justifyContent: 'space-between',
+        flexDirection: 'row',
     }
 });
 // import { StyleSheet, Dimensions } from 'react-native'
