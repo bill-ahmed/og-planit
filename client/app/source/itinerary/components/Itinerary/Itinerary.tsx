@@ -58,6 +58,9 @@ export function Itinerary(props) {
                         <CardItem header button onPress={() => navigate("ViewItineraryEvents", { data: element })}>
                             <Text> {element.name} </Text>
                         </CardItem>
+                        <CardItem>
+                            <Icon name="map" onPress={() => navigate("ViewItineraryEvents", { data: element })}/>
+                        </CardItem>
                         <CardItem button onPress={() => console.log(`Clicked the description of ${element.name}!`) /* carlos replace with yours*/}>
                             <Body>
                                 {element.events && <Text>Number of Events: {element.events.length}</Text>}
