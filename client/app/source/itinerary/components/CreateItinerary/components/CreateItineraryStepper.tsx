@@ -6,8 +6,9 @@ import StepIndicator from 'react-native-step-indicator';
 import GeneralInfo from './GeneralInfo';
 import SelectFilters from './SelectFilters';
 import styles, { StepperStyles } from './CreateItineraryStepperStyles';
-//import CreateFromUserSetting from "../../../api/itineraryAPI";
-const ENDPOINT = 'http://100.82.203.156:4000'
+
+const ENDPOINT = 'http://100.82.203.156:4000';  // MUST BE YOUR IP ADDRESS ON LOCAL NETWORK!!
+
 /**Represent a new itinerary the user will construct */
 interface NewItinerary{
     /**Name of the itinerary */
@@ -54,6 +55,7 @@ export default function CreateItineraryStepper(props){
         Name: itinerary.name,
         City: itinerary.location,
         StartTime:itinerary.startTime,
+        EndTIme:itinerary.endTime,
         TravelDistance: itinerary.maxDistanceBetweenEvents,
         Categories: itinerary.categories,
         GroupSize: itinerary.groupSize,
@@ -83,6 +85,7 @@ export default function CreateItineraryStepper(props){
     }
     //const generatedItinerary = CreateFromUserSetting(filter);
     const [itineraryInfo, setItineraryInfo] = useState(itinerary);  // All itinerary data to be uploaded
+    const [filters, setFilter] = useState(filter);
     const [currentStep, setCurrentStep] = useState(0);  // Current step in progress bar
 
     // Component to render at each step
@@ -112,6 +115,15 @@ export default function CreateItineraryStepper(props){
     /**Update all data in itinerary */
     const updateItineraryInfo = (newData : NewItinerary) => {
         setItineraryInfo(newData);
+        setFilter({
+            Name: newData.name,
+            City: newData.location,
+            StartTime: newData.startTime,
+            TravelDistance: newData.maxDistanceBetweenEvents,
+            Categories: newData.categories,
+            GroupSize: newData.groupSize,
+            Budget: newData.budget
+        });
     }
 
     /**Go to the next step in creating itinerary */
