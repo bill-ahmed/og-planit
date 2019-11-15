@@ -6,8 +6,8 @@ import StepIndicator from 'react-native-step-indicator';
 import GeneralInfo from './GeneralInfo';
 import SelectFilters from './SelectFilters';
 import styles, { StepperStyles } from './CreateItineraryStepperStyles';
-import CreateFromUserSetting from ;
-
+//import CreateFromUserSetting from "../../../api/itineraryAPI";
+const ENDPOINT = 'http://100.82.203.156:4000'
 /**Represent a new itinerary the user will construct */
 interface NewItinerary{
     /**Name of the itinerary */
@@ -29,6 +29,7 @@ interface Filter{
     Name: String,
     City: String,
     StartTime: Date,
+    EndTIme: Date,
     TravelDistance: number,
     Categories: [],
     GroupSize: number,
@@ -67,7 +68,7 @@ export default function CreateItineraryStepper(props){
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
             },
-            body:JSON.stringify(filter)
+        //body:JSON.stringify(generatedItinerary)
         }
 
         fetch(`${ENDPOINT}/createItinerary`, options)
@@ -80,7 +81,7 @@ export default function CreateItineraryStepper(props){
             alert("Error ocurred during fetch. Check console log.");
             console.log(res)});
     }
-
+    //const generatedItinerary = CreateFromUserSetting(filter);
     const [itineraryInfo, setItineraryInfo] = useState(itinerary);  // All itinerary data to be uploaded
     const [currentStep, setCurrentStep] = useState(0);  // Current step in progress bar
 
@@ -97,7 +98,7 @@ export default function CreateItineraryStepper(props){
         <View>
             <Text>Generate the itinerary</Text>
             <Text> {JSON.stringify(itineraryInfo)} </Text>
-            {fetch(CreateFromUserSetting(filter))}
+
         </View>
         ,
         <View>
