@@ -119,6 +119,7 @@ export default function CreateItineraryStepper(props){
             Name: newData.name,
             City: newData.location,
             StartTime: newData.startTime,
+            EndTIme: newData.endTime,
             TravelDistance: newData.maxDistanceBetweenEvents,
             Categories: newData.categories,
             GroupSize: newData.groupSize,
