@@ -1,26 +1,30 @@
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
+
+const ENDPOINT = '192.168.0.26:4000/';  // MUST BE YOUR IP ADDRESS ON LOCAL NETWORK!!
 
 export function httpGet(uri: string, body?: any, header?: any): Subject<any> {
-    return Subject.create((sub:Subject<any>) => {
-        fetch(uri, {method: 'GET', headers: header, body: body}).then(
+    return Observable.create((obs:Subject<any>) => {
+        fetch(ENDPOINT+uri, {method: 'GET', headers: header, body: body}).then(
             success => {
-                sub.next(success);
+                obs.next(success);
             },
             reject => {
-                sub.next(null);
+                obs.next(reject);
             }
         );
     });
 }
 
 export function httpPost(uri: string, body: any, header?: any): Subject<any> {
-    return Subject.create((sub:Subject<any>) => {
-        fetch(uri, {method: 'POST', headers: header, body: body}).then(
+    console.log(ENDPOINT+uri, header, body);
+    return Observable.create((obs:Subject<any>) => {
+        console.log("fetch out");
+        fetch(ENDPOINT+uri, {method: 'POST', headers: header, body: JSON.stringify(body)}).then(
             success => {
-                sub.next(success);
+                obs.next(success);
             },
             reject => {
-                sub.next(null);
+                obs.next(reject);
             }
         );
     });

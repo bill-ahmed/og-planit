@@ -8,9 +8,13 @@ import LocationDetails from '../../../shared/component/LocationDetails/LocationD
 import EventsSelector from '../eventsSelector/eventsSelector';
 import { Itinerary } from '../../models/location';
 import { getLocations } from '../../../maps/api/locationsAPI';
+import { httpPost } from '../../../shared/services/http';
+import { useSelector } from 'react-redux';
 
 export default function CreateViews(props) {
     // Control if modal is open or not
+    const accessToken = useSelector(state => state['UserInfo']['accessToken']);
+    const uid = useSelector(state => state['UserInfo']['uid']);
     const [eventDetailsModalOpen, setEventDetailsModal] = useState(false);
     const [chooseEventModalOpen, setChooseEventModal] = useState(false);
     const [editFields, setEditFields] = useState(false);
@@ -27,20 +31,20 @@ export default function CreateViews(props) {
      * @param data The data to send to the pop-up modal
      */
 
-    if(!locations) {
+    if (!locations) {
         getLocations().then(res => {
             setLocations(res);
         })
     }
-    
+
     const setEventDetailsModalOpen = (val: boolean, data: any) => {
         setEventDetailsModal(val);
         setDetailsModalData(data);
     }
 
     const initState = () => {
-        setItineraryData(props.navigation.state.params.data);
         setEvents(props.navigation.state.params.data.events);
+        setItineraryData(props.navigation.state.params.data);
         setInitialized(true);
     }
 
@@ -55,6 +59,22 @@ export default function CreateViews(props) {
     const saveChanges = () => {
         saveBackup();
         setEditFields(false);
+        let copy = JSON.parse(JSON.stringify(itinerayData));
+        copy.events = null;
+        console.log("post");
+        httpPost('createItinerary',
+            {
+                accessToken: accessToken,
+                uid: uid,
+                itineraryDetails: copy,
+                events: events
+            },
+            {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            }).subscribe(res => {
+                console.log(res);
+            });
     }
 
     const discardChanges = () => {
