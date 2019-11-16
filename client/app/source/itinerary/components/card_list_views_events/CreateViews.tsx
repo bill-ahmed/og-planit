@@ -10,6 +10,7 @@ import { Itinerary } from '../../models/location';
 import { getLocations } from '../../../maps/api/locationsAPI';
 import { httpPost } from '../../../shared/services/http';
 import { useSelector } from 'react-redux';
+import { combineLatest } from 'rxjs';
 
 export default function CreateViews(props) {
     // Control if modal is open or not
@@ -61,8 +62,17 @@ export default function CreateViews(props) {
         setEditFields(false);
         let copy = JSON.parse(JSON.stringify(itinerayData));
         copy.events = null;
-        console.log("post");
-        httpPost('createItinerary',
+        combineLatest(
+            httpPost('deleteItinerary',
+            {
+                accessToken: accessToken,
+                itineraryId: copy.id
+            },
+            {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            }),
+            httpPost('createItinerary',
             {
                 accessToken: accessToken,
                 uid: uid,
@@ -72,9 +82,12 @@ export default function CreateViews(props) {
             {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-            }).subscribe(res => {
-                console.log(res);
-            });
+            })
+        ).subscribe((res:any[]) => {
+            res.forEach(resp => {
+                console.log(resp.id,'\n')
+            })
+        });
     }
 
     const discardChanges = () => {
