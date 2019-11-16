@@ -55,15 +55,17 @@ export default StyleSheet.create({
     },
     h24: {
         fontSize: 24,
+        fontWeight: 'bold',
+        fontStyle: 'italic',
     },
     h18: {
-        fontSize: 18,
+        fontSize: 22,
     },
     h16: {
-        fontSize: 16,
+        fontSize: 20,
     },
     h14: {
-        fontSize: 14,
+        fontSize: 18,
     },
     Text:{
         color: 'white',

@@ -7,6 +7,7 @@ import { Card, Input } from 'react-native-elements';
 import LocationDetails from '../../../shared/component/LocationDetails/LocationDetails';
 import EventsSelector from '../eventsSelector/eventsSelector';
 import { Itinerary } from '../../models/location';
+import { getLocations } from '../../../maps/api/locationsAPI';
 
 export default function CreateViews(props) {
     // Control if modal is open or not
@@ -17,12 +18,21 @@ export default function CreateViews(props) {
     const [events, setEvents] = useState(null);
     const [initialized, setInitialized] = useState(false);
     const [backup, setBackup] = useState(null);
+    const [indexAdd, setindexAdd] = useState(0);
+    const [locations, setLocations] = useState(null);
     // Control what data is sent to the modal
     const [detailsdModalData, setDetailsModalData] = useState(null);
     /**Open or close the event details modal modal
      * @param val If the modal is open or not
      * @param data The data to send to the pop-up modal
      */
+
+    if(!locations) {
+        getLocations().then(res => {
+            setLocations(res);
+        })
+    }
+    
     const setEventDetailsModalOpen = (val: boolean, data: any) => {
         setEventDetailsModal(val);
         setDetailsModalData(data);
@@ -63,6 +73,18 @@ export default function CreateViews(props) {
         setEvents(copy);
     }
 
+    const openAddEventModal = (index) => {
+        setChooseEventModal(true);
+        setindexAdd(index);
+    }
+
+    const addItem = (location) => {
+        const copy = [...events];
+        const l = copy.slice(0, indexAdd + 1)
+        const r = copy.slice(indexAdd + 1, copy.length);
+        setEvents([].concat(l, [location], r));
+    }
+
     if (props.navigation.state.params.data && !initialized) {
         initState();
         saveBackup();
@@ -93,6 +115,11 @@ export default function CreateViews(props) {
                 </Right>}
             </Header>
             <ScrollView>
+                <View style={styles.floatingContainter}>
+                    {editFields && <Button rounded style={[styles.floatingButton, styles.headerButton]} onPress={() => openAddEventModal(-1)}>
+                        <Icon name="ios-add" />
+                    </Button>}
+                </View>
                 {initialized && events.map((event, index) => {
                     return (
                         <View>
@@ -111,8 +138,7 @@ export default function CreateViews(props) {
                             </TouchableOpacity>
                             <Text />
                             <View style={styles.floatingContainter}>
-
-                                {editFields && <Button rounded style={styles.floatingButton} onPress={() => setChooseEventModal(true)}>
+                                {editFields && <Button rounded style={styles.floatingButton} onPress={() => openAddEventModal(index)}>
                                     <Icon name="ios-add" />
                                 </Button>}
                                 {editFields && <Button rounded danger style={styles.floatingButton} onPress={() => removeItem(index)}>
@@ -126,7 +152,7 @@ export default function CreateViews(props) {
                 <Text></Text>
             </ScrollView>
             {initialized && eventDetailsModalOpen && <LocationDetails location={detailsdModalData} open={eventDetailsModalOpen} setModal={setEventDetailsModal} />}
-            {initialized && chooseEventModalOpen && <EventsSelector open={chooseEventModalOpen} setModal={setChooseEventModal} />}
+            {initialized && chooseEventModalOpen && <EventsSelector locations={locations} addLocation={addItem} open={chooseEventModalOpen} setModal={setChooseEventModal} />}
         </Container>
     );
 }

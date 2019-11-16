@@ -3,6 +3,7 @@ import { Text, View, Container, Header, Left, Button, Icon, Title, Right, Body, 
 import styles from './eventsSelectorStyles';
 import { Modal, TouchableOpacity } from 'react-native';
 import LocationDetails from '../../../shared/component/LocationDetails/LocationDetails';
+import { PlanitLocation } from '../../models/location';
 
 export default function EventsSelector(props) {
     const [init, setInit] = useState(false);
@@ -15,11 +16,16 @@ export default function EventsSelector(props) {
         setDetailsModalData(data);
     }
 
+    const addLocation = (location: PlanitLocation) => {
+        if(props.addLocation) {
+            props.addLocation(location);
+        }
+        props.setModal(false);
+    }
+
     if (!init && props.locations) {
-        console.log(init);
         setLocations(props.locations);
         setInit(true);
-        console.log(init);
     }
 
     return (
@@ -45,7 +51,7 @@ export default function EventsSelector(props) {
                         <List>
                             {init && locations && locations.map((location, index) =>
                                 <ListItem key={index}>
-                                    <Button light icon bordered style={styles.floatingButton} onPress={() => null}>
+                                    <Button light icon bordered style={styles.floatingButton} onPress={() => addLocation(location)}>
                                         <Icon name="ios-add" />
                                     </Button>
                                     <TouchableOpacity onPress={() => setEventDetailsModalOpen(true, location)}>

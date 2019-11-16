@@ -18,5 +18,8 @@ export default StyleSheet.create({
     floatingButton:{
         marginLeft: 10,
         marginRight: 10
+    },
+    headerButton: {
+        marginTop:10
     }
 });
