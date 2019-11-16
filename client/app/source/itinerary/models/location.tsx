@@ -11,7 +11,10 @@ export interface PlanitLocation {
     Location: Geolocation,
     StartTime: Date,
     Tags: [string],
-    Type: string
+    Type: string,
+    GroupSize: number,
+    imageURL: string,
+    websiteURL: string
 }
 
 /**Address to represent where a location is */
@@ -43,7 +46,21 @@ export interface Itinerary {
     price: number,
     rating: [number],
     review: [string],
-    time: Date,
+    startTime: Date,
+    endTime: Date,
     type: string,
-    events: PlanitLocation[]
+    events: PlanitLocation[],
+    GroupSize: number,
+    Filter: Filter
+}
+
+/** Filter Object that goes with each itinerary. Records user filters for easier modification. */
+export interface Filter {
+    Name: string,
+    City: string,
+    StartTime: Date,
+    TravelDistance: number,
+    Categories: [string],
+    GroupSize: number,
+    Budget: number
 }

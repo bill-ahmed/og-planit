@@ -10,5 +10,13 @@ export default StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    floatingContainter:{
+        flexDirection: 'row',
+        justifyContent: 'center'
+    },
+    floatingButton:{
+        marginLeft: 10,
+        marginRight: 10
     }
 });

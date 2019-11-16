@@ -1,11 +1,12 @@
 import React, { Component, useState } from 'react';
-import { Container, Header, Left, Right, Body, Title, Button, Icon, View } from 'native-base';
+import { Container, Header, Left, Right, Body, Title, Subtitle, Content, Button, Icon, View } from 'native-base';
 
 import styles from './CreateViewsStyles';
-import { Text, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+import { Text, ScrollView, TextInput, TouchableOpacity, ColorPropType } from 'react-native';
 import { Card, Input } from 'react-native-elements';
 import LocationDetails from '../../../shared/component/LocationDetails/LocationDetails';
 import EventsSelector from '../eventsSelector/eventsSelector';
+import { Itinerary } from '../../models/location';
 
 export default function CreateViews(props) {
     // Control if modal is open or not
@@ -26,7 +27,7 @@ export default function CreateViews(props) {
         setEventDetailsModal(val);
         setDetailsModalData(data);
     }
-    
+
     const initState = () => {
         setItineraryData(props.navigation.state.params.data);
         setEvents(props.navigation.state.params.data.events);
@@ -35,6 +36,9 @@ export default function CreateViews(props) {
 
     const saveBackup = () => {
         let bckup = JSON.parse(JSON.stringify(props.navigation.state.params.data));
+        if (events) {
+            bckup.events = events
+        }
         setBackup(bckup);
     }
 
@@ -44,12 +48,19 @@ export default function CreateViews(props) {
     }
 
     const discardChanges = () => {
-        itinerayData.name = backup.name;
+        setItineraryData(backup);
+        setEvents(backup.events);
         setEditFields(false);
     }
 
     const setTitle = (e) => {
         itinerayData.name = e;
+    }
+
+    const removeItem = (index) => {
+        const copy = [...events];
+        copy.splice(index, 1);
+        setEvents(copy);
     }
 
     if (props.navigation.state.params.data && !initialized) {
@@ -84,26 +95,34 @@ export default function CreateViews(props) {
             <ScrollView>
                 {initialized && events.map((event, index) => {
                     return (
-                        <TouchableOpacity onPress={() => setEventDetailsModalOpen(true, event)} key={index}>
-                            <Card
-                                image={{ uri: event.uri }}>
-                                <Text style={styles.eventHeader}>
-                                    {event.Name}
-                                </Text>
-                                <Text>
-                                    {"$" + event.AvgPrice + "\n"}
-                                    {event.Address.Number + " " + event.Address.Street + ", " + event.Address.City + ", " + event.Address.Province + "\n"}
-                                    {event.StartTime + " - " + event.EndTime}
-                                </Text>
+                        <View>
+                            <TouchableOpacity onPress={() => setEventDetailsModalOpen(true, event)} key={index}>
+                                <Card
+                                    image={{ uri: event.uri }}>
+                                    <Text style={styles.eventHeader}>
+                                        {event.Name}
+                                    </Text>
+                                    <Text>
+                                        {"$" + event.AvgPrice + "\n"}
+                                        {event.Address.Number + " " + event.Address.Street + ", " + event.Address.City + ", " + event.Address.Province + "\n"}
+                                        {event.StartTime + " - " + event.EndTime}
+                                    </Text>
+                                </Card>
+                            </TouchableOpacity>
+                            <Text />
+                            <View style={styles.floatingContainter}>
 
-                            </Card>
-                        </TouchableOpacity>
+                                {editFields && <Button rounded style={styles.floatingButton} onPress={() => setChooseEventModal(true)}>
+                                    <Icon name="ios-add" />
+                                </Button>}
+                                {editFields && <Button rounded danger style={styles.floatingButton} onPress={() => removeItem(index)}>
+                                    <Icon name="ios-close" />
+                                </Button>}
+                            </View>
+                            <Text />
+                        </View>
                     )
                 })}
-                <Text></Text>
-                {editFields && <View style={styles.addButton}><Button onPress={() => setChooseEventModal(true)}>
-                        <Icon name="ios-add" />
-                    </Button></View>}
                 <Text></Text>
             </ScrollView>
             {initialized && eventDetailsModalOpen && <LocationDetails location={detailsdModalData} open={eventDetailsModalOpen} setModal={setEventDetailsModal} />}
