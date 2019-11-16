@@ -1,9 +1,26 @@
 import React, { useState } from 'react';
-import { Text, View, Container, Header, Left, Button, Icon, Title, Right, Body, Content} from 'native-base';
+import { Text, View, Container, Header, Left, Button, Icon, Title, Right, Body, Content, Card, List, ListItem } from 'native-base';
 import styles from './eventsSelectorStyles';
-import { Modal } from 'react-native';
+import { Modal, TouchableOpacity } from 'react-native';
+import LocationDetails from '../../../shared/component/LocationDetails/LocationDetails';
 
 export default function EventsSelector(props) {
+    const [init, setInit] = useState(false);
+    const [locations, setLocations] = useState(null);
+    const [eventDetailsModalOpen, setEventDetailsModal] = useState(false);
+    const [detailsdModalData, setDetailsModalData] = useState(null);
+
+    const setEventDetailsModalOpen = (val: boolean, data: any) => {
+        setEventDetailsModal(val);
+        setDetailsModalData(data);
+    }
+
+    if (!init && props.locations) {
+        console.log(init);
+        setLocations(props.locations);
+        setInit(true);
+        console.log(init);
+    }
 
     return (
         <Modal animationType="slide" transparent={false} visible={props.open} presentationStyle="overFullScreen" onRequestClose={() => props.setModal(false)}>
@@ -25,11 +42,33 @@ export default function EventsSelector(props) {
 
                     {/* Main body content */}
                     <Content style={styles.content} padder>
-                        <Container style={styles.containerContent}>
-                        </Container>
+                        <List>
+                            {init && locations && locations.map((location, index) =>
+                                <ListItem key={index}>
+                                    <Button light icon bordered style={styles.floatingButton} onPress={() => null}>
+                                        <Icon name="ios-add" />
+                                    </Button>
+                                    <TouchableOpacity onPress={() => setEventDetailsModalOpen(true, location)}>
+                                        <View>
+                                            <Text style={[styles.eventHeader, styles.Text]}>
+                                                {location.Name}
+                                            </Text>
+                                            <Text style={styles.Text}>
+                                                {location.AvgPrice && "$" + location.AvgPrice + "\n"}
+                                                {location.Address &&
+                                                    location.Address.Number + " " + location.Address.Street + ", " + location.Address.City + ", " + location.Address.Province + "\n"}
+                                                {location.StartTime && location.EndTime && location.StartTime + " to\n" + location.EndTime}
+                                            </Text>
+                                        </View>
+                                    </TouchableOpacity>
+
+                                </ListItem>
+                            )}
+                        </List>
                     </Content>
                 </Container>
             </View>
-        </Modal>
+            {init && eventDetailsModalOpen && <LocationDetails location={detailsdModalData} open={eventDetailsModalOpen} setModal={setEventDetailsModal} />}
+        </Modal >
     );
 }
