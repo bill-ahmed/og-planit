@@ -63,7 +63,7 @@ export async function CreateFromUserSettings(filter : Filter) {
     .where('StartTime', '>=', filter.StartTime).get().then(snapshot => {
         // If no records were found, return empty array of events
         if (snapshot.empty) {
-            return itin;
+            return;
         }
 
         // Otherwise need to evaluate each found event
@@ -87,7 +87,6 @@ export async function CreateFromUserSettings(filter : Filter) {
                 budget += doc.AvgPrice;
             }
         })
-        return itin;
     }).then(filterIntervals(itin.events)).then(newEvents => {
         itin.events = newEvents;
     });
