@@ -59,7 +59,7 @@ function Main(props) {
 
   // If app is ready to be loaded
   if (isReady) {
-
+    console.disableYellowBox = true;
     return (
       <View style={styles.container}>
         <Button onPress={() => navigate('Auth')}>

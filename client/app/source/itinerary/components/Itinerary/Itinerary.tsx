@@ -59,7 +59,7 @@ export function Itinerary(props) {
                             <Text> {element.name} </Text>
                         </CardItem>
                         <CardItem>
-                            <Icon name="map" onPress={() => navigate("Map", {data:element,})}/>
+                            <Icon name="map" onPress={() => navigate("GMap", {data:element})}/>
                         </CardItem>
                         <CardItem button onPress={() => console.log(`Clicked the description of ${element.name}!`) /* carlos replace with yours*/}>
                             <Body>
