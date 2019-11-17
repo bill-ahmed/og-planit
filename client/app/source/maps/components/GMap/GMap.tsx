@@ -14,6 +14,8 @@ export default function GMap(props) {
     const [locationsLoaded, setLocationsLoaded] = useState(false);
     const [locations, setLocations] = useState(null);
     const [currLocation, setCurrLocation] = useState(null);
+    const [latitude, setLatitude] = useState(null);
+    const [longitude, setLongitude] = useState(null);
 
     getLocations().then(res => {
         if (!locationsLoaded) {
@@ -22,6 +24,8 @@ export default function GMap(props) {
             setLocationsLoaded(true);
         }
     });
+
+
 
     /** Update user's current region as they move around the map */
     const updateRegion = (region: Region) => {
@@ -42,7 +46,8 @@ export default function GMap(props) {
         return(
             <View style={styles.container}>
                 <MapView loadingEnabled={true} showsMyLocationButton onRegionChangeComplete={updateRegion} 
-                region={currentRegion} style={styles.mapStyle} onPress={() => setCurrLocation(null)}>
+                 region={currentRegion}
+                 style={styles.mapStyle}  onPress={() => setCurrLocation(null)}>
                     {/* <Marker coordinate={initialRegion} title="Home" description="Starting point of Google Map" onPress={e => openMarker()} /> */}
                     {locationsLoaded && locations.map((event: any, index: number) => {
                         return(
