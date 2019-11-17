@@ -55,20 +55,35 @@ export default StyleSheet.create({
     },
     h24: {
         fontSize: 24,
-        fontWeight: 'bold',
-        fontStyle: 'italic',
     },
     h18: {
-        fontSize: 22,
+        fontSize: 18,
     },
     h16: {
-        fontSize: 20,
+        fontSize: 16,
     },
     h14: {
-        fontSize: 18,
+        fontSize: 14,
     },
     Text:{
         color: 'white',
-    }
-    
+    },
+    eventHeader:{
+        fontWeight: 'bold',
+        fontStyle: 'italic',
+        fontSize: 25,
+    },
+    addButton: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    floatingContainter:{
+        flexDirection: 'row',
+        justifyContent: 'center'
+    },
+    floatingButton:{
+        marginLeft: 10,
+        marginRight: 20
+    },
 });
