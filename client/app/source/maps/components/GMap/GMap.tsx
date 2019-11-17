@@ -43,8 +43,8 @@ export default function GMap(props) {
         setCurrentRegion({
             latitude: props.navigation.state.params.data.events[0].Location._lat,
             longitude: props.navigation.state.params.data.events[0].Location._long,
-            latitudeDelta: 5,
-            longitudeDelta: 5
+            latitudeDelta: 0.5,
+            longitudeDelta: 0.5
         });
         setLocations(props.navigation.state.params.data.events);
         // console.log(props.navigation.state.params.data.events);
