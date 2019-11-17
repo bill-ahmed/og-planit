@@ -7,6 +7,7 @@ import { getItinerarySigned } from '../../api/itineraryAPI';
 import { Itinerary as ItineraryModel } from './../../models/location';
 import CreateNewItinerary from '../CreateItinerary/components/CreateItineraryStepper';
 import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
+import { number } from 'prop-types';
 
 //App stack to go from list of itineraries --> specific itinerary
 // const itineraries=require("./../../models/MockItineraryList.json");
@@ -25,6 +26,12 @@ export function Itinerary(props) {
 
     const goToItineraryViews = () => {
         navigate(/* carlos' part */);
+    }
+    const lastEvent = (events) => {
+        var num = 0;
+        events.map(elements => {
+            num = num + 1})
+        return num;
     }
 
     const handleRadioButtonChange = (newRadioButtonValue: number) => {
@@ -58,6 +65,8 @@ export function Itinerary(props) {
                             <Body>
                                 {element.events && <Text>Number of Events: {element.events.length}</Text>}
                                 {element.last_edit_time && <Text>Last Edited: {element.last_edit_time.toLocaleString()}</Text>}
+                                {element.events[1].StartTime && <Text> Starts: {element.events[1].StartTime.toLocaleString()}</Text>}
+                                {element.events[lastEvent(element.events)].EndTime && <Text> Ends: {element.events[lastEvent(element.events)].EndTime.toLocaleString()} </Text>}
                                 <Right>
                                     <Radio selected={selected === index} onPress={() => handleRadioButtonChange(index)} />
                                 </Right>
