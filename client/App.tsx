@@ -48,8 +48,7 @@ function Main(props) {
           }
 
           // Continue initialiazing the app
-          setReady(true);
-
+          navigate('Auth');
         });
     }
 
@@ -60,7 +59,6 @@ function Main(props) {
 
   // If app is ready to be loaded
   if (isReady) {
-    navigate('Auth');
     return (
       <View style={styles.container}/>
     );
