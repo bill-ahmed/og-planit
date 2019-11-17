@@ -86,7 +86,7 @@ export default class Routes {
                         this.db.collection('dev').doc('data').collection('users').doc(uid).collection('itineraries').doc(resp.id).collection('events').add(elem);
                     })
                     res.statusCode = 200;
-                    res.json(resp);
+                    res.json(resp.id);
                 });
 
 
@@ -120,10 +120,9 @@ export default class Routes {
             const itineraryId = req.body.itineraryId;
 
             this.db.collection('dev').doc('data').collection('users').doc(uid).collection('itineraries').doc(itineraryId).delete().then((resp: any) => {
+                console.log("Deleted itinerary doc:", itineraryId);
                 this.db.collection('dev').doc('data').collection('users').doc(uid).collection('itineraries').doc(itineraryId).collection('events').get().then((resp: any[]) => {
-                    resp.map(a => {
-                        a.delete()
-                    });
+                    console.log("done");
                     res.statusCode = 200;
                     res.json(resp);
                 });
