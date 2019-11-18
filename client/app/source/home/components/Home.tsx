@@ -4,10 +4,10 @@ import { setAccessToken } from '../../login/redux/actions'
 import { Container, Text, Button, Content, Header, Left, Right, Body, Title } from 'native-base';
 import firebase from 'firebase';
 import styles from './HomeStyles';
-import { withNavigation, createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import FilterEvents from '../../itinerary/components/filtering/FilterEvents';
+import { withNavigation } from 'react-navigation';
 
+import CreateFromUserSettings from '../../itinerary/api/EventFilteringAPI';
+import { Filter } from '../../itinerary/models/location';
 
 /**Home page for user after authenticating */
 function Home(props){
@@ -46,9 +46,21 @@ function Home(props){
         setToken(accessToken);
     }
 
-    const [eventFilterModalOpen, setEventFilterModal] = useState(false);
-    const setModalOpen = (val: boolean) => {
-        setEventFilterModal(val);
+    const getNewItinerary = () => {
+        var filters : Filter = {
+            Name: "name",
+            City: "Vancouver",
+            StartTime: new Date(),
+            EndTime: new Date(2019, 12, 4),
+            TravelDistance: 2.25,
+            Categories: ["Museums", "Hotels"],
+            GroupSize: 2,
+            Budget: 200
+        };
+
+        CreateFromUserSettings(filters)
+        .then(resp => console.log("new itineray events", resp))
+        .catch(err => console.log("error getting new events", err));
     }
 
     return(
@@ -68,21 +80,19 @@ function Home(props){
                     <Text>Show access token</Text>
                 </Button>
 
-                <Button style={styles.button} onPress={() => setModalOpen(true)}>
-                    <Text>
-                        Event Filtering Page
-                    </Text>
-                </Button>
-
                 <Button danger style={styles.button} onPress={() => logout()}>
                     <Text>Logout</Text>
                 </Button>
 
+                <Button danger style={styles.button} onPress={() => getNewItinerary()}>
+                    <Text>Get new itinerary</Text>
+                </Button>
+
+
                 <Text>{token}</Text>
             </Content>
-            {eventFilterModalOpen && <FilterEvents closeModal={() => setModalOpen(false)}/>}
         </Container>
     );
 }
-export default withNavigation(Home);
 
+export default withNavigation(Home);
