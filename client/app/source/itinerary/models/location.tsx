@@ -1,3 +1,5 @@
+import firebase from 'firebase/app';
+
 /**All data to describe an event */
 export interface PlanitLocation {
     Name: string,
@@ -8,10 +10,13 @@ export interface PlanitLocation {
     ContactInfo: ContactInfo,
     Description: string,
     EndTime: Date,
-    Location: Geolocation,
+    Location: firebase.firestore.GeoPoint,
     StartTime: Date,
     Tags: [string],
-    Type: string
+    Type: string,
+    GroupSize: number,
+    imageURL: string,
+    websiteURL: string
 }
 
 /**Address to represent where a location is */
@@ -23,9 +28,10 @@ export interface Address {
     Street: string
 }
 
+/**Rating given by user for a location.*/
 export interface locationRatings {
     AveRatings: number,
-    NumRatings: number,
+    NumRatings: number
 }
 
 /**Contact information for the event */
@@ -41,9 +47,22 @@ export interface Itinerary {
     last_edit_time: Date,
     location: string,
     price: number,
-    rating: [number],
-    review: [string],
-    time: Date,
+    startTime: Date,
+    endTime: Date,
     type: string,
-    events: PlanitLocation[]
+    events: PlanitLocation[],
+    GroupSize: number,
+    Filter: Filter
+}
+
+/** Filter Object that goes with each itinerary. Records user filters for easier modification. */
+export interface Filter {
+    Name: string,
+    City: string,
+    StartTime: Date,
+    EndTime: Date,
+    TravelDistance: number,
+    Categories: String[],
+    GroupSize: number,
+    Budget: number
 }
