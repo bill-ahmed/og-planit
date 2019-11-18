@@ -17,11 +17,11 @@ export function Itinerary(props) {
     const [selected, setSelected] = useState(-1);
     const [newItineraryModalOpen, setNewItinerayModal] = useState(false);
 
-    getItinerarySigned().then(res => {
-        if (!itineraries && res != undefined) {
-            setItineraries(res);
-        }
-    });
+    // getItinerarySigned().then(res => {
+    //     if (!itineraries && res != undefined) {
+    //         setItineraries(res);
+    //     }
+    // });
 
     const goToItineraryViews = () => {
         navigate(/* carlos' part */);

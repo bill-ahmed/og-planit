@@ -5,6 +5,8 @@ import { ViewPager } from 'rn-viewpager'
 import StepIndicator from 'react-native-step-indicator';
 import GeneralInfo from './GeneralInfo';
 import SelectFilters from './SelectFilters';
+import ReviewNewItinerary from './ReviewNewItinerary';
+import { Filter } from "../../../models/location";
 import styles, { StepperStyles } from './CreateItineraryStepperStyles';
 
 const ENDPOINT = 'http://100.82.203.156:4000';  // MUST BE YOUR IP ADDRESS ON LOCAL NETWORK!!
@@ -12,9 +14,9 @@ const ENDPOINT = 'http://100.82.203.156:4000';  // MUST BE YOUR IP ADDRESS ON LO
 /**Represent a new itinerary the user will construct */
 interface NewItinerary{
     /**Name of the itinerary */
-    name: String,
+    name: string,
     /**Where the user is located */
-    location: String,
+    location: string,
     /**Start date and time */ 
     startTime: Date,
     /**End date and time */
@@ -25,16 +27,6 @@ interface NewItinerary{
     categories: [],
     groupSize: number,
     budget: 0,
-}
-interface Filter{
-    Name: String,
-    City: String,
-    StartTime: Date,
-    EndTIme: Date,
-    TravelDistance: number,
-    Categories: [],
-    GroupSize: number,
-    Budget: number
 }
 
 /**A progress stepper to allow users to create a new itinerary */
@@ -55,7 +47,7 @@ export default function CreateItineraryStepper(props){
         Name: itinerary.name,
         City: itinerary.location,
         StartTime:itinerary.startTime,
-        EndTIme:itinerary.endTime,
+        EndTime:itinerary.endTime,
         TravelDistance: itinerary.maxDistanceBetweenEvents,
         Categories: itinerary.categories,
         GroupSize: itinerary.groupSize,
@@ -98,11 +90,7 @@ export default function CreateItineraryStepper(props){
         <SelectFilters itineraryInfo={itineraryInfo} updateItinerary={(newData: NewItinerary) => updateItineraryInfo(newData)}
             goNext={() => handleNextStep()} goBack={() => handlePrevStep()}/>
         ,
-        <View>
-            <Text>Generate the itinerary</Text>
-            <Text> {JSON.stringify(itineraryInfo)} </Text>
-
-        </View>
+        <ReviewNewItinerary itineraryFilterInfo={filters}/>
         ,
         <View>
             <Text>Save/Upload itinerary</Text>
@@ -119,7 +107,7 @@ export default function CreateItineraryStepper(props){
             Name: newData.name,
             City: newData.location,
             StartTime: newData.startTime,
-            EndTIme: newData.endTime,
+            EndTime: newData.endTime,
             TravelDistance: newData.maxDistanceBetweenEvents,
             Categories: newData.categories,
             GroupSize: newData.groupSize,
