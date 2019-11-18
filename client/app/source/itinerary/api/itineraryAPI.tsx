@@ -2,7 +2,6 @@ import { Itinerary, PlanitLocation } from "../models/location";
 import { useSelector } from "react-redux";
 import { async } from "rxjs/internal/scheduler/async";
 import { Subject, Observable, combineLatest } from "rxjs";
-import { List, ListItem } from 'react-native-elements'
 const firebase = require("firebase");
 
 // Required for side-effects
