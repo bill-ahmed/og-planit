@@ -83,3 +83,14 @@ function toDateTime(secs) {
     t.setSeconds(secs);
     return t;
 }
+
+async function getLocation(db, startingCollection, eid): Promise<PlanitLocation[]> {
+    return new Promise<PlanitLocation[]>((resolve, reject) => {
+        db.collection(startingCollection).doc('data').collection('events').doc(eid).collection('Location').get().then(query => {
+        })
+        .catch((err: any) => {
+            console.log("Error getting document", err);
+            reject(err);
+        });
+    });
+}
