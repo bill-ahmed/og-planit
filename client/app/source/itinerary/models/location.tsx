@@ -62,7 +62,7 @@ export interface Filter {
     StartTime: Date,
     EndTime: Date,
     TravelDistance: number,
-    Categories: [string],
+    Categories: String[],
     GroupSize: number,
     Budget: number
 }

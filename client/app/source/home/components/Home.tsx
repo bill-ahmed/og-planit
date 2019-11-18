@@ -6,6 +6,9 @@ import firebase from 'firebase';
 import styles from './HomeStyles';
 import { withNavigation } from 'react-navigation';
 
+import CreateFromUserSettings from '../../itinerary/api/EventFilteringAPI';
+import { Filter } from '../../itinerary/models/location';
+
 /**Home page for user after authenticating */
 function Home(props){
     const [token, setToken] = useState('');
@@ -43,6 +46,23 @@ function Home(props){
         setToken(accessToken);
     }
 
+    const getNewItinerary = () => {
+        var filters : Filter = {
+            Name: "name",
+            City: "Toronto",
+            StartTime: new Date(),
+            EndTime: new Date(),
+            TravelDistance: 200,
+            Categories: ["Museums", "Hotels"],
+            GroupSize: 2,
+            Budget: 200
+        };
+
+        CreateFromUserSettings(filters)
+        .then(resp => console.log("new itineray events", resp))
+        .catch(err => console.log("error getting new events", err));
+    }
+
     return(
         <Container>
             <Header noLeft>
@@ -63,6 +83,11 @@ function Home(props){
                 <Button danger style={styles.button} onPress={() => logout()}>
                     <Text>Logout</Text>
                 </Button>
+
+                <Button danger style={styles.button} onPress={() => getNewItinerary()}>
+                    <Text>Get new itinerary</Text>
+                </Button>
+
 
                 <Text>{token}</Text>
             </Content>

@@ -1,10 +1,13 @@
-/** Determines if euclidian distance between point and center is less than or equal to range */
-
-import { useSelector } from "react-redux";
-import { Itinerary, PlanitLocation, Filter } from "../models/location";
+import { Filter } from "../models/location";
 const firebase = require("firebase");
 
-async function inRange(point: firebase.firestore.GeoPoint, center: firebase.firestore.GeoPoint, range: number) {
+/** Determines if euclidian distance between point and center is less than or equal to range
+ * @param point The first location
+ * @param center The second location
+ * @param range The distance between the two locations allowed
+ * @returns True iff the given locations are within 'range' distance of each other
+ */
+function inRange(point: firebase.firestore.GeoPoint, center: firebase.firestore.GeoPoint, range: number) {
     let distance = Math.sqrt(Math.pow((point.latitude - center.latitude), 2) + Math.pow((point.longitude - center.longitude), 2));
     if (distance <= range) {
         return true;
@@ -14,7 +17,11 @@ async function inRange(point: firebase.firestore.GeoPoint, center: firebase.fire
     }
 }
 
-async function filterIntervals(events) {
+/**Given an array of itineraries, return an optimal (non-overlapping) sequence of events
+ * @param events The list of events as the source
+ * @returns An optimal sequence of events
+ */
+function filterIntervals(events) {
     // Sort events in ascending order by start time
     events.sort((a, b) => {
         return a.StartTime - b.StartTime;
@@ -28,7 +35,8 @@ async function filterIntervals(events) {
 
         // If any event interval overlaps with curr, remove it
         for (let i = 0; i < events.length; i++) {
-            if (curr.StartTime.setMinutes(curr.StartTime.getMinutes + curr.AvgTimeSpent) > events[i].StartTime) {
+            // Compare seconds of start time + average time spent with when the event starts
+            if ((curr.StartTime.seconds + curr.AvgTimeSpent * 60) > events[i].StartTime.seconds) {
                 events.splice(i, 1);
             }
         }
@@ -36,59 +44,71 @@ async function filterIntervals(events) {
     return newEvents;
 }
 
-/**Takes in filter object created by user and returns data object containing all events matching the user's criteria */
-export async function CreateFromUserSettings(filter : Filter) {
-    let startingCollection = 'prod';
-    // If in dev environment, grab from dev db
-    if (__DEV__) {
-        startingCollection = 'dev';
+/**Determine if an event is valid, given an object of filters */
+function EventIsValid(event: any, filter: Filter): boolean {
+    var result = true;
+
+    if(event.AvgPrice > filter.Budget || filter.Categories.indexOf(event.Type) === -1 || event.GroupSize < filter.GroupSize){
+        result = false;
+    } 
+    else if(event.StartTime.seconds > Math.floor(filter.EndTime.getTime()/1000) || event.StartTime < Math.floor(filter.StartTime.getTime()/1000)){
+        result = false;
     }
-    // Reference to firestore db
-    let db = firebase.firestore();
-    const accessToken = useSelector(state => state['UserInfo']['accessToken']);
-    let itin = {
-        accessToken: accessToken,
-        itineraryDetails: {
-            name: filter.Name,
-            last_edit_time: Date.now()
-        },
-        events: []
-    };
-    // Find all events that match user specifications 
-    let query = db.collection(startingCollection).doc('data').collection('events')
-    .where('Type', 'in', filter.Categories)
-    .where('GroupSize', '>=', filter.GroupSize)
-    .where('Address.city', '==', filter.City)
-    .where('StartTime', '<', 'EndTime')
-    .where('StartTime', '>=', filter.StartTime).get().then(snapshot => {
-        // If no records were found, return empty array of events
-        if (snapshot.empty) {
-            return;
+
+    return result;
+}
+
+/**Takes in filter object created by user and returns data object containing all events matching the user's criteria
+ * @param filter The filters provided by the user
+ * @returns An optimal sequence of events
+ */
+export default async function CreateFromUserSettings(filter : Filter): Promise<any> {
+    return new Promise((resolve, reject) => {
+
+        let startingCollection = 'prod';
+
+        // If in dev environment, grab from dev db
+        if (__DEV__) {
+            startingCollection = 'dev';
         }
 
-        // Otherwise need to evaluate each found event
-        let budget = 0;
-        snapshot.forEach(doc => {
-            // If list is empty place in list
-            if (itin.events.length == 0) {
-                itin.events.push(doc);
-            }
-            // Else
-            else {
-                // If budget + avgPrice is greater than user's budget, move to next
-                if (budget + doc.AvgPrice > filter.Budget) {
-                    return;
+        // Reference to firestore db
+        let db = firebase.firestore();
+        let itin = {
+            itineraryDetails: {
+                name: filter.Name,
+                last_edit_time: Date.now()
+            },
+            events: []
+        };
+        console.log("user given filters:", filter)
+        
+        // Find all events that match user specifications
+        let query = db.collection(startingCollection).doc('data').collection('events')  // NOTE: Can't seem to do compound queries...idk why...
+        .where('Address.City', '==', filter.City)
+        .get()
+        .then(snapshot => {
+
+            snapshot.forEach(doc => {
+                let currEventData = doc.data();
+
+                // If the event is within user filters, add it
+                if(EventIsValid(currEventData, filter)){
+                    itin.events.push(currEventData);
                 }
-                // If distance between points is greater than travel distance, move to next
-                if (!inRange(doc.Location, itin.events[0].Location, filter.TravelDistance)) {
-                    return;
-                }
-                itin.events.push(doc);
-                budget += doc.AvgPrice;
-            }
+                
+            });
+            // Return the result to user
+            console.log(itin.events);
+            resolve(filterIntervals(itin.events));
         })
-    }).then(filterIntervals(itin.events)).then(newEvents => {
-        itin.events = newEvents;
+        .catch(resp => {
+            console.log(resp);
+            reject([]);     // Error ocurred while trying to get events, return empty array
+        }); 
+        
+        
+        //resolve(filterIntervals(itin.events));
+        
     });
-    return itin;
 }
