@@ -6,7 +6,10 @@ export interface PlanitLocation {
     Address: Address,
     AvgPrice: number,
     AvgTimeSpent: Date,
-    Ratings: locationRatings
+    Ratings: {
+        AveRatings: number,
+        NumRatings: number,
+    },
     ContactInfo: ContactInfo,
     Description: string,
     EndTime: Date,
