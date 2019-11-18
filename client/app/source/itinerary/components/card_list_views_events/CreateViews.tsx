@@ -121,6 +121,7 @@ export default function CreateViews(props) {
                     </Button>}
                 </View>
                 {initialized && events.map((event, index) => {
+                    
                     return (
                         <View>
                             <TouchableOpacity onPress={() => setEventDetailsModalOpen(true, event)} key={index}>
@@ -129,15 +130,17 @@ export default function CreateViews(props) {
                                         <Text style={styles.eventHeader}>
                                             {event.Name}
                                         </Text>
+                                        
                                         <View style={styles.cardBody}>
                                             {event.AvgPrice && <Text>Pricing: ${event.AvgPrice.toString()}</Text>}
                                             {event.GroupSize && <Text>Accomodation: up to {event.GroupSize} people</Text>}
                                             {event.Address && <Text>Address: {event.Address.Number}, {event.Address.Street}, {event.Address.City}</Text>}
-                                            {event.StartTime && <Text>Starting Time: {event.StartTime.toTimeString()}</Text>}
-                                            {event.EndTime && <Text>Ending Time: {event.EndTime.toTimeString()}</Text>}
+                                            
+                                            {event.StartTime && <Text>Starting Time: {JSON.stringify(event.StartTime).substring(12, 17)}</Text>}
+                                            {event.EndTime && <Text>Ending Time: {JSON.stringify(event.EndTime).substring(12, 17)}</Text>}
                                         </View>
                                     </Card>
-                                </TouchableOpacity>
+                            </TouchableOpacity>
                             <Text />
                             <View style={styles.floatingContainter}>
                                 {editFields && <Button rounded style={styles.floatingButton} onPress={() => openAddEventModal(index)}>

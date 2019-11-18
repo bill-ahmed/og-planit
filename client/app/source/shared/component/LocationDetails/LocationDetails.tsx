@@ -52,12 +52,12 @@ export default function LocationDetails(props) {
                         <View style={styles.bodyContainer}>
                             <View style={styles.titleRating}>
                                 {data.Name && <Text style={styles.eventHeader}>{data.Name}</Text>}
-                                {data.Ratings &&
+
                                 <Rating
                                     readonly
-                                    startingValue={data.Ratings.AveRatings}
+                                    startingValue={getRndInteger(1,5)}
                                     imageSize={28}
-                                />}
+                                />
                             </View>
                             
                             <Text style={styles.criticalInfo}>
@@ -95,5 +95,9 @@ export default function LocationDetails(props) {
             </View>
         </Modal>
     );
+
+    function getRndInteger(min: number, max: number) {
+        return Math.floor(Math.random() * (max - min) ) + min;
+    }
 
 }
