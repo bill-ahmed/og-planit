@@ -56,9 +56,10 @@ export function Itinerary(props) {
                 {itineraries && itineraries.map((element: ItineraryModel, index) => {
                     return (<Card key={index}>
                         <CardItem header button onPress={() => navigate("ViewItineraryEvents", { data: element })}>
+                        <Radio selected={selected === index} onPress={() => handleRadioButtonChange(index)} />
                             <Text> {element.name} </Text>
                         </CardItem>
-                        <CardItem>
+                        <CardItem style={{flexDirection: 'row-reverse'}}>
                             <Icon name="map" onPress={() => navigate("GMap", {data:element})}/>
                         </CardItem>
                         <CardItem button onPress={() => console.log(`Clicked the description of ${element.name}!`) /* carlos replace with yours*/}>
@@ -66,7 +67,7 @@ export function Itinerary(props) {
                                 {element.events && <Text>Number of Events: {element.events.length}</Text>}
                                 {element.last_edit_time && <Text>Last Edited: {element.last_edit_time.toLocaleString()}</Text>}
                                 <Right>
-                                    <Radio selected={selected === index} onPress={() => handleRadioButtonChange(index)} />
+                                    
                                 </Right>
                             </Body>
                         </CardItem>
