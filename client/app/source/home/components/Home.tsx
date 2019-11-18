@@ -49,10 +49,10 @@ function Home(props){
     const getNewItinerary = () => {
         var filters : Filter = {
             Name: "name",
-            City: "Toronto",
+            City: "Vancouver",
             StartTime: new Date(),
-            EndTime: new Date(),
-            TravelDistance: 200,
+            EndTime: new Date(2019, 12, 4),
+            TravelDistance: 2.25,
             Categories: ["Museums", "Hotels"],
             GroupSize: 2,
             Budget: 200
