@@ -5,6 +5,7 @@ import styles from './LocationDetailStyles';
 import { Modal, FlatList, Dimensions, Image } from 'react-native';
 import { PlanitLocation, Address } from '../../../itinerary/models/location';
 import {Rating} from 'react-native-ratings';
+import CreateRatingStyles from '../../../itinerary/components/ratings/CreateRatingStyles';
 
 
 export default function LocationDetails(props) {
@@ -54,13 +55,16 @@ export default function LocationDetails(props) {
                                 {data.Ratings &&
                                 <Rating
                                     readonly
-                                    startingValue={5}
+                                    startingValue={data.Ratings.AveRatings}
                                     imageSize={28}
                                 />}
                             </View>
                             
                             <Text style={styles.criticalInfo}>
-                                {"Pricing: $" + data.AvgPrice + "\nAverage Time Spent: " + data.AvgTimeSpent + " hours" + "\nStart Time: " + data.StartTime.toLocaleString() + "\nEnd Time: " + data.EndTime.toLocaleString()}
+                                {"Pricing: $" + data.AvgPrice + "\nAccomodation: up to " + data.GroupSize + " people" + 
+                                "\nAverage Time Spent: " + data.AvgTimeSpent + " hours" +
+                                "\nStart Time: " + data.StartTime.toTimeString() + 
+                                "\nEnd Time: " + data.EndTime.toTimeString()}
                             </Text>
                             
                             <Text style={styles.textHeader}>About:</Text>

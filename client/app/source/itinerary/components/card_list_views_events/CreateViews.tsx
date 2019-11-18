@@ -130,10 +130,11 @@ export default function CreateViews(props) {
                                             {event.Name}
                                         </Text>
                                         <View style={styles.cardBody}>
-                                            <Text>${event.AvgPrice.toString()}</Text>
+                                            {event.AvgPrice && <Text>Pricing: ${event.AvgPrice.toString()}</Text>}
+                                            {event.GroupSize && <Text>Accomodation: up to {event.GroupSize} people</Text>}
                                             {event.Address && <Text>Address: {event.Address.Number}, {event.Address.Street}, {event.Address.City}</Text>}
-                                            {event.StartTime && <Text>Starting Time: {event.StartTime.toLocaleTimeString()}</Text>}
-                                            {event.EndTime && <Text>Ending Time: {event.EndTime.toLocaleTimeString()}</Text>}
+                                            {event.StartTime && <Text>Starting Time: {event.StartTime.toTimeString()}</Text>}
+                                            {event.EndTime && <Text>Ending Time: {event.EndTime.toTimeString()}</Text>}
                                         </View>
                                     </Card>
                                 </TouchableOpacity>
@@ -150,7 +151,7 @@ export default function CreateViews(props) {
                         </View>
                     )
                 })}
-                <Text></Text>
+                
             </ScrollView>
             {initialized && eventDetailsModalOpen && <LocationDetails location={detailsdModalData} open={eventDetailsModalOpen} setModal={setEventDetailsModal} />}
             {initialized && chooseEventModalOpen && <EventsSelector locations={locations} addLocation={addItem} open={chooseEventModalOpen} setModal={setChooseEventModal} />}
