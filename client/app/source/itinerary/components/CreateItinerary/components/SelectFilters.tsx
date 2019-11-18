@@ -9,7 +9,7 @@ export default function SelectFilters(props){
     // Keep track of distance user selects
     const [distanceFromLocation, setDistance] = useState(props.itineraryInfo.maxDistance);
     const [distanceBetweenEvents, setDistanceBetweenEvents] = useState(props.itineraryInfo.maxDistanceBetweenEvents);
-    const [price, setPrice] = useState(props.itineraryInfo.maxPrice);
+    const [price, setPrice] = useState(props.itineraryInfo.budget);
     const [gorupSize, setGroupSize] = useState(props.itineraryInfo.groupSize);
 
     /**All possible categories for events */
@@ -35,7 +35,7 @@ export default function SelectFilters(props){
 
     const updatePrice = (newPrice: number) => {
         setPrice(newPrice); 
-        props.updateItinerary({...itineraryData, maximumPrice: newPrice})
+        props.updateItinerary({...itineraryData, budget: newPrice})
     }
 
     const updateGroupSize = (val: number) => {
