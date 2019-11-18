@@ -84,13 +84,39 @@ function toDateTime(secs) {
     return t;
 }
 
-async function getLocation(db, startingCollection, eid): Promise<PlanitLocation[]> {
+/**Acquires all Location elements
+ * @returns A Promise for get request to Firestore
+*/
+async function getLocation(db, startingCollection): Promise<PlanitLocation[]> {
     return new Promise<PlanitLocation[]>((resolve, reject) => {
-        db.collection(startingCollection).doc('data').collection('events').doc(eid).collection('Location').get().then(query => {
+        db.collection(startingCollection).doc('data').collection('events').get().then(query => {
+            let arr = [];
+            query.forEach(doc => arr.push(doc.data()));
+            arr.forEach(item => {
+                if  (item.Location && item.Location.Latitude) {
+                    const latitude = item.Location.Latitude;
+                    item.Location = latitude.toString();
+                }
+                if (item.Location && item.Location.Longitude) {
+                    const longitude = item.Location.Longitude;
+                    item.Location = longitude.toString();
+                }
+            });
+            resolve(arr);
         })
         .catch((err: any) => {
             console.log("Error getting document", err);
             reject(err);
         });
+    });
+}
+
+/**Acquires all elements Locations at a radius
+ * @param givenLocation The location of given event
+ * @param radius The radius of locations to search for from 
+ * @returns A Promise for get request to Firestore
+*/
+export async function getFilterLocation(givenLocation: string, radius: number) {
+    return new Promise<Itinerary[]>((resolve, reject) => {
     });
 }
