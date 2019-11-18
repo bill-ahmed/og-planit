@@ -11,22 +11,15 @@ export default StyleSheet.create({
         fontSize: 24,
     },
     content: {
-        marginTop: 15,
+        marginTop: 0,
     },
-    filtersIntroduction: {
-        marginBottom: 30
-    },
-    distanceContainer: {
-        marginTop: 20,
-        marginBottom: 20,
-    },
-    categoriesContainer: {
-        marginTop: 20,
-        marginBottom: 20,
-    },
-    otherContainer: {
-        marginTop: 20,
-        marginBottom: 20,
+    contentContainer: {
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        width: "100%",
+        height: "100%"
     },
     touchableOpacity: {
         flex: 1,
@@ -41,16 +34,18 @@ export default StyleSheet.create({
     },
     subtext: {
         fontSize: 15,
-        color: '#545B62'
+        color: '#545B62',
+        marginTop: 5,
+        marginBottom: 5
     },
-    slider: {
+    button: {
         marginTop: 10,
         marginBottom: 10,
-        color: backgroundBlue
-    },
-    footer: {
+        padding: 10,
+        textAlign: 'center',
         alignSelf: 'center',
-        width: '100%',
-        marginTop: '30%'
+    },
+    buttonFont: {
+        fontSize: 16
     }
 })
