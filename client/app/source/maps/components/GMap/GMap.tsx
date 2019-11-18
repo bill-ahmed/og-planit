@@ -38,7 +38,7 @@ export default function GMap(props) {
         setShowLocationDetails(!showLocationDetails);
     }
 
-    if (props.navigation.state.params.data && !locationsLoaded) {
+    if (props.navigation.state.params && !locationsLoaded) {
         console.log(props.navigation.state.params.data.events[0].Location);
         setCurrentRegion({
             latitude: props.navigation.state.params.data.events[0].Location._lat,
@@ -57,8 +57,8 @@ export default function GMap(props) {
             <MapView loadingEnabled={true} onRegionChangeComplete={updateRegion} 
                 region={currentRegion}
                 style={styles.mapStyle}  onPress={() => setCurrLocation(null)}>
-                
                 {locationsLoaded && locations.map((event: any, index: number) => {
+
                     return(
                         <Marker key={index} coordinate={
                             {longitude: event.Location._long ? event.Location._long : 0,
