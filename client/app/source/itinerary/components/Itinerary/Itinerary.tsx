@@ -52,7 +52,7 @@ export function Itinerary(props) {
                 {itineraries && itineraries.map((element: ItineraryModel, index) => {
                     return (<Card key={index}>
                         <CardItem header button onPress={() => navigate("ViewItineraryEvents", { data: element })}>
-                        <Thumbnail source={require('./../../../login/assets/earth.png')} style={{maxWidth:30, maxHeight:30}}></Thumbnail>
+                        {/* <Thumbnail source={require('./../../../login/assets/earth.png')} style={{maxWidth:30, maxHeight:30}}></Thumbnail> */}
                         <Text style={{fontSize: 25}}> {element.name} </Text>                            
                         </CardItem>
                         <CardItem button onPress={() => console.log(`Clicked the description of ${element.name}!`) /* carlos replace with yours*/}>
