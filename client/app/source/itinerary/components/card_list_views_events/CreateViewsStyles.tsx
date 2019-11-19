@@ -6,6 +6,12 @@ export default StyleSheet.create({
         fontStyle: 'italic',
         fontSize: 25,
     },
+    cardBody:{
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        alignContent: "center"
+    },
     addButton: {
         display: 'flex',
         alignItems: 'center',
