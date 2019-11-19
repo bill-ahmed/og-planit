@@ -1,52 +1,76 @@
 import React, { useState } from 'react';
-import MapView, { Region, Marker } from 'react-native-maps';
-import { View, Modal, Alert } from 'react-native';
+import MapView, { Region, Marker, AnimatedRegion, MapViewAnimated } from 'react-native-maps';
+import { View, Modal, Alert, Geolocation } from 'react-native';
+import GMapCardView from './GMapCardView';
 
 import styles from './GMapStyles';
 import LocationDetails from '../../../shared/component/LocationDetails/LocationDetails';
 import { getLocations } from '../../api/locationsAPI';
-import { Spinner } from 'native-base';
+import { Spinner, Text } from 'native-base';
 
-const initialRegion = {
+const openingLocation = {
     latitude: 37.78825,
     longitude: -122.4324,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,
-}
+    latitudeDelta: 50,
+    longitudeDelta: 50
+};
 
 export default function GMap(props) {
-    const [currentRegion, setCurrentRegion] = useState(initialRegion);
+
+    const [currentRegion, setCurrentRegion] = useState(openingLocation);
     const [showLocationDetails, setShowLocationDetails] = useState(false);
     const [locationsLoaded, setLocationsLoaded] = useState(false);
     const [locations, setLocations] = useState(null);
     const [currLocation, setCurrLocation] = useState(null);
 
-    getLocations().then(res => {
-        if (!locationsLoaded) {
-            setLocations(res);
-            setLocationsLoaded(true);
-        }
-    });
 
     /** Update user's current region as they move around the map */
     const updateRegion = (region: Region) => {
         setCurrentRegion(region);
     }
 
-    const openMarker = () => {
-        const val = Math.floor(Math.random() * locations.length);
-        setCurrLocation(locations[val]);
+    const openMarker = (index: number) => {
+        setCurrLocation(locations[index]);
+        //setShowLocationDetails(!showLocationDetails);
+    }
+
+    const openLocationDetails = () => {
         setShowLocationDetails(!showLocationDetails);
     }
 
-    return (
-        <View style={styles.container}>
-            {!locationsLoaded && <Spinner color='blue' />}
-            {locationsLoaded && <MapView showsMyLocationButton onRegionChangeComplete={updateRegion} region={currentRegion} style={styles.mapStyle}>
-                <Marker coordinate={initialRegion} title="Home" description="Starting point of Google Map" onPress={e => openMarker()} />
+    if (props.navigation.state.params && !locationsLoaded) {
+        console.log(props.navigation.state.params.data.events[0].Location);
+        setCurrentRegion({
+            latitude: props.navigation.state.params.data.events[0].Location._lat,
+            longitude: props.navigation.state.params.data.events[0].Location._long,
+            latitudeDelta: 0.5,
+            longitudeDelta: 0.5
+        });
+        setLocations(props.navigation.state.params.data.events);
+        // console.log(props.navigation.state.params.data.events);
+        setLocationsLoaded(true);
+    }
 
-            </MapView>}
+    // If we're ready to render the map
+    return(
+        <View style={styles.container}>
+            <MapView loadingEnabled={true} onRegionChangeComplete={updateRegion} 
+                region={currentRegion}
+                style={styles.mapStyle}  onPress={() => setCurrLocation(null)}>
+                {locationsLoaded && locations.map((event: any, index: number) => {
+
+                    return(
+                        <Marker key={index} coordinate={
+                            {longitude: event.Location._long ? event.Location._long : 0,
+                                latitude: event.Location._lat ? event.Location._lat : 0
+                            }} title={event.Name} description={event.Description} onPress={() => openMarker(index)}/>
+                    );
+                })}
+
+            </MapView>
+
+            {currLocation && <GMapCardView eventInfo={currLocation} seeEventDetails={() => openLocationDetails()}/>}
             {showLocationDetails && <LocationDetails location={currLocation} open={showLocationDetails} setModal={setShowLocationDetails} />}
         </View>
     );
-}
+} 
