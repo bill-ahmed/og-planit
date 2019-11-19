@@ -35,6 +35,9 @@ APP.get('/getEventsList', (req: any, res: any) => routes.getEventsList(req, res)
 /**Create a new itinerary */
 APP.post('/createItinerary', bodyParser.json(), (req: any, res: any) => routes.createItineraryPOST(req, res));
 
+/**Delete an existing itinerary */
+APP.post('/deleteItinerary', bodyParser.json(), (req: any, res: any) => routes.deleteItineraryPost(req, res));
+
 /****   INITIALIZE SERVER   ****/
 
 //Enabls CORS
