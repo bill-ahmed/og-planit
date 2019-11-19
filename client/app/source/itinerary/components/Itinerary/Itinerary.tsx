@@ -4,7 +4,7 @@ import { Container, Header, Left, Right, Body, Title, Content, Button, Icon, Sub
 //import styles from './ItineraryStyles';
 import { View, Text, Image, ScrollView } from 'react-native';
 import { getItinerarySigned } from '../../api/itineraryAPI';
-import { Itinerary as ItineraryModel } from './../../models/location';
+import { Itinerary as ItineraryModel, PlanitLocation } from './../../models/location';
 import CreateNewItinerary from '../CreateItinerary/components/CreateItineraryStepper';
 import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
 import { number } from 'prop-types';
@@ -27,11 +27,37 @@ export function Itinerary(props) {
     const goToItineraryViews = () => {
         navigate(/* carlos' part */);
     }
-    const lastEvent = (events) => {
-        var num = 0;
-        events.map(elements => {
-            num = num + 1})
-        return num;
+
+    /**A function to determine the earliest time of an event
+     * @param events The list of events
+     * @returns The date/time of earliest event
+     */
+    const getFirstEventTime = (events: PlanitLocation[]): Date => {
+        let earliestTime = new Date();  // Assume current date
+
+        for(let i = 0; i < events.length; i++){
+            if(events[i].StartTime < earliestTime){
+                earliestTime = events[i].StartTime;
+            }
+        }
+
+        return earliestTime;
+    }
+
+    /**A function to determine the time of the last event
+     * @param events The list of events
+     * @returns The date/time of last event
+     */
+    const getLastEventTime = (events: PlanitLocation[]): Date => {
+        let latestTime = new Date();  // Assume current date
+
+        for(let i = 0; i < events.length; i++){
+            if(events[i].EndTime > latestTime){
+                latestTime = events[i].StartTime;
+            }
+        }
+
+        return latestTime;
     }
 
     const handleRadioButtonChange = (newRadioButtonValue: number) => {
@@ -65,8 +91,8 @@ export function Itinerary(props) {
                             <Body>
                                 {element.events && <Text>Number of Events: {element.events.length}</Text>}
                                 {element.last_edit_time && <Text>Last Edited: {element.last_edit_time.toLocaleString()}</Text>}
-                                {element.events[1].StartTime && <Text> Starts: {element.events[1].StartTime.toLocaleString()}</Text>}
-                                {element.events[lastEvent(element.events)].EndTime && <Text> Ends: {element.events[lastEvent(element.events)].EndTime.toLocaleString()} </Text>}
+                                {element.events && <Text> Starts: {getFirstEventTime(element.events).toLocaleString()}</Text>}
+                                {element.events[element.events.length - 1].EndTime && <Text> Ends: {getLastEventTime(element.events).toLocaleString()} </Text>}
                                 <Right>
                                     <Radio selected={selected === index} onPress={() => handleRadioButtonChange(index)} />
                                 </Right>
