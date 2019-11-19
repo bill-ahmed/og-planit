@@ -1,18 +1,18 @@
 /**Define API routes for Express.js back-end **/
 
-export default class Routes{
+export default class Routes {
     private admin: any; // Reference to initialized firebase-admin object
     private db: any;    // Reference to firestore
 
     /**Instantiate firebase-admin conneciton */
-    constructor(firebaseAdmin: any, dbRef: any){
+    constructor(firebaseAdmin: any, dbRef: any) {
         this.admin = firebaseAdmin;
         this.db = dbRef;
-        
+
     }
 
     /**Create a new user in Firebase and provision space in Firestore */
-    public createUserPOST(req: any, res: any){
+    public createUserPOST(req: any, res: any) {
         console.log(req.body);
         res.header("Content-Type", "application/json");
 
@@ -31,27 +31,27 @@ export default class Routes{
         };
 
         this.admin.auth().createUser(userInformation)
-        .then((userRecord: any) => {
-            console.log(`Created new user with ID: ${userRecord.uid}`);
+            .then((userRecord: any) => {
+                console.log(`Created new user with ID: ${userRecord.uid}`);
 
-            // Provision this new user a document in our db
-            try {
-                this.provisionNewUser(userInformation, userRecord.uid);
+                // Provision this new user a document in our db
+                try {
+                    this.provisionNewUser(userInformation, userRecord.uid);
 
-                res.statusCode = 200;   // 200 = okay
-                res.json(userRecord);   // Return the response back
+                    res.statusCode = 200;   // 200 = okay
+                    res.json(userRecord);   // Return the response back
 
-            } catch (error) {
-                console.log(error);
-                res.statusCode = 500;   // Internal error with Firestore
-                res.json(error)
-            }
-        })
-        .catch((error: any) => {
-            console.log(`Error creating user: ${error}`);
-            res.statusCode = 400;   // 400 = user error caused it to fail...probably
-            res.json(error);    // Return the response back
-        });
+                } catch (error) {
+                    console.log(error);
+                    res.statusCode = 500;   // Internal error with Firestore
+                    res.json(error)
+                }
+            })
+            .catch((error: any) => {
+                console.log(`Error creating user: ${error}`);
+                res.statusCode = 400;   // 400 = user error caused it to fail...probably
+                res.json(error);    // Return the response back
+            });
 
     }
 
@@ -65,31 +65,70 @@ export default class Routes{
      * }
      * 
      */
-    public createItineraryPOST(req: any, res: any){
+    public createItineraryPOST(req: any, res: any) {
         // console.log("New itinerary", req.body);
         res.header("Content-Type", "application/json");
 
         // Validate access token
         this.admin.auth().verifyIdToken(req.body.accessToken)
-        .then((decodedToken: any) => {
+            .then((decodedToken: any) => {
+
+                // If access token is valid, add this itinerary to the user's collection of itineraries
+                let uid = decodedToken.uid
+                const newItinerary = req.body.itineraryDetails;
+                const newItineraryEvents = req.body.events;
+
+                let newItineararyRef = this.db.collection('dev').doc('data').collection('users').doc(uid).collection('itineraries').add(newItinerary).then((resp: any) => {
+                    console.log("Created new itinerary for user " + uid + " with id " + resp.id);
+
+                    // Add events to this itinerary
+                    newItineraryEvents.map((elem: any) => {
+                        elem.EndTime = new Date(elem.EndTime)
+                        elem.StartTime = new Date(elem.StartTime)
+                        this.db.collection('dev').doc('data').collection('users').doc(uid).collection('itineraries').doc(resp.id).collection('events').add(elem);
+                    })
+                    res.statusCode = 200;
+                    res.json(resp.id);
+                });
+
+
+            })
+            .catch((err: any) => {
+                console.log(err);
+                res.statusCode = 400;
+                res.json(err);
+            })
+
+    }
+
+    /**Given an access token and itinerary id, removes that itinerary
+     * Request body MUST be in the format:
+     * 
+     * {
+     *  accessToken: string,
+     *  itineraryId: string,
+     * }
+     * 
+     */
+    public deleteItineraryPost(req: any, res: any) {
+        // console.log("New itinerary", req.body);
+        res.header("Content-Type", "application/json");
+
+        // Validate access token
+        this.admin.auth().verifyIdToken(req.body.accessToken).then((decodedToken: any) => {
 
             // If access token is valid, add this itinerary to the user's collection of itineraries
-            let uid = decodedToken.uid
-            const newItinerary = req.body.itineraryDetails;
-            const newItineraryEvents = req.body.events;
+            let uid = decodedToken.uid;
+            const itineraryId = req.body.itineraryId;
 
-            let newItineararyRef = this.db.collection('dev').doc('data').collection('users').doc(uid).collection('itineraries').add(newItinerary).then((resp: any) => {
-                console.log("Created new itinerary for user " + uid + " with id " + resp.id);
-
-                // Add events to this itinerary
-                newItineraryEvents.map((elem: any) => {
-                    this.db.collection('dev').doc('data').collection('users').doc(uid).collection('itineraries').doc(resp.id).collection('events').add(elem);
-                })
-                res.statusCode = 200;
-                res.json(resp);
+            this.db.collection('dev').doc('data').collection('users').doc(uid).collection('itineraries').doc(itineraryId).delete().then((resp: any) => {
+                console.log("Deleted itinerary doc:", itineraryId);
+                this.db.collection('dev').doc('data').collection('users').doc(uid).collection('itineraries').doc(itineraryId).collection('events').get().then((resp: any[]) => {
+                    console.log("done");
+                    res.statusCode = 200;
+                    res.json(resp);
+                });
             });
-
-            
         })
         .catch((err: any) => {
             console.log(err);
@@ -103,7 +142,7 @@ export default class Routes{
      * @param userData An object containing email, name, age, etc.
      * @param uid The unique ID of this new user
      */
-    private provisionNewUser(userData: any, uid: string){
+    private provisionNewUser(userData: any, uid: string) {
         /** Create document for this new user **/
         let userInfo = {
             name: [userData.firstName, userData.middleName, userData.lastName],
@@ -123,25 +162,25 @@ export default class Routes{
         itineraries.set({
             name: null, last_edit_time: null  // Firebase requires at least ONE doc per collection
         });
-        
+
     }
 
     /** Obtain JSON collection of all stored events */
-    public getEventsList(req : any, res : any) {
+    public getEventsList(req: any, res: any) {
         // Set response header
         res.header("Content-Type", "application/json");
         // Retrieve all doccuments in 'events' collection
         let resString = "";
         try {
             let collection = this.db.collection('dev').doc('data').collection('events').get()
-            .then((snapshot: any) => {
-                snapshot.forEach((doc: any) => {
-                    console.log(doc.Name);
+                .then((snapshot: any) => {
+                    snapshot.forEach((doc: any) => {
+                        console.log(doc.Name);
+                    });
                 });
-            });
             res.status(200).json(collection);
         }
-        
+
         catch (error) {
             console.log("Error retrieving events collection");
             res.status(500).send('Error retrieving events collection');

@@ -136,11 +136,6 @@ export default function SelectFilters(props){
                         );
                     })}
                 </View>
-
-                {/* Section 3: Miscellaneous options */}
-                <View style={styles.otherContainer}>
-                    <Text style={styles.heading}>Miscellaneous</Text>
-                </View>
             </View>
         </ScrollView>
     );

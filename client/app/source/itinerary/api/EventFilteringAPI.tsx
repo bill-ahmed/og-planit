@@ -120,7 +120,7 @@ function EventIsValid(event: any, filter: Filter): boolean {
  */
 export default async function CreateFromUserSettings(filter : Filter): Promise<any> {
     return new Promise((resolve, reject) => {
-
+        console.log('recieved filters:', filter)
         let startingCollection = 'prod';
 
         // If in dev environment, grab from dev db
@@ -137,7 +137,6 @@ export default async function CreateFromUserSettings(filter : Filter): Promise<a
             },
             events: []
         };
-        console.log("user given filters:", filter)
         
         // Find all events that match user specifications
         let query = db.collection(startingCollection).doc('data').collection('events')  // NOTE: Can't seem to do compound queries...idk why...
@@ -155,7 +154,6 @@ export default async function CreateFromUserSettings(filter : Filter): Promise<a
                 
             });
             // Return the result to user
-            console.log(itin.events);
             resolve(filterDistance(filterIntervals(itin.events), filter.TravelDistance));
         })
         .catch(resp => {
