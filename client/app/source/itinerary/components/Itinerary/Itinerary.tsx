@@ -81,8 +81,7 @@ export function Itinerary(props) {
                 containerStyle={{}}
                 style={styles.blue}
                 position="bottomRight"
-                onPress={() => navigate("NewItinerary")}
-            >
+                onPress={() => setNewItinerayModal(true)}>
                 <Icon name="ios-add" />
             </Fab>
 

@@ -158,10 +158,9 @@ export default function CreateViews(props) {
                     </Button>}
                 </View>
                 {initialized && events.map((event, index) => {
-                    
                     return (
-                        <View>
-                            <TouchableOpacity onPress={() => setEventDetailsModalOpen(true, event)} key={index}>
+                        <View key={index}>
+                            <TouchableOpacity onPress={() => setEventDetailsModalOpen(true, event)}>
                                 <Card
                                         image={{uri: event.imageURL}}>
                                         <Text style={styles.eventHeader}>
