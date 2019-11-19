@@ -92,7 +92,7 @@ export default function CreateItineraryStepper(props){
         <SelectFilters itineraryInfo={itineraryInfo} updateItinerary={(newData: NewItinerary) => updateItineraryInfo(newData)}
             goNext={() => handleNextStep()} goBack={() => handlePrevStep()}/>
         ,
-        <GenerateItinerary goNext={() => handleNextStep()} uploadItinerary={(events: PlanitLocation[]) => uploadItinerary(events)} itineraryFilterInfo={filters}/>
+        <GenerateItinerary closeModal={() => props.close()} uploadItinerary={(events: PlanitLocation[]) => uploadItinerary(events)} itineraryFilterInfo={filters}/>
     ];
 
     const labels = ["General Info", "Select Filters", "Generate Itinerary"];
@@ -113,45 +113,43 @@ export default function CreateItineraryStepper(props){
     }
 
     /**Upload this user's generated itinerary to database */
-    const uploadItinerary = (eventData: PlanitLocation[]): void => {
-        // Body data for HTTP request
-        let body = {
-            accessToken: accessToken,
-            itineraryDetails: {
-                name: itineraryInfo.name,
-                last_edit_time: new Date()
-            },
-            events: eventData
-        }
-        
-        // Headers and stringified body for HTTP request
-        let options = {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-            body: JSON.stringify(body)
-        }
+    const uploadItinerary = async (eventData: PlanitLocation[]): Promise<boolean> => {
+        return new Promise((resolve, reject) => {
+            // Body data for HTTP request
+            let body = {
+                accessToken: accessToken,
+                itineraryDetails: {
+                    name: itineraryInfo.name,
+                    last_edit_time: new Date()
+                },
+                events: eventData
+            }
+            
+            // Headers and stringified body for HTTP request
+            let options = {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify(body)
+            }
 
-        // First, validate the data
-        if(body.itineraryDetails.name !== "" && body.events.length !== 0){
-            fetch(`${ENDPOINT}/createItinerary`, options)
-            .then(resp => {
-                if(resp.ok){
-                    alert("Succesfully uploaded itinerary!");
-                }
-            })
-            .catch(res => {
-                alert("Error ocurred during itinerary creation. Check console log.");
-                console.log(res)
-            });
+            // First, validate the data
+            if(body.itineraryDetails.name !== "" && body.events.length !== 0){
+                fetch(`${ENDPOINT}/createItinerary`, options)
+                .then(resp => {
+                    resolve(resp.ok);
+                })
+                .catch(res => {
+                    reject(res);
+                    console.log(res)
+                });
 
-        } else {
-            console.log(body);
-            alert("Error: Missing or invalid itinerary data. Please make sure you have entered all fields and have at least one event in your itinerary.");
-        }
-
+            } else {
+                reject(false);
+            }
+        });
     }
 
     /**Go to the next step in creating itinerary */

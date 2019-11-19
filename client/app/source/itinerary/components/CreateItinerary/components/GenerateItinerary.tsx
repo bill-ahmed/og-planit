@@ -48,8 +48,18 @@ export default function ReviewNewItinerary(props){
 
     /**Upload itinerary to server */
     const uploadItinerary = () => {
-        alert("upload itinerary");
-        props.uploadItinerary(events);
+        setLoading(true);   // Trigger loading
+
+        props.uploadItinerary(events)
+        .then(resp => {
+            setLoading(false);
+            if(resp){
+                alert("Successfully created itinerary!");
+                props.closeModal();
+            } else {
+                alert("Error: Missing or invalid itinerary data. Please make sure you have entered all fields and have at least one event in your itinerary.");
+            }
+        });
     }
     
     return(
