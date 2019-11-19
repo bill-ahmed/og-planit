@@ -83,6 +83,8 @@ export default class Routes {
 
                     // Add events to this itinerary
                     newItineraryEvents.map((elem: any) => {
+                        elem.EndTime = new Date(elem.EndTime)
+                        elem.StartTime = new Date(elem.StartTime)
                         this.db.collection('dev').doc('data').collection('users').doc(uid).collection('itineraries').doc(resp.id).collection('events').add(elem);
                     })
                     res.statusCode = 200;
