@@ -5,7 +5,7 @@ import { Container, Header, Left, Right, Body, Title, Content, Button, Icon, Sub
 import { View, Text, Image, ScrollView } from 'react-native';
 import { getItinerarySigned } from '../../api/itineraryAPI';
 import { Itinerary as ItineraryModel } from './../../models/location';
-import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
+import CreateNewItinerary from '../CreateItinerary/components/CreateItineraryStepper';
 
 //App stack to go from list of itineraries --> specific itinerary
 // const itineraries=require("./../../models/MockItineraryList.json");
@@ -14,12 +14,16 @@ export function Itinerary(props) {
     const { navigate } = props.navigation;    // Handle navigations
     const [itineraries, setItineraries] = useState(null);
     const [selected, setSelected] = useState(-1);
+    const [newItineraryModalOpen, setNewItinerayModal] = useState(false);
 
-    getItinerarySigned().then(res => {
-        if (!itineraries && res != undefined) {
-            setItineraries(res);
-        }
-    });
+    const reload = () => {
+        getItinerarySigned().then(res => {
+            console.log("reloadItineraries");
+            if (!itineraries && res != undefined) {
+                setItineraries(res);
+            }
+        });
+    }
 
     const goToItineraryViews = () => {
         navigate(/* carlos' part */);
@@ -30,23 +34,18 @@ export function Itinerary(props) {
         console.log("User selected " + newRadioButtonValue);
     }
 
+    reload()
     return (
         <Container>
             <Header>
-                <Left>
-                    <Button transparent onPress={() => props.navigation.goBack()}>
-                        <Icon name="arrow-back" />
-                    </Button>
-                </Left>
                 <Body>
                     <Title>
                         Itinerary Page
                     </Title>
                 </Body>
                 <Right>
-                    <Button transparent onPress={() => navigate('NewItinerary')}>
+                    <Button transparent onPress={() => setNewItinerayModal(true)}>
                         <Icon name="ios-add" />
-                        <Text> Create New Itinerary</Text>
                     </Button>
                 </Right>
             </Header>
@@ -55,8 +54,7 @@ export function Itinerary(props) {
                 {!itineraries && <Spinner color='blue' />}
                 {itineraries && itineraries.map((element: ItineraryModel, index) => {
                     return (<Card key={index}>
-                        <CardItem header button onPress={() => navigate("ViewItineraryEvents", { data: element })}>
-                        <Radio selected={selected === index} onPress={() => handleRadioButtonChange(index)} />
+                        <CardItem header button onPress={() => navigate("ViewItineraryEvents", { data: element, reload: reload })}>
                             <Text> {element.name} </Text>
                         </CardItem>
                         <CardItem style={{flexDirection: 'row-reverse'}}>
@@ -74,6 +72,8 @@ export function Itinerary(props) {
                     </Card>);
                 })}
             </ScrollView>
+
+            {newItineraryModalOpen && <CreateNewItinerary open={newItineraryModalOpen} close={() => setNewItinerayModal(false)} />}
         </Container>
     );
 }

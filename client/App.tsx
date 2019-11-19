@@ -29,6 +29,7 @@ function Main(props) {
   // Equivalent to this.state
   const [isReady, setReady] = useState(false);
   const { navigate } = props.navigation;  // Handle react-navigation to different screens
+  console.disableYellowBox = true;  // Disable warnings
 
   // Equivalent to componentDidMount()
   useEffect(() => {
@@ -47,8 +48,7 @@ function Main(props) {
           }
 
           // Continue initialiazing the app
-          setReady(true);
-
+          navigate('Auth');
         });
     }
 
@@ -60,12 +60,9 @@ function Main(props) {
   // If app is ready to be loaded
   if (isReady) {
     console.disableYellowBox = true;
+
     return (
-      <View style={styles.container}>
-        <Button onPress={() => navigate('Auth')}>
-          <Text>Login Page</Text>
-        </Button>
-      </View>
+      <View style={styles.container}/>
     );
   } else {
     return (
