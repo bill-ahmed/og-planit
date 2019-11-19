@@ -49,6 +49,7 @@ export async function getItinerarySigned(filterFn: (itin: Itinerary) => boolean 
                 obsArr[i] = Observable.create(obs => {
                     const obj = (doc.data() as Itinerary);
                     getItineraryEvents(db, startingCollection, uid, doc.id).then(resolve => {
+                        obj.id = doc.id;
                         obj.events = resolve;
                         obs.next(obj);
                     });

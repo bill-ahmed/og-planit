@@ -1,16 +1,21 @@
 import React, { Component, useState } from 'react';
-import { Container, Header, Left, Right, Body, Title, Subtitle, Content, Button, Icon, View } from 'native-base';
+import { Container, Header, Left, Right, Body, Title, Subtitle, Content, Button, Icon, View, Spinner } from 'native-base';
 
 import styles from './CreateViewsStyles';
 import { Text, ScrollView, TextInput, TouchableOpacity, ColorPropType } from 'react-native';
-import { Card, Input } from 'react-native-elements';
+import { Card, Input, Overlay } from 'react-native-elements';
 import LocationDetails from '../../../shared/component/LocationDetails/LocationDetails';
 import EventsSelector from '../eventsSelector/eventsSelector';
 import { Itinerary } from '../../models/location';
 import { getLocations } from '../../../maps/api/locationsAPI';
+import { httpPost } from '../../../shared/services/http';
+import { useSelector } from 'react-redux';
+import { combineLatest } from 'rxjs';
 
 export default function CreateViews(props) {
     // Control if modal is open or not
+    const accessToken = useSelector(state => state['UserInfo']['accessToken']);
+    const uid = useSelector(state => state['UserInfo']['uid']);
     const [eventDetailsModalOpen, setEventDetailsModal] = useState(false);
     const [chooseEventModalOpen, setChooseEventModal] = useState(false);
     const [editFields, setEditFields] = useState(false);
@@ -20,6 +25,7 @@ export default function CreateViews(props) {
     const [backup, setBackup] = useState(null);
     const [indexAdd, setindexAdd] = useState(0);
     const [locations, setLocations] = useState(null);
+    const [updating, setUpdating] = useState(false);
     // Control what data is sent to the modal
     const [detailsdModalData, setDetailsModalData] = useState(null);
     /**Open or close the event details modal modal
@@ -27,20 +33,20 @@ export default function CreateViews(props) {
      * @param data The data to send to the pop-up modal
      */
 
-    if(!locations) {
+    if (!locations) {
         getLocations().then(res => {
             setLocations(res);
         })
     }
-    
+
     const setEventDetailsModalOpen = (val: boolean, data: any) => {
         setEventDetailsModal(val);
         setDetailsModalData(data);
     }
 
     const initState = () => {
-        setItineraryData(props.navigation.state.params.data);
         setEvents(props.navigation.state.params.data.events);
+        setItineraryData(props.navigation.state.params.data);
         setInitialized(true);
     }
 
@@ -55,6 +61,37 @@ export default function CreateViews(props) {
     const saveChanges = () => {
         saveBackup();
         setEditFields(false);
+        let copy = JSON.parse(JSON.stringify(itinerayData));
+        copy.events = null;
+        setUpdating(true);
+        combineLatest(
+            httpPost('deleteItinerary',
+                {
+                    accessToken: accessToken,
+                    itineraryId: copy.id
+                },
+                {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                }),
+            httpPost('createItinerary',
+                {
+                    accessToken: accessToken,
+                    uid: uid,
+                    itineraryDetails: copy,
+                    events: events
+                },
+                {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                })
+        ).subscribe((res: any[]) => {
+            res[1].json().then((json => {
+                copy.id = json;
+                setItineraryData(copy);
+                setUpdating(false);
+            }));
+        });
     }
 
     const discardChanges = () => {
@@ -158,6 +195,7 @@ export default function CreateViews(props) {
             </ScrollView>
             {initialized && eventDetailsModalOpen && <LocationDetails location={detailsdModalData} open={eventDetailsModalOpen} setModal={setEventDetailsModal} />}
             {initialized && chooseEventModalOpen && <EventsSelector locations={locations} addLocation={addItem} open={chooseEventModalOpen} setModal={setChooseEventModal} />}
+            {updating && <Overlay isVisible><Spinner color='blue' /></Overlay>}
         </Container>
     );
 }
