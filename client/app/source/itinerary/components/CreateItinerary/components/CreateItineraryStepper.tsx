@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 import { Modal, View , Text, TextInput, DatePickerAndroid, TimePickerAndroid, Dimensions, ScrollView} from 'react-native';
 import { Container, Content,  Button, Icon, Form, Item, Label, Input, Footer} from 'native-base';
 import { ViewPager } from 'rn-viewpager'
 import StepIndicator from 'react-native-step-indicator';
 import GeneralInfo from './GeneralInfo';
 import SelectFilters from './SelectFilters';
-import ReviewNewItinerary from './ReviewNewItinerary';
-import { Filter } from "../../../models/location";
+import GenerateItinerary from './GenerateItinerary';
+import { Filter, PlanitLocation } from "../../../models/location";
 import styles, { StepperStyles } from './CreateItineraryStepperStyles';
 
-const ENDPOINT = 'http://100.82.203.156:4000';  // MUST BE YOUR IP ADDRESS ON LOCAL NETWORK!!
+const ENDPOINT = 'http://192.168.0.47:4000';  // MUST BE YOUR IP ADDRESS ON LOCAL NETWORK!!
 
 /**Represent a new itinerary the user will construct */
 interface NewItinerary{
@@ -79,6 +80,7 @@ export default function CreateItineraryStepper(props){
     const [itineraryInfo, setItineraryInfo] = useState(itinerary);  // All itinerary data to be uploaded
     const [filters, setFilter] = useState(filter);
     const [currentStep, setCurrentStep] = useState(0);  // Current step in progress bar
+    const accessToken = useSelector(state => state['UserInfo']['accessToken']);
 
     // Component to render at each step
     const steps = [
@@ -90,15 +92,10 @@ export default function CreateItineraryStepper(props){
         <SelectFilters itineraryInfo={itineraryInfo} updateItinerary={(newData: NewItinerary) => updateItineraryInfo(newData)}
             goNext={() => handleNextStep()} goBack={() => handlePrevStep()}/>
         ,
-        <ReviewNewItinerary itineraryFilterInfo={filters}/>
-        ,
-        <View>
-            <Text>Save/Upload itinerary</Text>
-        </View>
-
+        <GenerateItinerary goNext={() => handleNextStep()} uploadItinerary={(events: PlanitLocation[]) => uploadItinerary(events)} itineraryFilterInfo={filters}/>
     ];
 
-    const labels = ["General Info", "Select Filters", "Generate Itinerary", "Done!"];
+    const labels = ["General Info", "Select Filters", "Generate Itinerary"];
 
     /**Update all data in itinerary */
     const updateItineraryInfo = (newData : NewItinerary) => {
@@ -113,6 +110,48 @@ export default function CreateItineraryStepper(props){
             GroupSize: newData.groupSize,
             Budget: newData.budget
         });
+    }
+
+    /**Upload this user's generated itinerary to database */
+    const uploadItinerary = (eventData: PlanitLocation[]): void => {
+        // Body data for HTTP request
+        let body = {
+            accessToken: accessToken,
+            itineraryDetails: {
+                name: itineraryInfo.name,
+                last_edit_time: new Date()
+            },
+            events: eventData
+        }
+        
+        // Headers and stringified body for HTTP request
+        let options = {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify(body)
+        }
+
+        // First, validate the data
+        if(body.itineraryDetails.name !== "" && body.events.length !== 0){
+            fetch(`${ENDPOINT}/createItinerary`, options)
+            .then(resp => {
+                if(resp.ok){
+                    alert("Succesfully uploaded itinerary!");
+                }
+            })
+            .catch(res => {
+                alert("Error ocurred during itinerary creation. Check console log.");
+                console.log(res)
+            });
+
+        } else {
+            console.log(body);
+            alert("Error: Missing or invalid itinerary data. Please make sure you have entered all fields and have at least one event in your itinerary.");
+        }
+
     }
 
     /**Go to the next step in creating itinerary */

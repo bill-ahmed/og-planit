@@ -5,7 +5,7 @@ import { Card } from 'react-native-elements';
 import { Divider, Slider } from 'react-native-elements'
 import LocationDetails from '../../../../shared/component/LocationDetails/LocationDetails';
 import GenerateItineraryFromFilters from '../../../api/EventFilteringAPI';
-import styles from './ReviewNewItineraryStyles';
+import styles from './GenerateItineraryStyles';
 import { PlanitLocation } from '../../../models/location';
 
 export default function ReviewNewItinerary(props){
@@ -45,6 +45,12 @@ export default function ReviewNewItinerary(props){
         setDetailsModalEvent(eventData);
         setDetailsModal(true);
     }
+
+    /**Upload itinerary to server */
+    const uploadItinerary = () => {
+        alert("upload itinerary");
+        props.uploadItinerary(events);
+    }
     
     return(
         <ScrollView style={styles.content}>
@@ -65,12 +71,16 @@ export default function ReviewNewItinerary(props){
                 <Button light disabled={loading} style={styles.button} onPress={() => getEvents()}>
                     <Text style={styles.buttonFont}>Build Itinerary</Text>
                 </Button>
+                
+                <Button light disabled={events.length === 0 || loading} style={styles.button} onPress={() => uploadItinerary()}>
+                    <Text style={styles.buttonFont}>Upload Itinerary</Text>
+                </Button>
 
                 <View>
                 {!loading && initialized && events.length > 1 && events.map((event, index) => {
                     return (
-                        <View>
-                            <TouchableOpacity onPress={() => handleDetailsModalOpen(event)} key={index}>
+                        <View key={index}>
+                            <TouchableOpacity onPress={() => handleDetailsModalOpen(event)}>
                                 <Card
                                     image={{ uri: event.imageURL }}>
                                     <Text style={styles.eventHeader}>
