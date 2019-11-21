@@ -1,20 +1,23 @@
 import React, { useState } from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 import { Modal, View , Text, TextInput, DatePickerAndroid, TimePickerAndroid, Dimensions, ScrollView} from 'react-native';
 import { Container, Content,  Button, Icon, Form, Item, Label, Input, Footer} from 'native-base';
 import { ViewPager } from 'rn-viewpager'
 import StepIndicator from 'react-native-step-indicator';
 import GeneralInfo from './GeneralInfo';
 import SelectFilters from './SelectFilters';
+import GenerateItinerary from './GenerateItinerary';
+import { Filter, PlanitLocation } from "../../../models/location";
 import styles, { StepperStyles } from './CreateItineraryStepperStyles';
 
-const ENDPOINT = 'http://100.82.203.156:4000';  // MUST BE YOUR IP ADDRESS ON LOCAL NETWORK!!
+const ENDPOINT = 'http://192.168.0.47:4000';  // MUST BE YOUR IP ADDRESS ON LOCAL NETWORK!!
 
 /**Represent a new itinerary the user will construct */
 interface NewItinerary{
     /**Name of the itinerary */
-    name: String,
+    name: string,
     /**Where the user is located */
-    location: String,
+    location: string,
     /**Start date and time */ 
     startTime: Date,
     /**End date and time */
@@ -25,16 +28,6 @@ interface NewItinerary{
     categories: [],
     groupSize: number,
     budget: 0,
-}
-interface Filter{
-    Name: String,
-    City: String,
-    StartTime: Date,
-    EndTIme: Date,
-    TravelDistance: number,
-    Categories: [],
-    GroupSize: number,
-    Budget: number
 }
 
 /**A progress stepper to allow users to create a new itinerary */
@@ -55,7 +48,7 @@ export default function CreateItineraryStepper(props){
         Name: itinerary.name,
         City: itinerary.location,
         StartTime:itinerary.startTime,
-        EndTIme:itinerary.endTime,
+        EndTime:itinerary.endTime,
         TravelDistance: itinerary.maxDistanceBetweenEvents,
         Categories: itinerary.categories,
         GroupSize: itinerary.groupSize,
@@ -87,6 +80,7 @@ export default function CreateItineraryStepper(props){
     const [itineraryInfo, setItineraryInfo] = useState(itinerary);  // All itinerary data to be uploaded
     const [filters, setFilter] = useState(filter);
     const [currentStep, setCurrentStep] = useState(0);  // Current step in progress bar
+    const accessToken = useSelector(state => state['UserInfo']['accessToken']);
 
     // Component to render at each step
     const steps = [
@@ -98,19 +92,10 @@ export default function CreateItineraryStepper(props){
         <SelectFilters itineraryInfo={itineraryInfo} updateItinerary={(newData: NewItinerary) => updateItineraryInfo(newData)}
             goNext={() => handleNextStep()} goBack={() => handlePrevStep()}/>
         ,
-        <View>
-            <Text>Generate the itinerary</Text>
-            <Text> {JSON.stringify(itineraryInfo)} </Text>
-
-        </View>
-        ,
-        <View>
-            <Text>Save/Upload itinerary</Text>
-        </View>
-
+        <GenerateItinerary closeModal={() => props.close()} uploadItinerary={(events: PlanitLocation[]) => uploadItinerary(events)} itineraryFilterInfo={filters}/>
     ];
 
-    const labels = ["General Info", "Select Filters", "Generate Itinerary", "Done!"];
+    const labels = ["General Info", "Select Filters", "Generate Itinerary"];
 
     /**Update all data in itinerary */
     const updateItineraryInfo = (newData : NewItinerary) => {
@@ -119,11 +104,51 @@ export default function CreateItineraryStepper(props){
             Name: newData.name,
             City: newData.location,
             StartTime: newData.startTime,
-            EndTIme: newData.endTime,
+            EndTime: newData.endTime,
             TravelDistance: newData.maxDistanceBetweenEvents,
             Categories: newData.categories,
             GroupSize: newData.groupSize,
             Budget: newData.budget
+        });
+    }
+
+    /**Upload this user's generated itinerary to database */
+    const uploadItinerary = async (eventData: PlanitLocation[]): Promise<boolean> => {
+        return new Promise((resolve, reject) => {
+            // Body data for HTTP request
+            let body = {
+                accessToken: accessToken,
+                itineraryDetails: {
+                    name: itineraryInfo.name,
+                    last_edit_time: new Date()
+                },
+                events: eventData
+            }
+            
+            // Headers and stringified body for HTTP request
+            let options = {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify(body)
+            }
+
+            // First, validate the data
+            if(body.itineraryDetails.name !== "" && body.events.length !== 0){
+                fetch(`${ENDPOINT}/createItinerary`, options)
+                .then(resp => {
+                    resolve(resp.ok);
+                })
+                .catch(res => {
+                    reject(res);
+                    console.log(res)
+                });
+
+            } else {
+                reject(false);
+            }
         });
     }
 

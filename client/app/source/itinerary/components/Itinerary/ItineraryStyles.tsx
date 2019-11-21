@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native'
 
+const backgroundBlue = '#1977B5';
 export default StyleSheet.create({
     container: {
         flex: 1,
@@ -18,5 +19,8 @@ export default StyleSheet.create({
         justifyContent: "center",
         marginBottom: 30,
         marginTop: 30
+    },
+    blue: {
+        backgroundColor: backgroundBlue
     }
 });
