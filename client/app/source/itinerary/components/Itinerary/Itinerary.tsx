@@ -17,13 +17,23 @@ export function Itinerary(props) {
     const [selected, setSelected] = useState(-1);
     const [newItineraryModalOpen, setNewItinerayModal] = useState(false);
 
+    // Get itinerary on each render
+    getItinerarySigned().then(res => {
+        console.log("reloadItineraries");
+        if (!itineraries && res != undefined) {
+            setItineraries(res);
+        }
+    });
+
     const reload = () => {
+        setItineraries(null);
         getItinerarySigned().then(res => {
             console.log("reloadItineraries");
             if (!itineraries && res != undefined) {
                 setItineraries(res);
             }
         });
+        
     }
 
     const goToItineraryViews = () => {
@@ -34,8 +44,6 @@ export function Itinerary(props) {
         setSelected(newRadioButtonValue);
         console.log("User selected " + newRadioButtonValue);
     }
-
-    reload()
     return (
         <Container>
             <Header>
@@ -45,6 +53,9 @@ export function Itinerary(props) {
                     </Title>
                 </Body>
                 <Right>
+                    <Button transparent onPress={() => reload()}>
+                        <Icon name="refresh" />
+                    </Button>
                     <Button transparent onPress={() => setNewItinerayModal(true)}>
                         <Icon name="ios-add" />
                     </Button>
@@ -85,7 +96,10 @@ export function Itinerary(props) {
                 <Icon name="ios-add" />
             </Fab>
 
-            {newItineraryModalOpen && <CreateNewItinerary open={newItineraryModalOpen} close={() => setNewItinerayModal(false)} />}
+            {
+                newItineraryModalOpen && 
+                <CreateNewItinerary reloadItineraries={() => reload()} open={newItineraryModalOpen} close={() => setNewItinerayModal(false)} />
+            }
         </Container>
     );
 }

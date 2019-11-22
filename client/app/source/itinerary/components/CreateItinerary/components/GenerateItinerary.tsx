@@ -56,12 +56,14 @@ export default function ReviewNewItinerary(props){
             if(resp){
                 alert("Successfully created itinerary!");
                 props.closeModal();
+                props.reloadItineraries();
             } else {
                 alert("Error: Missing or invalid itinerary data. Please make sure you have entered all fields and have at least one event in your itinerary.");
             }
         })
         .catch(err => {
             console.log("Error uploading itineraries", err);
+            props.reloadItineraries();
         })
     }
     

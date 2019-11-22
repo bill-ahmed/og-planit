@@ -69,7 +69,7 @@ export default function CreateItineraryStepper(props){
         <SelectFilters itineraryInfo={itineraryInfo} updateItinerary={(newData: NewItinerary) => updateItineraryInfo(newData)}
             goNext={() => handleNextStep()} goBack={() => handlePrevStep()}/>
         ,
-        <GenerateItinerary closeModal={() => props.close()} uploadItinerary={(events: PlanitLocation[]) => uploadItinerary(events)} itineraryFilterInfo={filters}/>
+        <GenerateItinerary reloadItineraries={() => props.reloadItineraries()} closeModal={() => props.close()} uploadItinerary={(events: PlanitLocation[]) => uploadItinerary(events)} itineraryFilterInfo={filters}/>
     ];
 
     const labels = ["General Info", "Select Filters", "Generate Itinerary"];
