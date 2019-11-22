@@ -32,7 +32,7 @@ export default class Routes {
 
         this.admin.auth().createUser(userInformation)
             .then((userRecord: any) => {
-                console.log(`Created new user with ID: ${userRecord.uid}`);
+                console.log(new Date(), `Created new user with ID: ${userRecord.uid}`);
 
                 // Provision this new user a document in our db
                 try {
@@ -42,13 +42,13 @@ export default class Routes {
                     res.json(userRecord);   // Return the response back
 
                 } catch (error) {
-                    console.log(error);
+                    console.log(new Date(), error);
                     res.statusCode = 500;   // Internal error with Firestore
                     res.json(error)
                 }
             })
             .catch((error: any) => {
-                console.log(`Error creating user: ${error}`);
+                console.log(new Date(), `Error creating user: ${error}`);
                 res.statusCode = 400;   // 400 = user error caused it to fail...probably
                 res.json(error);    // Return the response back
             });
@@ -66,7 +66,6 @@ export default class Routes {
      * 
      */
     public createItineraryPOST(req: any, res: any) {
-        // console.log("New itinerary", req.body);
         res.header("Content-Type", "application/json");
 
         // Validate access token
@@ -79,7 +78,7 @@ export default class Routes {
                 const newItineraryEvents = req.body.events;
 
                 let newItineararyRef = this.db.collection('dev').doc('data').collection('users').doc(uid).collection('itineraries').add(newItinerary).then((resp: any) => {
-                    console.log("Created new itinerary for user " + uid + " with id " + resp.id);
+                    console.log(new Date(), "Created new itinerary for user " + uid + " with id " + resp.id);
 
                     // Add events to this itinerary
                     newItineraryEvents.map((elem: any) => {
@@ -122,16 +121,16 @@ export default class Routes {
             const itineraryId = req.body.itineraryId;
 
             this.db.collection('dev').doc('data').collection('users').doc(uid).collection('itineraries').doc(itineraryId).delete().then((resp: any) => {
-                console.log("Deleted itinerary doc:", itineraryId);
+                console.log(new Date(), "Deleted itinerary doc:", itineraryId);
                 this.db.collection('dev').doc('data').collection('users').doc(uid).collection('itineraries').doc(itineraryId).collection('events').get().then((resp: any[]) => {
-                    console.log("done");
+                    console.log(new Date(), "done");
                     res.statusCode = 200;
                     res.json(resp);
                 });
             });
         })
         .catch((err: any) => {
-            console.log(err);
+            console.log(new Date(), err);
             res.statusCode = 400;
             res.json(err);
         })
@@ -175,14 +174,14 @@ export default class Routes {
             let collection = this.db.collection('dev').doc('data').collection('events').get()
                 .then((snapshot: any) => {
                     snapshot.forEach((doc: any) => {
-                        console.log(doc.Name);
+                        console.log(new Date(), doc.Name);
                     });
                 });
             res.status(200).json(collection);
         }
 
         catch (error) {
-            console.log("Error retrieving events collection");
+            console.log(new Date(), "Error retrieving events collection");
             res.status(500).send('Error retrieving events collection');
         }
     }
