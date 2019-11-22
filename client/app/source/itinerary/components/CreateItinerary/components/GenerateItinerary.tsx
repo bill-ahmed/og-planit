@@ -25,8 +25,8 @@ export default function ReviewNewItinerary(props){
             if(resp){
                 // Update dates in all response data
                 resp.forEach(event => {
-                    event.StartTime = event.StartTime.toDate();
-                    event.EndTime = event.EndTime.toDate();
+                    event.StartTime = event.StartTime ? event.StartTime.toDate() : new Date();
+                    event.EndTime = event.StartTime ? event.EndTime.toDate() : new Date();
                 });
                 setEvents(resp);
                 setInitialized(true);
@@ -59,7 +59,10 @@ export default function ReviewNewItinerary(props){
             } else {
                 alert("Error: Missing or invalid itinerary data. Please make sure you have entered all fields and have at least one event in your itinerary.");
             }
-        });
+        })
+        .catch(err => {
+            console.log("Error uploading itineraries", err);
+        })
     }
     
     return(
