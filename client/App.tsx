@@ -47,9 +47,6 @@ function Main(props) {
             firebase.initializeApp(FIREBASE_CONFIG);
             setReady(true);
           }
-
-          // Continue initialiazing the app
-          //navigate('Auth');
         });
     }
 
@@ -64,10 +61,12 @@ function Main(props) {
 
     // Check if user logged in is good or not
     firebase.auth().onAuthStateChanged(user => {
+      // If user still had valid credentials, continue to home page
       if(user){
-        console.log("User is signed in already.", user);
         navigate('App');
+
       } else {
+        // Otherwise, make user authenticate again
         navigate('Auth');
       }
     });

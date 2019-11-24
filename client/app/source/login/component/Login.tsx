@@ -115,9 +115,9 @@ export default function Login(props){
                             {loading && <Spinner style={{marginTop: '5%'}} color="blue"/>}
                         </Button>
 
-                        <Button light full style={styles.button} onPress={() => props.navigation.navigate('App')}> 
+                        {/* <Button light full style={styles.button} onPress={() => props.navigation.navigate('App')}> 
                             <Text style={{color:'#1977B5', fontSize: 20, marginTop: '14%'}}>Skip Login</Text>
-                        </Button>
+                        </Button> */}
 
                         <Text style={styles.signUp}>Need an account? <Text onPress={() => setModalOpen(true)} style={{color: 'white', textDecorationLine: 'underline'}}>Sign up</Text></Text>
 
