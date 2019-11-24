@@ -29,7 +29,7 @@ function Main(props) {
   // Equivalent to this.state
   const [isReady, setReady] = useState(false);
   const { navigate } = props.navigation;  // Handle react-navigation to different screens
-  console.disableYellowBox = true;  // Disable warnings
+  console.disableYellowBox = true;  // Disable all warnings in app
 
   // Equivalent to componentDidMount()
   useEffect(() => {
@@ -59,7 +59,7 @@ function Main(props) {
 
   // If app is ready to be loaded
   if (isReady) {
-    console.disableYellowBox = true;
+    console.ignoredYellowBox = ['Setting a timer'];
 
     return (
       <View style={styles.container}/>

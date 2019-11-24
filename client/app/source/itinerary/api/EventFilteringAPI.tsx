@@ -120,7 +120,6 @@ function EventIsValid(event: any, filter: Filter): boolean {
  */
 export default async function CreateFromUserSettings(filter : Filter): Promise<any> {
     return new Promise((resolve, reject) => {
-        console.log('recieved filters:', filter)
         let startingCollection = 'prod';
 
         // If in dev environment, grab from dev db
