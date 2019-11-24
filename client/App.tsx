@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { AppLoading, } from 'expo';
-import { Text, Button } from 'native-base';
+import { Text, Button, Spinner } from 'native-base';
 import { StyleSheet, View, StatusBar } from 'react-native';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
@@ -45,10 +45,11 @@ function Main(props) {
           // Initialize Firebase, if it hasn't been already
           if(!isReady){
             firebase.initializeApp(FIREBASE_CONFIG);
+            setReady(true);
           }
 
           // Continue initialiazing the app
-          navigate('Auth');
+          //navigate('Auth');
         });
     }
 
@@ -61,8 +62,21 @@ function Main(props) {
   if (isReady) {
     console.ignoredYellowBox = ['Setting a timer'];
 
+    // Check if user logged in is good or not
+    firebase.auth().onAuthStateChanged(user => {
+      if(user){
+        console.log("User is signed in already.", user);
+        navigate('App');
+      } else {
+        navigate('Auth');
+      }
+    });
+
     return (
-      <View style={styles.container}/>
+      <View style={styles.container}>
+        <Spinner color="#1977B5" size="large"/>
+        <Text>Loading...</Text>  
+      </View>
     );
   } else {
     return (

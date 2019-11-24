@@ -20,16 +20,20 @@ export default function Login(props){
     const signIn = () => {
         setLoading(true);
 
-        // Try logging in via Firebase
-        firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(res => {
-            setLoading(false);
+        // Enable persistence, even when user closes the app and signs in again
+        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+        .then(() => {
 
-            //save userid
-            dispatch(setUserID(res.user.uid));
+            // Try logging in via Firebase
+            firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(res => {
+                setLoading(false);
 
-            // Grab the access token before continuing
-            res.user.getIdToken()
+                //save userid
+                dispatch(setUserID(res.user.uid));
+
+                // Grab the access token before continuing
+                res.user.getIdToken()
                 .then(res => {
                     // Store access token in redux store
                     dispatch(setAccessToken(res));
@@ -37,17 +41,22 @@ export default function Login(props){
                     // Go to main screen
                     props.navigation.navigate('App');
                 });
-        
+            })
+            .catch(resp => {
+                alert("Error trying to login. " + resp.message);
+                setLoading(false);
+            })
+            .catch(res => {
+                alert("Error loggin in. No additional info can be provided at the moment. Check console log for details.");
+                console.log(res);
+                setLoading(false);
+            });
+
         })
-        .catch(resp => {
-            alert("Error trying to login. " + resp.message);
-            setLoading(false);
-        })
-        .catch(res => {
-            alert("Error loggin in. No additional info can be provided at the moment. Check console log for details.");
-            console.log(res);
-            setLoading(false);
+        .catch(err => {
+            console.log("Could not trigger persistent login", err.code, err.message);
         });
+        
     }
 
     /**Update username entered by user */
