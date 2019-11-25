@@ -21,7 +21,6 @@ export function Itinerary(props) {
     getItinerarySigned().then(res => {
         console.log("reloadItineraries");
         if (!itineraries && res != undefined) {
-            alert(JSON.stringify(res));
             setItineraries(res);
         }
     });
