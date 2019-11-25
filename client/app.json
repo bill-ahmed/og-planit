@@ -34,7 +34,12 @@
     },
     "android": {
       "package": "com.og_planit.planit",
-      "googleServicesFile": "./resources/google-services.json"
+      "googleServicesFile": "./resources/google-services.json",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDUJrP0S4RMyPrK6NSPQ0Y4qsScN9ypIYw"
+        }
+      }
     }
   }
 }
