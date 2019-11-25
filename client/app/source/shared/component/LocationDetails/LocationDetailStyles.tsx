@@ -5,6 +5,7 @@ export default StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         flexDirection: 'column',
+        backgroundColor: blueTheme,
     },
     contactInfoContainer: {
         flex:1,
@@ -18,33 +19,53 @@ export default StyleSheet.create({
     textHeader:{
         fontSize: 25,
         marginTop: 40,
+        color: "white",
     },
     textBody:{
         fontSize: 20,
+        color: "white"
     },
     criticalInfo:{
         marginTop:10,
         fontSize: 20,
-        color: "grey",
+        color: "#a0a3a2",
     },
     eventHeader:{
         fontSize: 28,
-        color: blueTheme,
+        color: "white",
         fontWeight: 'bold',
     },
     iconStyle: {
-        color: blueTheme
+        color: "white",
     },
     bodyContainer: {
         flex:1,
         justifyContent: 'center',
         flexDirection: 'column',
-        paddingLeft: 10
+        paddingLeft: 10,
+        backgroundColor: blueTheme,
     },
     titleRating: {
         flex:1,
         justifyContent: 'space-between',
         flexDirection: 'row',
+        marginTop: 30,
+        elevation: 10,
+    },
+    backgroundStyle: {
+        backgroundColor: blueTheme
+    },
+    imageContainer:{
+        backgroundColor: blueTheme,
+        shadowColor:'black',
+        shadowOffset:{width: 10, height: 10},
+        shadowRadius: 10,
+        elevation: 15,
+    },
+    imageModalContainer:{
+        backgroundColor: "black",
+        flex:1,
+        justifyContent: 'center',
     }
 });
 // import { StyleSheet, Dimensions } from 'react-native'

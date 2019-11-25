@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Text, View, Container, Header, Left, Button, Icon, Title, Right, Body, Content, Form } from 'native-base';
 import { TextInput } from 'react-native-gesture-handler';
 import styles from './LocationDetailStyles';
-import { Modal, FlatList, Dimensions, Image } from 'react-native';
+import { Modal, FlatList, Dimensions, Image, TouchableOpacity } from 'react-native';
 import { PlanitLocation, Address } from '../../../itinerary/models/location';
 import {Rating} from 'react-native-ratings';
 import CreateRatingStyles from '../../../itinerary/components/ratings/CreateRatingStyles';
@@ -21,6 +21,13 @@ export default function LocationDetails(props) {
             </Text>
         </View>
     const imgWidth = Dimensions.get('window').width;
+
+    const [imageModalOpen, setImageModal] = useState(false);
+    const setImageModalOpen = (val: boolean) => {
+        setImageModal(val);
+
+    }
+
     return (
         <Modal animationType="slide" transparent={false} visible={props.open} presentationStyle="overFullScreen" onRequestClose={() => props.setModal(false)}>
             <View style={styles.container}>
@@ -40,12 +47,14 @@ export default function LocationDetails(props) {
                     </Header>
 
                     {/* Main body content */}
-                    <Content>
-                        <View style={styles.container}>
-                            <Image
-                                style={{ width: imgWidth, height: imgWidth / 1.5, marginTop: 0 }}
-                                source={{ uri: data.imageURL }}
-                            />
+                    <Content style={styles.backgroundStyle}>
+                        <View style={styles.imageContainer}>
+                            <TouchableOpacity onPress={() => setImageModalOpen(true)}>
+                                <Image
+                                    style={{ width: imgWidth, height: imgWidth / 3, }}
+                                    source={{ uri: data.imageURL }}
+                                />
+                            </TouchableOpacity>
                         </View>
 
 
@@ -93,6 +102,17 @@ export default function LocationDetails(props) {
                     </Content>
                 </Container>
             </View>
+            {imageModalOpen &&
+                <Modal animationType="fade" transparent={false} visible={props.open} presentationStyle="overFullScreen" onRequestClose={() => setImageModal(false)} >
+                    <View style={styles.imageModalContainer}>
+                        <Image
+                            style={{ width: imgWidth, height: imgWidth }}
+                            source={{ uri: data.imageURL }}
+                        />
+                    </View>
+                    
+                </Modal>
+            }
         </Modal>
     );
 
