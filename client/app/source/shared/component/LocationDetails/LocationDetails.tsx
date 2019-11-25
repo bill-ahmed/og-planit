@@ -105,6 +105,10 @@ export default function LocationDetails(props) {
             {imageModalOpen &&
                 <Modal animationType="fade" transparent={false} visible={props.open} presentationStyle="overFullScreen" onRequestClose={() => setImageModal(false)} >
                     <View style={styles.imageModalContainer}>
+                            <Button transparent onPress={() => setImageModalOpen(false)}>
+                                <Icon name='close' type='Ionicons' />
+                            </Button>
+
                         <Image
                             style={{ width: imgWidth, height: imgWidth }}
                             source={{ uri: data.imageURL }}
