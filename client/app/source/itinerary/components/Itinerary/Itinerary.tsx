@@ -54,7 +54,7 @@ export function Itinerary(props) {
         <Container>
             <Header>
                 <Body>
-                    <Title>
+                    <Title style={styles.title}>
                         Itinerary Page
                     </Title>
                 </Body>
@@ -77,7 +77,7 @@ export function Itinerary(props) {
                             <Text style={{ fontSize: 25 }}> {element.name} </Text>
                         </CardItem>
                         <CardItem style={{ flexDirection: 'row-reverse' }}>
-                            <Icon name="map" onPress={() => navigate("GMap", { data: element })} />
+                            <Icon name="map" onPress={() => navigate("GMap", { data: element })} color="backgroundBlue"/>
                         </CardItem>
                         <CardItem button onPress={() => console.log(`Clicked the description of ${element.name}!`) /* carlos replace with yours*/}>
                             <Body>

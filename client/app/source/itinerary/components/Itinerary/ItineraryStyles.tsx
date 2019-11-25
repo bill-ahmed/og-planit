@@ -2,6 +2,10 @@ import { StyleSheet } from 'react-native'
 
 const backgroundBlue = '#1977B5';
 export default StyleSheet.create({
+    title:{
+        color: '#5f9ea0',
+        backgroundColor: "#ffffff"
+    },
     container: {
         flex: 1,
         justifyContent: 'center',
