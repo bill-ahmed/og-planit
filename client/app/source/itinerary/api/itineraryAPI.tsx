@@ -71,6 +71,7 @@ export async function getItinerarySigned(filterFn: (itin: Itinerary) => boolean 
             })
         })
             .catch((err: any) => {
+                alert(JSON.stringify(err));
                 console.log("Error getting document", err);
                 reject(err);
             });
