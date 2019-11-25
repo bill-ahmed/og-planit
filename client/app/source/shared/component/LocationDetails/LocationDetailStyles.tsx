@@ -10,6 +10,7 @@ export default StyleSheet.create({
     contactInfoContainer: {
         flex:1,
         paddingRight: 10,
+        marginBottom: 5,
         justifyContent: 'flex-start',
         flexDirection: 'row',
     },
@@ -23,12 +24,12 @@ export default StyleSheet.create({
     },
     textBody:{
         fontSize: 20,
-        color: "white"
+        color: "#C4C7C6",
     },
     criticalInfo:{
-        marginTop:10,
+        marginTop: 5,
         fontSize: 20,
-        color: "#a0a3a2",
+        color: "white",
     },
     eventHeader:{
         fontSize: 28,
@@ -37,6 +38,10 @@ export default StyleSheet.create({
     },
     iconStyle: {
         color: "white",
+    },
+    iconStyle2: {
+        color: "white",
+        marginLeft: 3
     },
     bodyContainer: {
         flex:1,
@@ -49,6 +54,7 @@ export default StyleSheet.create({
         flex:1,
         justifyContent: 'space-between',
         flexDirection: 'row',
+        marginRight: 15,
         marginTop: 30,
         elevation: 10,
     },

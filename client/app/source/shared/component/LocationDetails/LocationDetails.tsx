@@ -70,12 +70,21 @@ export default function LocationDetails(props) {
                             </View>
                             
                             <Text style={styles.criticalInfo}>
-                                {"Pricing: $" + data.AvgPrice + "\nAccomodation: up to " + data.GroupSize + " people" + 
-                                "\nAverage Time Spent: " + data.AvgTimeSpent + " hours" +
-                                "\nStart Time: " + data.StartTime.toTimeString() + 
-                                "\nEnd Time: " + data.EndTime.toTimeString()}
+                                {"Pricing: $" + data.AvgPrice}
                             </Text>
-                            
+                            <Text style={styles.criticalInfo}>
+                                {"Accomodation: up to " + data.GroupSize + " people"}
+                            </Text>
+                            <Text style={styles.criticalInfo}>
+                                {"Average Time Spent: " + data.AvgTimeSpent + " hours"}
+                            </Text>
+                            <Text style={styles.criticalInfo}>
+                                {"Start Time: " + data.StartTime.toTimeString()}
+                            </Text>
+                            <Text style={styles.criticalInfo}>
+                                {"End Time: " + data.EndTime.toTimeString()}
+                            </Text>
+
                             <Text style={styles.textHeader}>About:</Text>
                             {data.Description && <Text style={styles.textBody}>{data.Description}</Text>}
                             {data.Description && <Text style={styles.textHeader}>Contact information:</Text>}
@@ -93,7 +102,7 @@ export default function LocationDetails(props) {
                             
                             {data.Address &&
                             <View style={styles.contactInfoContainer}>
-                                <Icon name='map-marker' style={styles.iconStyle} type="FontAwesome" />
+                                <Icon name='map-marker' style={styles.iconStyle2} type="FontAwesome" />
                                 <Text style={styles.textBody}>   Address: {`${data.Address.Number} ${data.Address.Street}, ${data.Address.City} ${data.Address.Province}, ${data.Address.Country}`}</Text>
                             </View>}
                         </View>
