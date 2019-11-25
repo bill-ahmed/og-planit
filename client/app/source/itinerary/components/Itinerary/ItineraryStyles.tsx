@@ -4,7 +4,8 @@ const backgroundBlue = '#1977B5';
 export default StyleSheet.create({
     title:{
         color: '#5f9ea0',
-        backgroundColor: "#ffffff"
+        backgroundColor: "#ffffff",
+        fontSize: 24
     },
     container: {
         flex: 1,
