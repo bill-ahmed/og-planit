@@ -32,11 +32,8 @@ async function getItineraryEvents(db, startingCollection, uid, itinID): Promise<
 }
 
 export async function getItinerarySigned(filterFn: (itin: Itinerary) => boolean = (itin) => true): Promise<Itinerary[]> {
-    let startingCollection = 'prod';
-    // If in dev environment, grab from dev db
-    if (__DEV__) {
-        startingCollection = 'dev';
-    }
+    let startingCollection = 'dev';
+
     // Reference to firestore db
     var db = firebase.firestore();
     const uid = useSelector(state => state['UserInfo']['uid']);
