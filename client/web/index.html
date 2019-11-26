@@ -63,6 +63,14 @@
       }
     </script>
 
+    <script>
+
+      var isMobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)
+      if(!isMobile){
+        window.location.pathname = 'error.html';
+      }
+    </script>
+
     <!-- Google Maps Javascript API (for Web ONLY) -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG9yETHLJa6e-1kz5_WeWNSMPKDYY27js"></script>
   </body>
