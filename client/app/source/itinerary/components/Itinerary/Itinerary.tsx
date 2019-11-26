@@ -94,6 +94,7 @@ export function Itinerary(props) {
             </View>
 
             <ScrollView contentContainerStyle={styles.content}>
+                <Text/>
                 {!itineraries && <Spinner color='blue' />}
                 {itineraries && itineraries.map((element: ItineraryModel, index) => {
                     return (
@@ -135,6 +136,10 @@ export function Itinerary(props) {
                         </CardItem>
                     </Card>);
                 })}
+                <Text/>
+                <Text/>
+                <Text/>
+                <Text/>
             </ScrollView>
 
             <Fab
