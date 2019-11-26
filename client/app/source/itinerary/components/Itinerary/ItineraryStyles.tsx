@@ -12,6 +12,19 @@ export default StyleSheet.create({
         flexDirection: 'row',
         padding: 20,
     },
+    header: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: 'white',
+        padding: 10,
+        marginBottom: 15,
+    },
+    heading: {
+        fontSize: 28,
+        color: backgroundBlue
+    },
     content: {
         width: "100%",
         padding: 5

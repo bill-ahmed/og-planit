@@ -82,46 +82,51 @@ export function Itinerary(props) {
 
     return (
         <Container>
-            <Header>
-                <Body>
-                    <Title style={styles.title}>
-                        My Itineraries
-                    </Title>
-                </Body>
-                <Right>
-                    <Button transparent onPress={() => reload()}>
-                        <Icon name="refresh" style={{fontSize: 32}} />
-                    </Button>
-                </Right>
-            </Header>
+            {/* Header content */}
+            <View style={styles.header}>
+                <Text style={styles.heading}>
+                    My Itineraries
+                </Text>
+
+                <Button disabled={!itineraries} transparent onPress={() => reload()}>
+                    <Icon name="refresh" style={{fontSize: 32, color: backgroundBlue}} />
+                </Button>
+            </View>
 
             <ScrollView contentContainerStyle={styles.content}>
                 {!itineraries && <Spinner color='blue' />}
                 {itineraries && itineraries.map((element: ItineraryModel, index) => {
                     return (
                     <Card style={{marginBottom: 20}} key={index}>
-                        <CardItem button cardBody onPress={() => navigate("ViewItineraryEvents", { data: element })}>
-                            <Image source={{uri: getRandomEvent(element.events).imageURL}} style={{height: 200, width: null, flex: 1}}/>
-                        </CardItem>
+                        <TouchableOpacity onPress={() => navigate("ViewItineraryEvents", { data: element })}>
 
-                        <CardItem header button onPress={() => navigate("ViewItineraryEvents", { data: element })}>
-                            <Text style={styles.cardHeader}> {element.name} </Text>
-                        </CardItem>
+                            {/* Image for this itinerary */}
+                            <CardItem cardBody>
+                                <Image source={{uri: getRandomEvent(element.events).imageURL}} style={{height: 200, width: null, flex: 1}}/>
+                            </CardItem>
 
-                        <CardItem button onPress={() => navigate("ViewItineraryEvents", { data: element })}>
-                            <Body>
-                                {element.events && 
-                                <Text style={styles.itineraryBody}> <Bold>Events: </Bold>{element.events.length}</Text>
-                                }
-                                <Text style={styles.itineraryBody}> <Bold>Starts: </Bold> {getEarliestEventInItinerary(element.events).StartTime.toLocaleString()}</Text>
-                                <Text style={styles.itineraryBody}> <Bold>Ends: </Bold>{getLatestEventInItinerary(element.events).EndTime.toLocaleString()} </Text>
-                                {element.last_edit_time && 
-                                <Text style={styles.itineraryBody}> <Bold>Last Edited: </Bold>{element.last_edit_time.toLocaleString().substring(0, 10)}</Text>
-                                }
-                                <Right/>
-                            </Body>
-                        </CardItem>
+                            {/* Itinerary Name */}
+                            <CardItem>
+                                <Text style={styles.cardHeader}> {element.name} </Text>
+                            </CardItem>
 
+                            {/* Summary details for itinerary */}
+                            <CardItem>
+                                <Body>
+                                    {element.events && 
+                                    <Text style={styles.itineraryBody}> <Bold>Events: </Bold>{element.events.length}</Text>
+                                    }
+                                    <Text style={styles.itineraryBody}> <Bold>Starts: </Bold> {getEarliestEventInItinerary(element.events).StartTime.toLocaleString()}</Text>
+                                    <Text style={styles.itineraryBody}> <Bold>Ends: </Bold>{getLatestEventInItinerary(element.events).EndTime.toLocaleString()} </Text>
+                                    {element.last_edit_time && 
+                                    <Text style={styles.itineraryBody}> <Bold>Last Edited: </Bold>{element.last_edit_time.toLocaleString().substring(0, 10)}</Text>
+                                    }
+                                    <Right/>
+                                </Body>
+                            </CardItem>
+                        </TouchableOpacity>
+                        
+                        {/* Footer content */}
                         <CardItem bordered footer style={{ flexDirection: 'row-reverse', justifyContent: "space-between" }}>
                             <Button style={styles.iconButton} transparent bordered iconLeft onPress={() => navigate("GMap", { data: element })}>
                                 <Icon name="map" style={{color: backgroundBlue, fontSize: 28}}/>
