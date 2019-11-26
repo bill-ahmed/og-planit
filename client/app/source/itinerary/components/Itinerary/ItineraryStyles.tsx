@@ -16,6 +16,10 @@ export default StyleSheet.create({
         width: "100%",
         padding: 5
     },
+    cardHeader: {
+        fontSize: 25,
+        color: backgroundBlue
+    },
     button: {
         flex: 1,
         justifyContent: "center",

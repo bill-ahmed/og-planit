@@ -99,17 +99,16 @@ export function Itinerary(props) {
                 {!itineraries && <Spinner color='blue' />}
                 {itineraries && itineraries.map((element: ItineraryModel, index) => {
                     return (
-                    <Card key={index}>
-                        <CardItem header button onPress={() => navigate("ViewItineraryEvents", { data: element })}>
-                            {/* <Thumbnail source={require('./../../../login/assets/earth.png')} style={{maxWidth:30, maxHeight:30}}></Thumbnail> */}
-                            <Text style={{ fontSize: 25 }}> {element.name} </Text>
-                        </CardItem>
-
-                        <CardItem cardBody>
+                    <Card style={{marginBottom: 20}} key={index}>
+                        <CardItem button cardBody onPress={() => navigate("ViewItineraryEvents", { data: element })}>
                             <Image source={{uri: getRandomEvent(element.events).imageURL}} style={{height: 200, width: null, flex: 1}}/>
                         </CardItem>
 
-                        <CardItem>
+                        <CardItem header button onPress={() => navigate("ViewItineraryEvents", { data: element })}>
+                            <Text style={styles.cardHeader}> {element.name} </Text>
+                        </CardItem>
+
+                        <CardItem button onPress={() => navigate("ViewItineraryEvents", { data: element })}>
                             <Body>
                                 {element.events && 
                                 <Text style={styles.itineraryBody}> <Bold>Events: </Bold>{element.events.length}</Text>
