@@ -2,18 +2,18 @@ import React, { useState } from 'react';
 import { Container, Header, Left, Right, Body, Title, Content, Button, Icon, Subtitle, Card, CardItem, Radio, Spinner, Fab, Thumbnail } from 'native-base';
 
 //import styles from './ItineraryStyles';
-import { View, Text, Image, ScrollView } from 'react-native';
+import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { getItinerarySigned } from '../../api/itineraryAPI';
-import { Itinerary as ItineraryModel } from './../../models/location';
+import { Itinerary as ItineraryModel, PlanitLocation } from './../../models/location';
 import CreateNewItinerary from '../CreateItinerary/components/CreateItineraryStepper';
-import styles from './ItineraryStyles';
+import styles, {backgroundBlue} from './ItineraryStyles';
 
 //App stack to go from list of itineraries --> specific itinerary
 // const itineraries=require("./../../models/MockItineraryList.json");
 
 export function Itinerary(props) {
     const { navigate } = props.navigation;    // Handle navigations
-    const [itineraries, setItineraries] = useState(null);
+    const [itineraries, setItineraries] = useState<ItineraryModel[]>(null);
     const [selected, setSelected] = useState(-1);
     const [newItineraryModalOpen, setNewItinerayModal] = useState(false);
 
@@ -35,62 +35,118 @@ export function Itinerary(props) {
         });
         
     }
+    
+    /**Get the earliest event in an itinerary 
+     * @param events The list of events to search in. MUST BE NON-EMPTY.
+     * @returns The event with the earliest start time in given itinerary
+    */
+    const getEarliestEventInItinerary = (events: PlanitLocation[]): PlanitLocation => {
+        var result = events[0]; // Base case, only one event exists
 
-    const goToItineraryViews = () => {
-        navigate(/* carlos' part */);
+        for(let i=0; i < events.length; i++){
+            if(events[i].StartTime < result.StartTime){
+                result = events[i]
+            }
+        }
+        return result;
     }
 
-    const handleRadioButtonChange = (newRadioButtonValue: number) => {
-        setSelected(newRadioButtonValue);
-        console.log("User selected " + newRadioButtonValue);
+    /**Get the latest event in an itinerary 
+     * @param events The list of events to search in. MUST BE NON-EMPTY.
+     * @returns The event with the latest end time in given itinerary
+    */
+   const getLatestEventInItinerary = (events: PlanitLocation[]): PlanitLocation => {
+        var result = events[0]; // Base case, only one event exists
+
+        for(let i=0; i < events.length; i++){
+            if(events[i].EndTime > result.EndTime){
+                result = events[i]
+            }
+        }
+        return result;
     }
+
+    /**Get a random integer between min and max */
+    function getRndInteger(min: number, max: number) {
+        return Math.floor(Math.random() * (max - min) ) + min;
+    }
+
+    /**Given a list of events, return a random one */
+    const getRandomEvent = (events: PlanitLocation[]): PlanitLocation => {
+        var index = getRndInteger(0, events.length);
+        return events[index];
+    }
+
+    /**Bold text more easily */
+    const Bold = (props) => <Text style={{...props.style, fontWeight: 'bold'}}>{props.children}</Text>
+
     return (
         <Container>
-            <Header>
-                <Body>
-                    <Title>
-                        Itinerary Page
-                    </Title>
-                </Body>
-                <Right>
-                    <Button transparent onPress={() => reload()}>
-                        <Icon name="refresh" />
-                    </Button>
-                    <Button transparent onPress={() => setNewItinerayModal(true)}>
-                        <Icon name="ios-add" />
-                    </Button>
-                </Right>
-            </Header>
+            {/* Header content */}
+            <View style={styles.header}>
+                <Text style={styles.heading}>
+                    My Itineraries
+                </Text>
 
-            <ScrollView>
+                <Button disabled={!itineraries} transparent onPress={() => reload()}>
+                    <Icon name="refresh" style={{fontSize: 32, color: backgroundBlue}} />
+                </Button>
+            </View>
+
+            <ScrollView contentContainerStyle={styles.content}>
+                <Text/>
                 {!itineraries && <Spinner color='blue' />}
                 {itineraries && itineraries.map((element: ItineraryModel, index) => {
-                    return (<Card key={index}>
-                        <CardItem header button onPress={() => navigate("ViewItineraryEvents", { data: element })}>
-                            {/* <Thumbnail source={require('./../../../login/assets/earth.png')} style={{maxWidth:30, maxHeight:30}}></Thumbnail> */}
-                            <Text style={{ fontSize: 25 }}> {element.name} </Text>
-                        </CardItem>
-                        <CardItem style={{ flexDirection: 'row-reverse' }}>
-                            <Icon name="map" onPress={() => navigate("GMap", { data: element })} />
-                        </CardItem>
-                        <CardItem button onPress={() => console.log(`Clicked the description of ${element.name}!`) /* carlos replace with yours*/}>
-                            <Body>
-                                {element.events && <Text>Number of Events: {element.events.length}</Text>}
-                                {element.last_edit_time && <Text>Last Edited: {element.last_edit_time.toLocaleString()}</Text>}
-                                <Right>
+                    return (
+                    <Card style={{marginBottom: 20}} key={index}>
+                        <TouchableOpacity onPress={() => navigate("ViewItineraryEvents", { data: element })}>
 
-                                </Right>
-                            </Body>
+                            {/* Image for this itinerary */}
+                            <CardItem cardBody>
+                                <Image source={{uri: getRandomEvent(element.events).imageURL}} style={{height: 200, width: null, flex: 1}}/>
+                            </CardItem>
+
+                            {/* Itinerary Name */}
+                            <CardItem>
+                                <Text style={styles.cardHeader}> {element.name} </Text>
+                            </CardItem>
+
+                            {/* Summary details for itinerary */}
+                            <CardItem>
+                                <Body>
+                                    {element.events && 
+                                    <Text style={styles.itineraryBody}> <Bold>Events: </Bold>{element.events.length}</Text>
+                                    }
+                                    <Text style={styles.itineraryBody}> <Bold>Starts: </Bold> {getEarliestEventInItinerary(element.events).StartTime.toLocaleString()}</Text>
+                                    <Text style={styles.itineraryBody}> <Bold>Ends: </Bold>{getLatestEventInItinerary(element.events).EndTime.toLocaleString()} </Text>
+                                    {element.last_edit_time && 
+                                    <Text style={styles.itineraryBody}> <Bold>Last Edited: </Bold>{element.last_edit_time.toLocaleString().substring(0, 10)}</Text>
+                                    }
+                                    <Right/>
+                                </Body>
+                            </CardItem>
+                        </TouchableOpacity>
+                        
+                        {/* Footer content */}
+                        <CardItem bordered footer style={{ flexDirection: 'row-reverse', justifyContent: "space-between" }}>
+                            <Button style={styles.iconButton} transparent bordered iconLeft onPress={() => navigate("GMap", { data: element })}>
+                                <Icon name="map" style={{color: backgroundBlue, fontSize: 28}}/>
+                                <Text style={{color: backgroundBlue}}>Map</Text>
+                            </Button>
                         </CardItem>
                     </Card>);
                 })}
+                <Text/>
+                <Text/>
+                <Text/>
+                <Text/>
             </ScrollView>
 
             <Fab
                 active={false}
                 direction="up"
                 containerStyle={{}}
-                style={styles.blue}
+                style={styles.fab}
                 position="bottomRight"
                 onPress={() => setNewItinerayModal(true)}>
                 <Icon name="ios-add" />
