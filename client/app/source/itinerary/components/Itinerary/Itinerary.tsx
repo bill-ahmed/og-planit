@@ -7,6 +7,7 @@ import { getItinerarySigned } from '../../api/itineraryAPI';
 import { Itinerary as ItineraryModel } from './../../models/location';
 import CreateNewItinerary from '../CreateItinerary/components/CreateItineraryStepper';
 import styles from './ItineraryStyles';
+import { Platform } from '@unimodules/core';
 
 //App stack to go from list of itineraries --> specific itinerary
 // const itineraries=require("./../../models/MockItineraryList.json");
@@ -44,6 +45,10 @@ export function Itinerary(props) {
         setSelected(newRadioButtonValue);
         console.log("User selected " + newRadioButtonValue);
     }
+
+    // Check if user is in android/iOS platform so we can restrict write operations
+    const mobilePlatform = Platform.OS === "android" || Platform.OS === "ios";
+    
     return (
         <Container>
             <Header>
@@ -56,9 +61,11 @@ export function Itinerary(props) {
                     <Button transparent onPress={() => reload()}>
                         <Icon name="refresh" />
                     </Button>
+
+                    {mobilePlatform && 
                     <Button transparent onPress={() => setNewItinerayModal(true)}>
                         <Icon name="ios-add" />
-                    </Button>
+                    </Button>}
                 </Right>
             </Header>
 
@@ -86,7 +93,8 @@ export function Itinerary(props) {
                 })}
             </ScrollView>
 
-            <Fab
+            {Platform.OS==="android" && 
+             <Fab
                 active={false}
                 direction="up"
                 containerStyle={{}}
@@ -95,7 +103,7 @@ export function Itinerary(props) {
                 onPress={() => setNewItinerayModal(true)}>
                 <Icon name="ios-add" />
             </Fab>
-
+}
             {
                 newItineraryModalOpen && 
                 <CreateNewItinerary reloadItineraries={() => reload()} open={newItineraryModalOpen} close={() => setNewItinerayModal(false)} />

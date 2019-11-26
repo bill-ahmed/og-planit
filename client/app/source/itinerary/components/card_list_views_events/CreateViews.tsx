@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 import { Container, Header, Left, Right, Body, Title, Subtitle, Content, Button, Icon, View, Spinner } from 'native-base';
 
 import styles from './CreateViewsStyles';
-import { Text, ScrollView, TextInput, TouchableOpacity, ColorPropType } from 'react-native';
+import { Text, ScrollView, TextInput, TouchableOpacity, ColorPropType, Platform } from 'react-native';
 import { Card, Input, Overlay } from 'react-native-elements';
 import LocationDetails from '../../../shared/component/LocationDetails/LocationDetails';
 import EventsSelector from '../eventsSelector/eventsSelector';
@@ -127,6 +127,9 @@ export default function CreateViews(props) {
         saveBackup();
     }
 
+    // Check if user is in android/iOS platform so we can restrict write operations
+    const mobilePlatform = Platform.OS === "android" || Platform.OS === "ios";
+
     return (
         <Container>
             <Header>
@@ -146,7 +149,8 @@ export default function CreateViews(props) {
                     {editFields && <Button onPress={() => discardChanges()}>
                         <Icon name="ios-close" />
                     </Button>}
-                    {!editFields && <Button onPress={() => setEditFields(true)}>
+                    {!editFields && mobilePlatform && 
+                    <Button onPress={() => setEditFields(true)}>
                         <Icon name="create" />
                     </Button>}
                 </Right>}
