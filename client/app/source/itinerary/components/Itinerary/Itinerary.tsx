@@ -7,7 +7,7 @@ import { getItinerarySigned } from '../../api/itineraryAPI';
 import { Itinerary as ItineraryModel } from './../../models/location';
 import CreateNewItinerary from '../CreateItinerary/components/CreateItineraryStepper';
 import styles from './ItineraryStyles';
-import { Platform } from '@unimodules/core';
+import { Platform } from 'react-native';
 
 //App stack to go from list of itineraries --> specific itinerary
 // const itineraries=require("./../../models/MockItineraryList.json");

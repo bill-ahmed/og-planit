@@ -81,7 +81,6 @@ export default function Login(props){
     return(
 
         <View style={styles.container}>
-            <Container>
 
                 <Content contentContainerStyle={styles.content} padder>
 
@@ -123,7 +122,6 @@ export default function Login(props){
 
                     </Form>
                 </Content>
-            </Container>
             {signUpModalOpen && <SignUp open={signUpModalOpen} setModal={setModalOpen}/>}
             {resetPasswordModalOpen && <ResetPassword open={resetPasswordModalOpen} closeDialog={() => toggleResetPasswordModalOpen(false)}/>}
         </View>
