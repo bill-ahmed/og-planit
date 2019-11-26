@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>284696753916-gv1ob2u16455qs8hundm3tmgd68m47gv.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.284696753916-gv1ob2u16455qs8hundm3tmgd68m47gv</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>284696753916-jl86tjcmq5328uuqot7q3rj779htktk6.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDhp3dtYHBIxFOPZ6Zq3hqNghxLIzhPgTo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>284696753916</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.planit.OGPlanit</string>
+	<key>PROJECT_ID</key>
+	<string>og-planit</string>
+	<key>STORAGE_BUCKET</key>
+	<string>og-planit.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:284696753916:ios:f3f96884d56ed9e14a0979</string>
+	<key>DATABASE_URL</key>
+	<string>https://og-planit.firebaseio.com</string>
+</dict>
+</plist>
