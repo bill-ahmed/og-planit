@@ -59,16 +59,18 @@ export default function LocationDetails(props) {
 
 
                         <View style={styles.bodyContainer}>
-                            <View style={styles.titleRating}>
+                            <View style={styles.eventTitle}>
                                 {data.Name && <Text style={styles.eventHeader}>{data.Name}</Text>}
-
-                                <Rating
-                                    readonly
-                                    startingValue={getRndInteger(1,5)}
-                                    imageSize={28}
-                                />
                             </View>
                             
+                            <View style={styles.ratingStyle}>
+                                <Rating
+                                        readonly
+                                        startingValue={getRndInteger(1,5)}
+                                        imageSize={28}
+                                />
+                            </View>
+
                             <Text style={styles.criticalInfo}>
                                 {"Pricing: $" + data.AvgPrice}
                             </Text>

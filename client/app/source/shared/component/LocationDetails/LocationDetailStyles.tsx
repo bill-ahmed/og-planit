@@ -50,13 +50,19 @@ export default StyleSheet.create({
         paddingLeft: 10,
         backgroundColor: blueTheme,
     },
-    titleRating: {
+    eventTitle: {
         flex:1,
         justifyContent: 'space-between',
         flexDirection: 'row',
         marginRight: 15,
         marginTop: 30,
         elevation: 10,
+    },
+    ratingStyle:{
+        flex:1,
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+        marginBottom: 5,
     },
     backgroundStyle: {
         backgroundColor: blueTheme
