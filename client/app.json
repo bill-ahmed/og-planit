@@ -24,7 +24,22 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.planit.OGPlanit",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "284696753916-gv1ob2u16455qs8hundm3tmgd68m47gv.apps.googleusercontent.com"
+        }
+      }
+    },
+    "android": {
+      "package": "com.og_planit.planit",
+      "googleServicesFile": "./resources/google-services.json",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDUJrP0S4RMyPrK6NSPQ0Y4qsScN9ypIYw"
+        }
+      }
     }
   }
 }

@@ -17,7 +17,6 @@ function Home(props){
     const {navigate} = props.navigation;    // Handle navigations
 
     const dispatch = useDispatch();
-    console.log(uid);
 
     /**Logout the current user, and go to AuthLoading navigator. */
     const logout = () => {
@@ -25,7 +24,6 @@ function Home(props){
         .then(res => {
             // Navigate to start of application
             navigate('Auth');
-            console.log("inside signout");
         })
         .catch(err => {
             alert("Error logging out. Check console for details");
@@ -42,7 +40,6 @@ function Home(props){
     }
 
     const getToken = () => {
-        console.log(accessToken);
         setToken(accessToken);
     }
 

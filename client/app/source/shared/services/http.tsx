@@ -1,10 +1,9 @@
 import { Subject, Observable } from 'rxjs';
-
-const ENDPOINT = 'http://192.168.0.26:4000/';  // MUST BE YOUR IP ADDRESS ON LOCAL NETWORK!!
+import globalVariables from '../../../../global';
 
 export function httpGet(uri: string, body?: any, header?: any): Subject<any> {
     return Observable.create((obs:Subject<any>) => {
-        fetch(ENDPOINT+uri, {method: 'GET', headers: header, body: body}).then(
+        fetch(globalVariables.ENDPOINT+uri, {method: 'GET', headers: header, body: body}).then(
             success => {
                 obs.next(success);
             },
@@ -17,7 +16,7 @@ export function httpGet(uri: string, body?: any, header?: any): Subject<any> {
 
 export function httpPost(uri: string, body: any, header?: any): Subject<any> {
     return Observable.create((obs:Subject<any>) => {
-        fetch(ENDPOINT+uri, {method: 'POST', headers: header, body: JSON.stringify(body)}).then(
+        fetch(globalVariables.ENDPOINT+uri, {method: 'POST', headers: header, body: JSON.stringify(body)}).then(
             success => {
                 obs.next(success);
             },
