@@ -8,12 +8,7 @@ require("firebase/firestore");
  * @returns A Promise for get request to Firestore
 */
 export async function GetUserInfo(uid: string){
-    let startingCollection = 'prod';
-
-    // If in dev environment, grab from dev db
-    if(__DEV__){
-        startingCollection = 'dev';
-    }
+    let startingCollection = 'dev';
 
     // Reference to firestore db
     var db = firebase.firestore();

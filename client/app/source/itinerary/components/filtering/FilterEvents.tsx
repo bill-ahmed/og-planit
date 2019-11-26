@@ -20,7 +20,6 @@ export default function FilterEvents(props){
     const[isChecked, setChecked] = useState([]);
     const getChecked = (newChecked) => {
         setChecked(newChecked);
-        // console.log(isChecked);
     }
 
 
@@ -134,15 +133,11 @@ export default function FilterEvents(props){
                                         let temp = isChecked
                                         temp.splice(index, 1)
                                         setChecked(temp)
-                                        console.log(temp)
-                                        console.log("ISCHECKED: ", isChecked)
                                     }
                                     else{
                                         let temp = isChecked
                                         temp.push(category.Type)
                                         setChecked(temp)
-                                        console.log(temp)
-                                        console.log("ISCHECKED: ", isChecked)
                                     }
                                 }}
                             />
