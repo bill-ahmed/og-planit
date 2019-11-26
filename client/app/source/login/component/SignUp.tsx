@@ -43,7 +43,7 @@ export default function SignUp(props){
             })
         }
 
-        fetch(`${globalVariables.ENDPOINT}/createUser`, options)
+        fetch(`${globalVariables.ENDPOINT}createUser`, options)
         .then(resp => resp.json())
         .then(resp => {
             alert("Succesfully signed up!You may login now.");

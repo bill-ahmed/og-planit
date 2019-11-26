@@ -114,7 +114,7 @@ export default function CreateItineraryStepper(props){
 
             // First, validate the data
             if(body.itineraryDetails.name !== "" && body.events.length !== 0){
-                fetch(`${globalVariables.ENDPOINT}/createItinerary`, options)
+                fetch(`${globalVariables.ENDPOINT}createItinerary`, options)
                 .then(resp => {
                     resolve(resp.ok);
                 })
