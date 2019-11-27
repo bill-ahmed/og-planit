@@ -51,7 +51,12 @@ function Home(props){
     if(!currentItinerary){
         getCurrItinerary()
         .then((resp) => {
+            console.log("got itineraries", resp);
             setCurrentItinerary(resp);
+        })
+        .catch(err => {
+            console.log(err);
+            setCurrentItinerary([]);
         });
     }
 
@@ -109,6 +114,10 @@ function Home(props){
                     );
                 })
                 }
+
+                {currentItinerary && currentItinerary.length === 0 && 
+                    <Text>Looks like you don't have any upcoming itineraries. Create one in the Itinerary tab below.</Text>
+                }
             </Content>
             {eventDetailsModalOpen && <LocationDetails location={modalDetails} open={eventDetailsModalOpen} setModal={setDetailsModal} />}
         </Container>
@@ -164,6 +173,7 @@ async function getCurrentItinerary (uid, CurrID): Promise<PlanitLocation[]> {
             resolve(events);
         })
         .catch(resp => {
+            console.log("error getting itinerary", resp);
             reject([]);     // Error ocurred while trying to get events, return empty array
         }); 
     });
