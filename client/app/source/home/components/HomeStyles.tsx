@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+export const backgroundBlue = '#1977B5';
 
 export default StyleSheet.create({
     container: {
@@ -9,6 +10,19 @@ export default StyleSheet.create({
     },
     button: {
         marginBottom: 30,
+    },
+    header: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: 'white',
+        padding: 10,
+        marginBottom: 15,
+    },
+    heading: {
+        fontSize: 28,
+        color: backgroundBlue
     },
     eventHeader:{
         fontWeight: 'bold',

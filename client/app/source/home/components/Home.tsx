@@ -62,19 +62,17 @@ function Home(props){
 
     return(
         <Container>
-            <Header noLeft>
-                <Left/>
-                <Body>
-                    <Title>
-                        Home Page!
-                    </Title>
-                </Body>
-                <Right>
-                    <Button danger onPress={() => logout()}>
-                        <Text>Logout</Text>
-                    </Button>
-                </Right>
-            </Header>
+            {/* Header content */}
+            <View style={styles.header}>
+                <Text style={styles.heading}>
+                    Home
+                </Text>
+
+                <Button danger onPress={() => logout()}>
+                    <Text>Logout</Text>
+                </Button>
+            </View>
+
             <Content padder >
                 <Card>
                     <CardItem>
