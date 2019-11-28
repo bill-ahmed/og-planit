@@ -78,8 +78,11 @@ function Home(props){
                     <CardItem>
                         <Body>
                             <Text style={{fontWeight: 'bold'}}>
-                                Today's Events:
+                                Upcoming Events:
                             </Text>
+                            {currentItinerary && currentItinerary.length === 0 && 
+                                <Text>Looks like you don't have any upcoming itineraries. Create one in the Itinerary tab below.</Text>
+                            }
                         </Body>
                     </CardItem>
                 </Card>
@@ -103,18 +106,14 @@ function Home(props){
                                             {event.GroupSize && <Text>Accomodation: up to {event.GroupSize} people</Text>}
                                             {event.Address && <Text>Address: {event.Address.Number}, {event.Address.Street}, {event.Address.City}</Text>}
                                             
-                                            {event.StartTime && <Text>Starting Time: {JSON.stringify(event.StartTime).substring(12, 17)}</Text>}
-                                            {event.EndTime && <Text>Ending Time: {JSON.stringify(event.EndTime).substring(12, 17)}</Text>}
+                                            {event.StartTime && <Text>Starting Time: {event.StartTime.toTimeString()}</Text>}
+                                            {event.EndTime && <Text>Ending Time: {event.EndTime.toTimeString()}</Text>}
                                         </View>
                                     </Card>
                             </TouchableOpacity>
                         </View>
                     );
                 })
-                }
-
-                {currentItinerary && currentItinerary.length === 0 && 
-                    <Text>Looks like you don't have any upcoming itineraries. Create one in the Itinerary tab below.</Text>
                 }
             </Content>
             {eventDetailsModalOpen && <LocationDetails location={modalDetails} open={eventDetailsModalOpen} setModal={setDetailsModal} />}
@@ -155,6 +154,7 @@ async function getCurrentItinerary (uid, CurrID): Promise<PlanitLocation[]> {
         let startingCollection = 'dev';
         let db = firebase.firestore();
         let events = [];
+        let today = new Date();
         let query = db.collection(startingCollection).doc('data').collection('users').doc(uid).collection('itineraries').doc(CurrID).collection("events")
         .get()
         .then(snapshot => {
@@ -164,8 +164,13 @@ async function getCurrentItinerary (uid, CurrID): Promise<PlanitLocation[]> {
                 // Need to convert time stamp to date object
                 currEventData.StartTime = currEventData.StartTime.toDate();
                 currEventData.EndTime = currEventData.EndTime.toDate();
+                
+                // If (1) event has already started and hasn't ended yet OR (2) event is going to start in future, add it
+                if((currEventData.StartTime < today && currEventData.EndTime > today) || currEventData.StartTime > today){
+                    events.push(currEventData);
+                }
 
-                events.push(currEventData);
+                
             });
             // Return the result to user
             resolve(events);

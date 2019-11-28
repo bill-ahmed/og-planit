@@ -78,7 +78,7 @@ export default function LocationDetails(props) {
                                 {"Accomodation: up to " + data.GroupSize + " people"}
                             </Text>
                             <Text style={styles.criticalInfo}>
-                                {"Average Time Spent: " + data.AvgTimeSpent + " hours"}
+                                {"Average Time Spent: " + data.AvgTimeSpent + " minutes"}
                             </Text>
                             <Text style={styles.criticalInfo}>
                                 {"Start Time: " + data.StartTime.toTimeString()}
