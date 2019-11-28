@@ -24,6 +24,10 @@ export function Itinerary(props) {
         if (!itineraries && res != undefined) {
             setItineraries(res);
         }
+    })
+    .catch(err => {
+        console.log("Error getting itineraries", err);
+        setItineraries([]);
     });
 
     const reload = () => {
@@ -33,6 +37,10 @@ export function Itinerary(props) {
             if (!itineraries && res != undefined) {
                 setItineraries(res);
             }
+        })
+        .catch(err => {
+            console.log(err);
+            setItineraries([]);
         });
         
     }
@@ -98,7 +106,12 @@ export function Itinerary(props) {
 
             <ScrollView contentContainerStyle={styles.content}>
                 <Text/>
-                {!itineraries && <Spinner color='blue' />}
+                {!itineraries && 
+                    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                       <Spinner color='blue' />
+                       <Text>Taking too long? You might not have created any itineraries yet...</Text>
+                    </View>
+                }
                 {itineraries && itineraries.map((element: ItineraryModel, index) => {
                     return (
                     <Card style={{marginBottom: 20}} key={index}>
