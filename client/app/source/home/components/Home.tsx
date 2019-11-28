@@ -51,7 +51,6 @@ function Home(props){
     if(!currentItinerary){
         getCurrItinerary()
         .then((resp) => {
-            console.log("got itineraries", resp);
             setCurrentItinerary(resp);
         })
         .catch(err => {
@@ -59,6 +58,9 @@ function Home(props){
             setCurrentItinerary([]);
         });
     }
+
+    /**Bold text more easily */
+    const Bold = (props) => <Text style={{...props.style, fontWeight: 'bold'}}>{props.children}</Text>
 
     return(
         <Container>
@@ -102,13 +104,10 @@ function Home(props){
                                         </Text>
                                         
                                         <View style={styles.cardBody}>
-                                            {event.AvgPrice && <Text>Pricing: ${event.AvgPrice.toString()}</Text>}
-                                            {event.GroupSize && <Text>Accomodation: up to {event.GroupSize} people</Text>}
-                                            {event.Address && <Text>Address: {event.Address.Number}, {event.Address.Street}, {event.Address.City}</Text>}
-                                            {event.StartTime && <Text>Start Date: {event.StartTime.getFullYear()}/{(event.StartTime.getMonth()+1)}/{event.StartTime.getDate()}</Text>}
-                                            {event.StartTime && <Text>Starting Time: {event.StartTime.toTimeString()}</Text>}
-                                            {event.EndTime && <Text>Start Date: {event.EndTime.getFullYear()}/{(event.EndTime.getMonth()+1)}/{event.EndTime.getDate()}</Text>}
-                                            {event.EndTime && <Text>Ending Time: {event.EndTime.toTimeString()}</Text>}
+                                            {event.AvgPrice && <Text><Bold>Pricing:</Bold> ${event.AvgPrice.toString()}</Text>}
+                                            {event.Address && <Text><Bold>Address:</Bold> {event.Address.Number}, {event.Address.Street}, {event.Address.City}</Text>}
+                                            {event.StartTime && <Text><Bold>Start Date:</Bold> {event.StartTime.getFullYear()}/{(event.StartTime.getMonth()+1)}/{event.StartTime.getDate()} at {event.StartTime.toTimeString().substring(0,8)}</Text>}
+                                            {event.EndTime && <Text><Bold>End Date:</Bold> {event.EndTime.getFullYear()}/{(event.EndTime.getMonth()+1)}/{event.EndTime.getDate()} at {event.EndTime.toTimeString().substring(0,8)}</Text>}
                                         </View>
                                     </Card>
                             </TouchableOpacity>
@@ -141,7 +140,6 @@ async function getCurrentItineraryID (uid): Promise<String> {
                     resolve(currentItinerary ? currentItinerary : null);
                     
             } else{
-                    console.log("user does not exist");
                     reject(null);
             }
         })
