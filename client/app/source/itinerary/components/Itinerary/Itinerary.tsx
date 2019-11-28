@@ -15,6 +15,7 @@ export function Itinerary(props) {
     const { navigate } = props.navigation;    // Handle navigations
     const [itineraries, setItineraries] = useState<ItineraryModel[]>(null);
     const [selected, setSelected] = useState(-1);
+    const [finishedLoading, setFinishedLoading] = useState(false);
     const [newItineraryModalOpen, setNewItinerayModal] = useState(false);
 
     // Get itinerary on each render
@@ -22,14 +23,17 @@ export function Itinerary(props) {
         if (!itineraries && res != undefined) {
             setItineraries(res);
         }
+        setFinishedLoading(true);
     });
 
     const reload = () => {
         setItineraries(null);
+        setFinishedLoading(false);
         getItinerarySigned().then(res => {
             if (!itineraries && res != undefined) {            
                 setItineraries(res);
             }
+            setFinishedLoading(true);
         });
     }
     
@@ -92,11 +96,10 @@ export function Itinerary(props) {
 
             <ScrollView contentContainerStyle={styles.content}>
                 <Text/>
-                {!itineraries}
-                    <Text style={{margin: 5, marginTop: 100, textAlign: "center", fontSize: 20, textTransform: "capitalize", color: backgroundBlue}}> 
+                {!finishedLoading && <Spinner color='blue'/>}
+                {finishedLoading && !itineraries && <Text  style={{margin: 5, marginTop: 100, textAlign: "center", fontSize: 20, textTransform: "capitalize", color: backgroundBlue}}> 
                     It looks like you don't have any itineraries.
-                    Touch the + button to start your PLANIT journey!
-                    </Text> 
+                    Touch the + button to start your PLANIT journey! </Text> }
 
                 {itineraries && itineraries.map((element: ItineraryModel, index) => {
                             return ( <Card style={{marginBottom: 20}} key={index}>
