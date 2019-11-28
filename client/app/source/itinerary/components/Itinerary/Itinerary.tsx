@@ -8,6 +8,7 @@ import { Itinerary as ItineraryModel, PlanitLocation } from './../../models/loca
 import CreateNewItinerary from '../CreateItinerary/components/CreateItineraryStepper';
 import { Platform } from 'react-native';
 import styles, {backgroundBlue} from './ItineraryStyles';
+import CreateViews from '../card_list_views_events/CreateViews';
 
 //App stack to go from list of itineraries --> specific itinerary
 // const itineraries=require("./../../models/MockItineraryList.json");
@@ -15,8 +16,9 @@ import styles, {backgroundBlue} from './ItineraryStyles';
 export function Itinerary(props) {
     const { navigate } = props.navigation;    // Handle navigations
     const [itineraries, setItineraries] = useState<ItineraryModel[]>(null);
-    const [selected, setSelected] = useState(-1);
+    const [selected, setSelected] = useState(null);
     const [newItineraryModalOpen, setNewItinerayModal] = useState(false);
+    const [editItineraryModalOpen, setEditItineraryModalOpen] = useState(false);
 
     // Get itinerary on each render
     getItinerarySigned().then(res => {
@@ -36,7 +38,13 @@ export function Itinerary(props) {
         });
         
     }
-    
+
+    const openEditItineraryModal = (element) => {
+        setSelected(element);
+        console.log('open')
+        setEditItineraryModalOpen(true);
+    }
+
     /**Get the earliest event in an itinerary 
      * @param events The list of events to search in. MUST BE NON-EMPTY.
      * @returns The event with the earliest start time in given itinerary
@@ -97,12 +105,11 @@ export function Itinerary(props) {
             </View>
 
             <ScrollView contentContainerStyle={styles.content}>
-                <Text/>
                 {!itineraries && <Spinner color='blue' />}
                 {itineraries && itineraries.map((element: ItineraryModel, index) => {
                     return (
                     <Card style={{marginBottom: 20}} key={index}>
-                        <TouchableOpacity onPress={() => navigate("ViewItineraryEvents", { data: element })}>
+                        <TouchableOpacity onPress={() => openEditItineraryModal(element)}>
 
                             {/* Image for this itinerary */}
                             <CardItem cardBody>
@@ -159,6 +166,10 @@ export function Itinerary(props) {
             {
                 newItineraryModalOpen &&
                 <CreateNewItinerary reloadItineraries={() => reload()} open={newItineraryModalOpen} close={() => setNewItinerayModal(false)} />
+            }
+            {
+                editItineraryModalOpen &&
+                <CreateViews reloadItineraries={() => reload()} data={selected} open={editItineraryModalOpen} close={() => setEditItineraryModalOpen(false)}/>
             }
         </Container>
     );

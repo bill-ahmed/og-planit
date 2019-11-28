@@ -18,8 +18,8 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: 'white',
-        padding: 10,
-        marginBottom: 15,
+        paddingTop: 10,
+        paddingLeft: 10,
     },
     heading: {
         fontSize: 28,
