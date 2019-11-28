@@ -105,8 +105,9 @@ function Home(props){
                                             {event.AvgPrice && <Text>Pricing: ${event.AvgPrice.toString()}</Text>}
                                             {event.GroupSize && <Text>Accomodation: up to {event.GroupSize} people</Text>}
                                             {event.Address && <Text>Address: {event.Address.Number}, {event.Address.Street}, {event.Address.City}</Text>}
-                                            
+                                            {event.StartTime && <Text>Start Date: {event.StartTime.getFullYear()}/{(event.StartTime.getMonth()+1)}/{event.StartTime.getDate()}</Text>}
                                             {event.StartTime && <Text>Starting Time: {event.StartTime.toTimeString()}</Text>}
+                                            {event.EndTime && <Text>Start Date: {event.EndTime.getFullYear()}/{(event.EndTime.getMonth()+1)}/{event.EndTime.getDate()}</Text>}
                                             {event.EndTime && <Text>Ending Time: {event.EndTime.toTimeString()}</Text>}
                                         </View>
                                     </Card>

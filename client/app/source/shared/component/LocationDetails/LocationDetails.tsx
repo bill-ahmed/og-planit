@@ -81,7 +81,13 @@ export default function LocationDetails(props) {
                                 {"Average Time Spent: " + data.AvgTimeSpent + " minutes"}
                             </Text>
                             <Text style={styles.criticalInfo}>
+                                {"Start Date: " + data.StartTime.getFullYear() + "/" + (data.StartTime.getMonth()+1) + "/" + data.StartTime.getDate()}
+                            </Text>
+                            <Text style={styles.criticalInfo}>
                                 {"Start Time: " + data.StartTime.toTimeString()}
+                            </Text>
+                            <Text style={styles.criticalInfo}>
+                                {"End Date: " + data.EndTime.getFullYear() + "/" + (data.EndTime.getMonth()+1) + "/" + data.EndTime.getDate()}
                             </Text>
                             <Text style={styles.criticalInfo}>
                                 {"End Time: " + data.EndTime.toTimeString()}
