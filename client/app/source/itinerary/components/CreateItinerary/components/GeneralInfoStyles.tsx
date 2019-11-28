@@ -33,6 +33,13 @@ export default StyleSheet.create({
     formItem: {
         marginBottom: 20
     },
+    datePlaceholder:{
+        fontSize: 24,
+        color: 'darkgray'
+    },
+    dateBody:{
+        fontSize: 24
+    },
     textInputContainer: {
         marginTop: 10,
         marginBottom: 10,

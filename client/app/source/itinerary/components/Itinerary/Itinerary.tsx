@@ -6,6 +6,7 @@ import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { getItinerarySigned } from '../../api/itineraryAPI';
 import { Itinerary as ItineraryModel, PlanitLocation } from './../../models/location';
 import CreateNewItinerary from '../CreateItinerary/components/CreateItineraryStepper';
+import { Platform } from 'react-native';
 import styles, {backgroundBlue} from './ItineraryStyles';
 
 //App stack to go from list of itineraries --> specific itinerary
@@ -85,6 +86,8 @@ export function Itinerary(props) {
         return events[index];
     }
 
+    // Check if user is in android/iOS platform so we can restrict write operations
+    const mobilePlatform = Platform.OS === "android" || Platform.OS === "ios";
     /**Bold text more easily */
     const Bold = (props) => <Text style={{...props.style, fontWeight: 'bold'}}>{props.children}</Text>
 
@@ -155,7 +158,8 @@ export function Itinerary(props) {
                 <Text/>
             </ScrollView>
 
-            <Fab
+            {mobilePlatform && 
+             <Fab
                 active={false}
                 direction="up"
                 containerStyle={{}}
@@ -164,9 +168,9 @@ export function Itinerary(props) {
                 onPress={() => setNewItinerayModal(true)}>
                 <Icon name="ios-add" />
             </Fab>
-
+            }
             {
-                newItineraryModalOpen && 
+                newItineraryModalOpen &&
                 <CreateNewItinerary reloadItineraries={() => reload()} open={newItineraryModalOpen} close={() => setNewItinerayModal(false)} />
             }
         </Container>
