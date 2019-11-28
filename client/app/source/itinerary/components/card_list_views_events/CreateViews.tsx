@@ -149,10 +149,10 @@ export default function CreateViews(props) {
                     {editFields && <Button onPress={() => discardChanges()}>
                         <Icon name="ios-close" />
                     </Button>}
-                    {!editFields && mobilePlatform && 
-                    <Button onPress={() => setEditFields(true)}>
-                        <Icon name="create" />
-                    </Button>}
+                    {!editFields && mobilePlatform &&
+                        <Button onPress={() => setEditFields(true)}>
+                            <Icon name="create" />
+                        </Button>}
                 </Right>}
             </Header>
             <ScrollView>
@@ -166,20 +166,20 @@ export default function CreateViews(props) {
                         <View key={index}>
                             <TouchableOpacity onPress={() => setEventDetailsModalOpen(true, event)}>
                                 <Card
-                                        image={{uri: event.imageURL}}>
-                                        <Text style={styles.eventHeader}>
-                                            {event.Name}
-                                        </Text>
-                                        
-                                        <View style={styles.cardBody}>
-                                            {event.AvgPrice && <Text>Pricing: ${event.AvgPrice.toString()}</Text>}
-                                            {event.GroupSize && <Text>Accomodation: up to {event.GroupSize} people</Text>}
-                                            {event.Address && <Text>Address: {event.Address.Number}, {event.Address.Street}, {event.Address.City}</Text>}
-                                            
-                                            {event.StartTime && <Text>Starting Time: {JSON.stringify(event.StartTime).substring(12, 17)}</Text>}
-                                            {event.EndTime && <Text>Ending Time: {JSON.stringify(event.EndTime).substring(12, 17)}</Text>}
-                                        </View>
-                                    </Card>
+                                    image={{ uri: event.imageURL }}>
+                                    <Text style={styles.eventHeader}>
+                                        {event.Name}
+                                    </Text>
+
+                                    <View style={styles.cardBody}>
+                                        {event.AvgPrice && <Text>Pricing: ${event.AvgPrice.toString()}</Text>}
+                                        {event.GroupSize && <Text>Accomodation: up to {event.GroupSize} people</Text>}
+                                        {event.Address && <Text>Address: {event.Address.Number}, {event.Address.Street}, {event.Address.City}</Text>}
+
+                                        {event.StartTime && <Text>Starting Time: {JSON.stringify(event.StartTime).substring(12, 17)}</Text>}
+                                        {event.EndTime && <Text>Ending Time: {JSON.stringify(event.EndTime).substring(12, 17)}</Text>}
+                                    </View>
+                                </Card>
                             </TouchableOpacity>
                             <Text />
                             <View style={styles.floatingContainter}>
@@ -194,7 +194,7 @@ export default function CreateViews(props) {
                         </View>
                     )
                 })}
-                
+
             </ScrollView>
             {initialized && eventDetailsModalOpen && <LocationDetails location={detailsdModalData} open={eventDetailsModalOpen} setModal={setEventDetailsModal} />}
             {initialized && chooseEventModalOpen && <EventsSelector locations={locations} addLocation={addItem} open={chooseEventModalOpen} setModal={setChooseEventModal} />}
