@@ -6,6 +6,7 @@ import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { getItinerarySigned } from '../../api/itineraryAPI';
 import { Itinerary as ItineraryModel, PlanitLocation } from './../../models/location';
 import CreateNewItinerary from '../CreateItinerary/components/CreateItineraryStepper';
+import { Platform } from 'react-native';
 import styles, {backgroundBlue} from './ItineraryStyles';
 
 //App stack to go from list of itineraries --> specific itinerary
@@ -24,6 +25,10 @@ export function Itinerary(props) {
             setItineraries(res);
         }
         setFinishedLoading(true);
+    })
+    .catch(err => {
+        console.log("Error getting itineraries", err);
+        setItineraries([]);
     });
 
     const reload = () => {
@@ -34,6 +39,10 @@ export function Itinerary(props) {
                 setItineraries(res);
             }
             setFinishedLoading(true);
+        })
+        .catch(err => {
+            console.log(err);
+            setItineraries([]);
         });
     }
     
@@ -78,6 +87,8 @@ export function Itinerary(props) {
         return events[index];
     }
 
+    // Check if user is in android/iOS platform so we can restrict write operations
+    const mobilePlatform = Platform.OS === "android" || Platform.OS === "ios";
     /**Bold text more easily */
     const Bold = (props) => <Text style={{...props.style, fontWeight: 'bold'}}>{props.children}</Text>
 
@@ -96,6 +107,7 @@ export function Itinerary(props) {
 
             <ScrollView contentContainerStyle={styles.content}>
                 <Text/>
+              
                 {!finishedLoading && <Spinner color='blue'/>}
                 {finishedLoading && !itineraries && <Text  style={{margin: 5, marginTop: 100, textAlign: "center", fontSize: 20, textTransform: "capitalize", color: backgroundBlue}}> 
                     It looks like you don't have any itineraries.
@@ -146,7 +158,8 @@ export function Itinerary(props) {
                 <Text/>
             </ScrollView>
 
-            <Fab
+            {mobilePlatform && 
+             <Fab
                 active={false}
                 direction="up"
                 containerStyle={{}}
@@ -155,9 +168,9 @@ export function Itinerary(props) {
                 onPress={() => setNewItinerayModal(true)}>
                 <Icon name="ios-add" />
             </Fab>
-
+            }
             {
-                newItineraryModalOpen && 
+                newItineraryModalOpen &&
                 <CreateNewItinerary reloadItineraries={() => reload()} open={newItineraryModalOpen} close={() => setNewItinerayModal(false)} />
             }
         </Container>

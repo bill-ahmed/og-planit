@@ -2,6 +2,7 @@ import { Itinerary, PlanitLocation } from "../models/location";
 import { useSelector } from "react-redux";
 import { async } from "rxjs/internal/scheduler/async";
 import { Subject, Observable, combineLatest } from "rxjs";
+import { useState } from "react";
 const firebase = require("firebase");
 
 // Required for side-effects
@@ -33,6 +34,8 @@ async function getItineraryEvents(db, startingCollection, uid, itinID): Promise<
 
 export async function getItinerarySigned(filterFn: (itin: Itinerary) => boolean = (itin) => true): Promise<Itinerary[]> {
     let startingCollection = 'dev';
+
+    const [state, setState] = useState(false);  // Dummy state so react doesn't freak out about hooks being used outside function components
 
     // Reference to firestore db
     var db = firebase.firestore();
