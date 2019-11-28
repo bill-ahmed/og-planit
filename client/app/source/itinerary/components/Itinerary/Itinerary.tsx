@@ -19,7 +19,6 @@ export function Itinerary(props) {
 
     // Get itinerary on each render
     getItinerarySigned().then(res => {
-        console.log("reloadItineraries");
         if (!itineraries && res != undefined) {
             setItineraries(res);
         }
@@ -28,12 +27,10 @@ export function Itinerary(props) {
     const reload = () => {
         setItineraries(null);
         getItinerarySigned().then(res => {
-            console.log("reloadItineraries");
-            if (!itineraries && res != undefined) {
+            if (!itineraries && res != undefined) {            
                 setItineraries(res);
             }
         });
-        
     }
     
     /**Get the earliest event in an itinerary 
@@ -95,46 +92,50 @@ export function Itinerary(props) {
 
             <ScrollView contentContainerStyle={styles.content}>
                 <Text/>
-                {!itineraries && <Spinner color='blue' />}
+                {!itineraries}
+                    <Text style={{margin: 5, marginTop: 100, textAlign: "center", fontSize: 20, textTransform: "capitalize", color: backgroundBlue}}> 
+                    It looks like you don't have any itineraries.
+                    Touch the + button to start your PLANIT journey!
+                    </Text> 
+
                 {itineraries && itineraries.map((element: ItineraryModel, index) => {
-                    return (
-                    <Card style={{marginBottom: 20}} key={index}>
-                        <TouchableOpacity onPress={() => navigate("ViewItineraryEvents", { data: element })}>
-
-                            {/* Image for this itinerary */}
-                            <CardItem cardBody>
-                                <Image source={{uri: getRandomEvent(element.events).imageURL}} style={{height: 200, width: null, flex: 1}}/>
-                            </CardItem>
-
-                            {/* Itinerary Name */}
-                            <CardItem>
-                                <Text style={styles.cardHeader}> {element.name} </Text>
-                            </CardItem>
-
-                            {/* Summary details for itinerary */}
-                            <CardItem>
-                                <Body>
-                                    {element.events && 
-                                    <Text style={styles.itineraryBody}> <Bold>Events: </Bold>{element.events.length}</Text>
-                                    }
-                                    <Text style={styles.itineraryBody}> <Bold>Starts: </Bold> {getEarliestEventInItinerary(element.events).StartTime.toLocaleString()}</Text>
-                                    <Text style={styles.itineraryBody}> <Bold>Ends: </Bold>{getLatestEventInItinerary(element.events).EndTime.toLocaleString()} </Text>
-                                    {element.last_edit_time && 
-                                    <Text style={styles.itineraryBody}> <Bold>Last Edited: </Bold>{element.last_edit_time.toLocaleString().substring(0, 10)}</Text>
-                                    }
-                                    <Right/>
-                                </Body>
-                            </CardItem>
-                        </TouchableOpacity>
-                        
-                        {/* Footer content */}
-                        <CardItem bordered footer style={{ flexDirection: 'row-reverse', justifyContent: "space-between" }}>
-                            <Button style={styles.iconButton} transparent bordered iconLeft onPress={() => navigate("GMap", { data: element })}>
-                                <Icon name="map" style={{color: backgroundBlue, fontSize: 28}}/>
-                                <Text style={{color: backgroundBlue}}>Map</Text>
-                            </Button>
-                        </CardItem>
-                    </Card>);
+                            return ( <Card style={{marginBottom: 20}} key={index}>
+                                <TouchableOpacity onPress={() => navigate("ViewItineraryEvents", { data: element })}>
+        
+                                    {/* Image for this itinerary */}
+                                    <CardItem cardBody>
+                                        <Image source={{uri: getRandomEvent(element.events).imageURL}} style={{height: 200, width: null, flex: 1}}/>
+                                    </CardItem>
+        
+                                    {/* Itinerary Name */}
+                                    <CardItem>
+                                        <Text style={styles.cardHeader}> {element.name} </Text>
+                                    </CardItem>
+        
+                                    {/* Summary details for itinerary */}
+                                    <CardItem>
+                                        <Body>
+                                            {element.events && 
+                                            <Text style={styles.itineraryBody}> <Bold>Events: </Bold>{element.events.length}</Text>
+                                            }
+                                            <Text style={styles.itineraryBody}> <Bold>Starts: </Bold> {getEarliestEventInItinerary(element.events).StartTime.toLocaleString()}</Text>
+                                            <Text style={styles.itineraryBody}> <Bold>Ends: </Bold>{getLatestEventInItinerary(element.events).EndTime.toLocaleString()} </Text>
+                                            {element.last_edit_time && 
+                                            <Text style={styles.itineraryBody}> <Bold>Last Edited: </Bold>{element.last_edit_time.toLocaleString().substring(0, 10)}</Text>
+                                            }
+                                            <Right/>
+                                        </Body>
+                                    </CardItem>
+                                </TouchableOpacity>
+                                
+                                {/* Footer content */}
+                                <CardItem bordered footer style={{ flexDirection: 'row-reverse', justifyContent: "space-between" }}>
+                                    <Button style={styles.iconButton} transparent bordered iconLeft onPress={() => navigate("GMap", { data: element })}>
+                                        <Icon name="map" style={{color: backgroundBlue, fontSize: 28}}/>
+                                        <Text style={{color: backgroundBlue}}>Map</Text>
+                                    </Button>
+                                </CardItem>
+                            </Card>);
                 })}
                 <Text/>
                 <Text/>

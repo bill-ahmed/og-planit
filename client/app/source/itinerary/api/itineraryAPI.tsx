@@ -42,16 +42,18 @@ export async function getItinerarySigned(filterFn: (itin: Itinerary) => boolean 
         db.collection(startingCollection).doc('data').collection('users').doc(uid).collection('itineraries').get().then((querySnapshot) => {
             let obsArr = [];
             let i = 0;
-            querySnapshot.forEach(doc => {
-                obsArr[i] = Observable.create(obs => {
-                    const obj = (doc.data() as Itinerary);
-                    getItineraryEvents(db, startingCollection, uid, doc.id).then(resolve => {
-                        obj.id = doc.id;
-                        obj.events = resolve;
-                        obs.next(obj);
+            querySnapshot.forEach(doc => {                    
+                const obj = (doc.data() as Itinerary);
+                if (obj.last_edit_time != null) {
+                    obsArr[i] = Observable.create(obs => {
+                        getItineraryEvents(db, startingCollection, uid, doc.id).then(resolve => {
+                            obj.id = doc.id;
+                            obj.events = resolve;
+                            obs.next(obj);
+                        });
                     });
-                });
-                i++;
+                    i++;
+                }
             });
 
             combineLatest(obsArr).subscribe((res: Itinerary[]) => {
