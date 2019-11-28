@@ -1,4 +1,4 @@
-import { Filter } from "../models/location";
+import { Filter, PlanitLocation } from "../models/location";
 const firebase = require("firebase");
 
 /**Calculate distance between two geological points on Earth's surface
@@ -87,7 +87,7 @@ function filterIntervals(events) {
  * @param range The max distance between any event and events[0]
  * @returns A sequence of events that are within range distance of the first
  */
-function filterDistance(events, range: number): any[]{
+function filterDistance(events, range: number): PlanitLocation[]{
     let newEvents = [];
     newEvents.push(events[0]);
 
@@ -148,7 +148,18 @@ export default async function CreateFromUserSettings(filter : Filter): Promise<a
                 
             });
             // Return the result to user
-            resolve(filterDistance(filterIntervals(itin.events), filter.TravelDistance));
+            var result = filterDistance(filterIntervals(itin.events), filter.TravelDistance);
+
+            for(let i = 0; i < result.length; i++){
+                // If start is greater than end, swap them lmao
+                if(result[i].StartTime > result[i].EndTime){
+                    let temp = result[i].StartTime;
+                    result[i].StartTime = result[i].EndTime;
+                    result[i].EndTime = temp;
+                }
+            }
+
+            resolve(result);
         })
         .catch(resp => {
             console.log(resp);
