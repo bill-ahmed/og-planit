@@ -1,0 +1,1 @@
+Some of the tools and techniques that worked well for our group was the fact that by using the react framework, we had access to a massive collection of libraries and tools that we could integrate into our product. 
