@@ -77,7 +77,7 @@ function Home(props){
                 <Card>
                     <CardItem>
                         <Body>
-                            <Text style={{fontWeight: 'bold'}}>
+                            <Text style={{fontWeight: 'bold', fontSize:24}}>
                                 Upcoming Events:
                             </Text>
                             {currentItinerary && currentItinerary.length === 0 && 
