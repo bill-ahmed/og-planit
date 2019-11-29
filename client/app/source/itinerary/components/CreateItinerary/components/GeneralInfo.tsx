@@ -6,7 +6,7 @@ import { View , Text, TextInput, DatePickerAndroid, TimePickerAndroid, Dimension
 export default function GeneralInfo(props){
 
   // Keep track of all itinerary data
-  const [itineraryData, setItineraryData] = useState(props.itineraryInfo);
+  const itineraryData = props.itineraryInfo;
 
   /**Update name of the itinerary
    * @param name The new name for current itinerary
@@ -14,8 +14,7 @@ export default function GeneralInfo(props){
   const handleSetName = (name: string)=>{
     let temp = {...itineraryData, name: name};
 
-    props.updateItinerary(temp);
-    setItineraryData(temp); // We update local state so component can re-render easily
+    props.updateItinerary(temp);// We update local state so component can re-render easily
   }
 
   /**Update name of the location
@@ -25,7 +24,6 @@ export default function GeneralInfo(props){
     let temp = {...itineraryData, location: name};
     
     props.updateItinerary(temp);
-    setItineraryData(temp);
   }
 
   /** Update the end data for this itinerary */
@@ -33,8 +31,6 @@ export default function GeneralInfo(props){
     let temp = {...itineraryData, startTime: newStartDate};
 
     props.updateItinerary(temp);
-    setItineraryData(temp);
-
     // Update itinerary data to reflect this
   }
 
@@ -43,7 +39,6 @@ export default function GeneralInfo(props){
     let temp = {...itineraryData, endTime: newEndDate};
     
     props.updateItinerary(temp);
-    setItineraryData(temp);
   }
 
   /** Update start time for this itinerary */
@@ -51,7 +46,6 @@ export default function GeneralInfo(props){
     let temp = {...itineraryData, startTime: newStartTime};
 
     props.updateItinerary(temp);
-    setItineraryData(temp);
   }
 
   /** Update end time for this itinerary */
@@ -59,7 +53,6 @@ export default function GeneralInfo(props){
     let temp = {...itineraryData, endTime: newEndTime};
 
     props.updateItinerary(temp);
-    setItineraryData(temp);
   }
   
   /**Callback for when user clicks "Next" button */
