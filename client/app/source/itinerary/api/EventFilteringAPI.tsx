@@ -107,8 +107,8 @@ function EventIsValid(event: any, filter: Filter): boolean {
 
     if(event.AvgPrice > filter.Budget || filter.Categories.indexOf(event.Type) === -1 || event.GroupSize < filter.GroupSize){
         result = false;
-    } 
-    else if(event.StartTime.toDate() > filter.EndTime || event.StartTime.toDate() < filter.StartTime){
+    }
+    else if(event.StartTime.toDate() > filter.EndTime || event.StartTime.toDate() < filter.StartTime || event.EndTime.toDate() > filter.EndTime){
         result = false;
     }
 

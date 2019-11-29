@@ -92,7 +92,7 @@ export default function ReviewNewItinerary(props){
                 </Button>
 
                 <View>
-                {!loading && initialized && events.length > 1 && events.map((event, index) => {
+                {!loading && initialized && events.length > 0 && events.map((event, index) => {
                     return (
                         <View key={index}>
                             <TouchableOpacity onPress={() => handleDetailsModalOpen(event)}>
