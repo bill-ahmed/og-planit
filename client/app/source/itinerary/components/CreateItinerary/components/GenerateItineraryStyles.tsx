@@ -39,13 +39,25 @@ export default StyleSheet.create({
         marginBottom: 5
     },
     button: {
-        marginTop: 10,
-        marginBottom: 10,
+        margin: 10,
         padding: 10,
+        paddingRight: 0,
         textAlign: 'center',
         alignSelf: 'center',
     },
     buttonFont: {
-        fontSize: 16
+        fontSize: 16,
+        marginRight: 10
+    },
+    buttonFontWhite: {
+        fontSize: 16,
+        marginRight: 10,
+        color: 'white'
+    },
+    buttonContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'center',
     }
 })
