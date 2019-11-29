@@ -18,19 +18,6 @@ function Home(props){
     const [eventDetailsModalOpen, setDetailsModal] = useState(false);   // Whether modal is open or not
     const [modalDetails, serModalDetails] = useState<PlanitLocation>(null); // Data to send to modal
 
-    /**Logout the current user, and go to AuthLoading navigator. */
-    const logout = () => {
-        firebase.auth().signOut()
-        .then(res => {
-            // Navigate to start of application
-            navigate('Auth');
-        })
-        .catch(err => {
-            alert("Error logging out. Check console for details");
-            console.log(err);
-        });
-    }
-
     /**Open the event details modal */
     const handleDetailsModalOpen = (eventData: PlanitLocation) => {
         setDetailsModal(true);
@@ -69,10 +56,6 @@ function Home(props){
                 <Text style={styles.heading}>
                     Home
                 </Text>
-
-                <Button danger onPress={() => logout()}>
-                    <Text>Logout</Text>
-                </Button>
             </View>
 
             <Content padder >

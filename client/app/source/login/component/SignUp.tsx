@@ -44,10 +44,14 @@ export default function SignUp(props){
         }
 
         fetch(`${globalVariables.ENDPOINT}createUser`, options)
-        .then(resp => resp.json())
         .then(resp => {
-            alert("Succesfully signed up!You may login now.");
-            props.setModal(false);
+            if(resp.ok){
+                alert("Succesfully signed up!You may login now.");
+                props.setModal(false);
+            } else {
+                alert("Error ocurred while creating your account. Please make sure all inputted data is correct.");
+                setLoading(false);
+            }
         })
         .catch(res => {
             alert("Error ocurred during fetch. Check console log.");
