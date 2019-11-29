@@ -45,7 +45,7 @@ export default StyleSheet.create({
     loginOuttro: {
         color: 'white',
         alignSelf: 'flex-end',
-        fontSize: 15,
+        fontSize: 19,
     },
     signUp: {
         color: 'white',
