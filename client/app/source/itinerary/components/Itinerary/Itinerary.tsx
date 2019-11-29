@@ -22,7 +22,6 @@ export function Itinerary(props) {
 
     // Get itinerary on each render
     getItinerarySigned().then(res => {
-        console.log("reloadItineraries");
         if (!itineraries && res != undefined) {
             setItineraries(res);
         }
@@ -35,8 +34,7 @@ export function Itinerary(props) {
     const reload = () => {
         setItineraries(null);
         getItinerarySigned().then(res => {
-            console.log("reloadItineraries");
-            if (!itineraries && res != undefined) {
+            if (!itineraries && res != undefined) {            
                 setItineraries(res);
             }
         })
@@ -44,7 +42,6 @@ export function Itinerary(props) {
             console.log(err);
             setItineraries([]);
         });
-        
     }
 
     const openEditItineraryModal = (element) => {
@@ -114,12 +111,15 @@ export function Itinerary(props) {
 
             <ScrollView contentContainerStyle={styles.content}>
                 <Text/>
-                {!itineraries && 
-                    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                       <Spinner color='blue' />
-                       <Text>Taking too long? You might not have created any itineraries yet...</Text>
-                    </View>
+              
+                {!itineraries && <Spinner color='blue'/>}
+                {itineraries && itineraries.length === 0 &&
+                <Text  style={{padding: 10, margin: 5, marginTop: 100, textAlign: "center", fontSize: 20, textTransform: "capitalize", color: backgroundBlue}}> 
+                    It looks like you don't have any itineraries. {"\n"}
+                    Touch the + button to start your PLANIT journey! 
+                </Text> 
                 }
+
                 {itineraries && itineraries.map((element: ItineraryModel, index) => {
                     return (
                     <Card style={{marginBottom: 20}} key={index}>

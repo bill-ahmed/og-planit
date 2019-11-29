@@ -9,7 +9,7 @@ import { NewItinerary } from './CreateItineraryStepper';
 export default function GeneralInfo(props){
 
   // Keep track of all itinerary data
-  const [itineraryData, setItineraryData] = useState<NewItinerary>(props.itineraryInfo);
+  const itineraryData = props.itineraryInfo;
 
   // Start date and time
   const [startDateVisible, setStartDateVisible] = useState(false);
@@ -25,8 +25,7 @@ export default function GeneralInfo(props){
   const handleSetName = (name: string)=>{
     let temp = {...itineraryData, name: name};
 
-    props.updateItinerary(temp);
-    setItineraryData(temp); // We update local state so component can re-render easily
+    props.updateItinerary(temp);// We update local state so component can re-render easily
   }
 
   /**Update name of the location
@@ -36,7 +35,6 @@ export default function GeneralInfo(props){
     let temp = {...itineraryData, location: name};
     
     props.updateItinerary(temp);
-    setItineraryData(temp);
   }
 
   /** Update the end data for this itinerary */
@@ -44,8 +42,6 @@ export default function GeneralInfo(props){
     let temp = {...itineraryData, startTime: newStartDate};
 
     props.updateItinerary(temp);
-    setItineraryData(temp);
-
     // Update itinerary data to reflect this
   }
 
@@ -54,7 +50,6 @@ export default function GeneralInfo(props){
     let temp = {...itineraryData, endTime: newEndDate};
     
     props.updateItinerary(temp);
-    setItineraryData(temp);
   }
 
   /** Update start time for this itinerary */
@@ -65,7 +60,6 @@ export default function GeneralInfo(props){
     let temp = {...itineraryData, startTime: newStartTime};
 
     props.updateItinerary(temp);
-    setItineraryData(temp);
   }
 
   /** Update end time for this itinerary */
@@ -76,7 +70,6 @@ export default function GeneralInfo(props){
     let temp = {...itineraryData, endTime: newEndTime};
 
     props.updateItinerary(temp);
-    setItineraryData(temp);
   }
 
   /**All the date and time picker to display */

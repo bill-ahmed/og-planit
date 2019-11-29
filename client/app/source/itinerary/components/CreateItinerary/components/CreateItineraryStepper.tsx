@@ -41,18 +41,18 @@ export default function CreateItineraryStepper(props){
         categories: [],
         groupSize: 0,
         budget: 0,
-    }
+    };
 
     var filter: Filter = {
         Name: itinerary.name,
         City: itinerary.location,
-        StartTime:itinerary.startTime,
-        EndTime:itinerary.endTime,
+        StartTime: itinerary.startTime,
+        EndTime: itinerary.endTime,
         TravelDistance: itinerary.maxDistanceBetweenEvents,
         Categories: itinerary.categories,
         GroupSize: itinerary.groupSize,
         Budget: itinerary.budget
-    }
+    };
     //const generatedItinerary = CreateFromUserSetting(filter);
     const [itineraryInfo, setItineraryInfo] = useState(itinerary);  // All itinerary data to be uploaded
     const [filters, setFilter] = useState(filter);

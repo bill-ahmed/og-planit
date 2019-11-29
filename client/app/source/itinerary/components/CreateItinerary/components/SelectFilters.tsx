@@ -87,12 +87,12 @@ export default function SelectFilters(props){
                     {/* Distance from user's city */}
                     <Text style={styles.text}>Distance from City: {distanceFromLocation} KM</Text>
                     <Slider style={styles.slider} thumbTintColor="#1977B5" value={distanceFromLocation} onValueChange={(value) => updateDistance(value)} 
-                        minimumValue={0} maximumValue={100} step={1}/>
+                        minimumValue={0} maximumValue={500} step={1}/>
 
                     {/* Max distance between events */}
                     <Text style={styles.text}>Max Distance between Events: {distanceBetweenEvents} KM</Text>
                     <Slider style={styles.slider} thumbTintColor="#1977B5" value={distanceBetweenEvents} onValueChange={(value) => updateDistanceBetweenEvents(value)} 
-                        minimumValue={0} maximumValue={100} step={1}/>
+                        minimumValue={0} maximumValue={500} step={1}/>
 
                 </View>
 
@@ -105,12 +105,12 @@ export default function SelectFilters(props){
                     {/* Max price for user */}
                     <Text style={styles.text}>Maximum Price: ${price}</Text>
                     <Slider style={styles.slider} thumbTintColor="#1977B5" value={price} onValueChange={(value) => updatePrice(value)} 
-                        minimumValue={0} maximumValue={300} step={5}/>
+                        minimumValue={0} maximumValue={500} step={5}/>
 
                     {/* max group size for user */}
                     <Text style={styles.text}>Group Size: {gorupSize} {gorupSize === 1 ? "Person" : "People"} </Text>
                     <Slider style={styles.slider} thumbTintColor="#1977B5" value={gorupSize} onValueChange={(value) => updateGroupSize(value)} 
-                        minimumValue={0} maximumValue={50} step={1}/>
+                        minimumValue={0} maximumValue={20} step={1}/>
 
                 </View>
 
