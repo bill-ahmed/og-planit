@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import MapView, { Region, Marker, AnimatedRegion, MapViewAnimated } from 'react-native-maps';
 import { View, Modal, Alert, Geolocation } from 'react-native';
-import GMapCardView from './GMapCardView';
 
 import styles from './GMapStyles';
 import LocationDetails from '../../../shared/component/LocationDetails/LocationDetails';
-import { getLocations } from '../../api/locationsAPI';
-import { Spinner, Text } from 'native-base';
+import GMapCardView from '../GMapPullUp/GMapCardView';
 
 const openingLocation = {
     latitude: 37.78825,
