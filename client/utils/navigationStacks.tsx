@@ -10,7 +10,7 @@ import Login from '../app/source/login/component/Login';
 import Home from '../app/source/home/components/Home';
 import ItineraryContainer from '../app/source/itinerary/navigation';
 import GMap from '../app/source/maps/navigation';
-import Ratings from '../app/source/itinerary/components/ratings/CreateRating';
+import Ratings from '../app/source/profile/UserProfile';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
@@ -22,7 +22,7 @@ export const AppStack = createMaterialBottomTabNavigator(
       Home: Home,
       Itinerary: ItineraryContainer,
       Map: GMap,
-      Ratings: Ratings,
+      Profile: Ratings,
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -55,8 +55,8 @@ function getTabBarIcons(navigation, focused: boolean, tintColor): JSX.Element {
       return <Icon name="home" style={{color: tintColor}} />
     case 'Itinerary':
       return <Icon name='ios-planet' style={{color: tintColor}} />
-    case 'Ratings':
-      return <Icon name='ios-star-outline' style={{color: tintColor}} />
+    case 'Profile':
+      return <Icon name='person' style={{color: tintColor}} />
     case 'Map':
       return <Icon name='map' style={{color: tintColor}} />
     default:
