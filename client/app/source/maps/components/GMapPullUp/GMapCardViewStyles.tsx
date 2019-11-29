@@ -9,8 +9,8 @@ export default StyleSheet.create({
       position: 'absolute', 
       bottom: 0, 
       minWidth: 320,
-      width: "90%", 
-      height: 200,
+      width: "100%",
+      maxHeight: 250,
       padding: 10,
     },
     content: {

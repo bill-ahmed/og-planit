@@ -14,7 +14,7 @@ export default StyleSheet.create({
     },
     content: {
         backgroundColor: "white",
-        width: 500,
+        width: "90%",
         padding: 20,
         shadowOpacity: 1.0,
         shadowRadius: 5,

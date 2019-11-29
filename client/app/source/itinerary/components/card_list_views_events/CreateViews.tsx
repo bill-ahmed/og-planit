@@ -89,6 +89,7 @@ export default function CreateViews(props) {
             res[1].json().then((json => {
                 copy.id = json;
                 setItineraryData(copy);
+                props.data.events = events;
                 setUpdating(false);
                 props.reloadItineraries()
             }));
