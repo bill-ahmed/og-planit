@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Container, Text, Button, Content, Form, Item, Input, Icon, Label, Header, Left, Body, Right, Title, Spinner  } from 'native-base';
 import { Modal, View, TextInput, Alert, Image, ScrollView } from 'react-native';
+import globalVariables from '../../../../global';   // Store info such as address for back-end
 import styles from './SignUpStyles';
 
-const ENDPOINT = 'http://100.82.203.156:4000';  // MUST BE YOUR IP ADDRESS ON LOCAL NETWORK!!
 
 export default function SignUp(props){
     // Store user info such as email, password, full name, etc.
@@ -43,11 +43,15 @@ export default function SignUp(props){
             })
         }
 
-        fetch(`${ENDPOINT}/createUser`, options)
-        .then(resp => resp.json())
+        fetch(`${globalVariables.ENDPOINT}createUser`, options)
         .then(resp => {
-            alert("Succesfully signed up!You may login now.");
-            props.setModal(false);
+            if(resp.ok){
+                alert("Succesfully signed up!You may login now.");
+                props.setModal(false);
+            } else {
+                alert("Error ocurred while creating your account. Please make sure all inputted data is correct.");
+                setLoading(false);
+            }
         })
         .catch(res => {
             alert("Error ocurred during fetch. Check console log.");

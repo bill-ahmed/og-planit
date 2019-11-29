@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 import { Container, Header, Left, Right, Body, Title, Subtitle, Content, Button, Icon, View, Spinner } from 'native-base';
 
 import styles from './CreateViewsStyles';
-import { Text, ScrollView, TextInput, TouchableOpacity, ColorPropType } from 'react-native';
+import { Text, ScrollView, TextInput, TouchableOpacity, ColorPropType, Platform, Modal } from 'react-native';
 import { Card, Input, Overlay } from 'react-native-elements';
 import LocationDetails from '../../../shared/component/LocationDetails/LocationDetails';
 import EventsSelector from '../eventsSelector/eventsSelector';
@@ -45,13 +45,13 @@ export default function CreateViews(props) {
     }
 
     const initState = () => {
-        setEvents(props.navigation.state.params.data.events);
-        setItineraryData(props.navigation.state.params.data);
+        setEvents(props.data.events);
+        setItineraryData(props.data);
         setInitialized(true);
     }
 
-    const saveBackup = () => {
-        let bckup = JSON.parse(JSON.stringify(props.navigation.state.params.data));
+    const saveBackup = (elem) => {
+        let bckup = JSON.parse(JSON.stringify(elem));
         if (events) {
             bckup.events = events
         }
@@ -59,7 +59,7 @@ export default function CreateViews(props) {
     }
 
     const saveChanges = () => {
-        saveBackup();
+        saveBackup(itinerayData);
         setEditFields(false);
         let copy = JSON.parse(JSON.stringify(itinerayData));
         copy.events = null;
@@ -89,7 +89,9 @@ export default function CreateViews(props) {
             res[1].json().then((json => {
                 copy.id = json;
                 setItineraryData(copy);
+                props.data.events = events;
                 setUpdating(false);
+                props.reloadItineraries()
             }));
         });
     }
@@ -97,6 +99,7 @@ export default function CreateViews(props) {
     const discardChanges = () => {
         setItineraryData(backup);
         setEvents(backup.events);
+        setTitle(backup.name);
         setEditFields(false);
     }
 
@@ -122,79 +125,87 @@ export default function CreateViews(props) {
         setEvents([].concat(l, [location], r));
     }
 
-    if (props.navigation.state.params.data && !initialized) {
+    if (props.data && !initialized) {
         initState();
-        saveBackup();
+        saveBackup(props.data);
     }
 
+    // Check if user is in android/iOS platform so we can restrict write operations
+    const mobilePlatform = Platform.OS === "android" || Platform.OS === "ios";
+
     return (
-        <Container>
-            <Header>
-                <Left>
-                    <Button transparent onPress={() => props.navigation.goBack()}>
-                        <Icon name="arrow-back" />
-                    </Button>
-                </Left>
-                {initialized && <Body>
-                    {editFields && <Input onChangeText={(e) => setTitle(e)}><Title>{itinerayData.name}</Title></Input>}
-                    {!editFields && <Title>{itinerayData.name}</Title>}
-                </Body>}
-                {initialized && <Right>
-                    {editFields && <Button onPress={() => saveChanges()}>
-                        <Icon name="save" />
-                    </Button>}
-                    {editFields && <Button onPress={() => discardChanges()}>
-                        <Icon name="ios-close" />
-                    </Button>}
-                    {!editFields && <Button onPress={() => setEditFields(true)}>
-                        <Icon name="create" />
-                    </Button>}
-                </Right>}
-            </Header>
-            <ScrollView>
-                <View style={styles.floatingContainter}>
-                    {editFields && <Button rounded style={[styles.floatingButton, styles.headerButton]} onPress={() => openAddEventModal(-1)}>
-                        <Icon name="ios-add" />
-                    </Button>}
-                </View>
-                {initialized && events.map((event, index) => {
-                    return (
-                        <View key={index}>
-                            <TouchableOpacity onPress={() => setEventDetailsModalOpen(true, event)}>
-                                <Card
-                                        image={{uri: event.imageURL}}>
+        <Modal animationType="slide" transparent={false} visible={props.open} presentationStyle="overFullScreen" onRequestClose={() => props.close()}>
+            <Container>
+                <Header>
+                    <Left>
+                        {!editFields &&
+                            <Button transparent onPress={() => props.close()}>
+                                <Icon name="arrow-back" />
+                            </Button>
+                        }
+                    </Left>
+                    {initialized && <Body>
+                        {editFields && <Input onChangeText={(e) => setTitle(e)}><Title>{itinerayData.name}</Title></Input>}
+                        {!editFields && <Title>{itinerayData.name}</Title>}
+                    </Body>}
+                    {initialized && <Right>
+                        {editFields && <Button onPress={() => saveChanges()}>
+                            <Icon name="save" />
+                        </Button>}
+                        {editFields && <Button onPress={() => discardChanges()}>
+                            <Icon name="ios-close" />
+                        </Button>}
+                        {!editFields && mobilePlatform &&
+                            <Button onPress={() => setEditFields(true)}>
+                                <Icon name="create" />
+                            </Button>}
+                    </Right>}
+                </Header>
+                <ScrollView>
+                    <View style={styles.floatingContainter}>
+                        {editFields && <Button rounded style={[styles.floatingButton, styles.headerButton]} onPress={() => openAddEventModal(-1)}>
+                            <Icon name="ios-add" />
+                        </Button>}
+                    </View>
+                    {initialized && events.map((event, index) => {
+                        return (
+                            <View key={index}>
+                                <TouchableOpacity onPress={() => setEventDetailsModalOpen(true, event)}>
+                                    <Card
+                                        image={{ uri: event.imageURL }}>
                                         <Text style={styles.eventHeader}>
                                             {event.Name}
                                         </Text>
-                                        
+
                                         <View style={styles.cardBody}>
                                             {event.AvgPrice && <Text>Pricing: ${event.AvgPrice.toString()}</Text>}
                                             {event.GroupSize && <Text>Accomodation: up to {event.GroupSize} people</Text>}
                                             {event.Address && <Text>Address: {event.Address.Number}, {event.Address.Street}, {event.Address.City}</Text>}
-                                            
+
                                             {event.StartTime && <Text>Starting Time: {JSON.stringify(event.StartTime).substring(12, 17)}</Text>}
                                             {event.EndTime && <Text>Ending Time: {JSON.stringify(event.EndTime).substring(12, 17)}</Text>}
                                         </View>
                                     </Card>
-                            </TouchableOpacity>
-                            <Text />
-                            <View style={styles.floatingContainter}>
-                                {editFields && <Button rounded style={styles.floatingButton} onPress={() => openAddEventModal(index)}>
-                                    <Icon name="ios-add" />
-                                </Button>}
-                                {editFields && <Button rounded danger style={styles.floatingButton} onPress={() => removeItem(index)}>
-                                    <Icon name="ios-close" />
-                                </Button>}
+                                </TouchableOpacity>
+                                <Text />
+                                <View style={styles.floatingContainter}>
+                                    {editFields && <Button rounded style={styles.floatingButton} onPress={() => openAddEventModal(index)}>
+                                        <Icon name="ios-add" />
+                                    </Button>}
+                                    {editFields && <Button rounded danger style={styles.floatingButton} onPress={() => removeItem(index)}>
+                                        <Icon name="ios-close" />
+                                    </Button>}
+                                </View>
+                                <Text />
                             </View>
-                            <Text />
-                        </View>
-                    )
-                })}
-                
-            </ScrollView>
-            {initialized && eventDetailsModalOpen && <LocationDetails location={detailsdModalData} open={eventDetailsModalOpen} setModal={setEventDetailsModal} />}
-            {initialized && chooseEventModalOpen && <EventsSelector locations={locations} addLocation={addItem} open={chooseEventModalOpen} setModal={setChooseEventModal} />}
-            {updating && <Overlay isVisible><Spinner color='blue' /></Overlay>}
-        </Container>
+                        )
+                    })}
+
+                </ScrollView>
+                {initialized && eventDetailsModalOpen && <LocationDetails location={detailsdModalData} open={eventDetailsModalOpen} setModal={setEventDetailsModal} />}
+                {initialized && chooseEventModalOpen && <EventsSelector locations={locations} addLocation={addItem} open={chooseEventModalOpen} setModal={setChooseEventModal} />}
+                {updating && <Overlay isVisible><Spinner color='blue' /></Overlay>}
+            </Container>
+        </Modal>
     );
 }

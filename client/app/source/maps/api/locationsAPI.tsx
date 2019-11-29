@@ -17,11 +17,8 @@ export async function getLocationsFrom(userLocation: string, radius: number){
  * @returns A Promise for get request to Firestore
 */
 export async function getLocations(filterFn: (location:PlanitLocation) => boolean = (location) => true): Promise<PlanitLocation[]> {
-    let startingCollection = 'prod';
-    // If in dev environment, grab from dev db
-    if(__DEV__){
-        startingCollection = 'dev';
-    }
+    let startingCollection = 'dev';
+
     // Reference to firestore db
     var db = firebase.firestore();
 

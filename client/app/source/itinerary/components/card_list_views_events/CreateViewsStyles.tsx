@@ -1,6 +1,9 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
+    modal:{
+        height: '100vh'
+    },
     eventHeader:{
         fontWeight: 'bold',
         fontStyle: 'italic',

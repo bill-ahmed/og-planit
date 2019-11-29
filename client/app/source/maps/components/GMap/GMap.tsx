@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import MapView, { Region, Marker, AnimatedRegion, MapViewAnimated } from 'react-native-maps';
 import { View, Modal, Alert, Geolocation } from 'react-native';
-import GMapCardView from './GMapCardView';
 
 import styles from './GMapStyles';
 import LocationDetails from '../../../shared/component/LocationDetails/LocationDetails';
-import { getLocations } from '../../api/locationsAPI';
-import { Spinner, Text } from 'native-base';
+import GMapCardView from '../GMapPullUp/GMapCardView';
 
 const openingLocation = {
     latitude: 37.78825,
@@ -39,7 +37,6 @@ export default function GMap(props) {
     }
 
     if (props.navigation.state.params && !locationsLoaded) {
-        console.log(props.navigation.state.params.data.events[0].Location);
         setCurrentRegion({
             latitude: props.navigation.state.params.data.events[0].Location._lat,
             longitude: props.navigation.state.params.data.events[0].Location._long,
@@ -47,7 +44,6 @@ export default function GMap(props) {
             longitudeDelta: 0.5
         });
         setLocations(props.navigation.state.params.data.events);
-        // console.log(props.navigation.state.params.data.events);
         setLocationsLoaded(true);
     }
 

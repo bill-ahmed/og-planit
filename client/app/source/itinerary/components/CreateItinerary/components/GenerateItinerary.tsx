@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View , Text, TextInput, DatePickerAndroid, TimePickerAndroid, ScrollView, TouchableOpacity} from 'react-native';
-import { Container, Content,  Button, Icon, Subtitle, Form, Item, Label, Input, ListItem, CheckBox, List, Body, Spinner} from 'native-base';
+import { Container, Content,  Button, Icon, Subtitle, Form, Item, Label, Input, ListItem, CheckBox, List, Body, Spinner, Footer} from 'native-base';
 import { Card } from 'react-native-elements';
 import { Divider, Slider } from 'react-native-elements'
 import LocationDetails from '../../../../shared/component/LocationDetails/LocationDetails';
@@ -25,8 +25,8 @@ export default function ReviewNewItinerary(props){
             if(resp){
                 // Update dates in all response data
                 resp.forEach(event => {
-                    event.StartTime = event.StartTime.toDate();
-                    event.EndTime = event.EndTime.toDate();
+                    event.StartTime = event.StartTime ? event.StartTime.toDate() : new Date();
+                    event.EndTime = event.StartTime ? event.EndTime.toDate() : new Date();
                 });
                 setEvents(resp);
                 setInitialized(true);
@@ -56,10 +56,15 @@ export default function ReviewNewItinerary(props){
             if(resp){
                 alert("Successfully created itinerary!");
                 props.closeModal();
+                props.reloadItineraries();
             } else {
                 alert("Error: Missing or invalid itinerary data. Please make sure you have entered all fields and have at least one event in your itinerary.");
             }
-        });
+        })
+        .catch(err => {
+            console.log("Error uploading itineraries", err);
+            props.reloadItineraries();
+        })
     }
     
     return(
@@ -78,16 +83,20 @@ export default function ReviewNewItinerary(props){
                     </Text>
                 </View>
 
-                <Button light disabled={loading} style={styles.button} onPress={() => getEvents()}>
-                    <Text style={styles.buttonFont}>Build Itinerary</Text>
-                </Button>
-                
-                <Button light disabled={events.length === 0 || loading} style={styles.button} onPress={() => uploadItinerary()}>
-                    <Text style={styles.buttonFont}>Upload Itinerary</Text>
-                </Button>
+                <View style={styles.buttonContainer}>
+                    <Button iconRight light disabled={loading} style={styles.button} onPress={() => getEvents()}>
+                        <Text style={styles.buttonFont}>Build Itinerary</Text>
+                        <Icon name="settings"/>
+                    </Button>
+                    
+                    <Button iconRight success disabled={events.length === 0 || loading} style={styles.button} onPress={() => uploadItinerary()}>
+                        <Text style={events.length===0 ? styles.buttonFont : styles.buttonFontWhite}>Upload Itinerary</Text>
+                        <Icon name="cloud-upload" />
+                    </Button>
+                </View>
 
                 <View>
-                {!loading && initialized && events.length > 1 && events.map((event, index) => {
+                {!loading && initialized && events.length > 0 && events.map((event, index) => {
                     return (
                         <View key={index}>
                             <TouchableOpacity onPress={() => handleDetailsModalOpen(event)}>
@@ -112,6 +121,7 @@ export default function ReviewNewItinerary(props){
                 
             </View>
             {detailsModalOpen && <LocationDetails location={detailsModalEventData} open={detailsModalOpen} setModal={setDetailsModal}/>}
+
         </ScrollView>
     );
 }

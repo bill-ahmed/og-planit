@@ -10,31 +10,27 @@ import Login from '../app/source/login/component/Login';
 import Home from '../app/source/home/components/Home';
 import ItineraryContainer from '../app/source/itinerary/navigation';
 import GMap from '../app/source/maps/navigation';
-import Ratings from '../app/source/itinerary/components/ratings/CreateRating';
+import Ratings from '../app/source/profile/UserProfile';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
 import { Text, Icon } from 'native-base';
 
 // App stack to go from Auth --> Home and other tabs in bottom navigation
-export const AppStack = createBottomTabNavigator(
+export const AppStack = createMaterialBottomTabNavigator(
   {
       Home: Home,
       Itinerary: ItineraryContainer,
       Map: GMap,
-      Ratings: Ratings,
+      Profile: Ratings,
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused, tintColor }) =>
         getTabBarIcons(navigation, focused, tintColor),
     }),
-    tabBarOptions: {
-      activeTintColor: '#1977B5',
-      inactiveTintColor: 'gray',
-      style: {
-        marginBottom: 5
-      }
-    },
+    activeColor: "#1977B5",
+    barStyle: {backgroundColor: "white"},
     initialRouteName: "Home",
   }
 );
@@ -56,13 +52,13 @@ function getTabBarIcons(navigation, focused: boolean, tintColor): JSX.Element {
 
   switch (routeName) {
     case 'Home':
-      return <Icon name="home" color={tintColor} />
+      return <Icon name="home" style={{color: tintColor}} />
     case 'Itinerary':
-      return <Icon name='ios-planet' color={tintColor} />
-    case 'Ratings':
-      return <Icon name='ios-star-outline' color={tintColor} />
+      return <Icon name='ios-planet' style={{color: tintColor}} />
+    case 'Profile':
+      return <Icon name='person' style={{color: tintColor}} />
     case 'Map':
-      return <Icon name='map' color={tintColor} />
+      return <Icon name='map' style={{color: tintColor}} />
     default:
       return <Text>N/A</Text>
   }

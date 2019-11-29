@@ -41,7 +41,6 @@ export default StyleSheet.create({
     slider: {
         marginTop: 10,
         marginBottom: 10,
-        color: backgroundBlue
     },
     footer: {
         alignSelf: 'center',

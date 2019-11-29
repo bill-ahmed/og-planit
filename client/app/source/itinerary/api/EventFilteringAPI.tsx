@@ -1,4 +1,4 @@
-import { Filter } from "../models/location";
+import { Filter, PlanitLocation } from "../models/location";
 const firebase = require("firebase");
 
 /**Calculate distance between two geological points on Earth's surface
@@ -59,26 +59,27 @@ function inRange(point: firebase.firestore.GeoPoint, center: firebase.firestore.
  * @param events The list of events as the source
  * @returns An optimal sequence of events
  */
-function filterIntervals(events) {
+function filterIntervals(events: any[]): PlanitLocation[] {
+
     // Sort events in ascending order by start time
     events.sort((a, b) => {
-        return a.StartTime - b.StartTime;
+        return a.StartTime.seconds - b.StartTime.seconds;
     })
-    let  newEvents = [];
+    let newEvents = [];
+    let prev_finish_time = 0;
 
-    // Make sure no time intervals overlap
-    while (events.length != 0) {
-        let curr = events[0];
-        newEvents.push(curr);
+    if(events.length > 0){
+        newEvents.push(events[0]);
+        prev_finish_time = events[0].EndTime;
+    }
 
-        // If any event interval overlaps with curr, remove it
-        for (let i = 0; i < events.length; i++) {
-            // Compare seconds of start time + average time spent with when the event starts
-            if ((curr.StartTime.seconds + curr.AvgTimeSpent * 60) > events[i].StartTime.seconds) {
-                events.splice(i, 1);
-            }
+    for(let i = 1; i < events.length; i++){
+        if(events[i].StartTime >= prev_finish_time){
+            newEvents.push(events[i]);
+            prev_finish_time = events[i].EndTime;
         }
     }
+
     return newEvents;
 }
 
@@ -87,7 +88,7 @@ function filterIntervals(events) {
  * @param range The max distance between any event and events[0]
  * @returns A sequence of events that are within range distance of the first
  */
-function filterDistance(events, range: number): any[]{
+function filterDistance(events, range: number): PlanitLocation[]{
     let newEvents = [];
     newEvents.push(events[0]);
 
@@ -106,8 +107,8 @@ function EventIsValid(event: any, filter: Filter): boolean {
 
     if(event.AvgPrice > filter.Budget || filter.Categories.indexOf(event.Type) === -1 || event.GroupSize < filter.GroupSize){
         result = false;
-    } 
-    else if(event.StartTime.seconds > Math.floor(filter.EndTime.getTime()/1000) || event.StartTime < Math.floor(filter.StartTime.getTime()/1000)){
+    }
+    else if(event.StartTime.toDate() > filter.EndTime || event.StartTime.toDate() < filter.StartTime || event.EndTime.toDate() > filter.EndTime){
         result = false;
     }
 
@@ -120,13 +121,7 @@ function EventIsValid(event: any, filter: Filter): boolean {
  */
 export default async function CreateFromUserSettings(filter : Filter): Promise<any> {
     return new Promise((resolve, reject) => {
-        console.log('recieved filters:', filter)
-        let startingCollection = 'prod';
-
-        // If in dev environment, grab from dev db
-        if (__DEV__) {
-            startingCollection = 'dev';
-        }
+        let startingCollection = 'dev';
 
         // Reference to firestore db
         let db = firebase.firestore();
@@ -147,6 +142,13 @@ export default async function CreateFromUserSettings(filter : Filter): Promise<a
             snapshot.forEach(doc => {
                 let currEventData = doc.data();
 
+                // If end greater than start, swap them
+                if(currEventData.StartTime.seconds > currEventData.EndTime.seconds){
+                    let temp = currEventData.StartTime;
+                    currEventData.StartTime = currEventData.EndTime;
+                    currEventData.EndTime = temp;
+                }
+
                 // If the event is within user filters, add it
                 if(EventIsValid(currEventData, filter)){
                     itin.events.push(currEventData);
@@ -154,10 +156,13 @@ export default async function CreateFromUserSettings(filter : Filter): Promise<a
                 
             });
             // Return the result to user
-            resolve(filterDistance(filterIntervals(itin.events), filter.TravelDistance));
+            var result = filterDistance(filterIntervals(itin.events), filter.TravelDistance);
+
+            resolve(result);
         })
         .catch(resp => {
             console.log(resp);
+            alert("Error: " + JSON.stringify(resp));
             reject([]);     // Error ocurred while trying to get events, return empty array
         }); 
         

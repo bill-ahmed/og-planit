@@ -8,12 +8,11 @@ import GeneralInfo from './GeneralInfo';
 import SelectFilters from './SelectFilters';
 import GenerateItinerary from './GenerateItinerary';
 import { Filter, PlanitLocation } from "../../../models/location";
+import globalVariables from '../../../../../../global';
 import styles, { StepperStyles } from './CreateItineraryStepperStyles';
 
-const ENDPOINT = 'http://192.168.0.47:4000';  // MUST BE YOUR IP ADDRESS ON LOCAL NETWORK!!
-
 /**Represent a new itinerary the user will construct */
-interface NewItinerary{
+export interface NewItinerary{
     /**Name of the itinerary */
     name: string,
     /**Where the user is located */
@@ -42,40 +41,18 @@ export default function CreateItineraryStepper(props){
         categories: [],
         groupSize: 0,
         budget: 0,
-    }
+    };
 
     var filter: Filter = {
         Name: itinerary.name,
         City: itinerary.location,
-        StartTime:itinerary.startTime,
-        EndTime:itinerary.endTime,
+        StartTime: itinerary.startTime,
+        EndTime: itinerary.endTime,
         TravelDistance: itinerary.maxDistanceBetweenEvents,
         Categories: itinerary.categories,
         GroupSize: itinerary.groupSize,
         Budget: itinerary.budget
-    }
-
-    function createItineraryRequest(){
-
-        let options = {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-        //body:JSON.stringify(generatedItinerary)
-        }
-
-        fetch(`${ENDPOINT}/createItinerary`, options)
-        .then(resp => resp.json())
-        .then(resp => {
-            alert("Here is your Itinerary!");
-            props.setModal(false);
-        })
-        .catch(res => {
-            alert("Error ocurred during fetch. Check console log.");
-            console.log(res)});
-    }
+    };
     //const generatedItinerary = CreateFromUserSetting(filter);
     const [itineraryInfo, setItineraryInfo] = useState(itinerary);  // All itinerary data to be uploaded
     const [filters, setFilter] = useState(filter);
@@ -92,7 +69,7 @@ export default function CreateItineraryStepper(props){
         <SelectFilters itineraryInfo={itineraryInfo} updateItinerary={(newData: NewItinerary) => updateItineraryInfo(newData)}
             goNext={() => handleNextStep()} goBack={() => handlePrevStep()}/>
         ,
-        <GenerateItinerary closeModal={() => props.close()} uploadItinerary={(events: PlanitLocation[]) => uploadItinerary(events)} itineraryFilterInfo={filters}/>
+        <GenerateItinerary reloadItineraries={() => props.reloadItineraries()} closeModal={() => props.close()} uploadItinerary={(events: PlanitLocation[]) => uploadItinerary(events)} itineraryFilterInfo={filters}/>
     ];
 
     const labels = ["General Info", "Select Filters", "Generate Itinerary"];
@@ -137,7 +114,7 @@ export default function CreateItineraryStepper(props){
 
             // First, validate the data
             if(body.itineraryDetails.name !== "" && body.events.length !== 0){
-                fetch(`${ENDPOINT}/createItinerary`, options)
+                fetch(`${globalVariables.ENDPOINT}createItinerary`, options)
                 .then(resp => {
                     resolve(resp.ok);
                 })
