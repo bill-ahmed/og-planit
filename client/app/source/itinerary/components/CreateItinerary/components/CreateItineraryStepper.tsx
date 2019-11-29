@@ -12,7 +12,7 @@ import globalVariables from '../../../../../../global';
 import styles, { StepperStyles } from './CreateItineraryStepperStyles';
 
 /**Represent a new itinerary the user will construct */
-interface NewItinerary{
+export interface NewItinerary{
     /**Name of the itinerary */
     name: string,
     /**Where the user is located */
