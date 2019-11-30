@@ -70,13 +70,13 @@ function filterIntervals(events: any[]): PlanitLocation[] {
 
     if(events.length > 0){
         newEvents.push(events[0]);
-        prev_finish_time = events[0].EndTime;
+        prev_finish_time = events[0].StartTime.seconds + events[0].AvgTimeSpent;
     }
 
     for(let i = 1; i < events.length; i++){
-        if(events[i].StartTime >= prev_finish_time){
+        if(events[i].StartTime.seconds >= prev_finish_time){
             newEvents.push(events[i]);
-            prev_finish_time = events[i].EndTime;
+            prev_finish_time = events[i].StartTime.seconds + events[i].AvgTimeSpent;
         }
     }
 
