@@ -1,7 +1,6 @@
 ## The OG-Planit Team brings you...
-A React Native + Firebase + Node.js application to satisfy your thirst for travel.
+This project was created as part of the course CSCC01, at the University of Toronto.
 
-https://github.com/UTSCCSCC01/project-og-planit
 <br/>
 
 # Getting Started
