@@ -1,7 +1,5 @@
-## The OG-Planit Team brings you...
-This project was created as part of the course CSCC01, at the University of Toronto.
-
-<br/>
+### The OG-Planit Team brings you...
+This project ("Planit") was created as part of the course CSCC01, at the University of Toronto.
 
 # Getting Started
 This app uses the NPM package manager as well as Node.js. Follow the instructions below to get setup.
